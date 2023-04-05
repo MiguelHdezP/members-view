@@ -1,0 +1,23 @@
+@import "../../styles/main.scss";
+
+.inputField {
+  border: 1px solid $outlineGray;
+  border-radius: 5px;
+  color: $iconsColor;
+  display: block;
+  font-size: 0.9rem;
+  margin: 1rem auto;
+  outline: none;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+.input-error {
+  border-color: red;
+  outline-color: red;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

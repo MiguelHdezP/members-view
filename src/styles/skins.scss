@@ -1,0 +1,17 @@
+.mobile-icon-effect {
+  border-radius: 5px;
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  &:hover {
+    background-color: rgba($color: $white, $alpha: 0.5);
+    color: $mainPurple;
+  }
+  .active-icon {
+    color: $iconsColor;
+    cursor: pointer;
+
+    &:hover {
+      color: $mainPurple;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../styles/main.scss";
+
+.footer {
+  @include headerFooter($footerGray, 0.5rem);
+  bottom: 0rem;
+
+  .footer-contents {
+    display: flex;
+    justify-content: space-between;
+
+    .footer-icon-text {
+      font-size: 0.6rem;
+      text-align: center;
+      word-wrap: break-word;
+    }
+  }
+}
