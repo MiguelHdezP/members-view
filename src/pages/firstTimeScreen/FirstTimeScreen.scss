@@ -1,0 +1,25 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-firstTime {
+  @include mobile-scroll(82vh, 97%, 8.9%);
+
+  .firsTime-page {
+    height: 72vh;
+    position: relative;
+    top: 6rem;
+
+    .firstTime-topImg {
+    }
+
+    .firstTime-boxCard {
+      bottom: 0;
+      position: absolute;
+      padding: 2rem;
+      width: 100%;
+
+      .fistTime-primaryBtn {
+        margin: 0;
+      }
+    }
+  }
+}

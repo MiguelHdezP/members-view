@@ -1,0 +1,19 @@
+@import "../../styles/main.scss";
+
+.header {
+  @include headerFooter($white, 1rem);
+  top: 0rem;
+
+  .header-contents {
+    display: flex;
+
+    .header-icons-logo {
+      flex: 2;
+      align-self: end;
+    }
+
+    .header-icon-user {
+      margin-right: 1.5rem;
+    }
+  }
+}

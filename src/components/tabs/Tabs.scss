@@ -1,0 +1,39 @@
+@import "../../styles/main.scss";
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+
+  .tabs-container {
+    flex: 1;
+
+    .tabs-btn {
+      background: none;
+      border: none;
+      color: $secondaryDark;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        color: $mainPurple;
+      }
+    }
+    .tabs-secondary {
+      color: $black;
+    }
+    .tabsIndividualDivider {
+      display: none;
+      margin-top: 0.4rem !important;
+    }
+  }
+}
+
+.tabsDivider {
+  margin-top: 0 !important;
+}
+
+.tabs-btn-active {
+  border-bottom: 2px solid $mainPurple !important;
+}

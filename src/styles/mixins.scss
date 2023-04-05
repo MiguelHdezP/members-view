@@ -1,0 +1,49 @@
+@mixin chatGlobes($color, $width: 70%) {
+  border-radius: 25px;
+  background-color: $color;
+  font-size: 0.85rem;
+  height: auto;
+  line-height: 1.3rem;
+  margin: 1rem 0.3rem 0.4rem;
+  position: relative;
+  padding: 0.5rem;
+  text-indent: 19px;
+  width: $width;
+  z-index: 100;
+}
+
+@mixin mobile-scroll($height, $width, $top) {
+  height: $height;
+  margin: 0 auto;
+  max-width: 407px;
+  overflow: scroll;
+  position: relative;
+  top: $top;
+  width: $width;
+}
+
+@mixin headerFooter($bColor, $padding) {
+  background-color: $bColor;
+  margin: 0 auto;
+  position: absolute;
+  padding: $padding;
+  width: 100%;
+}
+
+@mixin btns($bkColor, $color, $hoverColor, $alphaC) {
+  background-color: $bkColor;
+  border: none;
+  border-radius: 5px;
+  color: $color;
+  cursor: pointer;
+  display: block;
+  font-size: 0.9rem;
+  outline: none;
+  padding: 0.6rem 0;
+  width: 100%;
+  margin: 0 auto 1.5rem;
+
+  &:hover {
+    background-color: rgba($color: $hoverColor, $alpha: $alphaC);
+  }
+}

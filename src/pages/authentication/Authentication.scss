@@ -1,0 +1,39 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll {
+  @include mobile-scroll(82vh, 96%, 8.9%);
+
+  .authentication-page {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    top: 1%;
+    width: 72%;
+
+    .auth-container {
+      height: 279px;
+      margin-top: 3.5rem;
+
+      .auth-container-btns {
+        bottom: -6rem;
+        position: relative;
+      }
+    }
+
+    .auth-lock {
+      color: $mainPurple;
+      font-size: 6rem;
+      border: 1px solid $mainPurple;
+      border-radius: 50%;
+      margin-top: 6rem;
+      padding: 0.8rem;
+    }
+
+    .auth-h1 {
+      color: $dark;
+      font-size: 24px;
+      margin: 1.5rem 0;
+    }
+  }
+}
