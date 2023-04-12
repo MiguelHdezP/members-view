@@ -11,6 +11,11 @@ import {
 } from "./pages/MemberView";
 import { Authentication } from "./pages/authentication/Authentication";
 import { FirstTimeScreen } from "./pages/firstTimeScreen/FirstTimeScreen";
+import { CheckInsPage } from "./pages/checkInsPage/CheckInsPage";
+import { AwardsPage } from "./pages/awardsPage/AwardsPage";
+import { AssessmentsPage } from "./pages/assessmentsPage/AssessmentsPage";
+import { EducationPage } from "./pages/educationPage/EducationPage";
+import { EducationArticle } from "./pages/educationPage/educationArticle/EducationArticle";
 
 function App() {
   return (
@@ -45,6 +50,19 @@ function App() {
             path="/memberview/programOverview"
             exact
             element={<FirstTimeScreen />}
+          />
+          <Route
+            path="/memberview/checkinsPage"
+            exact
+            element={<CheckInsPage />}
+          />
+          <Route path="/awards" exact element={<AwardsPage />} />
+          <Route path="/assessments" exact element={<AssessmentsPage />} />
+          <Route path="/education" exact element={<EducationPage />} />
+          <Route
+            path="/educationArticle"
+            exact
+            element={<EducationArticle />}
           />
         </Routes>
       </main>

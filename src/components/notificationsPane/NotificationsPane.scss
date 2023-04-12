@@ -1,0 +1,24 @@
+@import "../../styles/main.scss";
+
+.notify-pane {
+  background-color: $footerGray;
+  width: 100%;
+  height: 76.1vh;
+  top: 3rem;
+  position: absolute;
+  z-index: 100;
+  right: -400px;
+  transition: 40ms ease-in-out;
+
+  @-webkit-keyframes slide {
+    100% {
+      right: 0;
+    }
+  }
+
+  @keyframes slide {
+    100% {
+      right: 0;
+    }
+  }
+}

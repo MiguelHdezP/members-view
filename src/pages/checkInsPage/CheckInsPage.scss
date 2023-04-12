@@ -1,0 +1,87 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-checkins {
+  @include mobile-scroll(76vh, 100%, 7.2%);
+  overscroll-behavior: contain;
+
+  .checkins-page {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    top: 1%;
+    width: 100%;
+
+    .checkins-texts {
+      top: 12rem;
+      position: absolute;
+    }
+
+    .checkinsPage-contents {
+      margin: 0 auto;
+      width: 86%;
+      margin-top: 2rem;
+
+      .checkins-text-center {
+        text-align: center;
+      }
+    }
+
+    .checkins-trophy-container {
+      background-color: $mainPurple;
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      display: block;
+      margin: 0 auto;
+      font-size: 3rem;
+      line-height: 5rem;
+
+      .checkins-trophy {
+        color: $white;
+      }
+    }
+
+    .checkins-link-container {
+    }
+
+    .checkins-answers {
+      .checkins-roundedCard {
+        cursor: pointer;
+        margin: 2rem 0;
+
+        &:hover {
+          @include purpleHover;
+        }
+      }
+    }
+    .active-answer {
+      @include purpleHover;
+    }
+
+    .checkins-bottom-possition {
+      bottom: 6.5rem;
+      position: absolute;
+      width: 100%;
+    }
+
+    .pollo {
+      top: 39.5rem;
+      width: 92%;
+      margin: 0 auto;
+      position: inherit;
+    }
+
+    .jote {
+      bottom: 6.5rem;
+      position: absolute;
+      width: 100%;
+    }
+    .pollo3 {
+      top: 19.9rem;
+      width: 92%;
+      margin: 0 auto;
+      position: inherit;
+    }
+  }
+}

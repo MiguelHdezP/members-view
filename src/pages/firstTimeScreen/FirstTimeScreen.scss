@@ -1,25 +1,82 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-firstTime {
-  @include mobile-scroll(82vh, 97%, 8.9%);
+  @include mobile-scroll(80.8vh, 100%, 0%);
+  overscroll-behavior: contain;
 
   .firsTime-page {
-    height: 72vh;
+    height: 76vh;
     position: relative;
-    top: 6rem;
+    top: 0;
 
-    .firstTime-topImg {
+    .firstTime-page-contents {
+      padding: 1.6rem 1.5rem;
+      @include mobile-scroll(82vh, 100%, 7.5%);
+
+      .firstTime-topImg {
+        width: 100%;
+      }
+      .firstTime-title {
+        @include headingText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subText {
+        @include defaultText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subTitle {
+        font-size: 1.125rem;
+      }
+
+      .firstTime-article-boxCard {
+        margin: 0.5rem 0 1rem;
+        padding: 1.5rem;
+
+        .firstTime-article-title {
+          margin-bottom: 0.5rem;
+        }
+
+        .firstTime-article-list {
+          .firstTime-list {
+            color: $mainPurple;
+            list-style: disc;
+            margin-left: 1rem;
+            padding: 0.5rem 0;
+
+            .firstTime-list-anchor {
+              color: $mainPurple;
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
     }
 
     .firstTime-boxCard {
-      bottom: 0;
-      position: absolute;
+      background-color: $mainPurple;
+      bottom: 11rem;
+      border-radius: unset;
+      position: fixed;
       padding: 2rem;
-      width: 100%;
+      @include fixedWidth;
 
       .fistTime-primaryBtn {
+        background-color: $white;
+        border-color: $strokeGray;
+        color: $dark;
         margin: 0;
+
+        &:hover {
+          background-color: $lightGray;
+        }
       }
     }
+  }
+  .open-activity {
+    right: 0;
   }
 }

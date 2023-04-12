@@ -1,0 +1,32 @@
+@import "../../styles/main.scss";
+
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+
+  .progressBar-page {
+    background-color: $mainPurple;
+    cursor: pointer;
+    height: 0.35rem;
+    opacity: 0.3;
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+    }
+  }
+
+  .progresBar-active {
+    opacity: 1;
+  }
+
+  .progressBar-page:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .progressBar-page:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-checkins {
+  @include mobile-scroll(82vh, 100%, 7.2%);
+  overscroll-behavior: contain;
+
+  .asmt-page {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    top: 1%;
+    width: 100%;
+
+    .checkinsPage-contents {
+      margin: 0 auto;
+      width: 86%;
+      margin-top: 2rem;
+    }
+
+    .asmt-trophy-container {
+      background-color: $mainPurple;
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      display: block;
+      margin: 0 auto;
+      font-size: 3rem;
+      line-height: 5rem;
+
+      .asmt-trophy {
+        color: $white;
+      }
+    }
+
+    .asmt-link-container {
+    }
+
+    .asmt-answers {
+      .asmt-roundedCard {
+        cursor: pointer;
+        margin: 2rem 0;
+
+        &:hover {
+          @include purpleHover;
+        }
+      }
+    }
+    .active-answer {
+      @include purpleHover;
+    }
+
+    .asmt-bottom-possition {
+      bottom: 7rem;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .assessment-texts {
+    top: 12rem;
+    position: absolute;
+  }
+
+  .pollo {
+    top: 39.5rem;
+    width: 92%;
+    margin: 0 auto;
+    position: inherit;
+  }
+
+  .jote {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  }
+  .pollo3 {
+    top: 19.9rem;
+    width: 92%;
+    margin: 0 auto;
+    position: inherit;
+  }
+}

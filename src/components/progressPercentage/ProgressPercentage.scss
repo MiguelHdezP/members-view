@@ -1,0 +1,20 @@
+@import "../../styles/main.scss";
+
+.progress-percentage {
+  .progressPercentage-title {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  .progressPercentage-container {
+    display: flex;
+    .progressPercentage-label {
+      color: $smallLabel;
+      margin: 0;
+      margin-right: 0.6rem;
+    }
+    progress {
+      width: 100%;
+    }
+  }
+}

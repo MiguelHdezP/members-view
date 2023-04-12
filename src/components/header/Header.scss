@@ -1,19 +1,26 @@
 @import "../../styles/main.scss";
 
 .header {
-  @include headerFooter($white, 1rem);
-  top: 0rem;
+  @include headerFooter($footerGray, 0.5rem 1rem);
+  top: 5.7rem;
+  border-bottom: 1px solid $strokeGray;
 
   .header-contents {
     display: flex;
 
     .header-icons-logo {
       flex: 2;
-      align-self: end;
+      align-self: center;
     }
 
-    .header-icon-user {
-      margin-right: 1.5rem;
+    .header-icon-notif {
+      margin-right: 1rem;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .activate-icons {
+      color: $mainPurple;
     }
   }
 }
