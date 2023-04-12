@@ -1,0 +1,58 @@
+@import "../../styles/main.scss";
+
+.list-section {
+  .list-row {
+    @include rowCards;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $lightGray;
+    }
+
+    .list-icon {
+      margin-right: 1rem;
+    }
+
+    .list-texts {
+      @include defaultText;
+      flex: 2;
+
+      .list-textComplement,
+      .list-helperText {
+        @include smallText;
+      }
+
+      .list-textComplement {
+        color: $secondaryDark;
+      }
+
+      .list-helperText {
+        color: $disabled;
+      }
+
+      & > * {
+        padding: 0.1rem 0.3rem;
+      }
+    }
+
+    .list-newMsg {
+      @include circleNotify($mainPurple);
+    }
+  }
+}
+
+.list-row-readed {
+  background: none !important;
+}
+
+.list-chat-badge {
+  background-color: $badgeChat1 !important;
+}
+
+.list-troph-badge {
+  background-color: $badgeTroph !important;
+}
+
+.list-calen-badge {
+  background-color: $mainPurple !important;
+}

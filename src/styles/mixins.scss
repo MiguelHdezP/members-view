@@ -1,3 +1,11 @@
+@import "./variables.scss";
+
+@mixin fixedWidth($width: 33.4%, $maxWidth: 24.5rem, $minWidth: 24.5rem) {
+  width: $width;
+  max-width: $maxWidth;
+  min-width: $minWidth;
+}
+
 @mixin chatGlobes($color, $width: 70%) {
   border-radius: 25px;
   background-color: $color;
@@ -14,20 +22,27 @@
 
 @mixin mobile-scroll($height, $width, $top) {
   height: $height;
+  left: -1px;
   margin: 0 auto;
   max-width: 407px;
   overflow: scroll;
+  overflow-x: hidden;
   position: relative;
   top: $top;
   width: $width;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @mixin headerFooter($bColor, $padding) {
+  @include fixedWidth;
   background-color: $bColor;
   margin: 0 auto;
-  position: absolute;
+  position: fixed;
   padding: $padding;
-  width: 100%;
+  z-index: 1000;
 }
 
 @mixin btns($bkColor, $color, $hoverColor, $alphaC) {
@@ -46,4 +61,70 @@
   &:hover {
     background-color: rgba($color: $hoverColor, $alpha: $alphaC);
   }
+}
+
+@mixin rowCards {
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid $strokeGray;
+  display: flex;
+  padding: 1rem;
+}
+
+@mixin circleNotify($bkColor) {
+  background-color: $bkColor;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+
+$colors: $badgeChat1, $badgeChat2, $badgeChat3, $badgeChat4, $badgeChat5;
+$repeat: 1;
+
+@mixin randomColor {
+  @for $i from 1 through $repeat {
+    align-items: center;
+    background-color: lighten(nth($colors, random(length($colors))), 20%);
+    border-radius: 50%;
+    color: $white;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    width: 45px;
+  }
+}
+
+@mixin headingText {
+  color: $dark;
+  font-size: 1.5rem;
+}
+
+@mixin smallText {
+  color: $dark;
+  font-size: 0.813rem;
+}
+
+@mixin defaultText {
+  color: $dark;
+  font-size: 1rem;
+}
+
+@mixin strongText {
+  color: $secondaryDark;
+  font-size: 1rem;
+}
+
+@mixin purpleHover {
+  border-color: $mainPurple;
+  background-color: rgba($color: $mainPurple, $alpha: 0.1);
+  color: $mainPurple;
+}
+
+@mixin badges($borderColor, $color) {
+  background-color: $white;
+  border: 1px solid $borderColor;
+  border-radius: 50%;
+  color: $color;
+  font-size: 4rem;
+  padding: 0.5rem;
 }

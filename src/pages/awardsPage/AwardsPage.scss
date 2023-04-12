@@ -1,0 +1,48 @@
+@import "../../styles//main.scss";
+
+.mobile-scroll-awards {
+  @include mobile-scroll(82vh, 100%, 7.2%);
+  overscroll-behavior: contain;
+
+  .awards-page {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    top: 1%;
+    width: 72%;
+
+    .awards-badges-section {
+      .awards-text-mid {
+        text-align: left;
+      }
+
+      .awards-text-small {
+        color: $gray600;
+      }
+
+      .awards-badges {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .awards-single-badgeProgress {
+          .awards-trophy-inprogress {
+            @include badges($gray160, $gray160);
+          }
+
+          .awards-small-text {
+            color: $mainPurple;
+          }
+        }
+
+        .awards-single-badge {
+          .awards-trophy {
+            @include badges($mainPurple, $mainPurple);
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./SMSsimulator.scss";
 import { SmsResponse } from "./SMSresponses";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
-import dummyImg from "../../assets/images/dummy-img.png";
+import { dummyImg } from "../../data/images";
 
 export const SMSsimulator = ({ SMSdata, userResponses }) => {
   let classEvenOdd = "";

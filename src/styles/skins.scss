@@ -1,17 +1,51 @@
 .mobile-icon-effect {
+  border: none;
+  background: none;
   border-radius: 5px;
+  color: $gray600;
+  cursor: pointer;
+  fill: $gray600;
   padding: 0.4rem 0.5rem;
+  position: relative;
   text-align: center;
+
   &:hover {
     background-color: rgba($color: $white, $alpha: 0.5);
     color: $mainPurple;
-  }
-  .active-icon {
-    color: $iconsColor;
-    cursor: pointer;
-
-    &:hover {
-      color: $mainPurple;
+    & > .active-icon {
+      color: $gray600;
+      fill: $mainPurple;
     }
   }
+}
+
+.mobile-icon-color {
+  color: $mainPurple !important;
+}
+
+.mobile-icon-new {
+  @include circleNotify($notification);
+  display: inline-block;
+  position: absolute;
+  right: 0.563rem;
+  top: 0.563rem;
+  outline: 1px solid white;
+}
+
+.text-title {
+  @include headingText;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.text-midText {
+  @include defaultText;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.text-smallText {
+  @include smallText;
+  text-align: left;
+  margin-bottom: 1.5rem;
 }

@@ -1,6 +1,6 @@
 @import "../../styles/main.scss";
 
 .secondary-button {
-  @include btns($white, $secondaryDark, $outlineGray, 0.2);
-  border: 1px solid $outlineGray;
+  @include btns($white, $secondaryDark, $strokeGray, 0.2);
+  border: 1px solid $strokeGray;
 }

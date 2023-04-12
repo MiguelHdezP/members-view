@@ -1,0 +1,21 @@
+@import "../../styles/main.scss";
+
+.breadcrumb-anchor {
+  align-items: center;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: left;
+  text-decoration: none;
+  @include smallText;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb-chevron {
+    margin-right: 0.5rem;
+  }
+}

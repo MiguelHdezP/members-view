@@ -13,7 +13,9 @@ import { SecondaryButton } from "../../components/secondaryButton/SecondaryButto
 import { LinkButton } from "../../components/linkButton/LinkButton";
 import { RiLock2Fill } from "react-icons/ri";
 import { IconContext } from "react-icons";
-import { FirstTimeScreen } from "../firstTimeScreen/FirstTimeScreen";
+import { Header } from "../../components/header/Header";
+import { LoaderSection } from "../../components/loaderSection/LoaderSection";
+import { redirect } from "../../utils/scripts";
 
 export const Authentication = () => {
   const [step, setStep] = useState("one");
@@ -25,6 +27,7 @@ export const Authentication = () => {
   };
   const renderStepContent = () => {
     let authContents;
+
     switch (step) {
       case "one":
         authContents = (
@@ -73,8 +76,9 @@ export const Authentication = () => {
             </div>
           </>
         );
+        break;
       case "four":
-        window.location.href = "/memberview/programOverview";
+        redirect("/memberview/programOverview", 2400);
         break;
       default:
         break;
@@ -84,20 +88,28 @@ export const Authentication = () => {
 
   return (
     <MobileContainer className="appImg">
-      <div className="mobile-scroll">
-        <section className="authentication-page">
-          <IconContext.Provider
-            value={{
-              className: "auth-lock",
-            }}
-          >
-            <div className="auth-lock-icon">
-              <RiLock2Fill />
-            </div>
-          </IconContext.Provider>
-          <h1 className="auth-h1">Confirm your identity</h1>
-          {renderStepContent()}
-        </section>
+      <div className="mobile-scroll-auth">
+        <Header />
+        {step === "four" ? (
+          <>
+            <LoaderSection />
+            {renderStepContent()}
+          </>
+        ) : (
+          <section className="authentication-page">
+            <IconContext.Provider
+              value={{
+                className: "auth-lock",
+              }}
+            >
+              <div className="auth-lock-icon">
+                <RiLock2Fill />
+              </div>
+            </IconContext.Provider>
+            <h1 className="auth-h1">Confirm your identity</h1>
+            {renderStepContent()}
+          </section>
+        )}
       </div>
     </MobileContainer>
   );

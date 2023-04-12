@@ -1,3 +1,6 @@
+import { IoCalendar } from "react-icons/io5";
+import { AiFillStar } from "react-icons/ai";
+
 export const mockedData = {
   data: 1,
 };
@@ -54,7 +57,7 @@ export const assessmentData = [
       "Complete the Assessment by clicking the link below:",
       "www.client.com/program/assessment",
     ],
-    href: "#",
+    href: "/assessments",
     img: "www.client.com/program/assessment",
     classN: "tight-text",
   },
@@ -73,7 +76,7 @@ export const assessmentData = [
       "No further actions are required, just follow the link:",
       "www.client.com/program/assessment",
     ],
-    href: "#",
+    href: "/assessments",
     img: "www.client.com/program/assessment",
     classN: "tight-text",
   },
@@ -87,7 +90,7 @@ export const checkins = [
       "Hi Member! How are you?  We have a check in for you yo complete:",
       "www.client.com/program/check-in",
     ],
-    href: "#",
+    href: "/memberview/CheckInsPage",
     img: "www.client.com/program/check-in",
     classN: "tight-text",
   },
@@ -107,7 +110,7 @@ export const checkins = [
       "provided link",
       "www.client.com/program/check-in",
     ],
-    href: "/pollo",
+    href: "/memberview/CheckInsPage",
     img: "www.client.com/program/check-in",
     classN: "tight-text",
   },
@@ -121,7 +124,7 @@ export const educationalContent = [
       "Hi Member! How are you?  We have new educational content for you:",
       "www.client.com/program/education",
     ],
-    href: "#",
+    href: "/education",
     img: "www.client.com/program/education",
     classN: "tight-text",
   },
@@ -140,7 +143,7 @@ export const educationalContent = [
       "To follow up click the link:",
       "www.client.com/program/education",
     ],
-    href: "#",
+    href: "/education",
     img: "www.client.com/program/education",
     classN: "tight-text",
   },
@@ -182,5 +185,53 @@ export const authTabs = [
   {
     id: 2,
     label: "Phone",
+  },
+];
+
+export const listActivity = [
+  {
+    id: 1,
+    iconText: "MJ",
+    icon: null,
+    title: "Dr. Wall, Jeff sent you a message",
+    textComplement: "Hi there, I wanted to reach out and ask...",
+    helperText: "Chat",
+    newMsg: true,
+  },
+  {
+    id: 2,
+    iconText: "",
+    icon: <IoCalendar />,
+    title: "Periodic Check-In Reminder",
+    textComplement: "On Mar 22 at 2:30pm you have upcom...",
+    helperText: "Appointments",
+    newMsg: true,
+  },
+  {
+    id: 3,
+    iconText: "",
+    icon: <AiFillStar />,
+    title: "Hooray! You're earned a new badge!",
+    textComplement: "You've successfully completed your first...",
+    helperText: "Trophies",
+    newMsg: true,
+  },
+  {
+    id: 4,
+    iconText: "MJ",
+    icon: null,
+    title: "Dr. Wall, Jeff sent you a message",
+    textComplement: "Welcome to the COPD Care Program...",
+    helperText: "Chat",
+    newMsg: false,
+  },
+  {
+    id: 5,
+    iconText: "",
+    icon: <IoCalendar />,
+    title: "Assessment Reminder",
+    textComplement: "On Mar 10 at 2:30pm you have an upcoming...",
+    helperText: "Appointments",
+    newMsg: false,
   },
 ];

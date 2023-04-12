@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
+import { BsFillGearFill } from "react-icons/bs";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import SubMenu from "./SubMenu";
@@ -40,10 +40,10 @@ export const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#000" }}>
+      <IconContext.Provider value={{ color: "#5d5d60" }}>
         <Nav>
           <NavIcon to="#">
-            <FaIcons.FaBars onClick={showSidebar} />
+            <BsFillGearFill onClick={showSidebar} />
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>

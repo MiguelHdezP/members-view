@@ -1,0 +1,106 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-education {
+  @include mobile-scroll(75vh, 100%, 7.1%);
+  overscroll-behavior: contain;
+
+  .education-page {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+    top: 0%;
+    width: 100%;
+
+    .education-general-info {
+      .education-text-title {
+        margin-bottom: 1rem;
+      }
+      .education-text-mid {
+        margin-bottom: 1.5rem;
+      }
+      .education-boxcard {
+        border: 1px solid $strokeGray;
+        border-radius: 0.625rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .education-todo {
+      .education-rounded-card {
+        box-shadow: 0 3px 2px -2px $disabled;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        padding: 0;
+
+        &:hover {
+          background-color: rgba($color: $disabled, $alpha: 0.1);
+        }
+
+        .education-todo-texts {
+          margin: 1rem;
+
+          .education-purple-text {
+            color: $mainPurple;
+          }
+        }
+      }
+    }
+
+    .education-semibold-text {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-text-mid {
+      text-align: left;
+    }
+
+    .education-mid-topMargin {
+      margin-top: 2rem;
+    }
+
+    .education-completed {
+      .education-completed-header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+      .education-completed-cardContainer {
+        border-radius: 0.625rem;
+        padding: 0;
+        margin-bottom: 1rem;
+
+        .education-completed-card {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+
+          &:hover {
+            background-color: rgba($color: $strokeGray, $alpha: 0.5);
+            border-radius: 10px;
+          }
+
+          .education-card-texts {
+            flex: 2;
+            margin-left: 1rem;
+            .text-midText {
+              margin-top: 0.5rem;
+            }
+          }
+
+          .education-card-star {
+            color: $disabled;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+.open-activity {
+  right: 0;
+}

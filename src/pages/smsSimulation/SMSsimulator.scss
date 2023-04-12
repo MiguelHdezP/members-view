@@ -36,8 +36,8 @@
   height: auto;
   margin: 0 auto;
   position: relative;
-  width: 78%;
-  top: 11rem;
+  width: 81%;
+  top: 6rem;
 
   .sm-inputText-input {
     background-color: #ececec;
@@ -62,5 +62,5 @@
 }
 
 .mobile-scroll-optin {
-  @include mobile-scroll(67vh, 87%, 18.9%);
+  @include mobile-scroll(67vh, 94%, 13%);
 }
