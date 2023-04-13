@@ -1,26 +1,88 @@
 @import "../../styles/main.scss";
 
 .header {
-  @include headerFooter($footerGray, 0.5rem 1rem);
+  @include headerFooter($white, 0.5rem 1rem);
   top: 5.7rem;
-  border-bottom: 1px solid $strokeGray;
 
   .header-contents {
     display: flex;
 
     .header-icons-logo {
-      flex: 2;
       align-self: center;
-    }
-
-    .header-icon-notif {
-      margin-right: 1rem;
-      position: relative;
-      z-index: 1000;
+      cursor: pointer;
+      flex: 2;
     }
 
     .activate-icons {
       color: $mainPurple;
+    }
+  }
+}
+
+.header-pane {
+  background-color: $white !important;
+
+  .favorites {
+    margin: 1rem;
+
+    .favorites-title {
+      margin-bottom: 1rem;
+    }
+
+    .favorites-text-widthMargin {
+      margin-bottom: 2.5rem;
+      width: 60%;
+    }
+
+    .favorites-header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+    .favorites-cardContainer {
+      border-radius: 0.625rem;
+      padding: 0;
+      margin-bottom: 1rem;
+
+      .header-card-favs {
+        margin-right: 1rem;
+      }
+
+      .favorites-card {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+
+        .favorites-semibold-text {
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+        }
+
+        .favorites-text-mid {
+          text-align: left;
+        }
+
+        &:hover {
+          background-color: rgba($color: $strokeGray, $alpha: 0.5);
+          border-radius: 10px;
+        }
+
+        .favorites-card-texts {
+          flex: 2;
+          margin-left: 1rem;
+          .text-midText {
+            margin-top: 0.5rem;
+          }
+        }
+
+        .favorites-card-star {
+          color: $disabled;
+          font-size: 1.5rem;
+          margin-right: 2rem;
+          margin-top: 2rem;
+        }
+      }
     }
   }
 }

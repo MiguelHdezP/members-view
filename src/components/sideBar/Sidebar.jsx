@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Sidebar.scss";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsFillGearFill } from "react-icons/bs";
@@ -35,12 +36,16 @@ const SidebarWrap = styled.div`
 
 export const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
-
+  const [toggleClass, setToggleClass] = useState(0);
   const showSidebar = () => setSidebar(!sidebar);
+
+  const setToggleClassFn = (num) => {
+    setToggleClass(num);
+  };
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#5d5d60" }}>
+      <IconContext.Provider value={{ className: "sidebar-icons" }}>
         <Nav>
           <NavIcon to="#">
             <BsFillGearFill onClick={showSidebar} />
@@ -52,7 +57,15 @@ export const Sidebar = () => {
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return (
+                <SubMenu
+                  item={item}
+                  key={index}
+                  toggleClass={toggleClass}
+                  setToggleClassFn={setToggleClassFn}
+                  id={item.id}
+                />
+              );
             })}
           </SidebarWrap>
         </SidebarNav>

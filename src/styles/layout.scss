@@ -74,5 +74,11 @@ a {
 }
 
 .bottom-spacer {
-  height: 20rem;
+  height: 15rem;
+}
+
+.mobile-scroll-section {
+  @include mobile-scroll(76vh, 100%, 7.2%);
+  overscroll-behavior: contain;
+  background-color: beige;
 }

@@ -2,15 +2,9 @@
 
 .mobile-scroll-auth {
   @include mobile-scroll(76vh, 100%, 7.2%);
-  overscroll-behavior: contain;
 
   .authentication-page {
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    top: -2rem;
-    width: 72%;
+    @include scroll-page(-3rem, 72%);
 
     .auth-container {
       height: 279px;
