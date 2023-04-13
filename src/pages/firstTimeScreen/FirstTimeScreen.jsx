@@ -2,16 +2,32 @@ import React, { useState } from "react";
 import "./FirstTimeScreen.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { PrimaryButton } from "../../components/primaryButton/PrimaryButton";
 import { cOPDFirstTimeImg } from "../../data/images";
 
 export const FirstTimeScreen = () => {
+  const [toggleNotifActive, setToggleNotifActive] = useState(false);
+  const [toggleFavs, setToggleFavs] = useState(false);
+
+  const toggleHeaderPanels = (action) => {
+    if (action === "notifi") {
+      if (toggleFavs) setToggleFavs(!toggleFavs);
+      setToggleNotifActive(!toggleNotifActive);
+    } else if (action === "favs") {
+      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
+      setToggleFavs(!toggleFavs);
+    }
+  };
+
   return (
     <MobileContainer className="appImg">
       <div className="mobile-scroll-firstTime">
-        <Header />
+        <Header
+          toggleNotifActive={toggleNotifActive}
+          toggleFavs={toggleFavs}
+          toggleHeaderPanels={toggleHeaderPanels}
+        />
         <section className="firsTime-page">
           <div className="firstTime-page-contents">
             <img
@@ -81,7 +97,6 @@ export const FirstTimeScreen = () => {
               customClass="fistTime-primaryBtn"
             />
           </BoxCard>
-          <Footer />
         </section>
       </div>
     </MobileContainer>

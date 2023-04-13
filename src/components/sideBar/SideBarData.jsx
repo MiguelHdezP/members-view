@@ -6,14 +6,17 @@ import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
+    id: 1,
     title: "Journey Builder",
     path: "/",
   },
   {
+    id: 2,
     title: "Care Manager",
     path: "/caremanager",
   },
   {
+    id: 3,
     title: "Member's view",
     path: "",
     iconClosed: <RiIcons.RiArrowDownSFill />,

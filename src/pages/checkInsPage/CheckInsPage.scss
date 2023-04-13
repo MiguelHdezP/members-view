@@ -1,15 +1,14 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-checkins {
-  @include mobile-scroll(76vh, 100%, 7.2%);
-  overscroll-behavior: contain;
+  @include mobile-scroll(75.1vh, 100%, 7.2%);
 
   .checkins-page {
     height: 100%;
     margin: 0 auto;
     position: relative;
     text-align: center;
-    top: 1%;
+    top: 0;
     width: 100%;
 
     .checkins-texts {
@@ -18,9 +17,16 @@
     }
 
     .checkinsPage-contents {
-      margin: 0 auto;
-      width: 86%;
-      margin-top: 2rem;
+      height: 100%;
+      margin: 0 1.5rem;
+      position: relative;
+
+      .checkins-contents {
+        margin: 0 auto;
+        top: 2.5rem;
+        position: relative;
+        width: 100%;
+      }
 
       .checkins-text-center {
         text-align: center;
@@ -30,19 +36,17 @@
     .checkins-trophy-container {
       background-color: $mainPurple;
       border-radius: 50%;
-      height: 4rem;
-      width: 4rem;
+      height: 5rem;
+      width: 5.3rem;
       display: block;
       margin: 0 auto;
+      margin-bottom: 1rem;
       font-size: 3rem;
-      line-height: 5rem;
+      line-height: 5.7rem;
 
       .checkins-trophy {
         color: $white;
       }
-    }
-
-    .checkins-link-container {
     }
 
     .checkins-answers {
@@ -57,12 +61,6 @@
     }
     .active-answer {
       @include purpleHover;
-    }
-
-    .checkins-bottom-possition {
-      bottom: 6.5rem;
-      position: absolute;
-      width: 100%;
     }
 
     .pollo {
@@ -84,4 +82,35 @@
       position: inherit;
     }
   }
+}
+
+.asmt-buttons {
+  display: flex;
+  justify-content: space-between;
+  .asmt-margin-right {
+    margin-right: 0.4rem;
+  }
+  .asmt-margin-left {
+    margin-left: 0.4rem;
+  }
+}
+
+.checkins-bottom-possition-init {
+  bottom: 1rem;
+}
+
+.checkins-bottom-possition {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+
+  .checkins-primary-button {
+    bottom: 1rem;
+    position: relative;
+    width: 90%;
+  }
+}
+
+.checkins-title-center {
+  text-align: center !important;
 }

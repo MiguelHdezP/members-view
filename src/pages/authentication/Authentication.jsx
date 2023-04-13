@@ -19,6 +19,18 @@ import { redirect } from "../../utils/scripts";
 
 export const Authentication = () => {
   const [step, setStep] = useState("one");
+  const [toggleNotifActive, setToggleNotifActive] = useState(false);
+  const [toggleFavs, setToggleFavs] = useState(false);
+
+  const toggleHeaderPanels = (action) => {
+    if (action === "notifi") {
+      if (toggleFavs) setToggleFavs(!toggleFavs);
+      setToggleNotifActive(!toggleNotifActive);
+    } else if (action === "favs") {
+      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
+      setToggleFavs(!toggleFavs);
+    }
+  };
 
   useEffect(() => {}, [step]);
 
@@ -78,7 +90,7 @@ export const Authentication = () => {
         );
         break;
       case "four":
-        redirect("/memberview/programOverview", 2400);
+        redirect("/memberview/programOverview", 2000);
         break;
       default:
         break;
@@ -89,7 +101,11 @@ export const Authentication = () => {
   return (
     <MobileContainer className="appImg">
       <div className="mobile-scroll-auth">
-        <Header />
+        <Header
+          toggleNotifActive={toggleNotifActive}
+          toggleFavs={toggleFavs}
+          toggleHeaderPanels={toggleHeaderPanels}
+        />
         {step === "four" ? (
           <>
             <LoaderSection />

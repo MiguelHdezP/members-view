@@ -3,12 +3,13 @@
 .notify-pane {
   background-color: $footerGray;
   width: 100%;
-  height: 76.1vh;
-  top: 3rem;
-  position: absolute;
-  z-index: 100;
+  height: 64.15vh;
+  overscroll-behavior: contain;
   right: -400px;
+  position: absolute;
   transition: 40ms ease-in-out;
+  top: 1rem;
+  z-index: 100;
 
   @-webkit-keyframes slide {
     100% {

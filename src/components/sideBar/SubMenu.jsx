@@ -54,27 +54,34 @@ const DropdownLink = styled(Link)`
   }
 `;
 
-const itemList = (icon, title, subNav, subnav, iconClosed, iconOpened) => {
-  return (
-    <>
-      <div>
-        {icon}
-        {title}
-      </div>
-      <div>{subNav && subnav ? iconOpened : subNav ? iconClosed : null}</div>
-    </>
-  );
-};
-
-const SubMenu = ({ item }) => {
+const SubMenu = ({ toggleClass, setToggleClassFn, item, id }) => {
   const { path, subNav, icon, title, iconOpened, iconClosed } = item;
   const [subnav, setSubnav] = useState(false);
   const showSubnav = () => setSubnav(!subnav);
 
+  const itemList = (icon, title, subNav, subnav, iconClosed, iconOpened) => {
+    return (
+      <>
+        <div className={toggleClass === id ? "item-active-state" : ""}>
+          {icon}
+          {title}
+        </div>
+        <div>{subNav && subnav ? iconOpened : subNav ? iconClosed : null}</div>
+      </>
+    );
+  };
+
   return (
     <>
       {path.length ? (
-        <SidebarLink to={path} onClick={subNav && showSubnav}>
+        <SidebarLink
+          to={path}
+          onClick={() => {
+            setToggleClassFn(id);
+            return subNav && showSubnav;
+          }}
+          className={toggleClass === id ? "item-active-state" : ""}
+        >
           {itemList(icon, title, subNav, subnav, iconClosed, iconOpened)}
         </SidebarLink>
       ) : (

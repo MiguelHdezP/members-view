@@ -1,46 +1,164 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import { IconContext } from "react-icons";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { BsFillStarFill } from "react-icons/bs";
 import { IoNotificationsSharp } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { NotificationsPane } from "../../components/notificationsPane/NotificationsPane";
 import { SectionHeader } from "../../components/sectionHeader/SectionHeader";
 import { ListWithIcons } from "../../components/listWithIcons/ListWithIcons";
+import { Divider } from "../../components/divider/Divider";
+import { redirect } from "../../utils/scripts";
+import { BoxCard } from "../boxCard/BoxCard";
+import { articleImg, dummyVideo, dummyImgArticle } from "../../data/images";
 
-export const Header = () => {
-  const [toggleNotifActive, setToggleNotifActive] = useState(false);
-  const [toggleHambActive, setToggleHambActive] = useState(false);
+export const Header = ({
+  toggleNotifActive = false,
+  toggleFavs = false,
+  toggleHeaderPanels,
+  favsState = [],
+  addContentToFavs,
+}) => {
   const [toggleActivPane, setToggleActivPane] = useState(false);
 
-  const notificationsPane = () => {
-    if (toggleNotifActive) setToggleNotifActive(false);
+  const closePanel = () => {
+    if (toggleNotifActive) toggleHeaderPanels("notifi");
     setToggleActivPane(!toggleActivPane);
   };
 
-  const notifications = () => {
-    if (toggleHambActive) setToggleHambActive(!toggleHambActive);
-    setToggleNotifActive(!toggleNotifActive);
-  };
-
-  const hamburguer = () => {
-    if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
-    setToggleHambActive(!toggleHambActive);
+  const printCurrentFavs = (favsState) => {
+    return favsState.map((el, i) => {
+      let elements;
+      switch (el) {
+        case 1:
+          elements = (
+            <BoxCard customClass="favorites-cardContainer" key={i}>
+              <IconContext.Provider
+                value={{
+                  className: "button-card-star",
+                }}
+              >
+                <button
+                  title="Remove from favorites"
+                  className="button-card-favs header-card-favs"
+                  onClick={() => addContentToFavs(1)}
+                >
+                  <AiFillStar />
+                </button>
+              </IconContext.Provider>
+              <div
+                className="favorites-card"
+                onClick={() => redirect("/educationArticle")}
+              >
+                <img src={articleImg} alt="Article COPD" />
+                <div className="favorites-card-texts">
+                  <p className="text-midText favorites-semibold-text favorites-text-mid">
+                    Article Title
+                  </p>
+                  <p className="text-smallText favorites-text-mid">
+                    One line description
+                  </p>
+                </div>
+              </div>
+            </BoxCard>
+          );
+          break;
+        case 2:
+          elements = (
+            <BoxCard customClass="favorites-cardContainer" key={i}>
+              <IconContext.Provider
+                value={{
+                  className: "button-card-star",
+                }}
+              >
+                <button
+                  title="Remove from favorites"
+                  className="button-card-favs header-card-favs"
+                  onClick={() => addContentToFavs(2)}
+                >
+                  <AiFillStar />
+                </button>
+              </IconContext.Provider>
+              <div
+                className="favorites-card"
+                onClick={() => redirect("/educationArticle")}
+              >
+                <img src={dummyImgArticle} alt="Article COPD" />
+                <div className="favorites-card-texts">
+                  <p className="text-midText favorites-semibold-text favorites-text-mid">
+                    Article Title
+                  </p>
+                  <p className="text-smallText favorites-text-mid">
+                    One line description
+                  </p>
+                </div>
+              </div>
+            </BoxCard>
+          );
+          break;
+        case 3:
+          elements = (
+            <BoxCard customClass="favorites-cardContainer" key={i}>
+              <IconContext.Provider
+                value={{
+                  className: "button-card-star",
+                }}
+              >
+                <button
+                  title="Remove from favorites"
+                  className="button-card-favs header-card-favs"
+                  onClick={() => addContentToFavs(3)}
+                >
+                  <AiFillStar />
+                </button>
+              </IconContext.Provider>
+              <div className="favorites-card">
+                <img src={dummyVideo} alt="Video COPD" />
+                <div className="favorites-card-texts">
+                  <p className="text-midText favorites-semibold-text favorites-text-mid">
+                    Video Title
+                  </p>
+                  <p className="text-smallText favorites-text-mid">
+                    One line description
+                  </p>
+                </div>
+              </div>
+            </BoxCard>
+          );
+          break;
+        default:
+          break;
+      }
+      return elements;
+    });
   };
 
   return (
     <>
-      <NotificationsPane
-        customClass={toggleNotifActive ? "open-activity " : ""}
-      >
-        <SectionHeader title="Activity" fn={notificationsPane} />
+      <NotificationsPane customClass={toggleNotifActive ? "open-activity" : ""}>
+        <SectionHeader title="Activity" fn={closePanel} />
         <ListWithIcons />
       </NotificationsPane>
-      <NotificationsPane customClass={toggleHambActive ? "open-activity " : ""}>
-        Hambus
+      <NotificationsPane
+        customClass={`header-pane ${toggleFavs ? "open-activity" : ""}`}
+      >
+        <div className="favorites">
+          <p className="text-title favorites-title">Your Favorites</p>
+          <p className="text-smallText favorites-text-widthMargin">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+          </p>
+          {printCurrentFavs(favsState)}
+        </div>
       </NotificationsPane>
       <header className="header">
         <div className="header-contents">
-          <span className="header-icons-logo">LOGO</span>
+          <span
+            className="header-icons-logo"
+            onClick={() => redirect("/dashboard")}
+          >
+            LOGO
+          </span>
           <IconContext.Provider
             value={{
               style: { fontSize: "1.3rem" },
@@ -48,24 +166,26 @@ export const Header = () => {
             }}
           >
             <button
-              className={`mobile-icon-effect header-icon-notif ${
+              className={`mobile-icon-effect  ${
+                toggleFavs ? "activate-icons" : ""
+              }`}
+              onClick={() => toggleHeaderPanels("favs")}
+            >
+              {<BsFillStarFill />}
+            </button>
+            <button className={`mobile-icon-effect`}>{<FaUser />}</button>
+            <button
+              className={`mobile-icon-effect ${
                 toggleNotifActive ? "activate-icons" : ""
               }`}
-              onClick={() => notifications()}
+              onClick={() => toggleHeaderPanels("notifi")}
             >
               <span className="mobile-icon-new"></span>
               {<IoNotificationsSharp />}
             </button>
-            <button
-              className={`mobile-icon-effect  ${
-                toggleHambActive ? "activate-icons" : ""
-              }`}
-              onClick={() => hamburguer()}
-            >
-              {<RxHamburgerMenu />}
-            </button>
           </IconContext.Provider>
         </div>
+        <Divider />
       </header>
     </>
   );

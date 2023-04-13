@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CheckInsPage.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { PrimaryButton } from "../../components/primaryButton/PrimaryButton";
@@ -17,6 +17,18 @@ export const CheckInsPage = () => {
   const [initialSection, setInitialSection] = useState("one");
   const [answerSelection, setAnswerSelection] = useState(0);
   const [activeStates, setActiveStates] = useState([0]);
+  const [toggleNotifActive, setToggleNotifActive] = useState(false);
+  const [toggleFavs, setToggleFavs] = useState(false);
+
+  const toggleHeaderPanels = (action) => {
+    if (action === "notifi") {
+      if (toggleFavs) setToggleFavs(!toggleFavs);
+      setToggleNotifActive(!toggleNotifActive);
+    } else if (action === "favs") {
+      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
+      setToggleFavs(!toggleFavs);
+    }
+  };
 
   const selectAnswer = (num) => {
     setAnswerSelection(num);
@@ -29,8 +41,12 @@ export const CheckInsPage = () => {
     switch (initialSection) {
       case "one":
         buttonSet = (
-          <div className="checkins-bottom-possition pollo">
-            <PrimaryButton text="Next" fn={() => setInitialSection("two")} />
+          <div className="checkins-bottom-possition checkins-bottom-possition-init">
+            <PrimaryButton
+              text="Next"
+              fn={() => setInitialSection("two")}
+              customClass="checkins-primary-button"
+            />
           </div>
         );
         contentSet = (
@@ -108,9 +124,23 @@ export const CheckInsPage = () => {
         break;
       case "three":
         buttonSet = (
-          <BoxCard customClass="checkins-boxcard-progress jote">
+          <BoxCard customClass="checkins-bottom-possition checkins-boxcard-progress">
             <ProgressBar numPages={5} activeState={activeStates} />
-            <PrimaryButton text="Next" fn={() => setInitialSection("four")} />
+            <div className="asmt-buttons">
+              <SecondaryButton
+                text="Previous"
+                customClass="asmt-margin-right"
+                fn={() => {
+                  setActiveStates([0]);
+                  setInitialSection("two");
+                }}
+              />
+              <PrimaryButton
+                text="Next"
+                fn={() => setInitialSection("four")}
+                customClass="asmt-margin-left"
+              />
+            </div>
           </BoxCard>
         );
         contentSet = (
@@ -143,32 +173,37 @@ export const CheckInsPage = () => {
 
       case "four":
         buttonSet = (
-          <div className="checkins-bottom-possition pollo3">
+          <div className="checkins-bottom-possition">
             <PrimaryButton
               text="Return to Care Journey Dashboard"
               fn={() => redirect("/dashboard")}
+              customClass="checkins-primary-button"
             />
           </div>
         );
         contentSet = (
-          <>
-            <p className="text-midText">Great Job Jane!</p>
-            <p className="text-midText">
-              You have successfully completed your check in!
-            </p>
-            <IconContext.Provider
-              value={{
-                className: "checkins-trophy",
-              }}
-            >
-              <span className="checkins-trophy-container">
-                <BsFillTrophyFill />
-              </span>
-            </IconContext.Provider>
-            <p className="text-midText">You've earned the</p>
-            <p className="text-title ">Check In Completition Badge!</p>
-            <LinkButton text="View all Awards" href="/awards" />
-          </>
+          <div className="checkins-contents ">
+            <div style={{ marginTop: "5rem" }}>
+              <p className="text-midText">Great Job Jane!</p>
+              <p className="text-midText">
+                You have successfully completed your check in!
+              </p>
+              <IconContext.Provider
+                value={{
+                  className: "checkins-trophy",
+                }}
+              >
+                <span className="checkins-trophy-container">
+                  <BsFillTrophyFill />
+                </span>
+              </IconContext.Provider>
+              <p className="text-midText">You've earned the</p>
+              <p className="text-title checkins-title-center">
+                Check In Completition Badge!
+              </p>
+              <LinkButton text="View all Awards" href="/awards" />
+            </div>
+          </div>
         );
         break;
       default:
@@ -181,14 +216,18 @@ export const CheckInsPage = () => {
   return (
     <MobileContainer className="appImg">
       <div className="mobile-scroll-checkins">
-        <Header />
+        <Header
+          toggleNotifActive={toggleNotifActive}
+          toggleFavs={toggleFavs}
+          toggleHeaderPanels={toggleHeaderPanels}
+        />
         <section className="checkins-page">
           <div className="checkinsPage-contents">
             {serveRightCheckinContent().contentSet}
           </div>
-          {serveRightCheckinContent().buttonSet}
         </section>
       </div>
+      {serveRightCheckinContent().buttonSet}
     </MobileContainer>
   );
 };

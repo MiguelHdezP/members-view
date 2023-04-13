@@ -17,6 +17,18 @@ export const AssessmentsPage = () => {
   const [initialSection, setInitialSection] = useState("one");
   const [answerSelection, setAnswerSelection] = useState(0);
   const [activeStates, setActiveStates] = useState([0]);
+  const [toggleNotifActive, setToggleNotifActive] = useState(false);
+  const [toggleFavs, setToggleFavs] = useState(false);
+
+  const toggleHeaderPanels = (action) => {
+    if (action === "notifi") {
+      if (toggleFavs) setToggleFavs(!toggleFavs);
+      setToggleNotifActive(!toggleNotifActive);
+    } else if (action === "favs") {
+      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
+      setToggleFavs(!toggleFavs);
+    }
+  };
 
   const selectAnswer = (num) => {
     setAnswerSelection(num);
@@ -29,14 +41,20 @@ export const AssessmentsPage = () => {
     switch (initialSection) {
       case "one":
         buttonSet = (
-          <div className="asmt-bottom-possition pollo">
-            <PrimaryButton text="Next" fn={() => setInitialSection("two")} />
+          <div className="asmt-bottom-possition asmt-bottom-possition-init">
+            <PrimaryButton
+              text="Next"
+              fn={() => setInitialSection("two")}
+              customClass="asmt-primary-button"
+            />
           </div>
         );
         contentSet = (
-          <div className="assessment-texts">
-            <h1 className="text-title ">Assessment Start Screen</h1>
-            <p className="text-smallText">
+          <div className="asmt-texts">
+            <h1 className="text-title asmt-title-text">
+              Assessment Start Screen
+            </h1>
+            <p className="text-smallText asmt-small-text-firstScreen">
               Description of what this is and why its needed..
             </p>
           </div>
@@ -44,7 +62,7 @@ export const AssessmentsPage = () => {
         break;
       case "two":
         buttonSet = (
-          <BoxCard customClass="asmt-bottom-possition jote">
+          <BoxCard customClass="asmt-bottom-possition">
             <ProgressBar numPages={5} activeState={activeStates} />
             <PrimaryButton
               text="Next"
@@ -56,9 +74,9 @@ export const AssessmentsPage = () => {
           </BoxCard>
         );
         contentSet = (
-          <>
-            <p className="text-smallText">Assessment</p>
-            <p className="text-title ">
+          <div className="asmt-contents">
+            <p className="text-smallText asmt-small-text">Assessment</p>
+            <p className="text-title">
               Have you noticed any symptoms that may be related to your COPD,
               such as shortness of breath or coughing?
             </p>
@@ -101,37 +119,43 @@ export const AssessmentsPage = () => {
                 respiratory irritants.
               </RoundedCard>
             </div>
-          </>
+            <div className="bottom-spacer"></div>
+          </div>
         );
         break;
       case "three":
         buttonSet = (
-          <div className="asmt-bottom-possition">
+          <div className="asmt-bottom-possition asmt-bottom-possition-init">
             <PrimaryButton
               text="Return to Care Journey Dashboard"
               fn={() => redirect("/dashboard")}
+              customClass="asmt-primary-button"
             />
           </div>
         );
         contentSet = (
-          <>
-            <p className="text-midText">Great Job Jane!</p>
-            <p className="text-midText">
-              You have successfully completed your assessment!
-            </p>
-            <IconContext.Provider
-              value={{
-                className: "asmt-trophy",
-              }}
-            >
-              <span className="asmt-trophy-container">
-                <BsFillTrophyFill />
-              </span>
-            </IconContext.Provider>
-            <p className="text-midText">You've earned the</p>
-            <p className="text-title ">Assessment Completition Badge!</p>
-            <LinkButton text="View all Awards" href="/awards" />
-          </>
+          <div className="asmt-contents">
+            <div style={{ marginTop: "5rem" }}>
+              <p className="text-midText">Great Job Jane!</p>
+              <p className="text-midText">
+                You have successfully completed your assessment!
+              </p>
+              <IconContext.Provider
+                value={{
+                  className: "asmt-trophy",
+                }}
+              >
+                <span className="asmt-trophy-container">
+                  <BsFillTrophyFill />
+                </span>
+              </IconContext.Provider>
+              <p className="text-midText">You've earned the</p>
+              <p className="text-title asmt-title-center">
+                Assessment Completition Badge!
+              </p>
+              <LinkButton text="View all Awards" href="/awards" />
+            </div>
+          </div>
         );
         break;
 
@@ -146,15 +170,19 @@ export const AssessmentsPage = () => {
 
   return (
     <MobileContainer className="appImg">
-      <div className="mobile-scroll-checkins">
-        <Header />
+      <div className="mobile-scroll-asmt">
+        <Header
+          toggleNotifActive={toggleNotifActive}
+          toggleFavs={toggleFavs}
+          toggleHeaderPanels={toggleHeaderPanels}
+        />
         <section className="asmt-page">
-          <div className="checkinsPage-contents">
+          <div className="asmt-page-contents">
             {serveRightCheckinContent().contentSet}
           </div>
-          {serveRightCheckinContent().buttonSet}
         </section>
       </div>
+      {serveRightCheckinContent().buttonSet}
     </MobileContainer>
   );
 };

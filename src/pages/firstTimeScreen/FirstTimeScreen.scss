@@ -1,17 +1,13 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-firstTime {
-  @include mobile-scroll(80.8vh, 100%, 0%);
-  overscroll-behavior: contain;
+  @include mobile-scroll(75.1vh, 100%, 3.3rem);
 
   .firsTime-page {
-    height: 76vh;
-    position: relative;
-    top: 0;
+    @include scroll-page();
 
     .firstTime-page-contents {
       padding: 1.6rem 1.5rem;
-      @include mobile-scroll(82vh, 100%, 7.5%);
 
       .firstTime-topImg {
         width: 100%;
@@ -58,7 +54,7 @@
 
     .firstTime-boxCard {
       background-color: $mainPurple;
-      bottom: 11rem;
+      bottom: 5.7rem;
       border-radius: unset;
       position: fixed;
       padding: 2rem;
