@@ -33,7 +33,7 @@ export const FirstTimeScreen = () => {
             <img
               className="firstTime-topImg"
               src={cOPDFirstTimeImg}
-              alt="COPD image"
+              alt="COPD"
             />
             <h1 className="firstTime-title">COPD Care Program Overview</h1>
             <p className="firstTime-subText">
@@ -44,51 +44,88 @@ export const FirstTimeScreen = () => {
               <p className="firstTime-article-title">In this Article</p>
               <ul className="firstTime-article-list">
                 <li className="firstTime-list">
-                  <a href="" className="firstTime-list-anchor">
+                  <a href="#what-expect" className="firstTime-list-anchor">
                     What to Expect
                   </a>
                 </li>
                 <li className="firstTime-list">
-                  <a href="" className="firstTime-list-anchor">
+                  <a href="#how-help" className="firstTime-list-anchor">
                     How this program can help
                   </a>
                 </li>
                 <li className="firstTime-list">
-                  <a href="" className="firstTime-list-anchor">
+                  <a href="#resources" className="firstTime-list-anchor">
                     Related resources
                   </a>
                 </li>
               </ul>
             </BoxCard>
-            <h2 className="firstTime-subTitle">What to Expect</h2>
-            <p className="firstTime-subText">
-              Lorem laboris nisi ut aliquip ex ea commodo consequat..
-            </p>
-            <p className="firstTime-subText">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat .
-            </p>
-            <p className="firstTime-subText">
-              Lorem laboris nisi ut aliquip ex ea commodo consequat..
-            </p>
-            <p className="firstTime-subText">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat .
-            </p>
-            <p className="firstTime-subText">
-              Lorem laboris nisi ut aliquip ex ea commodo consequat..
-            </p>
-            <p className="firstTime-subText">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat .
-            </p>
-            <p className="firstTime-subText">
-              Lorem laboris nisi ut aliquip ex ea commodo consequat..
-            </p>
-            <p className="firstTime-subText">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat .
-            </p>
+            <div className="firstTime-section-contents" id="what-expect">
+              <h2 className="firstTime-subTitle">What to Expect</h2>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+            </div>
+            <div className="firstTime-section-contents" id="how-help">
+              <h2 className="firstTime-subTitle">How this program can help</h2>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+            </div>
+            <div className="firstTime-section-contents" id="resources">
+              <h2 className="firstTime-subTitle">Related resources</h2>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+              <p className="firstTime-subText">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                .
+              </p>
+              <p className="firstTime-subText">
+                Lorem laboris nisi ut aliquip ex ea commodo consequat..
+              </p>
+            </div>
             <div className="bottom-spacer"></div>
           </div>
           <BoxCard customClass="firstTime-boxCard">

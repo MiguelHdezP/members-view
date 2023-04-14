@@ -18,7 +18,6 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
-import { getContent } from "../../data/contentAPI";
 import { Modal } from "../../components/modal/Modal";
 
 export const EducationPage = () => {
