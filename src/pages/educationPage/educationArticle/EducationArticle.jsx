@@ -25,12 +25,18 @@ export const EducationArticle = () => {
               <p className="firstTime-article-title">In this Article</p>
               <ul className="firstTime-article-list">
                 <li className="firstTime-list">
-                  <a href="#" className="firstTime-list-anchor">
+                  <a
+                    href="/articles/copd-foods"
+                    className="firstTime-list-anchor"
+                  >
                     COPD friendly foods
                   </a>
                 </li>
                 <li className="firstTime-list">
-                  <a href="#" className="firstTime-list-anchor">
+                  <a
+                    href="/articles/what-to-avoid"
+                    className="firstTime-list-anchor"
+                  >
                     What to avoid
                   </a>
                 </li>
