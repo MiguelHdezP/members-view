@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 import { BsFillStarFill } from "react-icons/bs";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { NotificationsPane } from "../../components/notificationsPane/NotificationsPane";
 import { SectionHeader } from "../../components/sectionHeader/SectionHeader";
 import { ListWithIcons } from "../../components/listWithIcons/ListWithIcons";
@@ -31,7 +31,7 @@ export const Header = ({
     return favsState.map((el, i) => {
       let elements;
       switch (el) {
-        case 1:
+        case 4:
           elements = (
             <BoxCard customClass="favorites-cardContainer" key={i}>
               <IconContext.Provider
@@ -42,7 +42,7 @@ export const Header = ({
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(1)}
+                  onClick={() => addContentToFavs(4)}
                 >
                   <AiFillStar />
                 </button>
@@ -64,7 +64,7 @@ export const Header = ({
             </BoxCard>
           );
           break;
-        case 2:
+        case 5:
           elements = (
             <BoxCard customClass="favorites-cardContainer" key={i}>
               <IconContext.Provider
@@ -75,7 +75,7 @@ export const Header = ({
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(2)}
+                  onClick={() => addContentToFavs(5)}
                 >
                   <AiFillStar />
                 </button>
@@ -97,7 +97,7 @@ export const Header = ({
             </BoxCard>
           );
           break;
-        case 3:
+        case 6:
           elements = (
             <BoxCard customClass="favorites-cardContainer" key={i}>
               <IconContext.Provider
@@ -108,7 +108,7 @@ export const Header = ({
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(3)}
+                  onClick={() => addContentToFavs(6)}
                 >
                   <AiFillStar />
                 </button>
