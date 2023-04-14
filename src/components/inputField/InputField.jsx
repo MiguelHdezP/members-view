@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import "./InputField.scss";
-import {
-  OnlyAlpha,
-  transformValidate,
-  OnlyNumbers,
-} from "../../utils/inputValidation";
+import { OnlyAlpha, transformValidate } from "../../utils/inputValidation";
 
 export const InputField = ({
   customClass = "",
@@ -18,7 +14,6 @@ export const InputField = ({
   value = "",
 }) => {
   const [charAllowed, setCharAllowed] = useState(true);
-  const [dateText, setDateText] = useState(true);
 
   const inputData = (e) => {
     let value = e.currentTarget.value;

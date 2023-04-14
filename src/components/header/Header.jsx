@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import { IconContext } from "react-icons";
 import { BsFillStarFill } from "react-icons/bs";

@@ -14,14 +14,12 @@ import {
   articleImg2,
   videoImg,
 } from "../../data/images";
-import { LinkButton } from "../../components/linkButton/LinkButton";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
 import { getContent } from "../../data/contentAPI";
 import { Modal } from "../../components/modal/Modal";
-console.log("Figi: ", getContent());
 
 export const EducationPage = () => {
   const [startState, setStartState] = useState(false);
@@ -50,14 +48,13 @@ export const EducationPage = () => {
   };
 
   const addContentToFavs = (num) => {
-    console.log("Lombri111 ", addToFavs);
     if (addToFavs.includes(num)) {
-      let filterElem = addToFavs.filter((el) => el != num);
+      let filterElem = addToFavs.filter((el) => el !== num);
       setAddToFavs([...filterElem]);
     } else {
       setAddToFavs([...addToFavs, num]);
     }
-    console.log("Lombri: ", num, ", ", addToFavs);
+
     switch (num) {
       case 1:
         setStartState(!startState);

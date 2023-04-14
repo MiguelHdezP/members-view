@@ -1,6 +1,9 @@
 const getRightMessage = (arr, str) => {
   return arr.find((el) => {
-    if (el.type === str) return el.message;
+    if (el.type === str) {
+      return el.message;
+    }
+    return "";
   });
 };
 

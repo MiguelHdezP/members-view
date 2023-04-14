@@ -13,7 +13,7 @@ export const Tabs = ({ tabsList = [], fn = () => {}, tabsContents = [] }) => {
     <>
       <div className="tabs">
         {tabsContents.map((obj) => {
-          const { id, label, component } = obj;
+          const { id, label } = obj;
           return (
             <div className="tabs-container" key={id}>
               <button
@@ -33,12 +33,14 @@ export const Tabs = ({ tabsList = [], fn = () => {}, tabsContents = [] }) => {
       <div className="tabs-contents">
         {tabsContents.map((ele) => {
           const { id, component } = ele;
-          if (id === toggleActive)
+          if (id === toggleActive) {
             return (
               <div className="tabs-contents-component" key={id}>
                 {component}
               </div>
             );
+          }
+          return "";
         })}
       </div>
     </>

@@ -5,7 +5,6 @@ import { PrimaryButton } from "../../components/primaryButton/PrimaryButton";
 import { SecondaryButton } from "../../components/secondaryButton/SecondaryButton";
 import { LinkButton } from "../../components/linkButton/LinkButton";
 import { Header } from "../../components/header/Header";
-import { LoaderSection } from "../../components/loaderSection/LoaderSection";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { ProgressBar } from "../../components/progressBar/ProgressBar";
 import { RoundedCard } from "../../components/roundedCard/RoundedCard";
