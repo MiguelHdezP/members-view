@@ -8,15 +8,20 @@ import { ProgressPercentage } from "../../components/progressPercentage/Progress
 import { RoundedCard } from "../../components/roundedCard/RoundedCard";
 import {
   copdImg,
+  copdImg2,
   dietImg,
   articleImg,
-  dummyVideo,
-  dummyImgArticle,
+  articleImg2,
+  videoImg,
 } from "../../data/images";
 import { LinkButton } from "../../components/linkButton/LinkButton";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsPlayCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
+import { getContent } from "../../data/contentAPI";
+import { Modal } from "../../components/modal/Modal";
+console.log("Figi: ", getContent());
 
 export const EducationPage = () => {
   const [startState, setStartState] = useState(false);
@@ -25,6 +30,14 @@ export const EducationPage = () => {
   const [addToFavs, setAddToFavs] = useState([]);
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [modalComponent, setModalComponent] = useState();
+
+  const openModal = () => {
+    setToggleModal(!toggleModal);
+  };
+
+  useEffect(() => {}, [addToFavs]);
 
   const toggleHeaderPanels = (action) => {
     if (action === "notifi") {
@@ -37,12 +50,14 @@ export const EducationPage = () => {
   };
 
   const addContentToFavs = (num) => {
+    console.log("Lombri111 ", addToFavs);
     if (addToFavs.includes(num)) {
       let filterElem = addToFavs.filter((el) => el != num);
       setAddToFavs([...filterElem]);
     } else {
       setAddToFavs([...addToFavs, num]);
     }
+    console.log("Lombri: ", num, ", ", addToFavs);
     switch (num) {
       case 1:
         setStartState(!startState);
@@ -60,6 +75,7 @@ export const EducationPage = () => {
 
   return (
     <MobileContainer className="appImg">
+      {toggleModal ? <Modal>{modalComponent}</Modal> : ""}
       <div className="mobile-scroll-education">
         <Header
           favsState={addToFavs}
@@ -69,7 +85,7 @@ export const EducationPage = () => {
           addContentToFavs={addContentToFavs}
         />
         {toggleFavs || toggleNotifActive ? (
-          <div style={{ marginTop: "13rem" }}>Pollo</div>
+          ""
         ) : (
           <section className="education-page">
             <div className="education-general-info">
@@ -89,7 +105,51 @@ export const EducationPage = () => {
             <div className="education-todo">
               <h2 className="text-midText education-text-mid">To Do</h2>
               <RoundedCard customClass="education-rounded-card">
-                <img src={copdImg} alt="What is COPD" />
+                <IconContext.Provider
+                  value={{
+                    className: "button-card-star-inprogress",
+                  }}
+                >
+                  <div className="education-todo-buttons">
+                    <button
+                      style={{
+                        background: "none",
+                        border: "none",
+                        position: "absolute",
+                        zIndex: "1000",
+                        fontSize: "5rem",
+                        color: "#fff",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        let component = (
+                          <iframe
+                            src="https://dha.health-ce.wolterskluwer.com/v1/contents/videos/EM_9839.html?r=eyJjaWQiOiIwNzViN2JkZC1hZTUyLTQ2MTAtYTBmOS05N2FkMWYxNWVlMDciLCJ1aWQiOiJhNmY3NTAzODQyMTM0MGJkYjJhN2Y2N2I0ZjAxYmRlYyIsImNvbiI6dHJ1ZX0&lang=en&a=eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRBcHBJZCI6IjdhODMyMWExLTg0YTktNGFhYS05NDFiLWRiMWE1NzZiNDYyOSIsImV4cCI6MTY4MTQ4MTI0MSwiaWF0IjoxNjgxNDM4MDQxLCJtIjoieEwteF9scmJsOUZ4MmoyMVkySlZCY2tfMER5VkVWenZwbnd4NmNmanZRMCIsIm9yZ0lkIjoiODY4OGZmNDYtYzBkZS00NWIyLWFhNzMtMGViOTNkMmViOGQxIn0.jb02FklKNLJi2MRHWPkm_Sl1Ull2WYuw-4odmVNF5To"
+                            height="100%"
+                            width="100%"
+                            title="Iframe Example"
+                          ></iframe>
+                        );
+                        setModalComponent(component);
+                        openModal();
+                      }}
+                    >
+                      <BsPlayCircle />
+                    </button>
+                    <button
+                      title="Add to favorites"
+                      className="button-card-favs"
+                      onClick={() => addContentToFavs(1)}
+                    >
+                      {startState ? <AiFillStar /> : <AiOutlineStar />}
+                    </button>
+                  </div>
+                </IconContext.Provider>
+                <img
+                  src={copdImg}
+                  alt="What is COPD"
+                  className="image-top-roundedCorners img-tint-dark"
+                />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
                     What is COPD?
@@ -104,7 +164,56 @@ export const EducationPage = () => {
                 </div>
               </RoundedCard>
               <RoundedCard customClass="education-rounded-card">
-                <img src={dietImg} alt="Dietitian Tips" />
+                <IconContext.Provider
+                  value={{
+                    className: "button-card-star-inprogress",
+                  }}
+                >
+                  <button
+                    title="Add to favorites"
+                    className="button-card-favs"
+                    onClick={() => addContentToFavs(2)}
+                  >
+                    {startState ? <AiFillStar /> : <AiOutlineStar />}
+                  </button>
+                </IconContext.Provider>
+                <img
+                  src={copdImg2}
+                  alt="Risk Factors for COPD"
+                  className="image-top-roundedCorners img-tint-dark"
+                />
+                <div className="education-todo-texts">
+                  <p className="text-midText education-semibold-text education-text-mid">
+                    Risk Factors for COPD
+                  </p>
+                  <p className="text-midText education-text-mid">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
+                    amet.
+                  </p>
+                  <p className="text-smallText education-purple-text education-text-mid">
+                    3 min watch
+                  </p>
+                </div>
+              </RoundedCard>
+              <RoundedCard customClass="education-rounded-card">
+                <IconContext.Provider
+                  value={{
+                    className: "button-card-star-inprogress",
+                  }}
+                >
+                  <button
+                    title="Add to favorites"
+                    className="button-card-favs"
+                    onClick={() => addContentToFavs(3)}
+                  >
+                    {startState3 ? <AiFillStar /> : <AiOutlineStar />}
+                  </button>
+                </IconContext.Provider>
+                <img
+                  src={dietImg}
+                  alt="Dietitian Tips"
+                  className="image-top-roundedCorners img-tint-dark"
+                />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
                     Dietitian Tips
@@ -135,16 +244,20 @@ export const EducationPage = () => {
                   <button
                     title="Add to favorites"
                     className="button-card-favs"
-                    onClick={() => addContentToFavs(1)}
+                    onClick={() => addContentToFavs(4)}
                   >
-                    {startState ? <AiFillStar /> : <AiOutlineStar />}
+                    {startState2 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div
                   className="education-completed-card"
                   onClick={() => redirect("/educationArticle")}
                 >
-                  <img src={articleImg} alt="Article COPD" />
+                  <img
+                    src={articleImg}
+                    alt="Article COPD"
+                    className="education-img image-topBottom-roundedCorners"
+                  />
                   <div className="education-card-texts">
                     <p className="text-midText education-semibold-text education-text-mid">
                       Article Title
@@ -164,13 +277,17 @@ export const EducationPage = () => {
                   <button
                     title="Add to favorites"
                     className="button-card-favs"
-                    onClick={() => addContentToFavs(2)}
+                    onClick={() => addContentToFavs(5)}
                   >
                     {startState2 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div className="education-completed-card">
-                  <img src={dummyImgArticle} alt="Article COPD" />
+                  <img
+                    src={articleImg2}
+                    alt="Article COPD"
+                    className="education-img image-topBottom-roundedCorners"
+                  />
                   <div className="education-card-texts">
                     <p className="text-midText education-semibold-text education-text-mid">
                       Article Title
@@ -190,13 +307,17 @@ export const EducationPage = () => {
                   <button
                     title="Add to favorites"
                     className="button-card-favs"
-                    onClick={() => addContentToFavs(3)}
+                    onClick={() => addContentToFavs(6)}
                   >
                     {startState3 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div className="education-completed-card">
-                  <img src={dummyVideo} alt="Article COPD" />
+                  <img
+                    src={videoImg}
+                    alt="Article COPD"
+                    className="education-img image-topBottom-roundedCorners"
+                  />
                   <div className="education-card-texts">
                     <p className="text-midText education-semibold-text education-text-mid">
                       Video Title

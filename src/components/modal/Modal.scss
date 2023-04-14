@@ -1,0 +1,9 @@
+@import "../../styles/main.scss";
+
+.modal {
+  background-color: rgba($color: $dark, $alpha: 0.3);
+  height: 76vh;
+  position: absolute;
+  width: 100%;
+  z-index: 10000;
+}
