@@ -1,7 +1,7 @@
 @import "../../styles//main.scss";
 
 .mobile-scroll-awards {
-  @include mobile-scroll(75.1vh, 100%, 3.4rem);
+  @include mobile-scroll();
 
   .awards-page {
     @include scroll-page();

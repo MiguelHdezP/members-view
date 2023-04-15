@@ -16,7 +16,7 @@ export const SMSsimulator = ({ SMSdata, userResponses }) => {
 
   return (
     <MobileContainer className="smsImg">
-      <div className="mobile-scroll-optin">
+      <div className="mobile-scroll-sms">
         {iniText.map((elem, index) => {
           const { message, href, img, classN } = elem;
           console.log(message, href, img, classN);

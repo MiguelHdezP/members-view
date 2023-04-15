@@ -22,12 +22,12 @@ export const AwardsPage = () => {
 
   return (
     <MobileContainer className="appImg">
+      <Header
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+      />
       <div className="mobile-scroll-awards">
-        <Header
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-        />
         <section className="awards-page">
           <div className="awards-page-contents">
             <h1 className="text-title">Awards</h1>
@@ -133,8 +133,8 @@ export const AwardsPage = () => {
             </div>
           </div>
         </section>
-        <Footer />
       </div>
+      <Footer />
     </MobileContainer>
   );
 };

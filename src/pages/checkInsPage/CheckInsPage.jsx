@@ -214,12 +214,12 @@ export const CheckInsPage = () => {
 
   return (
     <MobileContainer className="appImg">
+      <Header
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+      />
       <div className="mobile-scroll-checkins">
-        <Header
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-        />
         <section className="checkins-page">
           <div className="checkinsPage-contents">
             {serveRightCheckinContent().contentSet}

@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-education {
-  @include mobile-scroll(75vh, 100%, 7.1%);
+  @include mobile-scroll();
 
   .education-page {
     height: 100%;

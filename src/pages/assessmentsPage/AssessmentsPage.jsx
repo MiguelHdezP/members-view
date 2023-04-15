@@ -168,12 +168,12 @@ export const AssessmentsPage = () => {
 
   return (
     <MobileContainer className="appImg">
+      <Header
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+      />
       <div className="mobile-scroll-asmt">
-        <Header
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-        />
         <section className="asmt-page">
           <div className="asmt-page-contents">
             {serveRightCheckinContent().contentSet}
