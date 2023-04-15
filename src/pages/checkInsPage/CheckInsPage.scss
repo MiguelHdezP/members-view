@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-checkins {
-  @include mobile-scroll(75.1vh, 100%, 7.2%);
+  @include mobile-scroll();
 
   .checkins-page {
     height: 100%;

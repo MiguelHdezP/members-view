@@ -1,5 +1,8 @@
 @import "../../styles/main.scss";
 
+.sm-chat-msg {
+  overflow-wrap: break-word;
+}
 .sm-chat-msg:not(:first-child) {
   margin: 1rem 0;
 }
@@ -33,34 +36,32 @@
 }
 
 .sm-inputText {
-  height: auto;
   margin: 0 auto;
-  position: relative;
-  width: 81%;
-  top: 6rem;
+  width: 80%;
 
   .sm-inputText-input {
+    outline: none;
     background-color: #ececec;
     border: none;
     border-radius: 25px;
-
-    position: absolute;
-    left: 4.2rem;
-    text-indent: 1rem;
-    width: 84%;
     height: 2.5rem;
-    z-index: 1000;
+    text-indent: 1rem;
+    width: 100%;
   }
 }
 
 .smsImg {
-  background-image: url("../../assets/images/sms-background.png");
+  /* background-image: url("../../assets/images/sms-background.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;*/
 }
 
 .appImg {
-  background-image: url("../../assets/images/app-background.png");
+  //background-image: url("../../assets/images/app-background.png");
 }
 
-.mobile-scroll-optin {
-  @include mobile-scroll(67vh, 94%, 13%);
+.mobile-scroll-sms {
+  @include mobile-scroll();
+  padding: 2rem;
 }

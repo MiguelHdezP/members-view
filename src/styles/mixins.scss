@@ -1,12 +1,13 @@
 @import "./variables.scss";
 
-@mixin fixedWidth($width: 33.4%, $maxWidth: 24.5rem, $minWidth: 24.5rem) {
+@mixin fixedWidth($width: 100%, $maxWidth: 22.7vw, $minWidth: 37vw) {
   width: $width;
   max-width: $maxWidth;
   min-width: $minWidth;
+  background-color: red;
 }
 
-@mixin chatGlobes($color, $width: 70%) {
+@mixin chatGlobes($color, $width: 78%) {
   border-radius: 25px;
   background-color: $color;
   font-size: 0.85rem;
@@ -14,17 +15,14 @@
   line-height: 1.3rem;
   margin: 1rem 0.3rem 0.4rem;
   position: relative;
-  padding: 0.5rem;
+  padding: 1rem;
   text-indent: 19px;
   width: $width;
   z-index: 100;
 }
 
-@mixin mobile-scroll($height: 80.8vh, $width: 100%, $top: 0) {
+@mixin mobile-scroll($height: 85vh, $width: 100%, $top: 0) {
   height: $height;
-  left: -1px;
-  margin: 0 auto;
-  max-width: 407px;
   overflow: scroll;
   overflow-x: hidden;
   overscroll-behavior: contain;
@@ -47,10 +45,7 @@
 }
 
 @mixin headerFooter($bColor, $padding) {
-  @include fixedWidth;
   background-color: $bColor;
-  margin: 0 auto;
-  position: fixed;
   padding: $padding;
   z-index: 1000;
 }

@@ -100,12 +100,12 @@ export const Authentication = () => {
 
   return (
     <MobileContainer className="appImg">
+      <Header
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+      />
       <div className="mobile-scroll-auth">
-        <Header
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-        />
         {step === "four" ? (
           <>
             <LoaderSection />

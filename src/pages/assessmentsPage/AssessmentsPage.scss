@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-asmt {
-  @include mobile-scroll(75.1vh, 100%, 3.4rem);
+  @include mobile-scroll();
 
   .asmt-page {
     @include scroll-page(0, 100%);

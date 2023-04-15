@@ -51,18 +51,23 @@ a {
 }
 
 .main-container {
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 98vh; //44vh 1024
-  background-size: 26rem;
+  //background-repeat: no-repeat;
+  //background-position: 50%;
+  height: 96vh;
+  //background-size: contain;
+  width: 25%;
+  min-width: 20rem;
+  margin: 0 auto;
 }
 
 .mobile-container {
-  @include fixedWidth;
-  height: 80.8vh;
+  border: 1px solid $disabled;
+  height: 98%;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
-  top: 5.3rem;
+  top: 2%;
+  width: 100%;
 }
 
 .displayNone {

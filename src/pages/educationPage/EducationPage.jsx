@@ -72,14 +72,14 @@ export const EducationPage = () => {
   return (
     <MobileContainer className="appImg">
       {toggleModal ? <Modal>{modalComponent}</Modal> : ""}
+      <Header
+        favsState={addToFavs}
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+        addContentToFavs={addContentToFavs}
+      />
       <div className="mobile-scroll-education">
-        <Header
-          favsState={addToFavs}
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-          addContentToFavs={addContentToFavs}
-        />
         {toggleFavs || toggleNotifActive ? (
           ""
         ) : (
@@ -126,7 +126,7 @@ export const EducationPage = () => {
                             title="Iframe Example"
                           ></iframe>
                         );
-                        setModalComponent(component);
+                        setModalComponent("");
                         openModal();
                       }}
                     >
@@ -328,9 +328,8 @@ export const EducationPage = () => {
             <div className="bottom-spacer"></div>
           </section>
         )}
-
-        <Footer />
       </div>
+      <Footer />
     </MobileContainer>
   );
 };
