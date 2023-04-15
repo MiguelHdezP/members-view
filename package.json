@@ -3,7 +3,7 @@
   "name": "member-view",
   "version": "0.1.0",
   "engines": {
-    "node": "16.20.0"
+    "node": "16.19.0"
   },
   "private": true,
   "dependencies": {
