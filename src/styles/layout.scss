@@ -40,7 +40,6 @@ img {
 html,
 body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  padding: 0.2rem;
 }
 
 body {
@@ -69,7 +68,7 @@ a {
 
 @media (max-width: 800px) {
   .main-container {
-    height: 99vh;
+    height: 100%;
     min-width: 100%;
   }
 }
