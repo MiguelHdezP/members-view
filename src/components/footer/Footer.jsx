@@ -48,7 +48,10 @@ export const Footer = () => {
             <p className="footer-option-label">Awards</p>
           </div>
 
-          <div className="footer-option-button">
+          <div
+            className="footer-option-button"
+            onClick={() => redirect("/dashboard")}
+          >
             <BoxCard customClass="footer-card-option">
               <img
                 src={program}
@@ -77,8 +80,7 @@ export const Footer = () => {
       <footer className="footer">
         <IconContext.Provider
           value={{
-            style: { fontSize: "2rem" },
-            className: "active-icon",
+            className: "active-icon footer-buttons",
           }}
         >
           <div className="footer-contents">

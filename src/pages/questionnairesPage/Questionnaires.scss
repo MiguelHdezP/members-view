@@ -1,0 +1,40 @@
+@import "../../styles/main.scss";
+@import "../../styles/main.scss";
+
+.mobile-scroll-qa {
+  @include mobile-scroll();
+
+  .qa-page {
+    @include scroll-page(0, 100%);
+
+    .qa-page-contents {
+      height: 100%;
+      margin: 0 1.5rem;
+      position: relative;
+
+      .qa-trophy-container {
+        background-color: $mainPurple;
+        border-radius: 50%;
+        height: 5rem;
+        width: 5.3rem;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        line-height: 5.7rem;
+
+        .qa-trophy {
+          color: $white;
+        }
+      }
+
+      .active-answer {
+        @include purpleHover;
+      }
+    }
+  }
+}
+
+.qa-title-center {
+  text-align: center !important;
+}

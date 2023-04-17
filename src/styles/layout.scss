@@ -1,4 +1,5 @@
 @import "./mixins.scss";
+@import "./variables.scss";
 
 html {
   box-sizing: border-box;
@@ -42,6 +43,10 @@ body {
   padding: 0.2rem;
 }
 
+body {
+  background-color: $strokeGray;
+}
+
 p {
   text-indent: initial;
 }
@@ -51,22 +56,31 @@ a {
 }
 
 .main-container {
+  background-color: $white;
   //background-repeat: no-repeat;
   //background-position: 50%;
   height: 96vh;
   //background-size: contain;
   width: 25%;
-  min-width: 20rem;
+  min-width: 26rem;
   margin: 0 auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 800px) {
+  .main-container {
+    height: 99vh;
+    min-width: 100%;
+  }
 }
 
 .mobile-container {
   border: 1px solid $disabled;
-  height: 98%;
+  height: 100%;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  top: 2%;
+  top: 0;
   width: 100%;
 }
 
@@ -86,4 +100,60 @@ a {
   @include mobile-scroll(76vh, 100%, 7.2%);
   overscroll-behavior: contain;
   background-color: beige;
+}
+
+.startS-texts {
+  position: relative;
+  top: 16rem;
+
+  .startS-small-text-firstScreen,
+  .startS-title-text {
+    text-align: center;
+  }
+
+  .startS-title-text {
+    margin-bottom: 1rem;
+  }
+}
+
+.startS-bottom-possition {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+
+  .startS-primary-button {
+    width: 90%;
+  }
+}
+
+.startS-bottom-possition-init {
+  bottom: 1rem;
+}
+
+.startS-contents {
+  margin: 0 auto;
+  top: 2.5rem;
+  position: relative;
+  width: 100%;
+
+  .startS-small-text {
+    text-align: left;
+  }
+
+  .startS-answers {
+    .startS-roundedCard {
+      cursor: pointer;
+      margin: 2rem 0;
+
+      &:hover {
+        @include purpleHover;
+      }
+    }
+  }
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
 }

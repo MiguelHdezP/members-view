@@ -17,6 +17,23 @@
       margin-top: 0.5rem;
       word-wrap: break-word;
     }
+
+    @media (max-width: 800px) {
+      .footer-icon-text {
+        font-size: 0.65rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+    .footer-buttons {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .footer-buttons {
+        font-size: 1.7rem;
+      }
+    }
   }
 }
 
