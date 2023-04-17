@@ -1,7 +1,16 @@
 @import "../../styles/main.scss";
 
 .load-section {
-  background-color: $mainPurple;
+  background-color: #fff;
   height: 100vh;
+  position: absolute;
   width: 100%;
+  z-index: 100;
+
+  .load-section-loader {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 70%;
+  }
 }

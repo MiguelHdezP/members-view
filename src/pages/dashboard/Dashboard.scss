@@ -1,0 +1,108 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-dashboard {
+  @include mobile-scroll(75.1vh, 100%, 3.3rem);
+
+  .dashboard-page {
+    @include scroll-page();
+  }
+}
+
+.dashboard-titles,
+.dashboard-contents {
+  padding: 0 2rem;
+}
+
+.dashboard-contents {
+  background-color: #f4f4f6;
+}
+
+.pollo {
+  cursor: pointer;
+  background-color: $white;
+  width: 6.5rem;
+  margin: 0 auto;
+  height: 4.5rem;
+  margin-top: 2.5rem;
+  &:hover {
+    background-color: rgba($color: gray, $alpha: 0.1);
+  }
+  .chete {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+}
+
+.journey-tracker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lele {
+  margin-bottom: 2rem;
+}
+
+.fuchi {
+  text-align: left;
+  padding-top: 2rem;
+  margin-bottom: 0;
+}
+
+.titleLele {
+  margin-bottom: 1rem;
+}
+
+.almost-cards {
+  cursor: pointer;
+  display: block;
+  background-color: $white;
+  margin: 1rem 0;
+
+  &:hover {
+    background-color: rgba($color: gray, $alpha: 0.1);
+  }
+
+  .almost-cards-contents {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.amost-nob {
+  margin-bottom: 0;
+}
+
+.dash-seeAll {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-contents-awards-badges {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.education-rounded-card {
+  box-shadow: 0 3px 2px -2px $disabled;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding: 0;
+
+  &:hover {
+    background-color: rgba($color: $disabled, $alpha: 0.1);
+  }
+
+  .education-todo-texts {
+    margin: 1rem;
+
+    .education-purple-text {
+      color: $mainPurple;
+    }
+  }
+}
+
+.Cheiot {
+  font-size: 1.5rem;
+}

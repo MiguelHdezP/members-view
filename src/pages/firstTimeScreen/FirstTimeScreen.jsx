@@ -5,6 +5,7 @@ import { Header } from "../../components/header/Header";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { PrimaryButton } from "../../components/primaryButton/PrimaryButton";
 import { cOPDFirstTimeImg } from "../../data/images";
+import { redirect } from "../../utils/scripts";
 
 export const FirstTimeScreen = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -22,12 +23,12 @@ export const FirstTimeScreen = () => {
 
   return (
     <MobileContainer className="appImg">
+      <Header
+        toggleNotifActive={toggleNotifActive}
+        toggleFavs={toggleFavs}
+        toggleHeaderPanels={toggleHeaderPanels}
+      />
       <div className="mobile-scroll-firstTime">
-        <Header
-          toggleNotifActive={toggleNotifActive}
-          toggleFavs={toggleFavs}
-          toggleHeaderPanels={toggleHeaderPanels}
-        />
         <section className="firsTime-page">
           <div className="firstTime-page-contents">
             <img
@@ -132,6 +133,7 @@ export const FirstTimeScreen = () => {
             <PrimaryButton
               text="Continue to Care Journey Dashboard"
               customClass="fistTime-primaryBtn"
+              fn={() => redirect("/dashboard")}
             />
           </BoxCard>
         </section>
