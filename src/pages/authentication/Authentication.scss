@@ -4,21 +4,22 @@
   @include mobile-scroll();
 
   .authentication-page {
-    @include scroll-page(-3rem, 72%);
+    @include scroll-page(0rem, 72%);
 
     .auth-container {
       height: 279px;
-      margin-top: 3.5rem;
+      margin-top: 2.5rem;
 
       .auth-container-btns {
-        bottom: -6rem;
+        bottom: 0rem;
+        margin-top: 4rem;
         position: relative;
       }
     }
 
     .auth-lock {
       color: $mainPurple;
-      font-size: 6rem;
+      font-size: 4rem;
       border: 1px solid $mainPurple;
       border-radius: 50%;
       margin-top: 6rem;
