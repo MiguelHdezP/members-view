@@ -45,17 +45,17 @@ export const FirstTimeScreen = () => {
               <p className="firstTime-article-title">In this Article</p>
               <ul className="firstTime-article-list">
                 <li className="firstTime-list">
-                  <a href="#what-expect" className="firstTime-list-anchor">
+                  <a href="#" className="firstTime-list-anchor">
                     What to Expect
                   </a>
                 </li>
                 <li className="firstTime-list">
-                  <a href="#how-help" className="firstTime-list-anchor">
+                  <a href="#" className="firstTime-list-anchor">
                     How this program can help
                   </a>
                 </li>
                 <li className="firstTime-list">
-                  <a href="#resources" className="firstTime-list-anchor">
+                  <a href="#" className="firstTime-list-anchor">
                     Related resources
                   </a>
                 </li>
