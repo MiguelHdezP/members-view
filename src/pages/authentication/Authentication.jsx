@@ -61,7 +61,7 @@ export const Authentication = () => {
             <InstructionsText text={authInstructions[1].text} />
             <div className="auth-container">
               <AuthMethods />
-              <div className="auth-container-btns">
+              <div className="auth-container-btns auth-methods-btns">
                 <PrimaryButton
                   text="Send Code"
                   fn={() => buttonAction("three")}
@@ -78,7 +78,7 @@ export const Authentication = () => {
             <InstructionsText text={authInstructions[2].text} />
             <div className="auth-container">
               <AuthPassCode />
-              <div className="auth-container-btns">
+              <div className="auth-container-btns auth-methods-btns ">
                 <PrimaryButton
                   text="Valid Code"
                   fn={() => buttonAction("four")}

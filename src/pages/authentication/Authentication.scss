@@ -8,12 +8,15 @@
 
     .auth-container {
       height: 279px;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
 
       .auth-container-btns {
         bottom: 0rem;
-        margin-top: 5rem;
+        margin-top: 3.5rem;
         position: relative;
+      }
+      .auth-methods-btns {
+        margin-top: 2.5rem;
       }
     }
 
