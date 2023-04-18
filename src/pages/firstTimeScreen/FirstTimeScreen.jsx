@@ -129,15 +129,15 @@ export const FirstTimeScreen = () => {
             </div>
             <div className="bottom-spacer"></div>
           </div>
-          <BoxCard customClass="firstTime-boxCard">
-            <PrimaryButton
-              text="Continue to Care Journey Dashboard"
-              customClass="fistTime-primaryBtn"
-              fn={() => redirect("/dashboard")}
-            />
-          </BoxCard>
         </section>
       </div>
+      <BoxCard customClass="firstTime-boxCard">
+        <PrimaryButton
+          text="Continue to Care Journey Dashboard"
+          customClass="fistTime-primaryBtn"
+          fn={() => redirect("/dashboard")}
+        />
+      </BoxCard>
     </MobileContainer>
   );
 };

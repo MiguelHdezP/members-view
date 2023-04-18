@@ -2,6 +2,9 @@
 
 .mobile-scroll-firstTime {
   @include mobile-scroll();
+  & > * {
+    text-align: left !important;
+  }
 
   .firsTime-page {
     @include scroll-page();
@@ -9,7 +12,12 @@
     .firstTime-page-contents {
       padding: 1.6rem 1.5rem;
 
+      .firstTime-section-contents {
+        margin-bottom: 3rem;
+      }
+
       .firstTime-topImg {
+        margin-bottom: 1rem;
         width: 100%;
       }
       .firstTime-title {
@@ -25,7 +33,7 @@
       }
 
       .firstTime-article-boxCard {
-        margin: 0.5rem 0 1rem;
+        margin: 2rem 0 3rem;
         padding: 1.5rem;
 
         .firstTime-article-title {
@@ -53,17 +61,17 @@
     }
 
     .firstTime-boxCard {
-      background-color: $mainPurple;
-      bottom: 5.7rem;
+      background-color: $footerGray;
+      bottom: 0;
+      border: 1px solid $strokeGray;
       border-radius: unset;
-      position: fixed;
+      position: absolute;
       padding: 2rem;
-      @include fixedWidth;
+      width: 100%;
 
       .fistTime-primaryBtn {
-        background-color: $white;
-        border-color: $strokeGray;
-        color: $dark;
+        background-color: $mainPurple;
+        color: $white;
         margin: 0;
 
         &:hover {
