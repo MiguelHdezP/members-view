@@ -54,6 +54,16 @@ a {
   cursor: pointer;
 }
 
+.tempo {
+  background-color: $white;
+  height: 96vh;
+  width: 25%;
+  min-width: 26rem;
+  margin: 0 auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
 .main-container {
   background-color: $white;
   //background-repeat: no-repeat;
@@ -63,7 +73,9 @@ a {
   width: 25%;
   min-width: 26rem;
   margin: 0 auto;
+  overflow: hidden;
   overscroll-behavior: contain;
+  position: relative;
 }
 
 @media (max-width: 800px) {
@@ -78,7 +90,7 @@ a {
   height: 100vh;
   margin: 0 auto;
   overflow: hidden;
-  position: relative;
+  // position: relative;
   top: 0;
   width: 100%;
 }

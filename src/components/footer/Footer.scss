@@ -2,7 +2,7 @@
 
 .footer {
   @include headerFooter($footerGray, 0.5rem);
-  bottom: auto;
+  bottom: 0;
   border: 1px solid $footerGray;
   position: absolute;
   width: 100%;
@@ -24,7 +24,7 @@
         margin-top: 0.2rem;
       }
     }
-    //comment
+
     .footer-buttons {
       font-size: 2rem;
     }
