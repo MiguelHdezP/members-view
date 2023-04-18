@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-firstTime {
-  @include mobile-scroll(75.1vh, 100%, 3.3rem);
+  @include mobile-scroll();
 
   .firsTime-page {
     @include scroll-page();

@@ -21,7 +21,7 @@
   z-index: 100;
 }
 
-@mixin mobile-scroll($height: 85vh, $width: 100%, $top: 0) {
+@mixin mobile-scroll($height: 75.1vh, $width: 100%, $top: 0) {
   height: $height;
   overflow: scroll;
   overflow-x: hidden;

@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-auth {
-  @include mobile-scroll(100%);
+  @include mobile-scroll();
 
   .authentication-page {
     @include scroll-page(-3rem, 72%);
