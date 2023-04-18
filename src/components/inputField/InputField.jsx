@@ -1,27 +1,31 @@
 import React, { useState } from "react";
 import "./InputField.scss";
-import { OnlyAlpha, transformValidate } from "../../utils/inputValidation";
+import {
+  OnlyAlpha,
+  transformValidate,
+  OnlyNumbers,
+} from "../../utils/inputValidation";
 
 export const InputField = ({
   customClass = "",
   disabled = false,
   fn = () => {},
   min = "",
-  maxLength = 0,
+  maxLength = 10,
   name = "",
   placeholder = "",
   type = "",
   value = "",
+  fakeType = "",
 }) => {
   const [charAllowed, setCharAllowed] = useState(true);
 
   const inputData = (e) => {
     let value = e.currentTarget.value;
-    if (type === "text") {
+    if (fakeType === "text") {
       setCharAllowed(OnlyAlpha(value));
-    } else if (type === "date") {
-      // setCharAllowed(OnlyNumbers(value));
-      console.log(transformValidate(value));
+    } else if (fakeType === "date") {
+      setCharAllowed(OnlyNumbers(value));
     }
   };
 

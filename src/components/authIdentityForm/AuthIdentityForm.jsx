@@ -8,9 +8,9 @@ import { LinkButton } from "../linkButton/LinkButton";
 export const AuthIdentification = () => {
   return (
     <div className="auth-id">
-      <InputField type="text" placeholder="First Name" />
-      <InputField type="text" placeholder="Last Name" />
-      <InputField type="date" placeholder="MM/DD/YYYY" maxLength={6} />
+      <InputField type="text" placeholder="First Name" fakeType="text" />
+      <InputField type="text" placeholder="Last Name" fakeType="text" />
+      <InputField type="tex" placeholder="MM/DD/YYYY" fakeType="date" />
     </div>
   );
 };
