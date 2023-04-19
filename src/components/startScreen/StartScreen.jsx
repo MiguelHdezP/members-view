@@ -14,9 +14,7 @@ export const ButtonsStartScreen = ({
   customClassPrimaryButton = "",
 }) => {
   return (
-    <div
-      className={`startS-bottom-possition startS-bottom-possition-init ${customClass}`}
-    >
+    <div className={`startS-bottom-possition ${customClass}`}>
       <PrimaryButton
         text={text}
         fn={() => fn()}
