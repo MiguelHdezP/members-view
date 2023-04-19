@@ -96,11 +96,17 @@ export const Footer = ({ customClass = "" }) => {
               {<MdHomeFilled />}
               <p className="footer-icon-text">Care Journey</p>
             </button>
-            <button className="mobile-icon-effect">
+            <button
+              className="mobile-icon-effect"
+              onClick={() => redirect("/chats")}
+            >
               <span className="mobile-icon-new footer-icon-new"></span>
               {<BsChatTextFill />} <p className="footer-icon-text">Chats</p>
             </button>
-            <button className="mobile-icon-effect">
+            <button
+              className="mobile-icon-effect"
+              onClick={() => redirect("/appointments")}
+            >
               {<IoCalendar />} <p className="footer-icon-text">Appointments</p>
             </button>
             <button

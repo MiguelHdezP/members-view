@@ -1,0 +1,13 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-chats {
+  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+
+  .chats-page {
+    @include scroll-page();
+
+    .chats-container {
+      padding: 1rem 2rem;
+    }
+  }
+}

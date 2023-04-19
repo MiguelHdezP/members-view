@@ -1,0 +1,13 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-appoint {
+  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+
+  .appoint-page {
+    @include scroll-page();
+
+    .appoint-container {
+      padding: 1rem 2rem;
+    }
+  }
+}

@@ -128,10 +128,14 @@ a {
   }
 }
 
-.startS-bottom-possition {
-  bottom: auto;
+.startS-bottom-possition,
+.startS-bottom-possition-init {
   position: absolute;
   width: 100%;
+}
+
+.startS-bottom-possition {
+  bottom: auto;
 
   .startS-primary-button {
     width: 90%;
@@ -139,7 +143,7 @@ a {
 }
 
 .startS-bottom-possition-init {
-  bottom: 0rem;
+  bottom: 0;
 }
 
 .startS-contents {

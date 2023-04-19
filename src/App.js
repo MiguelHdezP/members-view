@@ -21,6 +21,8 @@ import { Questionnaires } from "./pages/questionnairesPage/Questionnaires";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { UserSettings } from "./pages/userSettings/UserSettings";
 import { HealthInsights } from "./pages/healthInsights/HealthInsights";
+import { Chats } from "./pages/chats/Chats";
+import { Appointments } from "./pages/appointments/Appointments";
 
 function App() {
   console.log("App");
@@ -61,6 +63,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/userSettings" element={<UserSettings />} />
             <Route path="/healthInsights" element={<HealthInsights />} />
+            <Route path="/chats" element={<Chats />} />
+            <Route path="/appointments" element={<Appointments />} />
           </Routes>
         </main>
       </Router>
