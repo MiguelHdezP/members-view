@@ -173,7 +173,12 @@ export const Header = ({
             >
               {<BsFillStarFill />}
             </button>
-            <button className={`mobile-icon-effect`}>{<FaUser />}</button>
+            <button
+              className={`mobile-icon-effect`}
+              onClick={() => redirect("/userSettings")}
+            >
+              {<FaUser />}
+            </button>
             <button
               className={`mobile-icon-effect ${
                 toggleNotifActive ? "activate-icons" : ""

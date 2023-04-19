@@ -15,19 +15,10 @@ import { IconContext } from "react-icons";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaRegHandshake, FaLock } from "react-icons/fa";
 import { RiSurveyLine } from "react-icons/ri";
-import {
-  copdImg,
-  copdImg2,
-  dietImg,
-  articleImg,
-  articleImg2,
-  videoImg,
-} from "../../data/images";
+import { copdImg2 } from "../../data/images";
 import { redirect } from "../../utils/scripts";
 
 export const Dashboard = () => {
-  const { activeStates } = useContext(DataContext);
-  // console.log("Chete: ", localStorage.getItem("dashboardQA"));
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
 

@@ -29,15 +29,18 @@ export const Footer = ({ customClass = "" }) => {
         fn={moreOptions}
       >
         <section className={`footer-options ${customClass}`}>
-          <div className="footer-option-button">
+          <div
+            className="footer-option-button"
+            onClick={() => redirect("/healthInsights")}
+          >
             <BoxCard customClass="footer-card-option">
               <img
                 src={health}
-                alt="Health Summary"
+                alt="Health Insights"
                 className="footer-option-img"
               />
             </BoxCard>
-            <p className="footer-option-label">Health Summary</p>
+            <p className="footer-option-label">Health Insights</p>
           </div>
 
           <div

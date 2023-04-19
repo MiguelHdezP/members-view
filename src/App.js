@@ -19,6 +19,8 @@ import { EducationPage } from "./pages/educationPage/EducationPage";
 import { EducationArticle } from "./pages/educationPage/educationArticle/EducationArticle";
 import { Questionnaires } from "./pages/questionnairesPage/Questionnaires";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import { UserSettings } from "./pages/userSettings/UserSettings";
+import { HealthInsights } from "./pages/healthInsights/HealthInsights";
 
 function App() {
   console.log("App");
@@ -57,6 +59,8 @@ function App() {
             <Route path="/education" element={<EducationPage />} />
             <Route path="/educationArticle" element={<EducationArticle />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/userSettings" element={<UserSettings />} />
+            <Route path="/healthInsights" element={<HealthInsights />} />
           </Routes>
         </main>
       </Router>

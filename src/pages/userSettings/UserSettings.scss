@@ -1,0 +1,9 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-settings {
+  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+
+  .settings-page {
+    @include scroll-page();
+  }
+}
