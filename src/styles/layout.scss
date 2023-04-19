@@ -144,11 +144,12 @@ a {
 
 .startS-contents {
   margin: 0 auto;
-  top: 2.5rem;
+  top: 0;
   position: relative;
   width: 100%;
 
   .startS-small-text {
+    text-transform: capitalize;
     text-align: left;
   }
 
