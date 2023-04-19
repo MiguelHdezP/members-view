@@ -67,7 +67,7 @@ export const Dashboard = () => {
                       <FaRegHandshake />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText chete">Onboarding</p>
+                  <p className="text-smallText">Onboarding</p>
                 </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
@@ -91,7 +91,7 @@ export const Dashboard = () => {
                       <RiSurveyLine />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText chete">Assessment</p>
+                  <p className="text-smallText">Assessment</p>
                 </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
@@ -115,7 +115,7 @@ export const Dashboard = () => {
                       <FaLock />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText chete">Check Ins</p>
+                  <p className="text-smallText">Check Ins</p>
                 </BoxCard>
               </div>
               <Divider customClass="divider-bottom" />

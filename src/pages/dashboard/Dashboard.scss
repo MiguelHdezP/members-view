@@ -27,10 +27,6 @@
   &:hover {
     background-color: rgba($color: gray, $alpha: 0.1);
   }
-  .chete {
-    text-align: center;
-    padding: 0.5rem 0;
-  }
 }
 
 .journey-tracker {
@@ -64,11 +60,19 @@
   .almost-cards-contents {
     display: flex;
     justify-content: space-between;
+
+    .almost-titles {
+      flex: 2;
+      margin-left: 1.5rem;
+      & > * {
+        text-align: left;
+      }
+    }
   }
 }
 
 .amost-nob {
-  margin-bottom: 0;
+  margin-bottom: 0.3rem !important;
 }
 
 .dash-seeAll {

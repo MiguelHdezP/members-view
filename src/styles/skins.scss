@@ -106,13 +106,13 @@
 .asmt-trophy-container {
   background-color: $mainPurple;
   border-radius: 50%;
-  height: 5rem;
+  height: 5.3rem;
   width: 5.3rem;
   display: block;
   margin: 0 auto;
   margin-bottom: 1rem;
   font-size: 3rem;
-  line-height: 5.7rem;
+  line-height: 5.9rem;
 
   .asmt-trophy {
     color: $white;
@@ -121,7 +121,7 @@
 
 .asmt-trophy-containerOut {
   background-color: none;
-  border: 1px solid gray;
+  border: 2px solid $disabled;
   border-radius: 50%;
   height: 5rem;
   width: 5.3rem;
@@ -132,6 +132,6 @@
   line-height: 5.7rem;
 
   .asmt-trophy {
-    color: gray;
+    color: $disabled;
   }
 }
