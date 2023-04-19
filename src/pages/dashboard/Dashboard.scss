@@ -34,13 +34,15 @@
 }
 
 .journey-tracker {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.lele {
-  margin-bottom: 2rem;
+.divider-bottom {
+  border-width: 2px;
+  margin-bottom: 2.5rem;
 }
 
 .fuchi {

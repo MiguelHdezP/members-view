@@ -118,7 +118,7 @@ export const Dashboard = () => {
                   <p className="text-smallText chete">Check Ins</p>
                 </BoxCard>
               </div>
-              <Divider customClass="lele" />
+              <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-progress">
               <p className="text-title startS-title-text">Almost There</p>
@@ -186,7 +186,7 @@ export const Dashboard = () => {
                   </div>
                 </div>
               </BoxCard>
-              <Divider customClass="lele" />
+              <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-progress">
               <p className="text-title startS-title-text">
@@ -196,7 +196,7 @@ export const Dashboard = () => {
                 You have an upcoming appointments
               </p>
               <BoxCard customClass="fuchi">Care manager</BoxCard>
-              <Divider customClass="lele" />
+              <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-education">
               <p className="text-title startS-title-text">Upcoming Tasks</p>
@@ -244,7 +244,7 @@ export const Dashboard = () => {
                   </p>
                 </div>
               </RoundedCard>
-              <Divider customClass="lele" />
+              <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-awards">
               <div className="dash-seeAll">
@@ -256,7 +256,7 @@ export const Dashboard = () => {
                 <BadgeTrophyFull />
                 <BadgeTrophyFull />
               </div>
-              <Divider customClass="lele" />
+              <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-awards-progress">
               <div className="dash-seeAll">
