@@ -40,7 +40,7 @@ export const ButtonProgressStartScreen = ({
   numPages,
 }) => {
   return (
-    <BoxCard customClass="startS-bottom-possition ">
+    <BoxCard customClass="startS-bottom-possition-init">
       <ProgressBar numPages={numPages} activeState={activeStates} />
       <PrimaryButton text={text} fn={() => fn()} />
     </BoxCard>
