@@ -3,7 +3,6 @@
 
 .mobile-scroll-qa {
   @include mobile-scroll();
-  overflow: unset;
 
   .qa-page {
     @include scroll-page(0, 100%);
