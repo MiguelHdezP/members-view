@@ -3,7 +3,12 @@ import "../src/styles/main.scss";
 import { currentWindowsWidth } from "./utils/scripts";
 import { DataProvider } from "./data/context/dataContext";
 import { Sidebar } from "./components/sideBar/Sidebar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  redirect,
+} from "react-router-dom";
 import { JourneyBuilder } from "./pages/JourneyBuilder";
 import { CareManager } from "./pages/CareManager";
 import {
@@ -25,7 +30,10 @@ import { Chats } from "./pages/chats/Chats";
 import { Appointments } from "./pages/appointments/Appointments";
 
 function App() {
-  console.log("App");
+  if (currentWindowsWidth() > 480) {
+    redirect("/dashboard");
+  }
+
   return (
     <DataProvider>
       <Router>
