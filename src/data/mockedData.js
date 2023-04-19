@@ -12,7 +12,7 @@ export const optInOnboardingSMSData = [
     id: 1,
     type: "ini",
     message: [
-      "You've been invited to participate in the COPD Care Program.",
+      "You've been invited to participate in a Care Program.",
       "Reply YES to opt in",
       "Reply NO to opt out",
       "STOP cancels anytime. Msg & Data rates my apply",
@@ -55,7 +55,7 @@ export const assessmentData = [
     id: 1,
     type: "yes",
     message: [
-      "Welcome Member to the COPD Care Program!",
+      "Welcome Member to a Care Program!",
       "Complete the Assessment by clicking the link below:",
       "www.client.com/program/assessment",
     ],
@@ -223,7 +223,7 @@ export const listActivity = [
     iconText: "MJ",
     icon: null,
     title: "Dr. Wall, Jeff sent you a message",
-    textComplement: "Welcome to the COPD Care Program...",
+    textComplement: "Welcome to a Care Program...",
     helperText: "Chat",
     newMsg: false,
   },

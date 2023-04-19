@@ -86,7 +86,7 @@ export const EducationPage = () => {
           <section className="education-page">
             <div className="education-general-info">
               <h1 className="text-title education-text-title">
-                Your COPD Education
+                Your Care Program Education
               </h1>
               <p className="text-smallText education-text-mid">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
@@ -143,12 +143,12 @@ export const EducationPage = () => {
                 </IconContext.Provider>
                 <img
                   src={copdImg}
-                  alt="What is COPD"
+                  alt="What is XYZ"
                   className="image-top-roundedCorners img-tint-dark"
                 />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
-                    What is COPD?
+                    What is XYZ?
                   </p>
                   <p className="text-midText education-text-mid">
                     Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
@@ -175,12 +175,12 @@ export const EducationPage = () => {
                 </IconContext.Provider>
                 <img
                   src={copdImg2}
-                  alt="Risk Factors for COPD"
+                  alt="Risk Factors for Care Program"
                   className="image-top-roundedCorners img-tint-dark"
                 />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
-                    Risk Factors for COPD
+                    Risk Factors for Care Program
                   </p>
                   <p className="text-midText education-text-mid">
                     Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
@@ -251,7 +251,7 @@ export const EducationPage = () => {
                 >
                   <img
                     src={articleImg}
-                    alt="Article COPD"
+                    alt="Article Care Program"
                     className="education-img image-topBottom-roundedCorners"
                   />
                   <div className="education-card-texts">
@@ -284,7 +284,7 @@ export const EducationPage = () => {
                 >
                   <img
                     src={articleImg2}
-                    alt="Article COPD"
+                    alt="Article Care Program"
                     className="education-img image-topBottom-roundedCorners"
                   />
                   <div className="education-card-texts">
@@ -317,7 +317,7 @@ export const EducationPage = () => {
                 >
                   <img
                     src={videoImg}
-                    alt="Article COPD"
+                    alt="Article Care Program"
                     className="education-img image-topBottom-roundedCorners"
                   />
                   <div className="education-card-texts">

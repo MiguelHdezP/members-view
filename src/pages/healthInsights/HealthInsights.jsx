@@ -53,7 +53,7 @@ export const HealthInsights = () => {
                   </span>
                 </IconContext.Provider>
                 <p className="text-midText reset-margin text-left">
-                  COPD Care Program
+                  Care Program
                 </p>
                 <span className="settings-boxcard-chevron">
                   <HiOutlineChevronRight />

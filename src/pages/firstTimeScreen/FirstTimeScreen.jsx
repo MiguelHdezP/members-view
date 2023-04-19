@@ -34,9 +34,9 @@ export const FirstTimeScreen = () => {
             <img
               className="firstTime-topImg"
               src={cOPDFirstTimeImg}
-              alt="COPD"
+              alt="Care Program"
             />
-            <h1 className="firstTime-title">COPD Care Program Overview</h1>
+            <h1 className="firstTime-title">Care Program Overview</h1>
             <p className="firstTime-subText">
               Lorem ipsum dolor sit amet, consecuter adipsicing elit, sed do
               sodo.

@@ -41,7 +41,7 @@ export const Dashboard = () => {
       <div className="mobile-scroll-dashboard">
         <section className="dashboard-page">
           <div className="dashboard-titles">
-            <p className="text-title titleLele">COPD Care Program</p>
+            <p className="text-title titleLele">Care Program</p>
             <p className="text-smallText">Welcome back Jane!</p>
           </div>
           <div className="dashboard-contents">
@@ -217,7 +217,7 @@ export const Dashboard = () => {
                 </IconContext.Provider>
                 <img
                   src={copdImg2}
-                  alt="Risk Factors for COPD"
+                  alt="Risk Factors for Care Program"
                   className="image-top-roundedCorners img-tint-dark"
                 />
                 <div className="education-todo-texts">
@@ -225,7 +225,7 @@ export const Dashboard = () => {
                     className="text-midText education-semibold-text education-text-mid"
                     style={{ textAlign: "left" }}
                   >
-                    Risk Factors for COPD
+                    Risk Factors for Care Program
                   </p>
                   <p
                     className="text-midText education-text-mid"

@@ -51,7 +51,7 @@ export const Header = ({
                 className="favorites-card"
                 onClick={() => redirect("/educationArticle")}
               >
-                <img src={articleImg} alt="Article COPD" />
+                <img src={articleImg} alt="Article Care Program" />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Article Title
@@ -84,7 +84,7 @@ export const Header = ({
                 className="favorites-card"
                 onClick={() => redirect("/educationArticle")}
               >
-                <img src={dummyImgArticle} alt="Article COPD" />
+                <img src={dummyImgArticle} alt="Article Care Program" />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Article Title
@@ -114,7 +114,7 @@ export const Header = ({
                 </button>
               </IconContext.Provider>
               <div className="favorites-card">
-                <img src={dummyVideo} alt="Video COPD" />
+                <img src={dummyVideo} alt="Video Care Program" />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Video Title
