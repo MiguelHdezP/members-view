@@ -10,7 +10,7 @@ import { BoxCard } from "../boxCard/BoxCard";
 import { health, program, education, awards } from "../../data/images";
 import { redirect } from "../../utils/scripts";
 
-export const Footer = () => {
+export const Footer = ({ customClass = "" }) => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleActiveClass, setToggleActiveClass] = useState(false);
 
@@ -25,8 +25,10 @@ export const Footer = () => {
         customClass={`footer-more-options ${
           toggleNotifActive ? "open-activity " : ""
         }`}
+        customId="footer-more-optionsID"
+        fn={moreOptions}
       >
-        <section className="footer-options">
+        <section className={`footer-options ${customClass}`}>
           <div className="footer-option-button">
             <BoxCard customClass="footer-card-option">
               <img
@@ -84,7 +86,10 @@ export const Footer = () => {
           }}
         >
           <div className="footer-contents">
-            <button className="mobile-icon-effect">
+            <button
+              className="mobile-icon-effect"
+              onClick={() => redirect("/dashboard")}
+            >
               {<MdHomeFilled />}
               <p className="footer-icon-text">Care Journey</p>
             </button>

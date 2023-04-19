@@ -134,7 +134,7 @@ export const AwardsPage = () => {
           </div>
         </section>
       </div>
-      <Footer />
+      <Footer customClass="footer-moreOptions-bottomFix" />
     </MobileContainer>
   );
 };

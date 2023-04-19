@@ -1,16 +1,10 @@
 @import "../../../styles/main.scss";
 
 .mobile-scroll-eduArticle {
-  @include mobile-scroll(75vh, 100%, 7.1%);
-  overscroll-behavior: contain;
+  @include mobile-scroll();
 
   .eduArticle-page {
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    top: 0%;
-    width: 100%;
+    @include scroll-page();
 
     .firstTime-page-contents {
       padding: 1.6rem 1.5rem;

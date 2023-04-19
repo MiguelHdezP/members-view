@@ -278,7 +278,10 @@ export const EducationPage = () => {
                     {startState2 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
-                <div className="education-completed-card">
+                <div
+                  className="education-completed-card"
+                  onClick={() => redirect("/educationArticle")}
+                >
                   <img
                     src={articleImg2}
                     alt="Article COPD"
@@ -308,7 +311,10 @@ export const EducationPage = () => {
                     {startState3 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
-                <div className="education-completed-card">
+                <div
+                  className="education-completed-card"
+                  onClick={() => redirect("/educationArticle")}
+                >
                   <img
                     src={videoImg}
                     alt="Article COPD"
@@ -329,7 +335,7 @@ export const EducationPage = () => {
           </section>
         )}
       </div>
-      <Footer />
+      <Footer customClass="footer-moreOptions-bottomFix" />
     </MobileContainer>
   );
 };
