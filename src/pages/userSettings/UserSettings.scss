@@ -5,5 +5,36 @@
 
   .settings-page {
     @include scroll-page();
+
+    .settings-container {
+      padding: 1rem 2rem;
+
+      .settings-titles {
+        .settings-title-bottom {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .settings-enrolled {
+        margin-top: 3rem;
+        .settings-boxcard-flag {
+          border-radius: 10px;
+          color: $white;
+          padding: 0.4rem 0.7rem;
+        }
+      }
+      .settings-boxcard {
+        background-color: $white;
+        border: 1px solid $strokeGray;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        &:hover {
+          background-color: rgba($color: $disabled, $alpha: 0.2);
+        }
+      }
+    }
   }
 }

@@ -170,3 +170,21 @@ a {
   top: 0;
   width: 100%;
 }
+
+.flag-paused {
+  background-color: $disabled;
+  color: $white;
+}
+
+.flag-active {
+  background-color: $activeFlag;
+  color: $white;
+}
+
+.reset-margin {
+  margin: 0 !important;
+}
+
+.text-left {
+  text-align: left !important;
+}

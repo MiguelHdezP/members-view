@@ -1,20 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.scss";
-import { DataContext } from "../../data/context/dataContext";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { LinkButton } from "../../components/linkButton/LinkButton";
 import { Divider } from "../../components/divider/Divider";
-import { HiOutlineChevronRight } from "react-icons/hi";
-import { BadgeTrophyFull } from "../../components/badgeTrophy/BadgeTrophyFull";
-import { BadgeTrophyOutline } from "../../components/badgeTrophy/BadgeTrophyOutline";
 import { RoundedCard } from "../../components/roundedCard/RoundedCard";
 import { IconContext } from "react-icons";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { HiOutlineChevronRight } from "react-icons/hi";
+import { AiOutlineStar } from "react-icons/ai";
 import { FaRegHandshake, FaLock } from "react-icons/fa";
 import { RiSurveyLine } from "react-icons/ri";
+import { BadgeTrophyFull } from "../../components/badgeTrophy/BadgeTrophyFull";
+import { BadgeTrophyOutline } from "../../components/badgeTrophy/BadgeTrophyOutline";
 import { copdImg2 } from "../../data/images";
 import { redirect } from "../../utils/scripts";
 
