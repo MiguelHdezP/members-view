@@ -5,6 +5,7 @@ import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { HiOutlineChevronRight } from "react-icons/hi";
+import { redirect } from "../../utils/scripts";
 
 export const UserSettings = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -66,7 +67,10 @@ export const UserSettings = () => {
                   <HiOutlineChevronRight />
                 </span>
               </BoxCard>
-              <BoxCard customClass="settings-boxcard">
+              <BoxCard
+                customClass="settings-boxcard"
+                fn={() => redirect("/userSettings/member-settings")}
+              >
                 <p className="text-midText reset-margin">About</p>
                 <span className="settings-boxcard-chevron">
                   <HiOutlineChevronRight />

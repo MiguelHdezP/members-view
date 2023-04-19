@@ -1,7 +1,7 @@
 import React from "react";
 import "./ListWithIcons.scss";
 import { listActivity } from "../../data/mockedData";
-import { ChatBadges } from "../../components/chatBadges/ChatBadges";
+import { ChatBadges } from "../chatBadges/ChatBadges";
 import { IconContext } from "react-icons";
 
 export const ListWithIcons = ({ customClass = "" }) => {

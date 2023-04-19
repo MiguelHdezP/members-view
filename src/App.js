@@ -28,6 +28,7 @@ import { UserSettings } from "./pages/userSettings/UserSettings";
 import { HealthInsights } from "./pages/healthInsights/HealthInsights";
 import { Chats } from "./pages/chats/Chats";
 import { Appointments } from "./pages/appointments/Appointments";
+import { MemberSettings } from "./pages/userSettings/memberSettings/MemberSettings";
 
 function App() {
   if (currentWindowsWidth() > 480) {
@@ -70,6 +71,10 @@ function App() {
             <Route path="/educationArticle" element={<EducationArticle />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/userSettings" element={<UserSettings />} />
+            <Route
+              path="/userSettings/member-settings"
+              element={<MemberSettings />}
+            />
             <Route path="/healthInsights" element={<HealthInsights />} />
             <Route path="/chats" element={<Chats />} />
             <Route path="/appointments" element={<Appointments />} />

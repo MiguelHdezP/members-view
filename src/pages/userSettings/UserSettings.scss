@@ -35,6 +35,60 @@
           background-color: rgba($color: $disabled, $alpha: 0.2);
         }
       }
+      .settings-settings-controls {
+        text-align: left;
+
+        .settings-info-icon {
+          color: $gray600;
+          cursor: pointer;
+        }
+
+        .settings-switch-anchor {
+          display: inline-block;
+          font-size: 0.7rem;
+          margin-left: 0.3rem;
+        }
+
+        .settings-btn-leave {
+          background: none;
+          border: none;
+          color: $mainPurple;
+          cursor: pointer;
+          margin: 1rem 0.8rem;
+          display: inline-block;
+
+          &:hover {
+            color: $overlay;
+          }
+        }
+      }
+    }
+  }
+}
+
+.settings-modal {
+  background-color: $white;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  .settings-modal-btns {
+    display: flex;
+    justify-content: space-between;
+
+    .settings-secondary-btnFake {
+      @include btns($white, $secondaryDark, $strokeGray, 0.2);
+      border: 1px solid $strokeGray;
+    }
+
+    & > * {
+      margin: 0 1rem;
+    }
+
+    .settings-primaryBtn-fix {
+      height: fit-content;
     }
   }
 }
