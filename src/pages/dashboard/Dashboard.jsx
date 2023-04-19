@@ -41,14 +41,14 @@ export const Dashboard = () => {
       <div className="mobile-scroll-dashboard">
         <section className="dashboard-page">
           <div className="dashboard-titles">
-            <p className="text-title titleLele">Care Program</p>
+            <p className="text-title startS-title-text">Care Program</p>
             <p className="text-smallText">Welcome back Jane!</p>
           </div>
           <div className="dashboard-contents">
             <div className="dashboard-contents-joruneyTracker">
               <p className="text-midText fuchi">Care Journey Tracker</p>
               <div className="journey-tracker">
-                <BoxCard customClass="pollo">
+                <BoxCard customClass="dashboard-tracker-cards">
                   <span
                     style={{
                       borderRadius: "50%",
@@ -70,7 +70,7 @@ export const Dashboard = () => {
                   <p className="text-smallText chete">Onboarding</p>
                 </BoxCard>
                 <BoxCard
-                  customClass="pollo"
+                  customClass="dashboard-tracker-cards"
                   fn={() => redirect("/assessments")}
                 >
                   <span
@@ -94,7 +94,7 @@ export const Dashboard = () => {
                   <p className="text-smallText chete">Assessment</p>
                 </BoxCard>
                 <BoxCard
-                  customClass="pollo"
+                  customClass="dashboard-tracker-cards"
                   fn={() => redirect("/memberview/CheckInsPage")}
                 >
                   <span
@@ -121,7 +121,7 @@ export const Dashboard = () => {
               <Divider customClass="lele" />
             </div>
             <div className="dashboard-contents-progress">
-              <p className="text-title titleLele">Almost There</p>
+              <p className="text-title startS-title-text">Almost There</p>
               <p className="text-smallText">
                 Please finish the assessment to keep up the momentum in your
                 health journey.
@@ -189,7 +189,9 @@ export const Dashboard = () => {
               <Divider customClass="lele" />
             </div>
             <div className="dashboard-contents-progress">
-              <p className="text-title titleLele">Upcoming Appointments</p>
+              <p className="text-title startS-title-text">
+                Upcoming Appointments
+              </p>
               <p className="text-smallText">
                 You have an upcoming appointments
               </p>
@@ -197,7 +199,7 @@ export const Dashboard = () => {
               <Divider customClass="lele" />
             </div>
             <div className="dashboard-contents-education">
-              <p className="text-title titleLele">Upcoming Tasks</p>
+              <p className="text-title startS-title-text">Upcoming Tasks</p>
               <p className="text-smallText">
                 There's new content for you to view
               </p>
@@ -246,7 +248,7 @@ export const Dashboard = () => {
             </div>
             <div className="dashboard-contents-awards">
               <div className="dash-seeAll">
-                <p className="text-title titleLele">Recent awards</p>
+                <p className="text-title startS-title-text">Recent awards</p>
                 <LinkButton text="See All" href="/awards" />
               </div>
               <div className="dashboard-contents-awards-badges">
@@ -258,7 +260,7 @@ export const Dashboard = () => {
             </div>
             <div className="dashboard-contents-awards-progress">
               <div className="dash-seeAll">
-                <p className="text-title titleLele">In progress</p>
+                <p className="text-title startS-title-text">In progress</p>
                 <LinkButton text="See All" />
               </div>
               <div className="dashboard-contents-awards-badges">
