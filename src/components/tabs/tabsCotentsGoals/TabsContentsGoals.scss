@@ -1,28 +1,31 @@
 @import "../../../styles/main.scss";
 
-.auth-input-preFilled {
-  background-color: $footerGray;
-}
-
-.auth-email-input {
-  border-radius: unset !important;
-  border-top-right-radius: 5px !important;
-  border-bottom-right-radius: 5px !important;
-}
-
-.auth-inputs-authPhone {
-  display: flex;
-
-  .auth-input-country {
-    cursor: pointer;
+.tabs-goals {
+  .tabs-goals-card {
     background-color: $white;
-    border-radius: unset;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    width: 30%;
+    border: 1px solid $strokeGray;
+    border-radius: 10px;
+    margin: 2rem 0;
+    padding: 1rem;
+    text-align: left;
 
-    &::placeholder {
-      color: $dark;
+    .tabs-goals-textLeft {
+      text-align: left;
+    }
+
+    .tabs-goals-pill-careplan,
+    .tabs-goals-pill-personal {
+      border-radius: 10px;
+      padding: 0.2rem 0.4rem;
+    }
+
+    .tabs-goals-pill-careplan {
+      background-color: rgba($color: $mainPurple, $alpha: 0.3);
+      color: $mainPurple;
+    }
+    .tabs-goals-pill-personal {
+      background-color: rgba($color: $badgeChat4, $alpha: 0.3);
+      color: $badgeChat4;
     }
   }
 }
