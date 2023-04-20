@@ -1,0 +1,28 @@
+@import "../../../../styles//main.scss";
+
+.auth-input-preFilled {
+  background-color: $footerGray;
+}
+
+.auth-email-input {
+  border-radius: unset !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
+.auth-inputs-authPhone {
+  display: flex;
+
+  .auth-input-country {
+    cursor: pointer;
+    background-color: $white;
+    border-radius: unset;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 30%;
+
+    &::placeholder {
+      color: $dark;
+    }
+  }
+}

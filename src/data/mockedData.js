@@ -190,6 +190,17 @@ export const authTabs = [
   },
 ];
 
+export const chatTabs = [
+  {
+    id: 1,
+    label: "Active Chats",
+  },
+  {
+    id: 2,
+    label: "Archived",
+  },
+];
+
 export const listActivity = [
   {
     id: 1,

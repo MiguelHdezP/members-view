@@ -1,7 +1,7 @@
 import React from "react";
 import "./AuthIdentityForm.scss";
 import { Tabs } from "../tabs/Tabs";
-import { TabsContents } from "./tabsContents/TabsContents";
+import { TabsContentsAuth } from "./tabsContents/tabsContentsAuth/TabsContentsAuth";
 import { InputField } from "../inputField/InputField";
 import { LinkButton } from "../linkButton/LinkButton";
 
@@ -18,7 +18,7 @@ export const AuthIdentification = () => {
 export const AuthMethods = () => {
   return (
     <div className="auth-methods">
-      <Tabs tabsContents={TabsContents} />
+      <Tabs tabsContents={TabsContentsAuth} />
     </div>
   );
 };

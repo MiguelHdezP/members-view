@@ -12,6 +12,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaRegHandshake, FaLock } from "react-icons/fa";
 import { RiSurveyLine } from "react-icons/ri";
+import { BsCalendar2WeekFill } from "react-icons/bs";
 import { BadgeTrophyFull } from "../../components/badgeTrophy/BadgeTrophyFull";
 import { BadgeTrophyOutline } from "../../components/badgeTrophy/BadgeTrophyOutline";
 import { copdImg2 } from "../../data/images";
@@ -91,7 +92,7 @@ export const Dashboard = () => {
                       <RiSurveyLine />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText">Assessment</p>
+                  <p className="text-smallText startS-title-text">Assessment</p>
                 </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
@@ -195,7 +196,32 @@ export const Dashboard = () => {
               <p className="text-smallText">
                 You have an upcoming appointments
               </p>
-              <BoxCard customClass="fuchi">Care manager</BoxCard>
+              <BoxCard customClass="almost-cards">
+                <div
+                  className="almost-cards-contents"
+                  onClick={() => redirect("/assessments")}
+                >
+                  <span
+                    style={{
+                      color: "#b0b0bf",
+                      fontSize: "2rem",
+                    }}
+                  >
+                    <BsCalendar2WeekFill />
+                  </span>
+                  <div className="almost-titles">
+                    <p className="text-midText amost-nob">
+                      Care Manager Check In
+                    </p>
+                    <p className="text-smallText amost-nob">
+                      Upcomming Appointment
+                    </p>
+                  </div>
+                  <div className="almost-chevron">
+                    <HiOutlineChevronRight />
+                  </div>
+                </div>
+              </BoxCard>
               <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-education">

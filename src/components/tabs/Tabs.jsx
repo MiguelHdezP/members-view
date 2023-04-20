@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import "./Tabs.scss";
 import { Divider } from "../divider/Divider";
 
-export const Tabs = ({ tabsList = [], fn = () => {}, tabsContents = [] }) => {
+export const Tabs = ({
+  tabsContents = [],
+  customClass = "",
+  customClassTab1 = "",
+  customClassTab2 = "",
+}) => {
   const [toggleActive, setToggleActive] = useState(1);
   if (!tabsContents.length) return <div>Sorry, something went wrong</div>;
   const tabsAction = (id) => {
@@ -11,7 +16,7 @@ export const Tabs = ({ tabsList = [], fn = () => {}, tabsContents = [] }) => {
 
   return (
     <>
-      <div className="tabs">
+      <div className={`tabs ${customClass}`}>
         {tabsContents.map((obj) => {
           const { id, label } = obj;
           return (
@@ -19,7 +24,9 @@ export const Tabs = ({ tabsList = [], fn = () => {}, tabsContents = [] }) => {
               <button
                 className={`tabs-btn ${
                   toggleActive === id ? "tabs-btn-active tabs-secondary" : ""
-                }`}
+                } ${id === 1 ? customClassTab1 : ""} ${
+                  id === 2 ? customClassTab2 : ""
+                } `}
                 onClick={() => tabsAction(id)}
               >
                 {label}

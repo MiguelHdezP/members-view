@@ -1,13 +1,61 @@
-@import "../../styles/main.scss";
+@import "../../styles//main.scss";
 
 .mobile-scroll-chats {
-  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+  @include mobile-scroll(75.1vh, 100%, 0);
 
   .chats-page {
     @include scroll-page();
 
     .chats-container {
-      padding: 1rem 2rem;
+      .chats-tabs {
+        background-color: $footerGray;
+        padding: 0 2rem;
+        margin-top: 0;
+        padding: 0.5rem 0 0 2rem;
+        justify-content: start;
+
+        .tabs-container {
+          flex: none;
+        }
+
+        .chat-tab-btn1::after {
+          content: "1";
+          background-color: $mainPurple;
+          border-radius: 5px;
+          color: $white;
+          font-size: 0.8rem;
+          padding: 0.1rem 0.2rem;
+          text-align: center;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.chats-contents-container {
+  .chats-messages {
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    .chats-messages-row {
+      border-bottom: 1px solid $strokeGray;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+
+      .chat-messages-texts {
+        flex: 2;
+        margin-left: 1rem;
+        .chat-messages-details {
+          display: flex;
+          justify-content: space-between;
+          .startS-title-text {
+            margin-bottom: 0.5rem !important;
+          }
+        }
+      }
     }
   }
 }

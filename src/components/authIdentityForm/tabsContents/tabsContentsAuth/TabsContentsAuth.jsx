@@ -1,7 +1,7 @@
 import React from "react";
-import "./TabsContents.scss";
-import { authTabs } from "../../../data/mockedData";
-import { InputField } from "../../inputField/InputField";
+import "./TabsContentsAuth.scss";
+import { authTabs } from "../../../../data/mockedData";
+import { InputField } from "../../../inputField/InputField";
 
 const AuthEmail = () => {
   return (
@@ -32,7 +32,7 @@ const AuthPhone = () => {
 
 let AuthContents = [...authTabs];
 
-export let TabsContents = AuthContents.map((ele) => {
+export let TabsContentsAuth = AuthContents.map((ele, i) => {
   if (ele.id === 1) ele.component = <AuthEmail />;
   if (ele.id === 2) ele.component = <AuthPhone />;
   return ele;

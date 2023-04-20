@@ -3,6 +3,8 @@ import "./Chats.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
+import { Tabs } from "../../components/tabs/Tabs";
+import { TabsContentsChats } from "../../components/authIdentityForm/tabContentsChats/TabsContentsChats";
 
 export const Chats = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -26,7 +28,15 @@ export const Chats = () => {
       />
       <div className="mobile-scroll-chats">
         <section className="chats-page">
-          <div className="chats-container">Chats</div>
+          <div className="chats-container">
+            <div className="chats-tabs-header">
+              <Tabs
+                tabsContents={TabsContentsChats}
+                customClass="chats-tabs"
+                customClassTab1="chat-tab-btn1"
+              />
+            </div>
+          </div>
         </section>
       </div>
       <Footer />
