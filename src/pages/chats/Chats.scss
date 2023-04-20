@@ -16,17 +16,17 @@
 
         .tabs-container {
           flex: none;
-        }
 
-        .chat-tab-btn1::after {
-          content: "1";
-          background-color: $mainPurple;
-          border-radius: 5px;
-          color: $white;
-          font-size: 0.8rem;
-          padding: 0.1rem 0.2rem;
-          text-align: center;
-          margin-left: 0.5rem;
+          .chat-tab-btn1::after {
+            content: "1";
+            background-color: $mainPurple;
+            border-radius: 5px;
+            color: $white;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.2rem;
+            text-align: center;
+            margin-left: 0.5rem;
+          }
         }
       }
     }
@@ -40,9 +40,13 @@
     width: 100%;
     padding: 0.5rem;
 
-    .chats-rows {
+    .chats-row {
       align-items: center;
       display: flex;
+
+      .chat-row-flex2 {
+        flex: 2;
+      }
     }
 
     .chats-messages-container {
@@ -78,5 +82,65 @@
     .chats-divider {
       margin-top: 0.3rem;
     }
+  }
+}
+
+.chats-contents-container-individual {
+  padding: 0 2rem;
+}
+
+.chats-content-ongoing {
+  .chats-contents-left {
+    float: left;
+
+    .chat-ongoing-globe1 {
+      @include individualChatGlobe($mainPurple);
+    }
+  }
+  .chats-contents-right {
+    float: right;
+
+    .chat-ongoing-globe2 {
+      @include individualChatGlobe($darkPurple);
+    }
+  }
+
+  .chats-divider-sections {
+    clear: both;
+    margin-bottom: 1.5rem;
+
+    .chats-divider-today {
+      background-color: #fff;
+      color: gray;
+      padding: 0.4rem 1rem;
+      position: relative;
+      top: 1.4rem;
+    }
+  }
+
+  .chat-time-text {
+    color: gray;
+    text-align: right;
+  }
+}
+
+.chats-inputText {
+  bottom: 0;
+  border-top: 1px solid $strokeGray;
+  left: 0;
+  position: absolute;
+  padding: 2rem 0;
+  width: 100%;
+
+  .chats-input-input {
+    border-radius: 10px;
+    border: 1px solid $strokeGray;
+    height: 2rem;
+    padding-left: 1rem;
+    margin: 0 auto;
+    margin-right: 0.8rem;
+    width: 80%;
+  }
+  .chats-input-plus {
   }
 }

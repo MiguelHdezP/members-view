@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./TabsContentsChats.scss";
 import { chatTabs } from "../../../data/mockedData";
 import { ChatBadges } from "../../chatBadges/ChatBadges";
-import { BsCheckAll, BsCheck } from "react-icons/bs";
+import { BsCheckAll, BsCheck, BsChevronLeft } from "react-icons/bs";
+import { FiPlus } from "react-icons/fi";
 import { Divider } from "../../divider/Divider";
-import { BsChevronLeft } from "react-icons/bs";
 
 const ActiveChats = () => {
   const [enterChat, setEnterChat] = useState(true);
@@ -125,13 +125,13 @@ const ActiveChats = () => {
       </ul>
     </div>
   ) : (
-    <div className="chats-contents-container">
+    <div className="chats-contents-container chats-contents-container-individual">
       <ul className="chats-messages">
-        <li className="chats-messages-row" onClick={() => setEnterChat(true)}>
+        <li className="chats-row" onClick={() => setEnterChat(true)}>
           <span>
             <BsChevronLeft />
           </span>
-          <div className="chats-messages-container chats-messages-individual">
+          <div className="chats-messages-container chats-messages-individual chat-row-flex2">
             <ChatBadges customClass={classN}>{init}</ChatBadges>
             <div className="chat-messages-texts">
               <div className="chat-messages-details">
@@ -140,10 +140,86 @@ const ActiveChats = () => {
               <p className="text-smallText reset-margin">Online</p>
             </div>
           </div>
-          <Divider customClass="chats-divider" />
         </li>
+        <Divider customClass="chats-divider" />
       </ul>
-      <div className="chats-content">Content</div>
+      <div className="chats-content-ongoing">
+        <div className="chats-contents-left">
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply
+            </p>
+          </div>
+        </div>
+        <div className="chats-contents-right">
+          <div className="chat-ongoing-globe2">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globes-container">
+            <div className="chat-ongoing-globe2">
+              <p className="text-smallText chat-ongoing-smallText reset-margin">
+                Lorem Ipsum is simply dummy text
+              </p>
+            </div>
+            <p className="text-smallText  reset-margin chat-time-text">
+              HH:MM AM
+              <span>
+                <BsCheckAll />
+              </span>
+            </p>
+          </div>
+        </div>
+        <div className="chats-divider-sections">
+          <span className="chats-divider-today text-smallText">Today</span>
+          <Divider />
+        </div>
+        <div className="chats-contents-left">
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+        </div>
+        <div className="chats-contents-right">
+          <div className="chat-ongoing-globe2">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globes-container">
+            <div className="chat-ongoing-globe2">
+              <p className="text-smallText chat-ongoing-smallText reset-margin">
+                Here is the text of the last chat.
+              </p>
+            </div>
+            <p className="text-smallText  reset-margin chat-time-text">
+              HH:MM AM
+              <span>
+                <BsCheckAll />
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="chats-inputText">
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="Your message"
+          className="chats-input-input"
+        />
+        <span className="chats-input-plus">
+          <FiPlus />
+        </span>
+      </div>
     </div>
   );
 };
@@ -194,9 +270,6 @@ const Archived = () => {
             renderInividualChat("JC", "Conor, Jamal", "chat-badge-color1")
           }
         >
-          <span>
-            <BsChevronLeft />
-          </span>
           <div className="chats-messages-container">
             <ChatBadges customClass="chat-badge-color1">JC</ChatBadges>
             <div className="chat-messages-texts">
@@ -219,10 +292,13 @@ const Archived = () => {
       </ul>
     </div>
   ) : (
-    <div className="chats-contents-container">
+    <div className="chats-contents-container chats-contents-container-individual">
       <ul className="chats-messages">
-        <li className="chats-messages-row" onClick={() => setEnterChat(true)}>
-          <div className="chats-messages-container chats-messages-individual">
+        <li className="chats-row" onClick={() => setEnterChat(true)}>
+          <span>
+            <BsChevronLeft />
+          </span>
+          <div className="chats-messages-container chats-messages-individual chat-row-flex2">
             <ChatBadges customClass={classN}>{init}</ChatBadges>
             <div className="chat-messages-texts">
               <div className="chat-messages-details">
@@ -231,10 +307,86 @@ const Archived = () => {
               <p className="text-smallText reset-margin">Online</p>
             </div>
           </div>
-          <Divider customClass="chats-divider" />
         </li>
+        <Divider customClass="chats-divider" />
       </ul>
-      <div className="chats-content">Content</div>
+      <div className="chats-content-ongoing">
+        <div className="chats-contents-left">
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply
+            </p>
+          </div>
+        </div>
+        <div className="chats-contents-right">
+          <div className="chat-ongoing-globe2">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globes-container">
+            <div className="chat-ongoing-globe2">
+              <p className="text-smallText chat-ongoing-smallText reset-margin">
+                Lorem Ipsum is simply dummy text
+              </p>
+            </div>
+            <p className="text-smallText  reset-margin chat-time-text">
+              HH:MM AM
+              <span>
+                <BsCheckAll />
+              </span>
+            </p>
+          </div>
+        </div>
+        <div className="chats-divider-sections">
+          <span className="chats-divider-today text-smallText">Today</span>
+          <Divider />
+        </div>
+        <div className="chats-contents-left">
+          <div className="chat-ongoing-globe1">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+        </div>
+        <div className="chats-contents-right">
+          <div className="chat-ongoing-globe2">
+            <p className="text-smallText chat-ongoing-smallText reset-margin">
+              Lorem Ipsum is simply dummy text
+            </p>
+          </div>
+          <div className="chat-ongoing-globes-container">
+            <div className="chat-ongoing-globe2">
+              <p className="text-smallText chat-ongoing-smallText reset-margin">
+                Here is the text of the last chat.
+              </p>
+            </div>
+            <p className="text-smallText  reset-margin chat-time-text">
+              HH:MM AM
+              <span>
+                <BsCheckAll />
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="chats-inputText">
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="Your message"
+          className="chats-input-input"
+        />
+        <span className="chats-input-plus">
+          <FiPlus />
+        </span>
+      </div>
     </div>
   );
 };

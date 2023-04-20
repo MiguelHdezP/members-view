@@ -29,7 +29,7 @@ export const Chats = () => {
       <div className="mobile-scroll-chats">
         <section className="chats-page">
           <div className="chats-container">
-            <div className="chats-tabs-header">
+            <div className="chats-tabs-container">
               <Tabs
                 tabsContents={TabsContentsChats}
                 customClass="chats-tabs"
