@@ -391,9 +391,9 @@ const Archived = () => {
   );
 };
 
-let AuthContents = [...chatTabs];
+let chatTabsArray = [...chatTabs];
 
-export let TabsContentsChats = AuthContents.map((ele, i) => {
+export let TabsContentsChats = chatTabsArray.map((ele, i) => {
   if (ele.id === 1) ele.component = <ActiveChats />;
   if (ele.id === 2) ele.component = <Archived />;
   return ele;

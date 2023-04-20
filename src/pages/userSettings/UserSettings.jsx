@@ -74,19 +74,6 @@ export const UserSettings = () => {
                   <HiOutlineChevronRight />
                 </span>
               </BoxCard>
-              <BoxCard customClass="settings-boxcard">
-                <span
-                  className={`settings-boxcard-flag flag-active text-smallText reset-margin`}
-                >
-                  Active
-                </span>
-                <p className="text-midText reset-margin text-left">
-                  Care Program 2
-                </p>
-                <span className="settings-boxcard-chevron">
-                  <HiOutlineChevronRight />
-                </span>
-              </BoxCard>
             </div>
             <div className="settings-settings">
               <p className="text-midText text-left">Settings</p>

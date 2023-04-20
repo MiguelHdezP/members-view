@@ -6,21 +6,23 @@
   .health-page {
     @include scroll-page();
 
-    .settings-container {
+    .healthIn-container {
       padding: 1rem 2rem;
 
-      .settings-title-bottom {
+      .healthIn-title-bottom {
         margin-bottom: 1rem;
       }
 
-      .settings-enrolled {
+      .healthIn-enrolled {
         margin-top: 3rem;
-        .settings-icon {
+        .healthIn-icon {
           color: $mainPurple;
-          font-size: 2rem;
+          font-size: 3rem;
+          margin-right: 1rem;
         }
       }
-      .settings-boxcard {
+      .healthIn-boxcard {
+        align-items: center;
         background-color: $white;
         border: 1px solid $strokeGray;
         cursor: pointer;
@@ -31,7 +33,29 @@
         &:hover {
           background-color: rgba($color: $disabled, $alpha: 0.2);
         }
+
+        .healthIn-boxcard-texts {
+          margin-right: 0.5rem;
+          .healthIn-text-marginBottom {
+            margin-bottom: 0.5rem;
+          }
+        }
       }
     }
+  }
+}
+
+.health-buttons-container {
+  background-color: $footerGray;
+  bottom: auto;
+  display: flex;
+  padding: 1.5rem 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  .healthIn-goals-btn {
+    margin: 0 1rem;
+    width: 45%;
   }
 }

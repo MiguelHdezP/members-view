@@ -8,6 +8,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { SiTarget } from "react-icons/si";
 import { ImLink } from "react-icons/im";
 import { IconContext } from "react-icons";
+import { redirect } from "../../utils/scripts";
 
 export const HealthInsights = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -31,9 +32,9 @@ export const HealthInsights = () => {
       />
       <div className="mobile-scroll-health">
         <section className="health-page">
-          <div className="settings-container">
-            <div className="settings-titles">
-              <p className="text-title settings-title-bottom">
+          <div className="healthIn-container">
+            <div className="healthIn-titles">
+              <p className="text-title healthIn-title-bottom">
                 Health Insights
               </p>
               <p className="text-smallText">
@@ -41,38 +42,29 @@ export const HealthInsights = () => {
                 with your care appointments.
               </p>
             </div>
-            <div className="settings-enrolled">
-              <BoxCard customClass="settings-boxcard">
+            <div className="healthIn-enrolled">
+              <BoxCard
+                customClass="healthIn-boxcard"
+                fn={() => {
+                  redirect("/healthInsights/goals");
+                }}
+              >
                 <IconContext.Provider
                   value={{
-                    className: "settings-icon",
+                    className: "healthIn-icon",
                   }}
                 >
-                  <span className="settings-boxcard-icons">
+                  <span className="healthIn-boxcard-icons">
                     <SiTarget />
                   </span>
                 </IconContext.Provider>
-                <p className="text-midText reset-margin text-left">
-                  Care Program
-                </p>
-                <span className="settings-boxcard-chevron">
-                  <HiOutlineChevronRight />
-                </span>
-              </BoxCard>
-              <BoxCard customClass="settings-boxcard">
-                <IconContext.Provider
-                  value={{
-                    className: "settings-icon",
-                  }}
-                >
-                  <span className="settings-boxcard-icons">
-                    <ImLink />
-                  </span>
-                </IconContext.Provider>
-                <p className="text-midText reset-margin text-left">
-                  Hypertension Care Program
-                </p>
-                <span className="settings-boxcard-chevron">
+                <div className="healthIn-boxcard-texts">
+                  <p className="text-title healthIn-text-marginBottom">Goals</p>
+                  <p className="text-smallText startS-title-text">
+                    Track care plan goals and create your own goals
+                  </p>
+                </div>
+                <span className="healthIn-boxcard-chevron">
                   <HiOutlineChevronRight />
                 </span>
               </BoxCard>

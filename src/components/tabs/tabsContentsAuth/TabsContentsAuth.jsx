@@ -1,7 +1,7 @@
 import React from "react";
 import "./TabsContentsAuth.scss";
-import { authTabs } from "../../../../data/mockedData";
-import { InputField } from "../../../inputField/InputField";
+import { authTabs } from "../../../data/mockedData";
+import { InputField } from "../../../components/inputField/InputField";
 
 const AuthEmail = () => {
   return (

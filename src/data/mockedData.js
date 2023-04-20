@@ -201,6 +201,17 @@ export const chatTabs = [
   },
 ];
 
+export const goalsTabs = [
+  {
+    id: 1,
+    label: "In progress",
+  },
+  {
+    id: 2,
+    label: "Completed",
+  },
+];
+
 export const listActivity = [
   {
     id: 1,

@@ -4,7 +4,7 @@ import { MobileContainer } from "../../components/mobileContainer/MobileContaine
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { Tabs } from "../../components/tabs/Tabs";
-import { TabsContentsChats } from "../../components/authIdentityForm/tabContentsChats/TabsContentsChats";
+import { TabsContentsChats } from "../../components/tabs/tabContentsChats/TabsContentsChats";
 
 export const Chats = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
