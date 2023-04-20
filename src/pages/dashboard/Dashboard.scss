@@ -1,5 +1,9 @@
 @import "../../styles/main.scss";
 
+.dashboard-alert-link {
+  margin-left: 0.4rem;
+}
+
 .mobile-scroll-dashboard {
   @include mobile-scroll(75.1vh, 100%, 0.5rem);
 

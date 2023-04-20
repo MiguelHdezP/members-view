@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
@@ -17,10 +17,17 @@ import { BadgeTrophyFull } from "../../components/badgeTrophy/BadgeTrophyFull";
 import { BadgeTrophyOutline } from "../../components/badgeTrophy/BadgeTrophyOutline";
 import { copdImg2 } from "../../data/images";
 import { redirect } from "../../utils/scripts";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
+import AlertTitle from "@mui/material/AlertTitle";
 
 export const Dashboard = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
+  let activateAlert = false;
+  let alertTitle = "";
+  let alertDesc = "";
+  let alertLink = "#";
 
   const toggleHeaderPanels = (action) => {
     if (action === "notifi") {
@@ -32,6 +39,44 @@ export const Dashboard = () => {
     }
   };
 
+  console.log("**********");
+  const checkIfActiveProgram = localStorage.getItem("exitProgram");
+  if (checkIfActiveProgram !== null && checkIfActiveProgram === "true") {
+    let isProgramPaused = localStorage.getItem("activePause");
+    console.log(
+      "startAlertTextx: ",
+      alertTitle,
+      alertDesc,
+      alertLink,
+      activateAlert
+    );
+    if (isProgramPaused !== null && isProgramPaused === "false") {
+      alertTitle = "The program has been paused";
+      alertDesc = "To reactivate the program go";
+      alertLink = "/userSettings/member-settings";
+    } else {
+      alertTitle = "You have opted-out the Care Program";
+      alertDesc = "To contact your care manager go";
+      alertLink = "/chats";
+    }
+    activateAlert = true;
+    localStorage.removeItem("exitProgram");
+
+    console.log(
+      "latertAlertTextx: ",
+      alertTitle,
+      alertDesc,
+      alertLink,
+      activateAlert
+    );
+  }
+  console.log(
+    "outAlertTextx: ",
+    alertTitle,
+    alertDesc,
+    alertLink,
+    activateAlert
+  );
   return (
     <MobileContainer className="appImg">
       <Header
@@ -39,6 +84,23 @@ export const Dashboard = () => {
         toggleFavs={toggleFavs}
         toggleHeaderPanels={toggleHeaderPanels}
       />
+      {activateAlert ? (
+        <Stack sx={{ width: "100%" }} spacing={2}>
+          <Alert severity="info">
+            <AlertTitle>{alertTitle}</AlertTitle>
+            {alertDesc}
+            <strong>
+              <LinkButton
+                text="here"
+                href={alertLink}
+                customClass="dashboard-alert-link"
+              />
+            </strong>
+          </Alert>
+        </Stack>
+      ) : (
+        ""
+      )}
       <div className="mobile-scroll-dashboard">
         <section className="dashboard-page">
           <div className="dashboard-titles">

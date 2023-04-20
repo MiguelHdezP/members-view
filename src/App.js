@@ -34,7 +34,6 @@ function App() {
   if (currentWindowsWidth() > 480) {
     redirect("/dashboard");
   }
-
   return (
     <DataProvider>
       <Router>

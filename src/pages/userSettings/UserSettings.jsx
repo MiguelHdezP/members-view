@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserSettings.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
@@ -10,6 +10,8 @@ import { redirect } from "../../utils/scripts";
 export const UserSettings = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
+  let classActivePause = "";
+  let classActivePauseLabel = "";
 
   const toggleHeaderPanels = (action) => {
     if (action === "notifi") {
@@ -20,6 +22,26 @@ export const UserSettings = () => {
       setToggleFavs(!toggleFavs);
     }
   };
+
+  const activePauseProgram = () => {
+    redirect("/userSettings/member-settings");
+  };
+
+  let checkIfActivePausedState = localStorage.getItem("activePause");
+
+  if (checkIfActivePausedState === null) {
+    localStorage.setItem("activePause", "true");
+  }
+
+  let programActivePaused = localStorage.getItem("activePause");
+  if (programActivePaused === "true") {
+    classActivePause = "flag-active";
+    classActivePauseLabel = "Active";
+  } else if (programActivePaused === "false") {
+    classActivePause = "flag-paused";
+    classActivePauseLabel = "Paused";
+  }
+
   return (
     <MobileContainer className="appImg">
       <Header
@@ -36,23 +58,30 @@ export const UserSettings = () => {
             </div>
             <div className="settings-enrolled">
               <p className="text-midText text-left">Enrolled Care Prorams</p>
-              <BoxCard customClass="settings-boxcard">
-                <span className="settings-boxcard-flag flag-paused text-smallText reset-margin">
-                  Paused
+              <BoxCard
+                customClass="settings-boxcard"
+                fn={() => activePauseProgram()}
+              >
+                <span
+                  className={`settings-boxcard-flag ${classActivePause} text-smallText reset-margin`}
+                >
+                  {classActivePauseLabel}
                 </span>
                 <p className="text-midText reset-margin text-left">
-                  Care Program
+                  Care Program 1
                 </p>
                 <span className="settings-boxcard-chevron">
                   <HiOutlineChevronRight />
                 </span>
               </BoxCard>
               <BoxCard customClass="settings-boxcard">
-                <span className="settings-boxcard-flag flag-active text-smallText reset-margin">
+                <span
+                  className={`settings-boxcard-flag flag-active text-smallText reset-margin`}
+                >
                   Active
                 </span>
                 <p className="text-midText reset-margin text-left">
-                  Hypertension Care Program
+                  Care Program 2
                 </p>
                 <span className="settings-boxcard-chevron">
                   <HiOutlineChevronRight />
@@ -67,10 +96,7 @@ export const UserSettings = () => {
                   <HiOutlineChevronRight />
                 </span>
               </BoxCard>
-              <BoxCard
-                customClass="settings-boxcard"
-                fn={() => redirect("/userSettings/member-settings")}
-              >
+              <BoxCard customClass="settings-boxcard">
                 <p className="text-midText reset-margin">About</p>
                 <span className="settings-boxcard-chevron">
                   <HiOutlineChevronRight />

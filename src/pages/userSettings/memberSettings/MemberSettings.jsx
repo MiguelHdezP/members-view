@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../UserSettings.scss";
 import { MobileContainer } from "../../../components/mobileContainer/MobileContainer";
 import { Header } from "../../../components/header/Header";
@@ -22,6 +22,19 @@ export const MemberSettings = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [leave, setLeave] = useState(true);
+  const [checkedSwitch, setCheckedSwitch] = useState(false);
+
+  useEffect(() => {
+    let currentProgramActivePaused = localStorage.getItem("activePause");
+
+    if (currentProgramActivePaused !== null) {
+      if (currentProgramActivePaused === "false") {
+        setCheckedSwitch(true);
+      } else if (currentProgramActivePaused === "true") {
+        setCheckedSwitch(false);
+      }
+    }
+  }, []);
 
   const handleOpen = () => setOpenModal(!openModal);
 
@@ -30,7 +43,14 @@ export const MemberSettings = () => {
   const handleTooltipClose = () => setOpen(false);
   const handleTooltipOpen = () => setOpen(true);
 
+  const handleChangeSwitch = (event) => {
+    setCheckedSwitch(event.target.checked);
+    localStorage.setItem("activePause", `${checkedSwitch}`);
+    localStorage.setItem("exitProgram", `${!checkedSwitch}`);
+  };
+
   const handleLeave = () => {
+    localStorage.setItem("exitProgram", "true");
     handleOpen();
     setLeave(false);
   };
@@ -86,7 +106,7 @@ export const MemberSettings = () => {
                   <Breadcrumb text="Member Settings" href="/userSettings" />
                 </div>
                 <div className="settings-enrolled">
-                  <p className="text-midText text-left">Care Program</p>
+                  <p className="text-midText text-left">Care Program 1</p>
                   <BoxCard customClass="settings-boxcard">
                     <p className="text-midText reset-margin text-left">
                       Program Overview
@@ -106,7 +126,11 @@ export const MemberSettings = () => {
                 </div>
                 <div className="settings-settings-controls">
                   <div className="settings-switch">
-                    <Switch {...label} />
+                    <Switch
+                      {...label}
+                      checked={checkedSwitch}
+                      onChange={handleChangeSwitch}
+                    />
                     <span className="settings-switch-label">Pause Program</span>
                     <ClickAwayListener onClickAway={handleTooltipClose}>
                       <Tooltip

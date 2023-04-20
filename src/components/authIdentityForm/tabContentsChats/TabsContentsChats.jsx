@@ -4,6 +4,7 @@ import { chatTabs } from "../../../data/mockedData";
 import { ChatBadges } from "../../chatBadges/ChatBadges";
 import { BsCheckAll, BsCheck } from "react-icons/bs";
 import { Divider } from "../../divider/Divider";
+import { BsChevronLeft } from "react-icons/bs";
 
 const ActiveChats = () => {
   const [enterChat, setEnterChat] = useState(true);
@@ -127,6 +128,9 @@ const ActiveChats = () => {
     <div className="chats-contents-container">
       <ul className="chats-messages">
         <li className="chats-messages-row" onClick={() => setEnterChat(true)}>
+          <span>
+            <BsChevronLeft />
+          </span>
           <div className="chats-messages-container chats-messages-individual">
             <ChatBadges customClass={classN}>{init}</ChatBadges>
             <div className="chat-messages-texts">
@@ -190,6 +194,9 @@ const Archived = () => {
             renderInividualChat("JC", "Conor, Jamal", "chat-badge-color1")
           }
         >
+          <span>
+            <BsChevronLeft />
+          </span>
           <div className="chats-messages-container">
             <ChatBadges customClass="chat-badge-color1">JC</ChatBadges>
             <div className="chat-messages-texts">
