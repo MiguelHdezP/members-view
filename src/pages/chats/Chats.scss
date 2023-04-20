@@ -36,7 +36,7 @@
 .chats-contents-container {
   .chats-messages {
     margin: 0 auto;
-    margin-top: 0.5rem;
+    margin-top: 0;
     width: 100%;
     padding: 0.5rem;
 
@@ -44,8 +44,8 @@
       cursor: pointer;
       display: flex;
       justify-content: space-between;
-      margin: 0.5rem 0;
-      padding: 0.6rem 1.8rem;
+      margin-top: 0.3rem;
+      padding: 0.5rem 1.8rem;
 
       &:hover {
         background-color: rgba($color: $disabled, $alpha: 0.1);
@@ -63,10 +63,15 @@
           }
         }
       }
+    }
 
-      .chats-divider {
-        margin-top: 0.5rem;
-      }
+    .chats-messages-individual {
+      margin-top: 0;
+      padding: 0.3rem 1.8rem;
+    }
+
+    .chats-divider {
+      margin-top: 0.3rem;
     }
   }
 }
