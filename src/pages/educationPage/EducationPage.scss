@@ -33,6 +33,18 @@
         margin-bottom: 1rem;
         padding: 0;
 
+        .education-play-button {
+          background: none;
+          border: none;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          font-size: 5rem;
+          position: absolute;
+          top: 40%;
+          transform: translateX(-50%);
+          z-index: 1000;
+        }
+
         &:hover {
           background-color: rgba($color: $disabled, $alpha: 0.1);
         }
@@ -102,4 +114,13 @@
 }
 .open-activity {
   right: 0;
+}
+.education-modal {
+  background-color: #fff;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
 }

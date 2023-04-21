@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./EducationPage.scss";
+import { getContent } from "../../data/contentAPI";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
@@ -18,7 +19,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsPlayCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
-import { Modal } from "../../components/modal/Modal";
+import Modal from "@mui/material/Modal";
 
 export const EducationPage = () => {
   const [startState, setStartState] = useState(false);
@@ -27,12 +28,7 @@ export const EducationPage = () => {
   const [addToFavs, setAddToFavs] = useState([]);
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
-  const [toggleModal, setToggleModal] = useState(false);
-  const [modalComponent, setModalComponent] = useState();
-
-  const openModal = () => {
-    setToggleModal(!toggleModal);
-  };
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {}, [addToFavs]);
 
@@ -69,9 +65,15 @@ export const EducationPage = () => {
     }
   };
 
+  const handleOpen = () => {
+    setOpenModal(!openModal);
+    //  console.log("Fere: ", getContent());
+  };
+
+  const handleClose = () => setOpenModal(false);
+
   return (
     <MobileContainer className="appImg">
-      {toggleModal ? <Modal>{modalComponent}</Modal> : ""}
       <Header
         favsState={addToFavs}
         toggleNotifActive={toggleNotifActive}
@@ -79,6 +81,23 @@ export const EducationPage = () => {
         toggleHeaderPanels={toggleHeaderPanels}
         addContentToFavs={addContentToFavs}
       />
+      <Modal
+        open={openModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <BoxCard customClass="education-modal">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/T1G9Rl65M-Q"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </BoxCard>
+      </Modal>
       <div className="mobile-scroll-education">
         {toggleFavs || toggleNotifActive ? (
           ""
@@ -106,30 +125,8 @@ export const EducationPage = () => {
                     className: "button-card-star-inprogress",
                   }}
                 >
-                  <div className="education-todo-buttons">
-                    <button
-                      style={{
-                        background: "none",
-                        border: "none",
-                        position: "absolute",
-                        zIndex: "1000",
-                        fontSize: "5rem",
-                        color: "#fff",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        let component = (
-                          <iframe
-                            src="https://dha.health-ce.wolterskluwer.com/v1/contents/videos/EM_9839.html?r=eyJjaWQiOiIwNzViN2JkZC1hZTUyLTQ2MTAtYTBmOS05N2FkMWYxNWVlMDciLCJ1aWQiOiJhNmY3NTAzODQyMTM0MGJkYjJhN2Y2N2I0ZjAxYmRlYyIsImNvbiI6dHJ1ZX0&lang=en&a=eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnRBcHBJZCI6IjdhODMyMWExLTg0YTktNGFhYS05NDFiLWRiMWE1NzZiNDYyOSIsImV4cCI6MTY4MTQ4MTI0MSwiaWF0IjoxNjgxNDM4MDQxLCJtIjoieEwteF9scmJsOUZ4MmoyMVkySlZCY2tfMER5VkVWenZwbnd4NmNmanZRMCIsIm9yZ0lkIjoiODY4OGZmNDYtYzBkZS00NWIyLWFhNzMtMGViOTNkMmViOGQxIn0.jb02FklKNLJi2MRHWPkm_Sl1Ull2WYuw-4odmVNF5To"
-                            height="100%"
-                            width="100%"
-                            title="Iframe Example"
-                          ></iframe>
-                        );
-                        setModalComponent("");
-                        openModal();
-                      }}
-                    >
+                  <div className="education-todo-buttons" onClick={handleOpen}>
+                    <button className="education-play-button">
                       <BsPlayCircle />
                     </button>
                     <button
