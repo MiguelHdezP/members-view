@@ -97,14 +97,10 @@
   .almost-cards-contents {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     .almost-titles {
-      position: absolute;
-      left: 1rem;
-      right: 0;
-      margin: 0 auto;
-      width: 39%;
+      margin-left: 1.5rem;
       & > * {
         text-align: left;
       }
@@ -115,7 +111,16 @@
     }
   }
   .almost-cards-loader {
-    width: 60px;
+    width: 20rem;
+  }
+  .almost-cards-loader-icon {
+    position: relative;
+    width: 5rem;
+    height: 4rem;
+    .cards-loader-icon {
+      width: 4.2rem;
+      position: absolute;
+    }
   }
 }
 

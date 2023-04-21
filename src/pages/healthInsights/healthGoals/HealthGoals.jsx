@@ -91,10 +91,6 @@ export const HealthGoals = () => {
           <div className="healthIn-container">
             {addNewGoal ? (
               <>
-                <SectionHeader
-                  customClass="healthIn-btn-close"
-                  fn={() => closeAddGoal(false)}
-                />
                 <p className="text-title startS-title-text">Add New Goal</p>
                 <p className="text-smallText">
                   Add a personal health goal you would like to track.
@@ -126,17 +122,31 @@ export const HealthGoals = () => {
       </div>
       <div className="health-buttons-container" id="js-goals-buttons">
         {manageGoals ? (
-          <PrimaryButton
-            text="Save"
-            customClass="healthIn-goals-btn healthIn-goals-btn-save"
-            fn={() => saveGoals()}
-          />
+          <>
+            <SecondaryButton
+              text="Cancel"
+              customClass="healthIn-goals-btn"
+              fn={() => setManageGoals(false)}
+            />
+            <PrimaryButton
+              text="Save"
+              customClass="healthIn-goals-btn"
+              fn={() => saveGoals()}
+            />
+          </>
         ) : addNewGoal ? (
-          <PrimaryButton
-            text="Save"
-            customClass="healthIn-goals-btn healthIn-goals-btn-save"
-            fn={() => saveAddedGoal(false)}
-          />
+          <>
+            <SecondaryButton
+              text="Cancel"
+              customClass="healthIn-goals-btn"
+              fn={() => closeAddGoal(false)}
+            />
+            <PrimaryButton
+              text="Save"
+              customClass="healthIn-goals-btn"
+              fn={() => saveAddedGoal(false)}
+            />
+          </>
         ) : (
           <>
             <SecondaryButton

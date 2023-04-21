@@ -150,7 +150,7 @@ export const Dashboard = () => {
                 </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
-                  fn={() => redirect("/memberview/CheckInsPage")}
+                  fn={() => () => {}}
                 >
                   <span
                     style={{
@@ -189,17 +189,21 @@ export const Dashboard = () => {
                   className="almost-cards-contents almost-cards-loader"
                   onClick={() => redirect("/assessments")}
                 >
-                  <CircularProgressbar
-                    value={100}
-                    text="100%"
-                    styles={buildStyles({
-                      textSize: "1.5rem",
-                      pathColor: `#00a223`,
-                      textColor: "#00a223",
-                      trailColor: "#d6d6d6",
-                      backgroundColor: "white",
-                    })}
-                  />
+                  <div className="almost-cards-loader-icon">
+                    <div className="cards-loader-icon">
+                      <CircularProgressbar
+                        value={100}
+                        text="100%"
+                        styles={buildStyles({
+                          textSize: "1.5rem",
+                          pathColor: `#00a223`,
+                          textColor: "#00a223",
+                          trailColor: "#d6d6d6",
+                          backgroundColor: "white",
+                        })}
+                      />
+                    </div>
+                  </div>
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">Assessment</p>
                     <p className="text-smallText amost-nob">Completed</p>
@@ -222,18 +226,21 @@ export const Dashboard = () => {
                   className="almost-cards-contents almost-cards-loader"
                   onClick={() => redirect("/assessments")}
                 >
-                  <CircularProgressbar
-                    value={66}
-                    text="66%"
-                    styles={buildStyles({
-                      textSize: "1.5rem",
-                      pathColor: `orange`,
-                      textColor: "orange",
-                      trailColor: "#d6d6d6",
-                      backgroundColor: "white",
-                      margin: "0",
-                    })}
-                  />
+                  <div className="almost-cards-loader-icon">
+                    <div className="cards-loader-icon">
+                      <CircularProgressbar
+                        value={66}
+                        text="66%"
+                        styles={buildStyles({
+                          textSize: "1.5rem",
+                          pathColor: `orange`,
+                          textColor: "orange",
+                          trailColor: "#d6d6d6",
+                          backgroundColor: "white",
+                        })}
+                      />
+                    </div>
+                  </div>
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">Assessment</p>
                     <p className="text-smallText amost-nob">In progress</p>
@@ -248,17 +255,21 @@ export const Dashboard = () => {
                   className="almost-cards-contents  almost-cards-loader"
                   onClick={() => redirect("/education")}
                 >
-                  <CircularProgressbar
-                    value={50}
-                    text="3/6"
-                    styles={buildStyles({
-                      textSize: "1.5rem",
-                      pathColor: `#5c4bd3`,
-                      textColor: "#5c4bd3",
-                      trailColor: "#d6d6d6",
-                      backgroundColor: "white",
-                    })}
-                  />
+                  <div className="almost-cards-loader-icon">
+                    <div className="cards-loader-icon">
+                      <CircularProgressbar
+                        value={50}
+                        text="3/6"
+                        styles={buildStyles({
+                          textSize: "1.5rem",
+                          pathColor: `#5c4bd3`,
+                          textColor: "#5c4bd3",
+                          trailColor: "#d6d6d6",
+                          backgroundColor: "white",
+                        })}
+                      />
+                    </div>
+                  </div>
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">
                       Educational Content
@@ -282,7 +293,7 @@ export const Dashboard = () => {
               <BoxCard customClass="almost-cards">
                 <div
                   className="almost-cards-contents"
-                  onClick={() => redirect("/assessments")}
+                  onClick={() => redirect("/appointments")}
                 >
                   <span
                     style={{

@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-health {
-  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+  @include mobile-scroll(74vh, 100%, 0.5rem);
 
   .health-page {
     @include scroll-page();
