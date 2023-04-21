@@ -29,7 +29,7 @@ import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
 function App() {
   useEffect(() => {
     if (currentWindowsWidth() <= 480 && urlGet("/")) {
-      redirect("/dashboard");
+      redirect("/memberview/optinonboarding/authentication");
     }
   }, []);
 
