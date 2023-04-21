@@ -11,7 +11,7 @@ import { ListWithIcons } from "../../components/listWithIcons/ListWithIcons";
 import { Divider } from "../../components/divider/Divider";
 import { redirect } from "../../utils/scripts";
 import { BoxCard } from "../boxCard/BoxCard";
-import { articleImg, dummyVideo, dummyImgArticle } from "../../data/images";
+import { articleImg, articleImg2, videoImg } from "../../data/images";
 
 export const Header = ({
   toggleNotifActive = false,
@@ -51,7 +51,11 @@ export const Header = ({
                 className="favorites-card"
                 onClick={() => redirect("/educationArticle")}
               >
-                <img src={articleImg} alt="Article Care Program" />
+                <img
+                  src={articleImg}
+                  alt="Article Care Program"
+                  className="favorites-card-img"
+                />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Article Title
@@ -84,7 +88,11 @@ export const Header = ({
                 className="favorites-card"
                 onClick={() => redirect("/educationArticle")}
               >
-                <img src={dummyImgArticle} alt="Article Care Program" />
+                <img
+                  src={articleImg2}
+                  alt="Article Care Program"
+                  className="favorites-card-img"
+                />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Article Title
@@ -114,7 +122,11 @@ export const Header = ({
                 </button>
               </IconContext.Provider>
               <div className="favorites-card">
-                <img src={dummyVideo} alt="Video Care Program" />
+                <img
+                  src={videoImg}
+                  alt="Video Care Program"
+                  className="favorites-card-img"
+                />
                 <div className="favorites-card-texts">
                   <p className="text-midText favorites-semibold-text favorites-text-mid">
                     Video Title

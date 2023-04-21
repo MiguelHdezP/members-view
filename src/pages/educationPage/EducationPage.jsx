@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./EducationPage.scss";
-import { getContent } from "../../data/contentAPI";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
@@ -9,7 +8,6 @@ import { ProgressPercentage } from "../../components/progressPercentage/Progress
 import { RoundedCard } from "../../components/roundedCard/RoundedCard";
 import {
   copdImg,
-  copdImg2,
   dietImg,
   articleImg,
   articleImg2,
@@ -25,6 +23,9 @@ export const EducationPage = () => {
   const [startState, setStartState] = useState(false);
   const [startState2, setStartState2] = useState(false);
   const [startState3, setStartState3] = useState(false);
+  const [startState4, setStartState4] = useState(false);
+  const [startState5, setStartState5] = useState(false);
+  const [startState6, setStartState6] = useState(false);
   const [addToFavs, setAddToFavs] = useState([]);
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
@@ -60,6 +61,15 @@ export const EducationPage = () => {
       case 3:
         setStartState3(!startState3);
         break;
+      case 4:
+        setStartState4(!startState4);
+        break;
+      case 5:
+        setStartState5(!startState5);
+        break;
+      case 6:
+        setStartState6(!startState6);
+        break;
       default:
         break;
     }
@@ -67,7 +77,6 @@ export const EducationPage = () => {
 
   const handleOpen = () => {
     setOpenModal(!openModal);
-    //  console.log("Fere: ", getContent());
   };
 
   const handleClose = () => setOpenModal(false);
@@ -165,38 +174,6 @@ export const EducationPage = () => {
                   <button
                     title="Add to favorites"
                     className="button-card-favs"
-                    onClick={() => addContentToFavs(2)}
-                  >
-                    {startState ? <AiFillStar /> : <AiOutlineStar />}
-                  </button>
-                </IconContext.Provider>
-                <img
-                  src={copdImg2}
-                  alt="Risk Factors for Care Program"
-                  className="image-top-roundedCorners img-tint-dark"
-                />
-                <div className="education-todo-texts">
-                  <p className="text-midText education-semibold-text education-text-mid">
-                    Risk Factors for Care Program
-                  </p>
-                  <p className="text-midText education-text-mid">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
-                    amet.
-                  </p>
-                  <p className="text-smallText education-purple-text education-text-mid">
-                    3 min watch
-                  </p>
-                </div>
-              </RoundedCard>
-              <RoundedCard customClass="education-rounded-card">
-                <IconContext.Provider
-                  value={{
-                    className: "button-card-star-inprogress",
-                  }}
-                >
-                  <button
-                    title="Add to favorites"
-                    className="button-card-favs"
                     onClick={() => addContentToFavs(3)}
                   >
                     {startState3 ? <AiFillStar /> : <AiOutlineStar />}
@@ -239,7 +216,7 @@ export const EducationPage = () => {
                     className="button-card-favs"
                     onClick={() => addContentToFavs(4)}
                   >
-                    {startState2 ? <AiFillStar /> : <AiOutlineStar />}
+                    {startState4 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div
@@ -272,7 +249,7 @@ export const EducationPage = () => {
                     className="button-card-favs"
                     onClick={() => addContentToFavs(5)}
                   >
-                    {startState2 ? <AiFillStar /> : <AiOutlineStar />}
+                    {startState5 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div
@@ -305,7 +282,7 @@ export const EducationPage = () => {
                     className="button-card-favs"
                     onClick={() => addContentToFavs(6)}
                   >
-                    {startState3 ? <AiFillStar /> : <AiOutlineStar />}
+                    {startState6 ? <AiFillStar /> : <AiOutlineStar />}
                   </button>
                 </IconContext.Provider>
                 <div
