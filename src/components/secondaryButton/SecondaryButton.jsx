@@ -4,7 +4,7 @@ import { FiPlus } from "react-icons/fi";
 
 export const SecondaryButton = ({
   text = "",
-  fn = () => {},
+  fn,
   customClass = "",
   icon = false,
 }) => {

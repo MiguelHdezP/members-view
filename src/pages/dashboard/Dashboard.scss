@@ -20,17 +20,42 @@
 .dashboard-contents {
   background-color: #f4f4f6;
 }
-
-.dashboard-tracker-cards {
+.dashboard-tracker-cards,
+.dashboard-tracker-cards-active {
   cursor: pointer;
-  background-color: $white;
   width: 6.5rem;
   margin: 0 auto;
   height: 5rem;
   margin-top: 2.5rem;
+}
+
+.dashboard-tracker-cards {
+  background-color: $white;
+  border: 1px solid $strokeGray;
+
   &:hover {
     background-color: rgba($color: gray, $alpha: 0.1);
   }
+}
+
+.dashboard-tracker-cards-active {
+  border: 1px solid $mainPurple;
+  background-color: rgba($color: $mainPurple, $alpha: 0.1);
+  color: $mainPurple;
+
+  &:hover {
+    background-color: rgba($color: $mainPurple, $alpha: 0.1);
+  }
+}
+
+.dashboard-tracker-texts,
+.dashboard-tracker-texts-active {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.dashboard-tracker-texts-active {
+  color: $mainPurple !important;
 }
 
 .journey-tracker {
@@ -116,6 +141,7 @@
   }
 }
 
-.Cheiot {
+.dashboard-tracker-icons,
+.dashboard-tracker-icons-active {
   font-size: 1.5rem;
 }

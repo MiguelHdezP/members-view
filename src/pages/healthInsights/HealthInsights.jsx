@@ -23,6 +23,13 @@ export const HealthInsights = () => {
       setToggleFavs(!toggleFavs);
     }
   };
+
+  const redirectAndClearGoals = () => {
+    console.log("removing localStoreage");
+    localStorage.removeItem("completedTabs");
+    redirect("/healthInsights/goals");
+  };
+
   return (
     <MobileContainer className="appImg">
       <Header
@@ -46,7 +53,7 @@ export const HealthInsights = () => {
               <BoxCard
                 customClass="healthIn-boxcard"
                 fn={() => {
-                  redirect("/healthInsights/goals");
+                  redirectAndClearGoals();
                 }}
               >
                 <IconContext.Provider
@@ -59,7 +66,9 @@ export const HealthInsights = () => {
                   </span>
                 </IconContext.Provider>
                 <div className="healthIn-boxcard-texts">
-                  <p className="text-title healthIn-text-marginBottom">Goals</p>
+                  <p className="text-midText healthIn-text-marginBottom">
+                    Goals
+                  </p>
                   <p className="text-smallText startS-title-text">
                     Track care plan goals and create your own goals
                   </p>

@@ -111,27 +111,6 @@ export const Dashboard = () => {
             <div className="dashboard-contents-joruneyTracker">
               <p className="text-midText fuchi">Care Journey Tracker</p>
               <div className="journey-tracker">
-                <BoxCard customClass="dashboard-tracker-cards">
-                  <span
-                    style={{
-                      borderRadius: "50%",
-                      color: "gray",
-                      height: "1.5rem",
-                      width: "1.5rem",
-                      display: "block",
-                      margin: "0 auto",
-                    }}
-                  >
-                    <IconContext.Provider
-                      value={{
-                        className: "Cheiot",
-                      }}
-                    >
-                      <FaRegHandshake />
-                    </IconContext.Provider>
-                  </span>
-                  <p className="text-smallText">Onboarding</p>
-                </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
                   fn={() => redirect("/assessments")}
@@ -148,13 +127,41 @@ export const Dashboard = () => {
                   >
                     <IconContext.Provider
                       value={{
-                        className: "Cheiot",
+                        className: "dashboard-tracker-icons",
                       }}
                     >
-                      <RiSurveyLine />
+                      <FaRegHandshake />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText startS-title-text">Assessment</p>
+                  <p className="text-smallText dashboard-tracker-texts">
+                    Onboarding
+                  </p>
+                </BoxCard>
+                <BoxCard
+                  customClass="dashboard-tracker-cards-active"
+                  fn={() => redirect("/assessments")}
+                >
+                  <span
+                    style={{
+                      borderRadius: "50%",
+                      color: "#5c4bd3",
+                      height: "1.5rem",
+                      width: "1.5rem",
+                      display: "block",
+                      margin: "0 auto",
+                    }}
+                  >
+                    <IconContext.Provider
+                      value={{
+                        className: "dashboard-tracker-icons",
+                      }}
+                    >
+                      <FaRegHandshake />
+                    </IconContext.Provider>
+                  </span>
+                  <p className="text-smallText dashboard-tracker-texts-active">
+                    Assessments
+                  </p>
                 </BoxCard>
                 <BoxCard
                   customClass="dashboard-tracker-cards"
@@ -172,13 +179,15 @@ export const Dashboard = () => {
                   >
                     <IconContext.Provider
                       value={{
-                        className: "Cheiot",
+                        className: "dashboard-tracker-icons",
                       }}
                     >
                       <FaLock />
                     </IconContext.Provider>
                   </span>
-                  <p className="text-smallText">Check Ins</p>
+                  <p className="text-smallText dashboard-tracker-texts">
+                    Check Ins
+                  </p>
                 </BoxCard>
               </div>
               <Divider customClass="divider-bottom" />
@@ -189,6 +198,64 @@ export const Dashboard = () => {
                 Please finish the assessment to keep up the momentum in your
                 health journey.
               </p>
+              <BoxCard customClass="almost-cards">
+                <div
+                  className="almost-cards-contents"
+                  onClick={() => redirect("/assessments")}
+                >
+                  <span
+                    style={{
+                      borderRadius: "50%",
+                      border: "1px solid orange",
+                      height: "2.7rem",
+                      width: "2.7rem",
+                      display: "block",
+                      color: "orange",
+                      lineHeight: "2.4rem",
+                      fontSize: "0.85rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    20%
+                  </span>
+                  <div className="almost-titles">
+                    <p className="text-midText amost-nob">Assessment</p>
+                    <p className="text-smallText amost-nob">In progress</p>
+                  </div>
+                  <div className="almost-chevron">
+                    <HiOutlineChevronRight />
+                  </div>
+                </div>
+              </BoxCard>
+              <BoxCard customClass="almost-cards">
+                <div
+                  className="almost-cards-contents"
+                  onClick={() => redirect("/assessments")}
+                >
+                  <span
+                    style={{
+                      borderRadius: "50%",
+                      border: "1px solid orange",
+                      height: "2.7rem",
+                      width: "2.7rem",
+                      display: "block",
+                      color: "orange",
+                      lineHeight: "2.4rem",
+                      fontSize: "0.85rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    70%
+                  </span>
+                  <div className="almost-titles">
+                    <p className="text-midText amost-nob">Assessment</p>
+                    <p className="text-smallText amost-nob">In progress</p>
+                  </div>
+                  <div className="almost-chevron">
+                    <HiOutlineChevronRight />
+                  </div>
+                </div>
+              </BoxCard>
               <BoxCard customClass="almost-cards">
                 <div
                   className="almost-cards-contents"
@@ -211,7 +278,7 @@ export const Dashboard = () => {
                   </span>
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">Assessment</p>
-                    <p className="text-smallText amost-nob">In progress</p>
+                    <p className="text-smallText amost-nob">Completed</p>
                   </div>
                   <div className="almost-chevron">
                     <HiOutlineChevronRight />

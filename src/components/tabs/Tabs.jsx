@@ -11,6 +11,15 @@ export const Tabs = ({
   const [toggleActive, setToggleActive] = useState(1);
   if (!tabsContents.length) return <div>Sorry, something went wrong</div>;
   const tabsAction = (id) => {
+    if (id === 1) {
+      document
+        .getElementById("js-goals-buttons")
+        ?.setAttribute("class", "health-buttons-container show-btns");
+    } else if (id === 2) {
+      document
+        .getElementById("js-goals-buttons")
+        ?.setAttribute("class", "health-buttons-container hide-btns");
+    }
     setToggleActive(id);
   };
 

@@ -35,6 +35,20 @@ function App() {
   if (currentWindowsWidth() > 480) {
     redirect("/dashboard");
   }
+
+  /*const pageAccessedByReload =
+    (window.performance.navigation &&
+      window.performance.navigation.type === 1) ||
+    window.performance
+      .getEntriesByType("navigation")
+      .map((nav) => nav.type)
+      .includes("reload");
+
+  if (pageAccessedByReload || !pageAccessedByReload) {
+    window.localStorage.clear();
+    console.log("clean localStorage");
+  }*/
+
   return (
     <DataProvider>
       <Router>

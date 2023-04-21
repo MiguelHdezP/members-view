@@ -5,9 +5,14 @@ export const PrimaryButton = ({
   text = "",
   fn = () => {},
   customClass = "",
+  disabled = false,
 }) => {
   return (
-    <button className={`primary-button ${customClass}`} onClick={() => fn()}>
+    <button
+      className={`primary-button ${customClass}`}
+      onClick={() => fn()}
+      disabled={disabled}
+    >
       {text}
     </button>
   );

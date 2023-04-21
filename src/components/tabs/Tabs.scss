@@ -37,3 +37,11 @@
 .tabs-btn-active {
   border-bottom: 2px solid $mainPurple !important;
 }
+
+.hide-btns {
+  display: none !important;
+}
+
+.show-btns {
+  display: flex !important;
+}
