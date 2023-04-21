@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "../src/styles/main.scss";
-import { currentWindowsWidth } from "./utils/scripts";
+import { currentWindowsWidth, redirect, urlGet } from "./utils/scripts";
 import { DataProvider } from "./data/context/dataContext";
 import { Sidebar } from "./components/sideBar/Sidebar";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { JourneyBuilder } from "./pages/JourneyBuilder";
 import { CareManager } from "./pages/CareManager";
 import {
@@ -32,28 +27,17 @@ import { MemberSettings } from "./pages/userSettings/memberSettings/MemberSettin
 import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
 
 function App() {
-  if (currentWindowsWidth() > 480) {
-    redirect("/dashboard");
-  }
-
-  /*const pageAccessedByReload =
-    (window.performance.navigation &&
-      window.performance.navigation.type === 1) ||
-    window.performance
-      .getEntriesByType("navigation")
-      .map((nav) => nav.type)
-      .includes("reload");
-
-  if (pageAccessedByReload || !pageAccessedByReload) {
-    window.localStorage.clear();
-    console.log("clean localStorage");
-  }*/
+  useEffect(() => {
+    if (currentWindowsWidth() <= 480 && urlGet("/")) {
+      redirect("/dashboard");
+    }
+  }, []);
 
   return (
     <DataProvider>
       <Router>
         <main>
-          {currentWindowsWidth() > 480 ? <Sidebar /> : ""}
+          {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
           <Routes>
             <Route path="/" element={<JourneyBuilder />} />
             <Route path="/caremanager" element={<CareManager />} />

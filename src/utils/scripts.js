@@ -4,6 +4,10 @@ export const urlCatch = (testUrlPage = "") => {
   else return false;
 };
 
+export const urlGet = (testUrlPage = "") => {
+  return testUrlPage === window.location.pathname;
+};
+
 export const redirect = (page, time = 50) => {
   setTimeout(() => {
     window.location.href = page;
