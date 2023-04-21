@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.scss";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
 import { Header } from "../../components/header/Header";
@@ -11,7 +11,6 @@ import { IconContext } from "react-icons";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaRegHandshake, FaLock } from "react-icons/fa";
-import { RiSurveyLine } from "react-icons/ri";
 import { BsCalendar2WeekFill } from "react-icons/bs";
 import { BadgeTrophyFull } from "../../components/badgeTrophy/BadgeTrophyFull";
 import { BadgeTrophyOutline } from "../../components/badgeTrophy/BadgeTrophyOutline";
@@ -20,6 +19,8 @@ import { redirect } from "../../utils/scripts";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import AlertTitle from "@mui/material/AlertTitle";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export const Dashboard = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -28,6 +29,7 @@ export const Dashboard = () => {
   let alertTitle = "";
   let alertDesc = "";
   let alertLink = "#";
+  let deactivateAssessments = false;
 
   const toggleHeaderPanels = (action) => {
     if (action === "notifi") {
@@ -39,17 +41,10 @@ export const Dashboard = () => {
     }
   };
 
-  console.log("**********");
-  const checkIfActiveProgram = localStorage.getItem("exitProgram");
-  if (checkIfActiveProgram !== null && checkIfActiveProgram === "true") {
+  const checkIfActiveProgram = localStorage.getItem("activePause");
+  if (checkIfActiveProgram !== null && checkIfActiveProgram === "false") {
     let isProgramPaused = localStorage.getItem("activePause");
-    console.log(
-      "startAlertTextx: ",
-      alertTitle,
-      alertDesc,
-      alertLink,
-      activateAlert
-    );
+
     if (isProgramPaused !== null && isProgramPaused === "false") {
       alertTitle = "The program has been paused";
       alertDesc = "To reactivate the program go";
@@ -60,23 +55,10 @@ export const Dashboard = () => {
       alertLink = "/chats";
     }
     activateAlert = true;
-    localStorage.removeItem("exitProgram");
-
-    console.log(
-      "latertAlertTextx: ",
-      alertTitle,
-      alertDesc,
-      alertLink,
-      activateAlert
-    );
+    deactivateAssessments = true;
+    //  localStorage.removeItem("exitProgram");
   }
-  console.log(
-    "outAlertTextx: ",
-    alertTitle,
-    alertDesc,
-    alertLink,
-    activateAlert
-  );
+
   return (
     <MobileContainer className="appImg">
       <Header
@@ -113,7 +95,7 @@ export const Dashboard = () => {
               <div className="journey-tracker">
                 <BoxCard
                   customClass="dashboard-tracker-cards"
-                  fn={() => redirect("/assessments")}
+                  fn={() => redirect("/memberview/programOverview")}
                 >
                   <span
                     style={{
@@ -138,8 +120,11 @@ export const Dashboard = () => {
                   </p>
                 </BoxCard>
                 <BoxCard
-                  customClass="dashboard-tracker-cards-active"
-                  fn={() => redirect("/assessments")}
+                  customClass={`${
+                    deactivateAssessments
+                      ? "dashboard-tracker-cards-deactivate dashboard-tracker-cards-active"
+                      : "dashboard-tracker-cards-active"
+                  }`}
                 >
                   <span
                     style={{
@@ -193,89 +178,28 @@ export const Dashboard = () => {
               <Divider customClass="divider-bottom" />
             </div>
             <div className="dashboard-contents-progress">
-              <p className="text-title startS-title-text">Almost There</p>
+              <p className="text-title startS-title-text">
+                Keep up the Good Work!
+              </p>
               <p className="text-smallText">
-                Please finish the assessment to keep up the momentum in your
-                health journey.
+                You have finished your first assessment.
               </p>
               <BoxCard customClass="almost-cards">
                 <div
-                  className="almost-cards-contents"
+                  className="almost-cards-contents almost-cards-loader"
                   onClick={() => redirect("/assessments")}
                 >
-                  <span
-                    style={{
-                      borderRadius: "50%",
-                      border: "1px solid orange",
-                      height: "2.7rem",
-                      width: "2.7rem",
-                      display: "block",
-                      color: "orange",
-                      lineHeight: "2.4rem",
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    20%
-                  </span>
-                  <div className="almost-titles">
-                    <p className="text-midText amost-nob">Assessment</p>
-                    <p className="text-smallText amost-nob">In progress</p>
-                  </div>
-                  <div className="almost-chevron">
-                    <HiOutlineChevronRight />
-                  </div>
-                </div>
-              </BoxCard>
-              <BoxCard customClass="almost-cards">
-                <div
-                  className="almost-cards-contents"
-                  onClick={() => redirect("/assessments")}
-                >
-                  <span
-                    style={{
-                      borderRadius: "50%",
-                      border: "1px solid orange",
-                      height: "2.7rem",
-                      width: "2.7rem",
-                      display: "block",
-                      color: "orange",
-                      lineHeight: "2.4rem",
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    70%
-                  </span>
-                  <div className="almost-titles">
-                    <p className="text-midText amost-nob">Assessment</p>
-                    <p className="text-smallText amost-nob">In progress</p>
-                  </div>
-                  <div className="almost-chevron">
-                    <HiOutlineChevronRight />
-                  </div>
-                </div>
-              </BoxCard>
-              <BoxCard customClass="almost-cards">
-                <div
-                  className="almost-cards-contents"
-                  onClick={() => redirect("/assessments")}
-                >
-                  <span
-                    style={{
-                      borderRadius: "50%",
-                      border: "1px solid green",
-                      height: "2.7rem",
-                      width: "2.7rem",
-                      display: "block",
-                      color: "green",
-                      lineHeight: "2.4rem",
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    100%
-                  </span>
+                  <CircularProgressbar
+                    value={100}
+                    text="100%"
+                    styles={buildStyles({
+                      textSize: "1.5rem",
+                      pathColor: `#00a223`,
+                      textColor: "#00a223",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "white",
+                    })}
+                  />
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">Assessment</p>
                     <p className="text-smallText amost-nob">Completed</p>
@@ -285,26 +209,56 @@ export const Dashboard = () => {
                   </div>
                 </div>
               </BoxCard>
+              <Divider customClass="divider-bottom" />
+            </div>
+            <div className="dashboard-contents-progress">
+              <p className="text-title startS-title-text">Almost There</p>
+              <p className="text-smallText">
+                Please finish the assessment to keep up the momentum in your
+                health journey.
+              </p>
               <BoxCard customClass="almost-cards">
                 <div
-                  className="almost-cards-contents"
+                  className="almost-cards-contents almost-cards-loader"
+                  onClick={() => redirect("/assessments")}
+                >
+                  <CircularProgressbar
+                    value={66}
+                    text="66%"
+                    styles={buildStyles({
+                      textSize: "1.5rem",
+                      pathColor: `orange`,
+                      textColor: "orange",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "white",
+                      margin: "0",
+                    })}
+                  />
+                  <div className="almost-titles">
+                    <p className="text-midText amost-nob">Assessment</p>
+                    <p className="text-smallText amost-nob">In progress</p>
+                  </div>
+                  <div className="almost-chevron">
+                    <HiOutlineChevronRight />
+                  </div>
+                </div>
+              </BoxCard>
+              <BoxCard customClass="almost-cards">
+                <div
+                  className="almost-cards-contents  almost-cards-loader"
                   onClick={() => redirect("/education")}
                 >
-                  <span
-                    style={{
-                      borderRadius: "50%",
-                      border: "1px solid #5c4bd3",
-                      height: "2.7rem",
-                      width: "2.7rem",
-                      display: "block",
-                      color: "#5c4bd3",
-                      lineHeight: "2.4rem",
-                      fontSize: "0.85rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    3/6
-                  </span>
+                  <CircularProgressbar
+                    value={50}
+                    text="3/6"
+                    styles={buildStyles({
+                      textSize: "1.5rem",
+                      pathColor: `#5c4bd3`,
+                      textColor: "#5c4bd3",
+                      trailColor: "#d6d6d6",
+                      backgroundColor: "white",
+                    })}
+                  />
                   <div className="almost-titles">
                     <p className="text-midText amost-nob">
                       Educational Content
@@ -416,7 +370,7 @@ export const Dashboard = () => {
             <div className="dashboard-contents-awards-progress">
               <div className="dash-seeAll">
                 <p className="text-title startS-title-text">In progress</p>
-                <LinkButton text="See All" />
+                <LinkButton text="See All" href="/awards" />
               </div>
               <div className="dashboard-contents-awards-badges">
                 <BadgeTrophyOutline />

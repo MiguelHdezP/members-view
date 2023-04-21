@@ -42,10 +42,12 @@
   border: 1px solid $mainPurple;
   background-color: rgba($color: $mainPurple, $alpha: 0.1);
   color: $mainPurple;
+}
 
-  &:hover {
-    background-color: rgba($color: $mainPurple, $alpha: 0.1);
-  }
+.dashboard-tracker-cards-deactivate {
+  border: 1px solid $strokeGray;
+  background-color: rgba($color: $disabled, $alpha: 0.2);
+  color: $disabled;
 }
 
 .dashboard-tracker-texts,
@@ -98,12 +100,22 @@
     justify-content: space-between;
 
     .almost-titles {
-      flex: 2;
-      margin-left: 1.5rem;
+      position: absolute;
+      left: 1rem;
+      right: 0;
+      margin: 0 auto;
+      width: 39%;
       & > * {
         text-align: left;
       }
     }
+    .almost-chevron {
+      position: absolute;
+      right: 3rem;
+    }
+  }
+  .almost-cards-loader {
+    width: 60px;
   }
 }
 

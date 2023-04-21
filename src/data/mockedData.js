@@ -25,7 +25,7 @@ export const optInOnboardingSMSData = [
     id: 2,
     type: "yes",
     message: [
-      "Great! Here is some helpful information about your condition:",
+      "Great! Here is some helpful information about your Care Program:",
       "www.client.com/program/education",
     ],
     href: "/memberview/optinonboarding/authentication",

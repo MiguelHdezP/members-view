@@ -50,9 +50,11 @@ export const MemberSettings = () => {
   };
 
   const handleLeave = () => {
-    localStorage.setItem("exitProgram", "true");
+    //localStorage.setItem("exitProgram", "true");
     handleOpen();
     setLeave(false);
+    localStorage.setItem("activePause", `${checkedSwitch}`);
+    localStorage.setItem("exitProgram", `${!checkedSwitch}`);
   };
 
   const toggleHeaderPanels = (action) => {

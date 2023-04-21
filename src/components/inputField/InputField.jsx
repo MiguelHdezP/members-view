@@ -39,6 +39,7 @@ export const InputField = ({
       maxLength={maxLength}
       onClick={() => fn()}
       onChange={(e) => inputData(e)}
+      disabled={disabled}
     />
   );
 };

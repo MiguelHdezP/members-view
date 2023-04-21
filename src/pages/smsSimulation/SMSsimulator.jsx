@@ -34,14 +34,6 @@ export const SMSsimulator = ({ SMSdata, userResponses }) => {
                 })}
                 <div ref={msgScroll}></div>
               </div>
-              {img.length ? (
-                <div className="sm-chat-dummyImg">
-                  <img src={dummyImg} alt="" />
-                  <span className="sm-chat-dummyText ">{img}</span>
-                </div>
-              ) : (
-                ""
-              )}
             </>
           );
         })}
