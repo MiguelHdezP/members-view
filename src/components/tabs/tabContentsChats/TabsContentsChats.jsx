@@ -3,8 +3,10 @@ import "./TabsContentsChats.scss";
 import { chatTabs } from "../../../data/mockedData";
 import { ChatBadges } from "../../chatBadges/ChatBadges";
 import { BsCheckAll, BsCheck, BsChevronLeft } from "react-icons/bs";
-import { FiPlus } from "react-icons/fi";
+import { IoMdSend } from "react-icons/io";
+import { MdArchive, MdUnarchive } from "react-icons/md";
 import { Divider } from "../../divider/Divider";
+import { IconContext } from "react-icons";
 
 const ActiveChats = () => {
   const [enterChat, setEnterChat] = useState(true);
@@ -140,6 +142,15 @@ const ActiveChats = () => {
               <p className="text-smallText reset-margin">Online</p>
             </div>
           </div>
+          <IconContext.Provider
+            value={{
+              className: "chat-archive-icon",
+            }}
+          >
+            <span>
+              <MdArchive />
+            </span>
+          </IconContext.Provider>
         </li>
         <Divider customClass="chats-divider" />
       </ul>
@@ -216,9 +227,15 @@ const ActiveChats = () => {
           placeholder="Your message"
           className="chats-input-input"
         />
-        <span className="chats-input-plus">
-          <FiPlus />
-        </span>
+        <IconContext.Provider
+          value={{
+            className: "chat-send-icon",
+          }}
+        >
+          <span className="chats-input-send">
+            <IoMdSend />
+          </span>
+        </IconContext.Provider>
       </div>
     </div>
   );
@@ -307,6 +324,15 @@ const Archived = () => {
               <p className="text-smallText reset-margin">Online</p>
             </div>
           </div>
+          <IconContext.Provider
+            value={{
+              className: "chat-archive-icon",
+            }}
+          >
+            <span>
+              <MdUnarchive />
+            </span>
+          </IconContext.Provider>
         </li>
         <Divider customClass="chats-divider" />
       </ul>
@@ -383,9 +409,15 @@ const Archived = () => {
           placeholder="Your message"
           className="chats-input-input"
         />
-        <span className="chats-input-plus">
-          <FiPlus />
-        </span>
+        <IconContext.Provider
+          value={{
+            className: "chat-send-icon",
+          }}
+        >
+          <span className="chats-input-send">
+            <IoMdSend />
+          </span>
+        </IconContext.Provider>
       </div>
     </div>
   );

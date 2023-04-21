@@ -99,6 +99,13 @@
     display: flex;
     justify-content: flex-start;
 
+    .dashboard-pill-new {
+      background-color: #00a223;
+      border-radius: 10px;
+      color: $white;
+      padding: 0.5rem 1rem;
+    }
+
     .almost-titles {
       margin-left: 1.5rem;
       & > * {
