@@ -199,11 +199,6 @@ const ActiveChats = () => {
           </div>
         </div>
         <div className="chats-contents-right">
-          <div className="chat-ongoing-globe2">
-            <p className="text-smallText chat-ongoing-smallText reset-margin">
-              Lorem Ipsum is simply dummy text
-            </p>
-          </div>
           <div className="chat-ongoing-globes-container">
             <div className="chat-ongoing-globe2">
               <p className="text-smallText chat-ongoing-smallText reset-margin">
