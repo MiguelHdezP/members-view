@@ -1,0 +1,157 @@
+@import "../../styles/main.scss";
+
+.appoint-newappoint-section {
+  background-color: $white !important;
+
+  .appoint-tracker {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+
+    .appoint-tracker-stages-container {
+      z-index: 1000;
+
+      .appoint-tracker-stages {
+        background-color: $white;
+        border: 1px solid $strokeGray;
+        border-radius: 50%;
+        color: $gray600;
+        padding: 0.4rem 0.7rem;
+      }
+
+      .appoint-tracker-text-center {
+        color: $gray600;
+        margin-top: 0.7rem;
+        text-align: center;
+      }
+
+      .appoint-tracker-stages-active {
+        border: none;
+        background-color: $mainPurple;
+        color: $white;
+      }
+    }
+
+    .appoint-tracker-divider {
+      position: absolute;
+      width: 100%;
+      border: 1px solid $strokeGray;
+      top: -7px;
+    }
+  }
+
+  .appoint-dropdown {
+    .appoint-dropdown-check {
+      display: flex;
+      margin: 1rem 0;
+      margin-bottom: 2rem;
+
+      input[type="checkbox"] {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+
+  .appoint-choose-time {
+    .appoint-time-cards {
+      display: flex;
+      justify-content: flex-start;
+
+      .appoint-choose-timeCard {
+        border: 1px solid $strokeGray;
+        border-radius: 10px;
+        background-color: $white;
+        color: $gray600;
+        margin-right: 1.5rem;
+        padding: 0.6rem 1rem;
+      }
+      .appoint-timeCard-active {
+        background-color: rgba($color: $mainPurple, $alpha: 0.2);
+        border: 1px solid $mainPurple;
+        color: $mainPurple;
+      }
+    }
+  }
+}
+
+.mobile-scroll-appoint {
+  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+  background-color: $footerGray;
+
+  .appoint-page {
+    @include scroll-page();
+
+    .appoint-container {
+      padding: 1rem 2rem;
+
+      .appoint-midText {
+        text-align: left;
+        .appoint-midText-icon {
+          margin-left: 0.5rem;
+        }
+      }
+
+      .appoint-calendar-cards {
+        .appoint-calendar {
+          display: flex;
+          justify-content: space-between;
+
+          .appoint-boxcard {
+            border-top: 4px solid $mainPurple;
+            background-color: $white;
+            flex: 2;
+
+            .appoint-links {
+              margin-top: 1rem;
+              text-align: left;
+
+              .appoint-link-space-left {
+                margin-left: 0.5rem;
+              }
+              .appoint-link-space-right {
+                margin-right: 0.5rem;
+              }
+            }
+          }
+
+          .appoint-calendar-text {
+            margin-right: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.appoint-smallText {
+  margin-bottom: 0.5rem !important;
+}
+
+.appoint-divider {
+  border-width: 2px;
+  margin: 1.5rem 0;
+}
+
+.appoint-buttons-container {
+  border: 1px solid $strokeGray;
+  background-color: $white;
+  bottom: 6.5rem;
+  display: flex;
+  padding: 1.5rem 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  .appoint-button-bottom {
+    width: 90%;
+  }
+}
+
+.appoint-button-newAppoint {
+  background-color: $footerGray !important;
+  bottom: auto;
+}
+.appoint-title-maginTop {
+  margin-top: 2rem;
+}

@@ -1,0 +1,185 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: $strokeGray;
+}
+
+p {
+  text-indent: initial;
+}
+
+a {
+  cursor: pointer;
+}
+
+.tempo {
+  background-color: $white;
+  height: 96vh;
+  width: 25%;
+  min-width: 26rem;
+  margin: 0 auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.main-container {
+  background-color: $white;
+  //background-repeat: no-repeat;
+  //background-position: 50%;
+  height: 96vh;
+  //background-size: contain;
+  width: 25%;
+  min-width: 26rem;
+  margin: 0 auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  position: relative;
+}
+
+@media (max-width: 800px) {
+  .main-container {
+    height: 99vh;
+    min-width: 100%;
+  }
+}
+
+.mobile-container {
+  border: 1px solid $disabled;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.bottom-spacer {
+  height: 15rem;
+}
+
+.mobile-scroll-section {
+  @include mobile-scroll(76vh, 100%, 7.2%);
+  overscroll-behavior: contain;
+}
+
+.startS-texts {
+  position: relative;
+  top: 16rem;
+
+  .startS-small-text-firstScreen,
+  .startS-title-text {
+    text-align: center;
+  }
+}
+
+.startS-title-text {
+  margin-bottom: 1rem !important;
+}
+
+.startS-bottom-possition,
+.startS-bottom-possition-init {
+  position: absolute;
+  width: 100%;
+}
+
+.startS-bottom-possition {
+  bottom: auto;
+
+  .startS-primary-button {
+    width: 90%;
+  }
+}
+
+.startS-primary-button {
+  width: 90%;
+}
+
+.startS-bottom-possition-init {
+  bottom: 2.6rem;
+}
+
+.startS-contents {
+  margin: 0 auto;
+  top: 0;
+  position: relative;
+  width: 100%;
+
+  .startS-small-text {
+    text-transform: capitalize;
+    text-align: left;
+  }
+
+  .startS-answers {
+    .startS-roundedCard {
+      cursor: pointer;
+      margin: 2rem 0;
+
+      &:hover {
+        @include purpleHover;
+      }
+    }
+  }
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.reset-margin {
+  margin: 0 !important;
+}
+
+.text-left {
+  text-align: left !important;
+}

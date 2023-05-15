@@ -1,0 +1,31 @@
+@import "../../styles/main.scss";
+
+.chat-badges {
+  align-items: center;
+  border-radius: 50%;
+  color: $white;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  width: 45px;
+}
+
+.chat-badge-color1 {
+  background-color: $badgeChat1;
+}
+
+.chat-badge-color2 {
+  background-color: $badgeChat2;
+}
+
+.chat-badge-color3 {
+  background-color: $badgeChat3;
+}
+
+.chat-badge-color4 {
+  background-color: $badgeChat4;
+}
+
+.chat-badge-color5 {
+  background-color: $badgeChat5;
+}

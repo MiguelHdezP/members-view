@@ -1,0 +1,146 @@
+@import "./variables.scss";
+
+@mixin fixedWidth($width: 100%, $maxWidth: 22.7vw, $minWidth: 37vw) {
+  width: $width;
+  max-width: $maxWidth;
+  min-width: $minWidth;
+  background-color: red;
+}
+
+@mixin chatGlobes($color, $width: 78%) {
+  border-radius: 25px;
+  background-color: $color;
+  font-size: 0.85rem;
+  height: auto;
+  line-height: 1.3rem;
+  margin: 1rem 0.3rem 0.4rem;
+  position: relative;
+  padding: 1rem;
+  text-indent: 19px;
+  width: $width;
+  z-index: 100;
+}
+
+@mixin mobile-scroll($height: 75.1vh, $width: 100%, $top: 0) {
+  height: $height;
+  overflow: scroll;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  position: relative;
+  top: $top;
+  width: $width;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+//comment
+@mixin scroll-page($top: 0, $width: 100%) {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  top: $top;
+  width: $width;
+}
+
+@mixin headerFooter($bColor, $padding) {
+  background-color: $bColor;
+  padding: $padding;
+  z-index: 1000;
+}
+
+@mixin btns($bkColor, $color, $hoverColor, $alphaC) {
+  background-color: $bkColor;
+  border: none;
+  border-radius: 5px;
+  color: $color;
+  cursor: pointer;
+  display: block;
+  font-size: 0.9rem;
+  outline: none;
+  padding: 0.6rem 0;
+  width: 100%;
+  margin: 0 auto 1.5rem;
+
+  &:hover {
+    background-color: rgba($color: $hoverColor, $alpha: $alphaC);
+  }
+}
+
+@mixin rowCards {
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid $strokeGray;
+  display: flex;
+  padding: 1rem;
+}
+
+@mixin circleNotify($bkColor) {
+  background-color: $bkColor;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+
+$colors: $badgeChat1, $badgeChat2, $badgeChat3, $badgeChat4, $badgeChat5;
+$repeat: 1;
+
+@mixin randomColor {
+  @for $i from 1 through $repeat {
+    align-items: center;
+    background-color: lighten(nth($colors, random(length($colors))), 20%);
+    border-radius: 50%;
+    color: $white;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    width: 45px;
+  }
+}
+
+@mixin headingText {
+  color: $dark;
+  font-size: 1.5rem;
+}
+
+@mixin smallText {
+  color: $dark;
+  font-size: 0.813rem;
+}
+
+@mixin defaultText {
+  color: $dark;
+  font-size: 1rem;
+}
+
+@mixin strongText {
+  color: $secondaryDark;
+  font-size: 1rem;
+}
+
+@mixin purpleHover {
+  border-color: $mainPurple;
+  background-color: rgba($color: $mainPurple, $alpha: 0.1);
+  color: $mainPurple;
+}
+
+@mixin badges($borderColor, $color) {
+  background-color: $white;
+  border: 1px solid $borderColor;
+  border-radius: 50%;
+  color: $color;
+  font-size: 4rem;
+  padding: 0.5rem;
+}
+
+@mixin individualChatGlobe($color) {
+  background-color: $color;
+  border-radius: 0.4rem;
+  text-align: right;
+  margin: 0.8rem 0;
+  padding: 0.3rem 1rem;
+  & > p {
+    color: $white;
+  }
+}

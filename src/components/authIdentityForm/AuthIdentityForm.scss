@@ -1,0 +1,23 @@
+@import "../../styles/main.scss";
+
+.auth-methods {
+  height: 11.2rem;
+}
+
+.auth-passcode {
+  display: flex;
+  height: 9.99rem;
+  .passcode-inputs {
+    height: 2.5rem;
+    width: 2.5rem;
+    text-align: center;
+    &:focus {
+      border-color: $mainPurple;
+    }
+  }
+}
+
+.passcode-resend {
+  position: relative;
+  top: -4.5rem;
+}

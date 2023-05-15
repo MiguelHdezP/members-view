@@ -1,0 +1,46 @@
+@import "../../styles//main.scss";
+
+.mobile-scroll-awards {
+  @include mobile-scroll();
+
+  .awards-page {
+    @include scroll-page();
+
+    .awards-page-contents {
+      padding: 1.6rem 1.5rem;
+
+      .awards-badges-section {
+        .awards-text-mid {
+          text-align: left;
+        }
+
+        .awards-text-small {
+          color: $gray600;
+        }
+
+        .awards-badges {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          .awards-single-badgeProgress {
+            .awards-trophy-inprogress {
+              @include badges($gray160, $gray160);
+            }
+
+            .awards-small-text {
+              color: $mainPurple;
+            }
+          }
+
+          .awards-single-badge {
+            .awards-trophy {
+              @include badges($mainPurple, $mainPurple);
+            }
+          }
+        }
+      }
+    }
+  }
+}

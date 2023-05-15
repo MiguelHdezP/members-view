@@ -1,0 +1,86 @@
+@import "../../styles/main.scss";
+
+.mobile-scroll-firstTime {
+  @include mobile-scroll();
+  & > * {
+    text-align: left !important;
+  }
+
+  .firsTime-page {
+    @include scroll-page();
+
+    .firstTime-page-contents {
+      padding: 1.6rem 1.5rem;
+
+      .firstTime-section-contents {
+        margin-bottom: 3rem;
+      }
+
+      .firstTime-topImg {
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+      .firstTime-title {
+        @include headingText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subText {
+        @include defaultText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subTitle {
+        font-size: 1.125rem;
+      }
+
+      .firstTime-article-boxCard {
+        margin: 2rem 0 3rem;
+        padding: 1.5rem;
+
+        .firstTime-article-title {
+          margin-bottom: 0.5rem;
+        }
+
+        .firstTime-article-list {
+          .firstTime-list {
+            color: $mainPurple;
+            list-style: disc;
+            margin-left: 1rem;
+            padding: 0.5rem 0;
+
+            .firstTime-list-anchor {
+              color: $mainPurple;
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .firstTime-boxCard {
+      background-color: $footerGray;
+      bottom: 0;
+      border: 1px solid $strokeGray;
+      border-radius: unset;
+      position: absolute;
+      padding: 2rem;
+      width: 100%;
+
+      .fistTime-primaryBtn {
+        background-color: $mainPurple;
+        color: $white;
+        margin: 0;
+
+        &:hover {
+          background-color: $lightGray;
+        }
+      }
+    }
+  }
+  .open-activity {
+    right: 0;
+  }
+}

@@ -1,0 +1,147 @@
+.mobile-icon-effect {
+  border: none;
+  background: none;
+  border-radius: 5px;
+  color: $gray600;
+  cursor: pointer;
+  fill: $gray600;
+  padding: 0.4rem 0.8rem;
+  position: relative;
+  text-align: center;
+
+  &:hover {
+    background-color: rgba($color: $white, $alpha: 0.5);
+    color: $mainPurple;
+    & > .active-icon {
+      color: $gray600;
+      fill: $mainPurple;
+    }
+  }
+}
+
+.mobile-icon-color {
+  color: $mainPurple !important;
+}
+
+.mobile-icon-new {
+  @include circleNotify($notification);
+  display: inline-block;
+  position: absolute;
+  right: 0.563rem;
+  top: 0.563rem;
+  outline: 1px solid white;
+}
+
+.text-title {
+  @include headingText;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.text-midText {
+  @include defaultText;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.text-smallText {
+  @include smallText;
+  text-align: left;
+  padding-bottom: 1.5rem;
+}
+
+.button-card-favs {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 5.5rem;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+
+  .button-card-star-inprogress,
+  .button-card-star {
+    font-size: 1.5rem;
+  }
+
+  .button-card-star {
+    color: $disabled;
+    margin-right: 1rem;
+
+    &:hover {
+      color: rgba($color: $dark, $alpha: 0.7);
+    }
+  }
+  .button-card-star-inprogress {
+    color: $white;
+    margin-right: 2.5rem;
+    position: relative;
+    top: -0.5rem;
+
+    &:hover {
+      color: rgba($color: $mainPurple, $alpha: 0.8);
+    }
+  }
+}
+
+.image-top-roundedCorners {
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
+}
+
+.image-topBottom-roundedCorners {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+.img-tint-dark {
+  filter: saturate(94%) brightness(67%);
+}
+
+.text-camelCase {
+  text-transform: capitalize;
+}
+
+.asmt-trophy-container {
+  background-color: $mainPurple;
+  border-radius: 50%;
+  height: 5.3rem;
+  width: 5.3rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  line-height: 5.9rem;
+
+  .asmt-trophy {
+    color: $white;
+  }
+}
+
+.asmt-trophy-containerOut {
+  background-color: none;
+  border: 2px solid $disabled;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5.3rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  line-height: 5.7rem;
+
+  .asmt-trophy {
+    color: $disabled;
+  }
+}
+
+.flag-paused {
+  background-color: $disabled;
+  color: $white;
+}
+
+.flag-active {
+  background-color: $activeFlag;
+  color: $white;
+}

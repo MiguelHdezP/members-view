@@ -1,0 +1,25 @@
+@import "../../styles/main.scss";
+
+.section-header {
+  @include rowCards;
+  justify-content: space-between;
+
+  .section-header-title {
+    $color: $dark;
+    font-size: 1rem;
+  }
+
+  .section-header-close {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    padding: 0.3rem 0.5rem;
+
+    &:hover {
+      background-color: rgba($color: $lighterGray, $alpha: 0.5);
+      color: $mainPurple;
+    }
+  }
+}
