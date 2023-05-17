@@ -6,18 +6,21 @@ import { InputField } from "../inputField/InputField";
 import { LinkButton } from "../linkButton/LinkButton";
 
 export const AuthIdentification = () => {
-  let inputs = [1, 2, 3];
+  let inputs = ["First Name", "Last Name", "Date of Birth"];
   return (
     <div className="auth-id">
-      {inputs.map((e, i) => (
-        <InputField
-          type="text"
-          placeholder="First Name"
-          fakeType="text"
-          id={`${i + 1}`}
-          key={i}
-        />
-      ))}
+      {inputs.map((e, i) => {
+        console.log("Mikle: ", e);
+        return (
+          <InputField
+            type="text"
+            placeholder={e}
+            fakeType="text"
+            id={`${i + 1}`}
+            key={i}
+          />
+        );
+      })}
     </div>
   );
 };

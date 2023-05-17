@@ -100,13 +100,11 @@ const onbaordConditionContentSingle = (
             title="COPD Assessment "
             desc="Comming Soon"
             type="none"
-            redirectPath="/appointments"
           />,
           <ContentCard
             title="Hypertension Assessment"
             desc="Comming Soon"
             type="none"
-            redirectPath="/appointments"
           />,
         ],
       },

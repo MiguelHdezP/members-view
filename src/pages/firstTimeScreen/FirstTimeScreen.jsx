@@ -150,7 +150,7 @@ export const FirstTimeScreen = () => {
           </div>
         </section>
       </div>
-      <BoxCard customClass="firstTime-boxCard">
+      <BoxCard customClass="firstTime-boxCard" prov={true}>
         <PrimaryButton
           text="Continue to Care Journey Dashboard"
           customClass="fistTime-primaryBtn"

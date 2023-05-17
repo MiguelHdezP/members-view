@@ -8,6 +8,7 @@ export const BoxCard = ({
   id = 0,
   fn = (id) => {},
   setEduActive = (val) => {},
+  prov = false,
 }) => {
   const handleFn = (id) => {
     if (id === 3) {
@@ -22,11 +23,13 @@ export const BoxCard = ({
       setEduActive(false);
     }
   };
+
   return (
     <div
       className={`box-card ${customClass}`}
       id={`js-tracker-boxcard-${id}`}
       onClick={() => handleFn(id)}
+      style={prov ? { marginTop: "-1rem" } : {}}
     >
       {children}
     </div>
