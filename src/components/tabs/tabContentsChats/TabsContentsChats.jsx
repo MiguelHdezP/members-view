@@ -179,7 +179,7 @@ const ActiveChats = () => {
                 Lorem Ipsum is simply dummy text
               </p>
             </div>
-            <p className="text-smallText  reset-margin chat-time-text">
+            <p className="text-smallText  reset-margin chat-time-text padding-prov-bottom">
               HH:MM AM
               <span>
                 <BsCheckAll />
@@ -205,7 +205,7 @@ const ActiveChats = () => {
                 Here is the text of the last chat.
               </p>
             </div>
-            <p className="text-smallText  reset-margin chat-time-text">
+            <p className="text-smallText  reset-margin chat-time-text padding-prov-bottom">
               HH:MM AM
               <span>
                 <BsCheckAll />
@@ -338,11 +338,6 @@ const Archived = () => {
               Lorem Ipsum is simply dummy text
             </p>
           </div>
-          <div className="chat-ongoing-globe1">
-            <p className="text-smallText chat-ongoing-smallText reset-margin">
-              Lorem Ipsum is simply
-            </p>
-          </div>
         </div>
         <div className="chats-contents-right">
           <div className="chat-ongoing-globe2">
@@ -356,7 +351,7 @@ const Archived = () => {
                 Lorem Ipsum is simply dummy text
               </p>
             </div>
-            <p className="text-smallText  reset-margin chat-time-text">
+            <p className="text-smallText  reset-margin chat-time-text padding-prov-bottom">
               HH:MM AM
               <span>
                 <BsCheckAll />
@@ -387,7 +382,7 @@ const Archived = () => {
                 Here is the text of the last chat.
               </p>
             </div>
-            <p className="text-smallText  reset-margin chat-time-text">
+            <p className="text-smallText  reset-margin chat-time-text  padding-prov-bottom">
               HH:MM AM
               <span>
                 <BsCheckAll />

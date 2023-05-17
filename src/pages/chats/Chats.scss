@@ -139,10 +139,11 @@
 }
 
 .chats-inputText {
-  bottom: 0;
+  background-color: $white;
+  bottom: 16.5%;
   border-top: 1px solid $strokeGray;
   left: 0;
-  position: absolute;
+  position: fixed;
   padding: 1rem 0;
   width: 100%;
 
