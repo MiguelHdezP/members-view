@@ -15,9 +15,23 @@ export const ContentCard = ({
   type = "",
   redirectPath = "",
   IconImg = <div></div>,
+  fn,
+  stage,
 }) => {
   let progressColor = "";
   let provProgress = 0;
+
+  const handleFn = () => {
+    if (redirectPath.length) {
+      redirect(redirectPath);
+    }
+    if (stage === 2) {
+      fn(5);
+    }
+    if (stage === 3) {
+      fn(7);
+    }
+  };
 
   const leftImg = () => {
     if (type === "progress") {
@@ -62,6 +76,9 @@ export const ContentCard = ({
           <IconImg />
         </IconContext.Provider>
       );
+    } else if (type === "overdue") {
+      desc = "Not Started";
+      return <StatusFlag flagLabel="Overdue" classStatus="flag-overdue" />;
     } else if (type === "none") {
       return "";
     }
@@ -71,7 +88,7 @@ export const ContentCard = ({
     <BoxCard customClass="almost-cards">
       <div
         className="almost-cards-contents almost-cards-loader"
-        onClick={() => redirect(`/${redirectPath}`)}
+        onClick={handleFn}
       >
         {type === "none" ? (
           ""

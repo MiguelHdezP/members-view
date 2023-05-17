@@ -15,11 +15,8 @@ import { BsPlayCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
 import Modal from "@mui/material/Modal";
-import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
-import { Header } from "../../components/header/Header";
-import { Footer } from "../../components/footer/Footer";
 
-export const EducationPage = () => {
+export const EducationPage2 = () => {
   const [startState, setStartState] = useState(false);
   const [startState2, setStartState2] = useState(false);
   const [startState3, setStartState3] = useState(false);
@@ -82,8 +79,7 @@ export const EducationPage = () => {
   const handleClose = () => setOpenModal(false);
 
   return (
-    <MobileContainer className="appImg">
-      <Header favsState={addToFavs} />
+    <>
       <Modal
         open={openModal}
         onClose={handleClose}
@@ -101,27 +97,28 @@ export const EducationPage = () => {
           ></iframe>
         </BoxCard>
       </Modal>
-      <div className="mobile-scroll-education">
+      <div className="mobile-education">
         {toggleFavs || toggleNotifActive ? (
           ""
         ) : (
           <section className="education-page">
             <div className="education-general-info">
-              <h1 className="text-title education-text-title">
-                Your Care Program Education
-              </h1>
-              <p className="text-smallText education-text-mid">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-              </p>
               <BoxCard customClass="education-boxcard">
                 <ProgressPercentage
                   progressLabel="Your Progress this Week"
                   value={15}
                 />
               </BoxCard>
+              <h2 className="text-title education-text-title">
+                Your Educational Activities
+              </h2>
+              <p className="text-smallText education-text-mid">
+                Learn more about your conditions by viewing content selected for
+                you by your care manager.
+              </p>
             </div>
             <div className="education-todo">
-              <h2 className="text-midText education-text-mid">To Do</h2>
+              <h2 className="text-midText education-text-mid">COPD</h2>
               <RoundedCard customClass="education-rounded-card">
                 <IconContext.Provider
                   value={{
@@ -143,12 +140,12 @@ export const EducationPage = () => {
                 </IconContext.Provider>
                 <img
                   src={copdImg}
-                  alt="What is XYZ"
+                  alt="What is COPD?"
                   className="image-top-roundedCorners img-tint-dark"
                 />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
-                    What is XYZ?
+                    What is COPD?
                   </p>
                   <p className="text-midText education-text-mid">
                     Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
@@ -159,6 +156,7 @@ export const EducationPage = () => {
                   </p>
                 </div>
               </RoundedCard>
+              <h2 className="text-midText education-text-mid">Hypertension</h2>
               <RoundedCard customClass="education-rounded-card">
                 <IconContext.Provider
                   value={{
@@ -175,12 +173,12 @@ export const EducationPage = () => {
                 </IconContext.Provider>
                 <img
                   src={dietImg}
-                  alt="Dietitian Tips"
+                  alt="Signs and Symptoms of Hypertension"
                   className="image-top-roundedCorners img-tint-dark"
                 />
                 <div className="education-todo-texts">
                   <p className="text-midText education-semibold-text education-text-mid">
-                    Dietitian Tips
+                    Signs and Symptoms of Hypertension
                   </p>
                   <p className="text-midText education-text-mid">
                     Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit
@@ -195,7 +193,7 @@ export const EducationPage = () => {
             <div className="education-completed">
               <div className="education-completed-header">
                 <h2 className="text-midText education-text-mid education-mid-topMargin">
-                  Completed
+                  COPD
                 </h2>
               </div>
               <BoxCard customClass="education-completed-cardContainer">
@@ -264,6 +262,13 @@ export const EducationPage = () => {
                   </div>
                 </div>
               </BoxCard>
+            </div>
+            <div className="education-completed">
+              <div className="education-completed-header">
+                <h2 className="text-midText education-text-mid education-mid-topMargin">
+                  Hypertension
+                </h2>
+              </div>
               <BoxCard customClass="education-completed-cardContainer">
                 <IconContext.Provider
                   value={{
@@ -297,12 +302,44 @@ export const EducationPage = () => {
                   </div>
                 </div>
               </BoxCard>
+              <BoxCard customClass="education-completed-cardContainer">
+                <IconContext.Provider
+                  value={{
+                    className: "button-card-star",
+                  }}
+                >
+                  <button
+                    title="Add to favorites"
+                    className="button-card-favs"
+                    onClick={() => addContentToFavs(5)}
+                  >
+                    {startState5 ? <AiFillStar /> : <AiOutlineStar />}
+                  </button>
+                </IconContext.Provider>
+                <div
+                  className="education-completed-card"
+                  onClick={() => redirect("/educationArticle")}
+                >
+                  <img
+                    src={articleImg2}
+                    alt="Article Care Program"
+                    className="education-img image-topBottom-roundedCorners"
+                  />
+                  <div className="education-card-texts">
+                    <p className="text-midText education-semibold-text education-text-mid">
+                      Article Title
+                    </p>
+                    <p className="text-smallText education-text-mid">
+                      One line description
+                    </p>
+                  </div>
+                </div>
+              </BoxCard>
             </div>
             <div className="bottom-spacer"></div>
           </section>
         )}
       </div>
-      <Footer customClass="footer-moreOptions-bottomFix" />
-    </MobileContainer>
+    </>
   );
 };

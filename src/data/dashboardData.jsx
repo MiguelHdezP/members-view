@@ -6,7 +6,7 @@ import { ContentCard } from "../components/content-card/ContentCard";
 import { HiCheckCircle } from "react-icons/hi";
 import { FaAppleAlt } from "react-icons/fa";
 import { BsCalendar2WeekFill } from "react-icons/bs";
-import { EducationPage } from "../../src/pages/educationPage/EducationPage";
+import { EducationPage2 } from "../../src/pages/educationPage/EducationPage2";
 import { urlGetQueryString } from "../utils/scripts";
 import { Rewards } from "../components/rewards/Rewards";
 import { EducationCard } from "../components/education-card/EducationCard";
@@ -75,18 +75,11 @@ const onbaordConditionContentSingle = (
   stageCurrent = 0
 ) => {
   const { progress, eduTotalContents } = configObjt;
-  console.log("Fujur: ", progress, eduTotalContents);
   const conditionContent = [
     [
       {
         sectionType: "welcome",
-        content: [
-          <ContentCard
-            title="Program Overview Single"
-            type="none"
-            redirectPath="appointments"
-          />,
-        ],
+        content: [<ContentCard title="Program Overview" type="none" />],
       },
       {
         sectionType: configObjt.progress > 0 ? "eduP" : "newP",
@@ -94,9 +87,9 @@ const onbaordConditionContentSingle = (
           <ContentCard
             progress={progress}
             eduTotalContents={eduTotalContents}
-            title="Educational Content  Single"
+            title="Educational Content "
             type="progress"
-            redirectPath="appointments"
+            redirectPath="/education"
           />,
         ],
       },
@@ -104,16 +97,16 @@ const onbaordConditionContentSingle = (
         sectionType: "tasks",
         content: [
           <ContentCard
-            title="COPD Assessment  Single"
+            title="COPD Assessment "
             desc="Comming Soon"
             type="none"
-            redirectPath="appointments"
+            redirectPath="/appointments"
           />,
           <ContentCard
-            title="Hypertension Assessment Single"
+            title="Hypertension Assessment"
             desc="Comming Soon"
             type="none"
-            redirectPath="appointments"
+            redirectPath="/appointments"
           />,
         ],
       },
@@ -126,8 +119,91 @@ const onbaordConditionContentSingle = (
   return asmtArr;
 };
 
-const asmtConditionContentSingle = (stageCurrent) => {
+const asmtConditionContentSingle = (
+  stageCurrent,
+  setRenderStageJourneyTracker,
+  stage
+) => {
   const conditionContent = [
+    [
+      {
+        sectionType: "new",
+        content: [
+          <ContentCard
+            progress={0}
+            title="COPD Assessment"
+            type="progress"
+            fn={setRenderStageJourneyTracker}
+          />,
+        ],
+      },
+      {
+        sectionType: "new",
+        content: [
+          <ContentCard
+            progress={0}
+            title="Hypertension Assessment"
+            type="progress"
+            redirectPath="/assessments"
+          />,
+        ],
+      },
+      {
+        sectionType: "eduP",
+        content: [
+          <ContentCard
+            progress={3}
+            eduTotalContents={6}
+            title="Educational Content"
+            type="progress"
+            redirectPath="/education"
+          />,
+        ],
+      },
+      {
+        sectionType: "edu",
+        content: [
+          <EducationCard
+            thumbnail={copdImg}
+            eduCardtitle="What is COPD?"
+            eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
+            eduCardTime="3 min watch"
+          />,
+        ],
+      },
+      {
+        sectionType: "appoint",
+        content: [
+          <ContentCard
+            title="Care Manager Check In"
+            desc="Upcoming Appointment"
+            type="icon"
+            redirectPath="/appointments"
+            IconImg={BsCalendar2WeekFill}
+          />,
+        ],
+      },
+      {
+        sectionType: "tasks",
+        content: [
+          <ContentCard
+            title="COPD Check In"
+            desc="Comming Sooon"
+            type="none"
+          />,
+        ],
+      },
+      {
+        sectionType: "tasks",
+        content: [
+          <ContentCard
+            title="Hypertension Check In"
+            desc="Comming Sooon"
+            type="none"
+          />,
+        ],
+      },
+    ],
     [
       {
         sectionType: "complete",
@@ -190,6 +266,66 @@ const asmtConditionContentSingle = (stageCurrent) => {
         sectionType: "tasks",
         content: [
           <ContentCard
+            title="Hypertension Check In"
+            desc="Comming Sooon"
+            type="none"
+            redirectPath="checkin"
+          />,
+        ],
+      },
+    ],
+    [
+      {
+        sectionType: "new",
+        content: [
+          <ContentCard
+            progress={0}
+            title="Diabetes Assessment"
+            type="progress"
+            redirectPath="/assessments"
+          />,
+        ],
+      },
+
+      {
+        sectionType: "eduP",
+        content: [
+          <ContentCard
+            progress={5}
+            eduTotalContents={6}
+            title="Educational Content"
+            type="progress"
+            redirectPath="/education"
+          />,
+        ],
+      },
+      {
+        sectionType: "edu",
+        content: [
+          <EducationCard
+            thumbnail={copdImg}
+            eduCardtitle="What is COPD?"
+            eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
+            eduCardTime="3 min watch"
+          />,
+        ],
+      },
+      {
+        sectionType: "appoint",
+        content: [
+          <ContentCard
+            title="Care Manager Check In"
+            desc="Upcoming Appointment"
+            type="icon"
+            redirectPath="/appointments"
+            IconImg={BsCalendar2WeekFill}
+          />,
+        ],
+      },
+      {
+        sectionType: "tasks",
+        content: [
+          <ContentCard
             title="Health Check In"
             desc="Comming Sooon"
             type="none"
@@ -198,22 +334,16 @@ const asmtConditionContentSingle = (stageCurrent) => {
         ],
       },
     ],
-    [],
-    [],
   ];
-  let asmtArr = conditionContent[stageCurrent - 1];
-  if (stageCurrent === 0) {
-    asmtArr = allConditionContents(conditionContent);
-  }
-  return asmtArr;
+  return conditionContent[stageCurrent];
 };
 
 const chckInConditionContentSingle = (
   configObjt = { progress: 0, eduTotalContents: 0 },
-  stageCurrent = 0
+  stageCurrent = 0,
+  setRenderStageJourneyTracker
 ) => {
   const { progress, eduTotalContents } = configObjt;
-
   const conditionContent = [
     [
       {
@@ -221,9 +351,11 @@ const chckInConditionContentSingle = (
         content: [
           <ContentCard
             progress={0}
-            title="Health Check In"
+            title="Diabetes Check In Tote"
             type="progress"
             redirectPath="assessment"
+            stageCurrent={stageCurrent}
+            fn={setRenderStageJourneyTracker}
           />,
         ],
       },
@@ -231,7 +363,7 @@ const chckInConditionContentSingle = (
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In Single"
+            title="Care Manager Check In"
             desc="Upcoming Appointment"
             type="icon"
             redirectPath="checkin"
@@ -270,7 +402,6 @@ const chckInConditionContentSingle = (
   if (stageCurrent === 0) {
     asmtArr = allConditionContents(conditionContent);
   }
-  console.log("Meje asmtArr: ", asmtArr);
   return asmtArr;
 };
 
@@ -282,7 +413,7 @@ const eduConditionContentSingle = (stageCurrent) => {
         content: [
           <ContentCard
             progress={0}
-            title="COPD  Eduaction Single"
+            title="COPD  Eduaction"
             type="progress"
             redirectPath="assessment"
           />,
@@ -292,7 +423,7 @@ const eduConditionContentSingle = (stageCurrent) => {
         sectionType: "tasks",
         content: [
           <ContentCard
-            title="Care Manager  Eduaction Single"
+            title="Care Manager  Eduaction"
             desc="Upcoming Appointment"
             type="icon"
             redirectPath="checkin"
@@ -304,7 +435,7 @@ const eduConditionContentSingle = (stageCurrent) => {
         sectionType: "tasks",
         content: (
           <ContentCard
-            title="Health Eduaction Single"
+            title="Health Eduaction"
             desc="Comming Soon"
             type="none"
             redirectPath="checkin"
@@ -541,7 +672,6 @@ const chckInConditionContentMulti = (
   if (stageCurrent === 0) {
     asmtArr = allConditionContents(conditionContent);
   }
-  console.log("Meje asmtArr: ", asmtArr);
   return asmtArr;
 };
 
@@ -606,7 +736,12 @@ const eduConditionContentMulti = (stageCurrent) => {
   return asmtArr;
 };
 
-const serveDashboardContents = (type = "", stage = 0, stageCurrent = 0) => {
+const serveDashboardContents = (
+  type = "",
+  stage = 0,
+  stageCurrent = 0,
+  setRenderStageJourneyTracker
+) => {
   const storageContents = null; // { progress: 4, eduTotalContents: 7 }; //JSON.parse(sessionStorage.getItem("storedEducation"));
   let stageCurrentContent;
 
@@ -619,16 +754,33 @@ const serveDashboardContents = (type = "", stage = 0, stageCurrent = 0) => {
         );
         break;
       case 2:
-        stageCurrentContent = asmtConditionContentSingle(stageCurrent);
+        stageCurrentContent = asmtConditionContentSingle(
+          stageCurrent,
+          setRenderStageJourneyTracker
+        );
         break;
       case 3:
         stageCurrentContent = chckInConditionContentSingle(
           { progress: 0, eduTotalContents: 0 },
-          stageCurrent
+          stage,
+          setRenderStageJourneyTracker
         );
         break;
       case 4:
         stageCurrentContent = eduConditionContentSingle(stageCurrent);
+        break;
+      case 5:
+        stageCurrentContent = asmtConditionContentSingle(1, null, 5);
+        break;
+      case 6:
+        stageCurrentContent = chckInConditionContentSingle(
+          { progress: 0, eduTotalContents: 0 },
+          null,
+          6
+        );
+        break;
+      case 7:
+        stageCurrentContent = asmtConditionContentSingle(2, null, 7);
         break;
     }
   } else if (urlGetQueryString() === "multi") {
@@ -653,7 +805,6 @@ const serveDashboardContents = (type = "", stage = 0, stageCurrent = 0) => {
         break;
     }
   }
-  console.log("stageCurrentContent Juera: ", stageCurrentContent, type);
 
   if (storageContents !== null) {
     return stageCurrentContent.map((e) => {
@@ -680,8 +831,14 @@ const fullDashboardDataSingle = (
     if (stage === 1 && stageCurrent === 0 && status === "hidden") {
       setRenderStageJourneyTracker(2);
     }
-    {
+    const getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    if (getActiveStage !== null) {
+      let savedStage = getActiveStage.map((e) => e.stage);
+      if (savedStage.some((e) => e === 3) && stage === 2) {
+        stage = 6;
+      }
     }
+
     switch (stage) {
       case 1:
         return [
@@ -710,15 +867,23 @@ const fullDashboardDataSingle = (
         ];
       case 2:
         return [
-          <DashboardContentBlocks dashContentTitle="Keep up the good work">
-            {serveDashboardContents("complete", stage, stageCurrent)}
-          </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle={returnRightLabels().titles}
-            dashContentDesc={returnRightLabels().desc}
+            dashContentTitle="New Assessment"
+            dashContentDesc="You've been assigned a new assessment"
           >
-            {serveDashboardContents("new", stage, stageCurrent)}
-            {serveDashboardContents("eduP", stage, stageCurrent)}
+            <ContentCard
+              progress={0}
+              title="COPD Assessment"
+              type="progress"
+              stage={stage}
+              fn={setRenderStageJourneyTracker}
+            />
+            <ContentCard
+              progress={0}
+              title="Hypertension Assessment"
+              type="progress"
+              redirectPath="/assessments"
+            />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
             dashContentTitle="Upcoming Appointments"
@@ -776,40 +941,269 @@ const fullDashboardDataSingle = (
             dashContentTitle="New Check In"
             dashContentDesc="Let us know how you are feeling"
           >
-            {serveDashboardContents("new", stage, stageCurrent)}
+            <ContentCard
+              progress={0}
+              title="Diabetes Check In"
+              type="progress"
+              stage={stage}
+              fn={setRenderStageJourneyTracker}
+            />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle={returnRightLabels().titles}
-            dashContentDesc={returnRightLabels().tasks}
+            dashContentTitle="Almost There"
+            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
           >
-            {serveDashboardContents(
-              returnRightLabels().type,
-              stage,
-              stageCurrent
-            )}
+            <ContentCard
+              progress={70}
+              title="Hypertension Assessment"
+              type="progress"
+              redirectPath="assessment"
+            />
+            <ContentCard
+              progress={3}
+              eduTotalContents={6}
+              title="Educational Content"
+              type="progress"
+              redirectPath="education"
+            />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
             dashContentTitle="Upcoming Appointments"
             dashContentDesc="You have an upcoming appointment"
           >
-            {serveDashboardContents("appoint", stage, stageCurrent)}
+            <ContentCard
+              title="Care Manager Check In"
+              desc="Upcoming Appointment"
+              type="icon"
+              redirectPath="checkin"
+              IconImg={BsCalendar2WeekFill}
+            />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
             dashContentTitle="Upcoming Education"
             dashContentDesc="There is new content coming soon."
           >
-            {serveDashboardContents("edu", stage, stageCurrent)}
+            <EducationCard
+              thumbnail={copdImg}
+              eduCardtitle="What is COPD?"
+              eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
+              eduCardTime="3 min watch"
+            />
           </DashboardContentBlocks>,
           <Rewards />,
         ];
       case 4:
-        return [<EducationPage />];
+        return [<EducationPage2 />];
+      case 5:
+        return [
+          <DashboardContentBlocks dashContentTitle="Keep up the good work">
+            {serveDashboardContents("complete", 5, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Almost there"
+            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+          >
+            {serveDashboardContents("new", 5, stageCurrent)}
+            {serveDashboardContents("eduP", 5, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Appointments"
+            dashContentDesc={
+              serveDashboardContents("appoint", 5, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "You have an upcoming appointment"
+            }
+          >
+            {serveDashboardContents("appoint", 5, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming appointments"
+              : serveDashboardContents("appoint", 5, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Tasks"
+            dashContentDesc={
+              serveDashboardContents("tasks", 5, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "See what activities you have next:"
+            }
+          >
+            {serveDashboardContents("tasks", 5, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming Tasks"
+              : serveDashboardContents("tasks", 5, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Education"
+            dashContentDesc={
+              serveDashboardContents("edu", 5, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "There is new content coming soon."
+            }
+          >
+            {serveDashboardContents("edu", 5, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming education"
+              : serveDashboardContents("edu", 5, stageCurrent)}
+          </DashboardContentBlocks>,
+          <Rewards />,
+        ];
+      case 6:
+        return [
+          <DashboardContentBlocks
+            dashContentTitle="New Assessment"
+            dashContentDesc="You've been assigned a new assessment"
+          >
+            <ContentCard
+              progress={0}
+              title="Diabetes Assessment"
+              type="progress"
+              redirectPath="/assessments"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Almost there"
+            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+          >
+            <ContentCard
+              progress={95}
+              title="Hypertension Assessment"
+              type="progress"
+              redirectPath="/assessments"
+            />
+            <ContentCard
+              progress={5}
+              eduTotalContents={6}
+              title="Educational Content"
+              type="progress"
+              redirectPath="/education"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks dashContentTitle="Past Assessments">
+            <ContentCard
+              title="COPD Assessment"
+              desc="View Responses"
+              type="none"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks dashContentTitle="Upcoming Appointments">
+            <ContentCard
+              title="Care Manager Check In"
+              desc="Upcoming Appointment"
+              type="icon"
+              IconImg={BsCalendar2WeekFill}
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks dashContentTitle="Upcoming Tasks">
+            <ContentCard
+              title="Health Check In"
+              desc="Comming Sooon"
+              type="none"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Education"
+            dashContentDesc="There is new content coming soon."
+          >
+            <EducationCard
+              thumbnail={copdImg}
+              eduCardtitle="What is COPD?"
+              eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
+              eduCardTime="3 min watch"
+            />
+          </DashboardContentBlocks>,
+          <Rewards />,
+        ];
+      case 7:
+        return [
+          <DashboardContentBlocks
+            dashContentTitle="Reminder: Your Check Ins are overdue"
+            dashContentDesc="Complete it to maintain consistency and stay on the right path to wellness."
+          >
+            <ContentCard
+              progress={0}
+              title="Diabetes Check In"
+              type="overdue"
+              redirectPath="/memberview/CheckInsPage"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Almost There"
+            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+          >
+            <ContentCard
+              progress={70}
+              title="Hypertension Assessment"
+              type="progress"
+              redirectPath="/assessments"
+            />
+            <ContentCard
+              progress={3}
+              eduTotalContents={6}
+              title="Educational Content"
+              type="progress"
+              redirectPath="/education"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Appointments"
+            dashContentDesc="You have an upcoming appointment"
+          >
+            <ContentCard
+              title="Care Manager Check In"
+              desc="Upcoming Appointment"
+              type="icon"
+              redirectPath="/appointments"
+              IconImg={BsCalendar2WeekFill}
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Education"
+            dashContentDesc="There is new content coming soon."
+          >
+            <EducationCard
+              thumbnail={copdImg}
+              eduCardtitle="What is COPD?"
+              eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
+              eduCardTime="3 min watch"
+            />
+          </DashboardContentBlocks>,
+          <Rewards />,
+        ];
     }
   };
   let dynamicStatus = "";
 
-  if (stage === 4 || stage > 1) dynamicStatus = "activePassive";
-  else dynamicStatus = "hidden";
+  if (stage === 4 || stage > 1) {
+    dynamicStatus = "activePassive";
+  } else {
+    dynamicStatus = "hidden";
+  }
+  console.log("Gege: ", stage, stage == 2 ? "active" : "locked");
+
+  const handleAsmtVary = () => {
+    if (stage === 2 || stage === 5 || stage === 6) {
+      return "active";
+    } else {
+      return "locked";
+    }
+  };
+
+  const handleChkInVary = () => {
+    if (stage === 3 || stage === 7) {
+      return "active";
+    } else {
+      return "locked";
+    }
+  };
 
   dashboardDataSingle = {
     id: 1,
@@ -827,14 +1221,14 @@ const fullDashboardDataSingle = (
         id: 2,
         title: "Assessment",
         icon: <MdAssessment />,
-        status: stage == 2 ? "active" : "locked",
+        status: handleAsmtVary(),
         layout: trackerObj(),
       },
       {
         id: 3,
         title: "Checkin",
         icon: <HiCheckCircle />,
-        status: stage == 3 ? "active" : "locked",
+        status: handleChkInVary(),
         layout: trackerObj(),
       },
       {
@@ -976,7 +1370,7 @@ const fullDashboardDataMulti = (
           <Rewards />,
         ];
       case 4:
-        return [<EducationPage />];
+        return [<EducationPage2 />];
     }
   };
   let dynamicStatus = "";

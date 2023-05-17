@@ -2,6 +2,7 @@ import React from "react";
 import "./BoxCard.scss";
 
 export const BoxCard = ({
+  setNewNotiAsmt,
   children,
   customClass = "",
   id = 0,
@@ -9,6 +10,11 @@ export const BoxCard = ({
   setEduActive = (val) => {},
 }) => {
   const handleFn = (id) => {
+    if (id === 3) {
+      setNewNotiAsmt(true);
+    } else if (id === 2) {
+      setNewNotiAsmt(false);
+    }
     fn(id);
     if (id === 4) {
       setEduActive(true);

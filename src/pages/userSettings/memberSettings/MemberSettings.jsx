@@ -185,7 +185,7 @@ export const MemberSettings = () => {
         <div className="settings-leave-button">
           <PrimaryButton
             text="Return to Home Screen"
-            fn={() => redirect("/dashboard")}
+            fn={() => redirect("/dashboard?q=single")}
             customClass="startS-primary-button"
           />
         </div>

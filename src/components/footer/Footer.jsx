@@ -52,10 +52,9 @@ export const Footer = ({ customClass = "" }) => {
             </BoxCard>
             <p className="footer-option-label">Awards</p>
           </div>
-
           <div
             className="footer-option-button"
-            onClick={() => redirect("/dashboard")}
+            onClick={() => redirect("/dashboard?q=single")}
           >
             <BoxCard customClass="footer-card-option">
               <img
@@ -91,7 +90,7 @@ export const Footer = ({ customClass = "" }) => {
           <div className="footer-contents">
             <button
               className="mobile-icon-effect"
-              onClick={() => redirect("/dashboard")}
+              onClick={() => redirect("/dashboard?q=single")}
             >
               {<MdHomeFilled />}
               <p className="footer-icon-text">Care Journey</p>

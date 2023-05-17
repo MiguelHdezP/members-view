@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.scss";
 import "react-circular-progressbar/dist/styles.css";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
@@ -14,11 +14,40 @@ import { DashboardContents } from "../../data/dashboardData";
 export const Dashboard = () => {
   const [renderStageJourneyTracker, setRenderStageJourneyTracker] = useState(1);
   const [renderConditionDash, setRenderConditionDash] = useState(0);
+
   let DashboardContentsArr = DashboardContents(
     renderStageJourneyTracker,
     renderConditionDash,
     setRenderStageJourneyTracker
   );
+
+  const handleChangeOfStage = (id) => {
+    let getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    if (getActiveStage === null) {
+      let objta = [];
+      if (id === 2) {
+        objta = [
+          { stage: id, active: true },
+          { stage: 4, active: true },
+        ];
+      } else {
+        objta = [{ stage: id, active: true }];
+      }
+      sessionStorage.setItem("stagesAcive", JSON.stringify(objta));
+    } else {
+      let stageArr = [];
+      for (const prop in getActiveStage) {
+        stageArr.push(getActiveStage[prop].stage);
+      }
+      if (!stageArr.some((e) => e === id)) {
+        sessionStorage.setItem(
+          "stagesAcive",
+          JSON.stringify([...getActiveStage, { stage: id, active: true }])
+        );
+      }
+    }
+    setRenderStageJourneyTracker(id);
+  };
 
   let activateAlert = false;
   let alertTitle = "";
@@ -40,7 +69,6 @@ export const Dashboard = () => {
     }
     activateAlert = true;
   }
-
   return (
     <MobileContainer className="appImg">
       <Header customClass="reset-divider" />
@@ -64,7 +92,7 @@ export const Dashboard = () => {
               <JourneyTracker
                 stages={DashboardContentsArr.jTracker}
                 currentStage={renderStageJourneyTracker}
-                fn={setRenderStageJourneyTracker}
+                fn={handleChangeOfStage}
                 fn2={setRenderConditionDash}
               />
               <Divider customClass="divider-bottom" />

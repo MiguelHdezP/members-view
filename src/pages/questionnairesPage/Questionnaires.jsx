@@ -81,7 +81,7 @@ export const Questionnaires = () => {
       actionsBtns = (
         <ButtonsStartScreen
           text="Return to Care Journey Dashboard"
-          fn={() => redirect("/dashboard")}
+          fn={() => redirect("/dashboard?q=single")}
           customClassPrimaryButton="qa-primary-button"
         />
       );

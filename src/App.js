@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "../src/styles/main.scss";
 import { currentWindowsWidth, redirect, urlGet } from "./utils/scripts";
-import { DataProvider } from "./data/context/dataContext";
 import { Sidebar } from "./components/sideBar/Sidebar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { JourneyBuilder } from "./pages/JourneyBuilder";
@@ -25,7 +24,11 @@ import { Chats } from "./pages/chats/Chats";
 import { Appointments } from "./pages/appointments/Appointments";
 import { MemberSettings } from "./pages/userSettings/memberSettings/MemberSettings";
 import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
-import { DashboardTest } from "./pages/dashboard/DashboardTest";
+import { DataProvider } from "./data/context/dataContext";
+
+window.onbeforeunload = function () {
+  sessionStorage.clear();
+};
 
 function App() {
   useEffect(() => {
@@ -35,50 +38,53 @@ function App() {
   }, []);
 
   return (
-    //<DataProvider>
-    <Router>
-      <main>
-        {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
-        <Routes>
-          <Route path="/" element={<JourneyBuilder />} />
-          <Route path="/caremanager" element={<CareManager />} />
-          <Route
-            path="/memberview/optinonboarding"
-            element={<Optinonboarding />}
-          />
-          <Route path="/memberview/assessments" element={<Assessments />} />
-          <Route path="/memberview/checkins" element={<CheckIns />} />
-          <Route
-            path="/memberview/educationalContent"
-            element={<EducationalContent />}
-          />
-          <Route
-            path="/memberview/optinonboarding/authentication"
-            element={<Authentication />}
-          />
-          <Route
-            path="/memberview/programOverview"
-            element={<FirstTimeScreen />}
-          />
-          <Route path="/memberview/checkinsPage" element={<Questionnaires />} />
-          <Route path="/assessments" element={<Questionnaires />} />
-          <Route path="/awards" element={<AwardsPage />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/educationArticle" element={<EducationArticle />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/userSettings" element={<UserSettings />} />
-          <Route
-            path="/userSettings/member-settings"
-            element={<MemberSettings />}
-          />
-          <Route path="/healthInsights" element={<HealthInsights />} />
-          <Route path="/healthInsights/goals" element={<HealthGoals />} />
-          <Route path="/chats" element={<Chats />} />
-          <Route path="/appointments" element={<Appointments />} />
-        </Routes>
-      </main>
-    </Router>
-    // </DataProvider>
+    <DataProvider>
+      <Router>
+        <main>
+          {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
+          <Routes>
+            <Route path="/" element={<JourneyBuilder />} />
+            <Route path="/caremanager" element={<CareManager />} />
+            <Route
+              path="/memberview/optinonboarding"
+              element={<Optinonboarding />}
+            />
+            <Route path="/memberview/assessments" element={<Assessments />} />
+            <Route path="/memberview/checkins" element={<CheckIns />} />
+            <Route
+              path="/memberview/educationalContent"
+              element={<EducationalContent />}
+            />
+            <Route
+              path="/memberview/optinonboarding/authentication"
+              element={<Authentication />}
+            />
+            <Route
+              path="/memberview/programOverview"
+              element={<FirstTimeScreen />}
+            />
+            <Route
+              path="/memberview/checkinsPage"
+              element={<Questionnaires />}
+            />
+            <Route path="/assessments" element={<Questionnaires />} />
+            <Route path="/awards" element={<AwardsPage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/educationArticle" element={<EducationArticle />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/userSettings" element={<UserSettings />} />
+            <Route
+              path="/userSettings/member-settings"
+              element={<MemberSettings />}
+            />
+            <Route path="/healthInsights" element={<HealthInsights />} />
+            <Route path="/healthInsights/goals" element={<HealthGoals />} />
+            <Route path="/chats" element={<Chats />} />
+            <Route path="/appointments" element={<Appointments />} />
+          </Routes>
+        </main>
+      </Router>
+    </DataProvider>
   );
 }
 

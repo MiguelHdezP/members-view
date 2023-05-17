@@ -7,6 +7,8 @@ import { MaterialDropDown } from "../material-dropdown/MaterialDropDown";
 
 export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
   const [eduActive, setEduActive] = useState(false);
+  const [newNotiAsmt, setNewNotiAsmt] = useState(false);
+
   const { id = 0, dropdown = [], tracker = [] } = stages;
 
   const configTrackerArr = () => {
@@ -35,11 +37,19 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
     }
   };
 
-  const renderRightIcon = (status, icon) => {
-    if (status === "locked" && currentStage <= 2) {
-      return <AiFillLock />;
+  const renderRightIcon = (status, icon, id) => {
+    const getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    if (getActiveStage !== null) {
+      let savedStage = getActiveStage.map((e) => e.stage);
+
+      if (savedStage.some((e) => e === id)) {
+        return icon;
+      } else {
+        return <AiFillLock />;
+      }
     } else {
-      return icon;
+      if (id === 1 && currentStage === 1) return icon;
+      else return <AiFillLock />;
     }
   };
 
@@ -62,8 +72,10 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
         {configTrackerArr().length ? (
           configTrackerArr().map((e) => {
             const { id = 0, title = "", icon = "", status = "" } = e;
+            console.log("Kilee: ", title);
             return (
               <BoxCard
+                setNewNotiAsmt={setNewNotiAsmt}
                 customClass={
                   checkIfActiveState(status)
                     ? "dashboard-tracker-cards-active dashboard-tracker-cards"
@@ -85,7 +97,7 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
                       className: "dashboard-tracker-icons",
                     }}
                   >
-                    {renderRightIcon(status, icon)}
+                    {renderRightIcon(status, icon, id)}
                   </IconContext.Provider>
                 </span>
                 <p
@@ -95,6 +107,19 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
                       : ""
                   }`}
                 >
+                  {title === "Assessment" && newNotiAsmt ? (
+                    <div
+                      style={{
+                        position: "relative",
+                        top: "-42px",
+                        right: "11px",
+                      }}
+                    >
+                      <span className="mobile-icon-new"></span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   {title}
                 </p>
               </BoxCard>

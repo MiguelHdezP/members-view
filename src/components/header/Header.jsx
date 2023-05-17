@@ -167,7 +167,7 @@ export const Header = ({
         <div className="header-contents">
           <span
             className="header-icons-logo"
-            onClick={() => redirect("/dashboard")}
+            onClick={() => redirect("/dashboard?q=single")}
           >
             LOGO
           </span>
