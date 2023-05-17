@@ -212,7 +212,7 @@ const asmtConditionContentSingle = (
             progress={100}
             title="COPD Assessment"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -223,7 +223,7 @@ const asmtConditionContentSingle = (
             progress={70}
             title="Hypertension Assessment"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -353,7 +353,7 @@ const chckInConditionContentSingle = (
             progress={0}
             title="Diabetes Check In Tote"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
             stageCurrent={stageCurrent}
             fn={setRenderStageJourneyTracker}
           />,
@@ -415,7 +415,7 @@ const eduConditionContentSingle = (stageCurrent) => {
             progress={0}
             title="COPD  Eduaction"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -526,7 +526,7 @@ const asmtConditionContentMulti = (stageCurrent) => {
             progress={0}
             title="COPD Assessment Multi"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -573,7 +573,7 @@ const asmtConditionContentMulti = (stageCurrent) => {
             progress={0}
             title="Diabetes Assessment Multi"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -597,7 +597,7 @@ const asmtConditionContentMulti = (stageCurrent) => {
             progress={0}
             title="Hypertension Assessment Multi"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -625,7 +625,7 @@ const chckInConditionContentMulti = (
             progress={0}
             title="Health Check In Multi"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -685,7 +685,7 @@ const eduConditionContentMulti = (stageCurrent) => {
             progress={0}
             title="COPD  Eduaction Multi"
             type="progress"
-            redirectPath="assessment"
+            redirectPath="/assessments"
           />,
         ],
       },
@@ -957,7 +957,7 @@ const fullDashboardDataSingle = (
               progress={70}
               title="Hypertension Assessment"
               type="progress"
-              redirectPath="assessment"
+              redirectPath="/assessments"
             />
             <ContentCard
               progress={3}
@@ -1107,6 +1107,7 @@ const fullDashboardDataSingle = (
               title="Health Check In"
               desc="Comming Sooon"
               type="none"
+              redirectPath="/memberview/CheckInsPage"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
@@ -1187,7 +1188,6 @@ const fullDashboardDataSingle = (
   } else {
     dynamicStatus = "hidden";
   }
-  console.log("Gege: ", stage, stage == 2 ? "active" : "locked");
 
   const handleAsmtVary = () => {
     if (stage === 2 || stage === 5 || stage === 6) {
@@ -1226,7 +1226,7 @@ const fullDashboardDataSingle = (
       },
       {
         id: 3,
-        title: "Checkin",
+        title: "Check ins",
         icon: <HiCheckCircle />,
         status: handleChkInVary(),
         layout: trackerObj(),
