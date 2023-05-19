@@ -146,6 +146,11 @@ export const Header = ({
     });
   };
 
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <>
       <NotificationsPane customClass={toggleNotifActive ? "open-activity" : ""}>
@@ -167,7 +172,7 @@ export const Header = ({
         <div className="header-contents">
           <span
             className="header-icons-logo"
-            onClick={() => redirect("/dashboard?q=single")}
+            onClick={() => clearSessionStorage()}
           >
             LOGO
           </span>

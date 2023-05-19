@@ -16,8 +16,6 @@ import Modal from "@mui/material/Modal";
 import { redirect } from "../../../utils/scripts";
 
 export const MemberSettings = () => {
-  const [toggleNotifActive, setToggleNotifActive] = useState(false);
-  const [toggleFavs, setToggleFavs] = useState(false);
   const label = { inputProps: { "aria-label": "leave program" } };
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -57,23 +55,9 @@ export const MemberSettings = () => {
     localStorage.setItem("exitProgram", `${!checkedSwitch}`);
   };
 
-  const toggleHeaderPanels = (action) => {
-    if (action === "notifi") {
-      if (toggleFavs) setToggleFavs(!toggleFavs);
-      setToggleNotifActive(!toggleNotifActive);
-    } else if (action === "favs") {
-      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
-      setToggleFavs(!toggleFavs);
-    }
-  };
-
   return (
     <MobileContainer className="appImg">
-      <Header
-        toggleNotifActive={toggleNotifActive}
-        toggleFavs={toggleFavs}
-        toggleHeaderPanels={toggleHeaderPanels}
-      />
+      <Header />
       <div className="mobile-scroll-settings">
         <section className="settings-page">
           <div className="settings-container">

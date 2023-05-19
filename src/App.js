@@ -25,10 +25,7 @@ import { Appointments } from "./pages/appointments/Appointments";
 import { MemberSettings } from "./pages/userSettings/memberSettings/MemberSettings";
 import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
 import { DataProvider } from "./data/context/dataContext";
-
-window.onbeforeunload = function () {
-  sessionStorage.clear();
-};
+import { CareVisits } from "./pages/healthInsights/healthCareVisits/CareVisits";
 
 function App() {
   useEffect(() => {
@@ -79,6 +76,10 @@ function App() {
             />
             <Route path="/healthInsights" element={<HealthInsights />} />
             <Route path="/healthInsights/goals" element={<HealthGoals />} />
+            <Route
+              path="/healthInsights/care-visits"
+              element={<CareVisits />}
+            />
             <Route path="/chats" element={<Chats />} />
             <Route path="/appointments" element={<Appointments />} />
           </Routes>

@@ -7,6 +7,7 @@ export const Tabs = ({
   customClass = "",
   customClassTab1 = "",
   customClassTab2 = "",
+  customClassTab3 = "",
 }) => {
   const [toggleActive, setToggleActive] = useState(1);
   if (!tabsContents.length) return <div>Sorry, something went wrong</div>;
@@ -35,7 +36,7 @@ export const Tabs = ({
                   toggleActive === id ? "tabs-btn-active tabs-secondary" : ""
                 } ${id === 1 ? customClassTab1 : ""} ${
                   id === 2 ? customClassTab2 : ""
-                } `}
+                } ${id === 3 ? customClassTab3 : ""}`}
                 onClick={() => tabsAction(id)}
               >
                 {label}

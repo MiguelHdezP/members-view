@@ -32,22 +32,21 @@ export const ContentCard = ({
       fn(7);
     }
   };
-
   const leftImg = () => {
     if (type === "progress") {
       if (progress === 0) {
-        desc = "Not Started";
+        desc = desc.length ? "" : "Not Started";
         return <StatusFlag flagLabel="New" classStatus="flag-active" />;
       } else if (progress === 100) {
         progressColor = "#00a223";
-        desc = "Completed";
+        desc = desc.length ? "" : "Completed";
       } else if (progress > 10) {
         progressColor = "#ffa500";
-        desc = "In Progress";
+        desc = desc.length ? "" : "In Progress";
       } else {
         provProgress = (progress * 100) / eduTotalContents;
         progressColor = "#5c4bd3";
-        desc = "In Progress";
+        desc = desc.length ? "" : "In Progress";
       }
       return (
         <CircularProgressbar
@@ -79,6 +78,9 @@ export const ContentCard = ({
     } else if (type === "overdue") {
       desc = "Not Started";
       return <StatusFlag flagLabel="Overdue" classStatus="flag-overdue" />;
+    } else if (type === "paused") {
+      desc = "";
+      return <StatusFlag flagLabel="Paused" classStatus="flag-paused" />;
     } else if (type === "none") {
       return "";
     }
