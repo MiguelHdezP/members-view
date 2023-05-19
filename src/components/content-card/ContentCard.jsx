@@ -25,6 +25,7 @@ export const ContentCard = ({
     if (redirectPath.length) {
       redirect(redirectPath);
     }
+    console.log("Card stage: ", stage);
     if (stage === 2) {
       fn(5);
     }

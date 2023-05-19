@@ -148,7 +148,6 @@ export const Header = ({
 
   const clearSessionStorage = () => {
     sessionStorage.clear();
-    window.location.reload();
     redirect("/dashboard?q=single");
   };
 
