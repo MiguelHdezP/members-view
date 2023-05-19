@@ -96,14 +96,17 @@ export const ProgressQuestionsStartScreen = ({
 export const QuestionsBadge = ({ questionsType = "" }) => {
   return (
     <div className="asmt-contents">
-      <div style={{ marginTop: "5rem" }}>
+      <div style={{ marginTop: "2rem" }}>
         <p className="text-midText">Great Job Jane!</p>
         <p className="text-midText">
           You have successfully completed your {questionsType}!
         </p>
         <BadgeTrophyFull />
         <p className="text-midText">You've earned the</p>
-        <p className="text-title asmt-title-center">
+        <p
+          className="text-title asmt-title-center"
+          style={{ textAlign: "center" }}
+        >
           <span className="text-camelCase">{questionsType}</span> Completition
           Badge!
         </p>

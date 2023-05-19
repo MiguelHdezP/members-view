@@ -2,7 +2,6 @@
 
 .mobile-scroll-settings {
   @include mobile-scroll(75.1vh, 100%, 0.5rem);
-  overflow: unset;
 
   .settings-page {
     @include scroll-page();
