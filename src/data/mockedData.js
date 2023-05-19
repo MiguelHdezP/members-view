@@ -213,6 +213,21 @@ export const goalsTabs = [
   },
 ];
 
+export const careVisitTabs = [
+  {
+    id: 1,
+    label: "In progress",
+  },
+  {
+    id: 2,
+    label: "In Review",
+  },
+  {
+    id: 3,
+    label: "Completed",
+  },
+];
+
 export const listActivity = [
   {
     id: 1,

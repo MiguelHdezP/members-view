@@ -1,0 +1,62 @@
+@import "../../../styles/main.scss";
+
+.tabs-goals {
+  .tabs-goals-card {
+    background-color: $white;
+    border: 1px solid $strokeGray;
+    border-radius: 10px;
+    margin: 2rem 0;
+    padding: 1rem;
+    text-align: left;
+
+    .completed-text-gray {
+      color: $smallLabel;
+    }
+
+    textarea {
+      background-color: $white;
+      border: 1px solid $strokeGray;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .tabs-goals-withInputs {
+      align-items: start;
+      display: flex;
+      justify-content: last baseline;
+
+      .tabs-input-checkbox {
+        background-color: $mainPurple;
+        margin: 0.39rem 1rem 0 0;
+      }
+
+      .tabs-goals-textLeft {
+        text-align: left;
+      }
+    }
+
+    .tabs-goals-pill-careplan,
+    .tabs-goals-pill-personal {
+      border-radius: 10px;
+      margin-top: 1rem;
+      padding: 0.2rem 0.4rem;
+      text-align: center;
+      width: 30%;
+    }
+
+    .tabs-goals-pill-careplan {
+      background-color: rgba($color: $mainPurple, $alpha: 0.3);
+      color: $mainPurple;
+    }
+    .tabs-goals-pill-personal {
+      background-color: rgba($color: $badgeChat4, $alpha: 0.3);
+      color: $badgeChat4;
+    }
+  }
+}

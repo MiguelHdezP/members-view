@@ -5,7 +5,13 @@ import { IconContext } from "react-icons";
 import { AiFillLock } from "react-icons/ai";
 import { MaterialDropDown } from "../material-dropdown/MaterialDropDown";
 
-export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
+export const JourneyTracker = ({
+  fn,
+  fn2,
+  stages = {},
+  currentStage = 1,
+  settingsTracker = false,
+}) => {
   const [eduActive, setEduActive] = useState(false);
   const [newNotiAsmt, setNewNotiAsmt] = useState(false);
 
@@ -38,11 +44,13 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
   };
 
   const renderRightIcon = (status, icon, id) => {
+    if (settingsTracker) return icon;
     const getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
     if (getActiveStage !== null) {
       let savedStage = getActiveStage.map((e) => e.stage);
-
-      if (savedStage.some((e) => e === id)) {
+      if (id === 1 && savedStage.some((e) => e === 2)) {
+        return icon;
+      } else if (savedStage.some((e) => e === id)) {
         return icon;
       } else {
         return <AiFillLock />;
@@ -72,7 +80,6 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
         {configTrackerArr().length ? (
           configTrackerArr().map((e) => {
             const { id = 0, title = "", icon = "", status = "" } = e;
-            console.log("Kilee: ", title);
             return (
               <BoxCard
                 setNewNotiAsmt={setNewNotiAsmt}
@@ -115,7 +122,11 @@ export const JourneyTracker = ({ fn, fn2, stages = {}, currentStage = 1 }) => {
                         right: "11px",
                       }}
                     >
-                      <span className="mobile-icon-new"></span>
+                      {settingsTracker ? (
+                        ""
+                      ) : (
+                        <span className="mobile-icon-new"></span>
+                      )}
                     </div>
                   ) : (
                     ""

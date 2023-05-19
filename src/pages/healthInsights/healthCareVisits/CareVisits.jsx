@@ -4,11 +4,11 @@ import { MobileContainer } from "../../../components/mobileContainer/MobileConta
 import { Header } from "../../../components/header/Header";
 import { Breadcrumb } from "../../../components/breadcrumb/Breadcrumb";
 import { Tabs } from "../../../components/tabs/Tabs";
-import { TabsContentsGoals } from "../../../components/tabs/tabsCotentsGoals/TabsContentsGoals";
+import { TabsContentsCareVisits } from "../../../components/tabs/tabsContentsCareVisits/TabsContentsCareVisits";
 import { SecondaryButton } from "../../../components/secondaryButton/SecondaryButton";
 import { PrimaryButton } from "../../../components/primaryButton/PrimaryButton";
 
-export const HealthGoals = () => {
+export const CareVisits = () => {
   const [manageGoals, setManageGoals] = useState(false);
   const [hideGoal, setHideGoal] = useState(true);
   const [toggleManageBtn, setToggleManageBtn] = useState(false);
@@ -43,7 +43,7 @@ export const HealthGoals = () => {
   const TabsContentsGoalsDecorator = (Component) => {
     let textValues =
       texareaFallBack.length !== 0 ? texareaFallBack : textareaVal;
-
+    console.log("Values: ", textareaVal);
     return Component(
       manageGoals,
       textValues,
@@ -54,16 +54,14 @@ export const HealthGoals = () => {
   };
 
   const saveGoals = () => {
-    setManageGoals(false);
+    setManageGoals(true);
     setHideGoal(false);
     setToggleManageBtn(!toggleManageBtn);
   };
 
   let componentProv = (
-    <Tabs tabsContents={TabsContentsGoalsDecorator(TabsContentsGoals)} />
+    <Tabs tabsContents={TabsContentsGoalsDecorator(TabsContentsCareVisits)} />
   );
-
-  //toggleManageBtn ? "health-goals-deactivate" : ""
 
   return (
     <MobileContainer className="appImg">
@@ -90,10 +88,12 @@ export const HealthGoals = () => {
               <>
                 <Breadcrumb text="Health Insights" href="/healthInsights" />
                 <div className="healthIn-titles">
-                  <p className="text-title  healthIn-title-bottom">Goals</p>
+                  <p className="text-title  healthIn-title-bottom">
+                    Care Visits
+                  </p>
                   <p className="text-midText reset margin text-left">
-                    Manage your health by tracking care plan goals and creating
-                    your own goals.
+                    See care you may have missed and manage what care you’ve
+                    recieved
                   </p>
                 </div>
                 <div className="healthIn-tabs">{componentProv}</div>
@@ -116,34 +116,13 @@ export const HealthGoals = () => {
               fn={() => saveGoals()}
             />
           </>
-        ) : addNewGoal ? (
-          <>
-            <SecondaryButton
-              text="Cancel"
-              customClass="healthIn-goals-btn"
-              fn={() => closeAddGoal(false)}
-            />
-            <PrimaryButton
-              text="Save"
-              customClass="healthIn-goals-btn"
-              fn={() => saveAddedGoal(false)}
-            />
-          </>
         ) : (
-          <>
-            <SecondaryButton
-              text="Add New"
-              customClass="healthIn-goals-btn"
-              icon={true}
-              fn={() => toggleAddGoal(true)}
-            />
-            <PrimaryButton
-              text="Manage Goals"
-              customClass={`healthIn-goals-btn`}
-              fn={() => setManageGoals(true)}
-              disabled={toggleManageBtn}
-            />
-          </>
+          <PrimaryButton
+            text="Manage Care Visits"
+            customClass={`healthIn-carevisits-btn`}
+            fn={() => setManageGoals(true)}
+            disabled={toggleManageBtn}
+          />
         )}
       </div>
     </MobileContainer>

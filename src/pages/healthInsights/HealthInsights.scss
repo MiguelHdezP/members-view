@@ -55,9 +55,15 @@
   text-align: center;
   width: 100%;
 
-  .healthIn-goals-btn {
+  .healthIn-goals-btn,
+  .healthIn-carevisits-btn {
     margin: 0 1rem;
+  }
+  .healthIn-goals-btn {
     width: 45%;
+  }
+  .healthIn-carevisits-btn {
+    width: 100%;
   }
   .healthIn-goals-btn-save {
     width: 100%;

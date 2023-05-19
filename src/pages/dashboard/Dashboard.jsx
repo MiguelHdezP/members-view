@@ -54,21 +54,18 @@ export const Dashboard = () => {
   let alertDesc = "";
   let alertLink = "#";
 
-  const checkIfActiveProgram = localStorage.getItem("activePause");
-  if (checkIfActiveProgram !== null && checkIfActiveProgram === "false") {
-    let isProgramPaused = localStorage.getItem("activePause");
-
-    if (isProgramPaused !== null && isProgramPaused === "false") {
-      alertTitle = "The program has been paused";
-      alertDesc = "To reactivate the program go";
-      alertLink = "/userSettings/member-settings";
-    } else {
-      alertTitle = "You have opted-out the Care Program";
-      alertDesc = "To contact your care manager go";
-      alertLink = "/chats";
-    }
+  const checkIfActiveProgram = sessionStorage.getItem("activePause");
+  if (checkIfActiveProgram !== null) {
+    alertTitle = "The program has been paused";
+    alertDesc = "To reactivate the program go";
+    alertLink = "/userSettings";
     activateAlert = true;
+  } else {
+    alertTitle = "You have opted-out the Care Program";
+    alertDesc = "To contact your care manager go";
+    alertLink = "/chats";
   }
+
   return (
     <MobileContainer className="appImg">
       <Header customClass="reset-divider" />

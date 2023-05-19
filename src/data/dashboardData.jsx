@@ -6,11 +6,14 @@ import { ContentCard } from "../components/content-card/ContentCard";
 import { HiCheckCircle } from "react-icons/hi";
 import { FaAppleAlt } from "react-icons/fa";
 import { BsCalendar2WeekFill } from "react-icons/bs";
+import { MdOutlineMotionPhotosPaused } from "react-icons/md";
+import { IconContext } from "react-icons";
 import { EducationPage2 } from "../../src/pages/educationPage/EducationPage2";
 import { urlGetQueryString } from "../utils/scripts";
 import { Rewards } from "../components/rewards/Rewards";
 import { EducationCard } from "../components/education-card/EducationCard";
 import { copdImg, dietImg } from "../data/images";
+import { BoxCard } from "../components/boxCard/BoxCard";
 
 const returnRightLabels = () => {
   // check if there is some progress in edu content, assessments and/or checkins, only one progress is needed
@@ -132,6 +135,7 @@ const asmtConditionContentSingle = (
             title="COPD Assessment"
             type="progress"
             fn={setRenderStageJourneyTracker}
+            desc="Jote"
           />,
         ],
       },
@@ -832,108 +836,93 @@ const fullDashboardDataSingle = (
     const getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
     if (getActiveStage !== null) {
       let savedStage = getActiveStage.map((e) => e.stage);
-      if (savedStage.some((e) => e === 3) && stage === 2) {
+      if (savedStage.some((e) => e === 6) && stage === 2) {
+        stage = 2;
+      } else if (savedStage.some((e) => e === 3) && stage === 2) {
         stage = 6;
+        sessionStorage.setItem(
+          "stagesAcive",
+          JSON.stringify([...getActiveStage, { stage: 6, active: true }])
+        );
       }
     }
 
-    switch (stage) {
-      case 1:
-        return [
-          <DashboardContentBlocks
-            dashContentTitle="Welcome to the Program!"
-            dashContentDesc="Learn more about your care journey"
-          >
-            {serveDashboardContents("welcome", stage, stageCurrent)}
-          </DashboardContentBlocks>,
-          <DashboardContentBlocks
-            dashContentTitle={returnRightLabels().titles}
-            dashContentDesc={returnRightLabels().desc}
-          >
-            {serveDashboardContents(
-              returnRightLabels().type,
-              stage,
-              stageCurrent
-            )}
-          </DashboardContentBlocks>,
-          <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
-            dashContentDesc="Your Initial assessment will be sent soon"
-          >
-            {serveDashboardContents("tasks", stage, stageCurrent)}
-          </DashboardContentBlocks>,
-        ];
-      case 2:
-        return [
-          <DashboardContentBlocks
-            dashContentTitle="New Assessment"
-            dashContentDesc="You've been assigned a new assessment"
-          >
-            <ContentCard
-              progress={0}
-              title="COPD Assessment"
-              type="progress"
-              stage={stage}
-              fn={setRenderStageJourneyTracker}
-            />
-            <ContentCard
-              progress={0}
-              title="Hypertension Assessment"
-              type="progress"
-              redirectPath="/assessments"
-            />
-          </DashboardContentBlocks>,
-          <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
-            dashContentDesc={
-              serveDashboardContents("appoint", stage, stageCurrent).every(
-                (e) => e === undefined
-              )
-                ? ""
-                : "You have an upcoming appointment"
-            }
-          >
-            {serveDashboardContents("appoint", stage, stageCurrent).every(
-              (e) => e === undefined
-            )
-              ? "No upcoming appointments"
-              : serveDashboardContents("appoint", stage, stageCurrent)}
-          </DashboardContentBlocks>,
-          <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
-            dashContentDesc={
-              serveDashboardContents("tasks", stage, stageCurrent).every(
-                (e) => e === undefined
-              )
-                ? ""
-                : "See what activities you have next:"
-            }
-          >
-            {serveDashboardContents("tasks", stage, stageCurrent).every(
-              (e) => e === undefined
-            )
-              ? "No upcoming Tasks"
-              : serveDashboardContents("tasks", stage, stageCurrent)}
-          </DashboardContentBlocks>,
-          <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
-            dashContentDesc={
-              serveDashboardContents("edu", stage, stageCurrent).every(
-                (e) => e === undefined
-              )
-                ? ""
-                : "There is new content coming soon."
-            }
-          >
-            {serveDashboardContents("edu", stage, stageCurrent).every(
-              (e) => e === undefined
-            )
-              ? "No upcoming education"
-              : serveDashboardContents("edu", stage, stageCurrent)}
-          </DashboardContentBlocks>,
-          <Rewards />,
-        ];
-      case 3:
+    const activityStatus2 = () => {
+      const activity2 = sessionStorage.getItem("activePause2");
+      if (activity2 !== null && JSON.parse(activity2)) {
+        return "paused";
+      }
+      return "progress";
+    };
+
+    const activityStatus3 = () => {
+      const activity3 = sessionStorage.getItem("activePause3");
+      if (activity3 !== null && JSON.parse(activity3)) {
+        return "paused";
+      }
+      return "progress";
+    };
+
+    const renderRightAsmt = () => {
+      const currentCheckIn = sessionStorage.getItem("activePauseCheckIns");
+      if (currentCheckIn !== null && JSON.parse(currentCheckIn)) {
+        return (
+          <BoxCard>
+            <IconContext.Provider
+              value={{
+                className: "settings-paused-icon",
+              }}
+            >
+              <div>
+                <MdOutlineMotionPhotosPaused />
+              </div>
+              <p
+                className="text-title"
+                style={{ textAlign: "center", margin: "1rem 0" }}
+              >
+                Sorry, this step is paused
+              </p>
+              <p className="text-midText">
+                Please complete previous tasks and assessments before accessing
+                this step of your Care Journey
+              </p>
+              <div className="bottom-spacer"></div>
+            </IconContext.Provider>
+          </BoxCard>
+        );
+      } else {
+        return;
+      }
+    };
+
+    const renderRightCheckin = () => {
+      const currentCheckIn = sessionStorage.getItem("activePauseCheckIns");
+      if (currentCheckIn !== null && JSON.parse(currentCheckIn)) {
+        return (
+          <BoxCard>
+            <IconContext.Provider
+              value={{
+                className: "settings-paused-icon",
+              }}
+            >
+              <div>
+                <MdOutlineMotionPhotosPaused />
+              </div>
+              <p
+                className="text-title"
+                style={{ textAlign: "center", margin: "1rem 0" }}
+              >
+                Sorry, this step is paused
+              </p>
+              <p className="text-midText">
+                Please complete previous tasks and assessments before accessing
+                this step of your Care Journey
+              </p>
+              <div className="bottom-spacer"></div>
+            </IconContext.Provider>
+          </BoxCard>
+        );
+      } else {
         return [
           <DashboardContentBlocks
             dashContentTitle="New Check In"
@@ -990,6 +979,107 @@ const fullDashboardDataSingle = (
           </DashboardContentBlocks>,
           <Rewards />,
         ];
+      }
+    };
+
+    switch (stage) {
+      case 1:
+        return [
+          <DashboardContentBlocks
+            dashContentTitle="Welcome to the Program!"
+            dashContentDesc="Learn more about your care journey"
+          >
+            {serveDashboardContents("welcome", stage, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle={returnRightLabels().titles}
+            dashContentDesc={returnRightLabels().desc}
+          >
+            {serveDashboardContents(
+              returnRightLabels().type,
+              stage,
+              stageCurrent
+            )}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Tasks"
+            dashContentDesc="Your Initial assessment will be sent soon"
+          >
+            {serveDashboardContents("tasks", stage, stageCurrent)}
+          </DashboardContentBlocks>,
+        ];
+      case 2:
+        return [
+          <DashboardContentBlocks
+            dashContentTitle="New Assessment"
+            dashContentDesc="You've been assigned a new assessment"
+          >
+            <ContentCard
+              progress={0}
+              title="COPD Assessment"
+              type={activityStatus2()}
+              stage={stage}
+              fn={setRenderStageJourneyTracker}
+            />
+            <ContentCard
+              progress={0}
+              title="Hypertension Assessment"
+              type={activityStatus3()}
+              redirectPath="/assessments"
+            />
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Appointments"
+            dashContentDesc={
+              serveDashboardContents("appoint", stage, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "You have an upcoming appointment"
+            }
+          >
+            {serveDashboardContents("appoint", stage, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming appointments"
+              : serveDashboardContents("appoint", stage, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Tasks"
+            dashContentDesc={
+              serveDashboardContents("tasks", stage, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "See what activities you have next:"
+            }
+          >
+            {serveDashboardContents("tasks", stage, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming Tasks"
+              : serveDashboardContents("tasks", stage, stageCurrent)}
+          </DashboardContentBlocks>,
+          <DashboardContentBlocks
+            dashContentTitle="Upcoming Education"
+            dashContentDesc={
+              serveDashboardContents("edu", stage, stageCurrent).every(
+                (e) => e === undefined
+              )
+                ? ""
+                : "There is new content coming soon."
+            }
+          >
+            {serveDashboardContents("edu", stage, stageCurrent).every(
+              (e) => e === undefined
+            )
+              ? "No upcoming education"
+              : serveDashboardContents("edu", stage, stageCurrent)}
+          </DashboardContentBlocks>,
+          <Rewards />,
+        ];
+      case 3:
+        return renderRightCheckin();
       case 4:
         return [<EducationPage2 />];
       case 5:
@@ -1186,6 +1276,24 @@ const fullDashboardDataSingle = (
   } else {
     dynamicStatus = "hidden";
   }
+
+  const handleOnbordVary = () => {
+    const storedOnboardIcons = JSON.parse(
+      sessionStorage.getItem("stagesAcive")
+    );
+    let reduceArrVals = [];
+    if (storedOnboardIcons !== null) {
+      reduceArrVals.map((e) => e.stage);
+    }
+
+    if (stage === 1) {
+      return "active";
+    } else if (reduceArrVals.some((e) => e === 2)) {
+      return "active";
+    } else {
+      return "locked";
+    }
+  };
 
   const handleAsmtVary = () => {
     if (stage === 2 || stage === 5 || stage === 6) {
