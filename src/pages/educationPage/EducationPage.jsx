@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./EducationPage.scss";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import Modal from "@mui/material/Modal";
@@ -6,54 +6,33 @@ import { MobileContainer } from "../../components/mobileContainer/MobileContaine
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { EducationUnique } from "./EducationUnique";
+import { DataContext } from "../../data/context/dataContext";
 
 export const EducationPage = () => {
-  const [startState, setStartState] = useState(false);
-  const [startState2, setStartState2] = useState(false);
-  const [startState3, setStartState3] = useState(false);
-  const [startState4, setStartState4] = useState(false);
-  const [startState5, setStartState5] = useState(false);
-  const [startState6, setStartState6] = useState(false);
-  const [addToFavs, setAddToFavs] = useState([]);
+  const {
+    startState,
+    startState2,
+    startState3,
+    startState4,
+    startState5,
+    startState6,
+    addContentToFavs,
+  } = useContext(DataContext);
+
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
-    //sessionStorage.removeItem("currentFavs");
-    sessionStorage.setItem("currentFavs", JSON.stringify(addToFavs));
-  }, [addToFavs]);
-
-  const addContentToFavs = (num) => {
-    if (!addToFavs.some((e) => e === num)) {
-      setAddToFavs((prev) => [...prev, num]);
-    } else {
-      let removeRepeteadFavs = addToFavs.filter((e) => e !== num);
-      setAddToFavs([...removeRepeteadFavs]);
-    }
-
-    switch (num) {
-      case 1:
-        setStartState(!startState);
-        break;
-      case 2:
-        setStartState2(!startState2);
-        break;
-      case 3:
-        setStartState3(!startState3);
-        break;
-      case 4:
-        setStartState4(!startState4);
-        break;
-      case 5:
-        setStartState5(!startState5);
-        break;
-      case 6:
-        setStartState6(!startState6);
-        break;
-      default:
-        break;
-    }
-  };
-
+    console.log("Re render single");
+  }, [
+    startState,
+    startState2,
+    startState3,
+    startState4,
+    startState5,
+    startState6,
+  ]);
+  console.log("startState: ", startState);
+  console.log("startState2: ", startState2);
   const handleOpen = () => {
     setOpenModal(!openModal);
   };
@@ -62,7 +41,7 @@ export const EducationPage = () => {
 
   return (
     <MobileContainer className="appImg">
-      <Header favsState={addToFavs} addContentToFavs={addContentToFavs} />
+      <Header />
       <Modal
         open={openModal}
         onClose={handleClose}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { ProgressPercentage } from "../../components/progressPercentage/ProgressPercentage";
 import { IconContext } from "react-icons";
@@ -27,6 +27,47 @@ export const EducationUnique = ({
     startState5,
     startState6,
   } = startStates;
+  console.log("**Unique**");
+  const [uglyRender, setUglyRender] = useState(0);
+  console.log("startState: ", startState);
+  console.log("startState2: ", startState2);
+  const currentFavsVisible = JSON.parse(sessionStorage.getItem("currentFavs"));
+  let provFavs = [];
+  if (currentFavsVisible !== null) {
+    provFavs = [...currentFavsVisible];
+  }
+  console.log("**Unique after storage**");
+  console.log("startState: ", startState);
+  console.log("startState2: ", startState2);
+  useEffect(() => {
+    console.log("Re render ugly");
+  }, [uglyRender]);
+
+  const handleUglyRender = (num) => {
+    addContentToFavs(num);
+    setUglyRender(num);
+  };
+
+  console.log(
+    "unique provFavs: ",
+    provFavs,
+    " Unique some: ",
+    provFavs.some((e) => e == 2),
+    " ,startState2: ",
+    startState2
+  );
+  console.log(
+    provFavs.some((e) => e == 2) || startState2 ? "Fill Star" : "Empty Star"
+  );
+
+  {
+    provFavs.some((e) => e == 2) || startState2 ? (
+      <AiFillStar />
+    ) : (
+      <AiOutlineStar />
+    );
+  }
+
   return (
     <section className="education-page">
       <div className="education-general-info">
@@ -59,9 +100,13 @@ export const EducationUnique = ({
               <button
                 title="Add to favorites"
                 className="button-card-favs"
-                onClick={() => addContentToFavs(1)}
+                onClick={() => handleUglyRender(1)}
               >
-                {startState ? <AiFillStar /> : <AiOutlineStar />}
+                {provFavs.some((e) => e == 1) || startState ? (
+                  <AiFillStar />
+                ) : (
+                  <AiOutlineStar />
+                )}
               </button>
             </div>
           </IconContext.Provider>
@@ -92,9 +137,13 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => addContentToFavs(2)}
+              onClick={() => handleUglyRender(2)}
             >
-              {startState2 ? <AiFillStar /> : <AiOutlineStar />}
+              {provFavs.some((e) => e == 2) || startState2 ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
             </button>
           </IconContext.Provider>
           <img
@@ -130,9 +179,13 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => addContentToFavs(3)}
+              onClick={() => handleUglyRender(3)}
             >
-              {startState3 ? <AiFillStar /> : <AiOutlineStar />}
+              {provFavs.some((e) => e == 3) || startState3 ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
             </button>
           </IconContext.Provider>
           <div
@@ -163,9 +216,13 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => addContentToFavs(4)}
+              onClick={() => handleUglyRender(4)}
             >
-              {startState4 ? <AiFillStar /> : <AiOutlineStar />}
+              {provFavs.some((e) => e == 4) || startState4 ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
             </button>
           </IconContext.Provider>
           <div
@@ -203,9 +260,13 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => addContentToFavs(5)}
+              onClick={() => handleUglyRender(5)}
             >
-              {startState5 ? <AiFillStar /> : <AiOutlineStar />}
+              {provFavs.some((e) => e == 5) || startState5 ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
             </button>
           </IconContext.Provider>
           <div
@@ -236,9 +297,13 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => addContentToFavs(6)}
+              onClick={() => handleUglyRender(6)}
             >
-              {startState6 ? <AiFillStar /> : <AiOutlineStar />}
+              {provFavs.some((e) => e == 6) || startState6 ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
             </button>
           </IconContext.Provider>
           <div

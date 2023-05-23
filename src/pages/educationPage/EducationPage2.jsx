@@ -1,53 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./EducationPage.scss";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import Modal from "@mui/material/Modal";
-import { FakeFavorites } from "../../components/header/FakeFavorites/FakeFavorites";
 import { EducationUnique } from "./EducationUnique";
+import { Header } from "../../components/header/Header";
+import { DataContext } from "../../data/context/dataContext";
 
 export const EducationPage2 = () => {
-  const [startState, setStartState] = useState(false);
-  const [startState2, setStartState2] = useState(false);
-  const [startState3, setStartState3] = useState(false);
-  const [startState4, setStartState4] = useState(false);
-  const [startState5, setStartState5] = useState(false);
-  const [startState6, setStartState6] = useState(false);
-  const [addToFavs, setAddToFavs] = useState([]);
+  const {
+    startState,
+    startState2,
+    startState3,
+    startState4,
+    startState5,
+    startState6,
+    addContentToFavs,
+  } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {}, [addToFavs]);
-
-  const addContentToFavs = (num) => {
-    if (!addToFavs.some((e) => e === num)) {
-      setAddToFavs((prev) => [...prev, num]);
-    } else {
-      let provFavsArr = addToFavs.filter((e) => e !== num);
-      setAddToFavs([...provFavsArr]);
-    }
-
-    switch (num) {
-      case 1:
-        setStartState(!startState);
-        break;
-      case 2:
-        setStartState2(!startState2);
-        break;
-      case 3:
-        setStartState3(!startState3);
-        break;
-      case 4:
-        setStartState4(!startState4);
-        break;
-      case 5:
-        setStartState5(!startState5);
-        break;
-      case 6:
-        setStartState6(!startState6);
-        break;
-      default:
-        break;
-    }
-  };
+  useEffect(() => {
+    console.log("Re render dashboard");
+  }, [
+    startState,
+    startState2,
+    startState3,
+    startState4,
+    startState5,
+    startState6,
+  ]);
 
   const handleOpen = () => {
     setOpenModal(!openModal);
@@ -57,6 +37,7 @@ export const EducationPage2 = () => {
 
   return (
     <>
+      <Header visibleHeader={false} />
       <Modal
         open={openModal}
         onClose={handleClose}
@@ -74,10 +55,6 @@ export const EducationPage2 = () => {
           ></iframe>
         </BoxCard>
       </Modal>
-      <FakeFavorites
-        favsState={addToFavs}
-        addContentToFavs={addContentToFavs}
-      />
       <div className="mobile-education">
         <EducationUnique
           addContentToFavs={addContentToFavs}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NotificationsPane } from "../../notificationsPane/NotificationsPane";
 import { BoxCard } from "../../boxCard/BoxCard";
 import { IconContext } from "react-icons";
@@ -8,9 +8,21 @@ import { articleImg, articleImg2, videoImg } from "../../../data/images";
 
 export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
   let currentFavs = JSON.parse(sessionStorage.getItem("currentFavs"));
+  const [ungglyTrick, setUglyTrick] = useState(false);
+
+  console.log("FakeFavorites: ");
+
+  useEffect(() => {}, [ungglyTrick]);
+
+  const handleAddFavsRender = (num) => {
+    console.log("Puche: ", num);
+    addContentToFavs(num);
+    setUglyTrick(!ungglyTrick);
+  };
 
   const printCurrentFavs = (currentFav) => {
     if (currentFavs === null) return null;
+    console.log("Pull saved favs: ", currentFavs);
     return currentFav.map((el, i) => {
       let elements;
       switch (el) {
@@ -25,7 +37,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(1)}
+                  onClick={() => handleAddFavsRender(1)}
                 >
                   <AiFillStar />
                 </button>
@@ -63,7 +75,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(2)}
+                  onClick={() => handleAddFavsRender(2)}
                 >
                   <AiFillStar />
                 </button>
@@ -101,7 +113,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(3)}
+                  onClick={() => handleAddFavsRender(3)}
                 >
                   <AiFillStar />
                 </button>
@@ -138,7 +150,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(4)}
+                  onClick={() => handleAddFavsRender(4)}
                 >
                   <AiFillStar />
                 </button>
@@ -175,7 +187,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(5)}
+                  onClick={() => handleAddFavsRender(5)}
                 >
                   <AiFillStar />
                 </button>
@@ -209,7 +221,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addContentToFavs(6)}
+                  onClick={() => handleAddFavsRender(6)}
                 >
                   <AiFillStar />
                 </button>
@@ -251,7 +263,7 @@ export const FakeFavorites = ({ favsState, addContentToFavs, toggleFavs }) => {
         <p className="text-smallText favorites-text-widthMargin">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
         </p>
-        {printCurrentFavs(favsState)}
+        {printCurrentFavs(currentFavs)}
       </div>
     </NotificationsPane>
   );

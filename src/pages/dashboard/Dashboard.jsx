@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Dashboard.scss";
 import "react-circular-progressbar/dist/styles.css";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
@@ -8,10 +8,12 @@ import { Divider } from "../../components/divider/Divider";
 import { JourneyTracker } from "../../components/journey-tracker/JourneyTracker";
 import { MaterialAlert } from "../../components/material-alert/MaterialAlert";
 import { DashboardContents } from "../../data/dashboardData";
+//import { DataContext } from "../../data/context/dataContext";
 
 //sessionStorage.setItem("tasksProgress", JSON.stringify([false, true, false]));
 
 export const Dashboard = () => {
+  //const { addToFavs, addContentToFavs } = useContext(DataContext);
   const [renderStageJourneyTracker, setRenderStageJourneyTracker] = useState(1);
   const [renderConditionDash, setRenderConditionDash] = useState(0);
 
