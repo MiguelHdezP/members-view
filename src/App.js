@@ -27,6 +27,25 @@ import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
 import { DataProvider } from "./data/context/dataContext";
 import { CareVisits } from "./pages/healthInsights/healthCareVisits/CareVisits";
 
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  // Windows Phone debe ir primero porque su UA tambien contiene "Android"
+  if (/windows phone/i.test(userAgent)) {
+    return "Windows Phone";
+  }
+
+  if (/android/i.test(userAgent)) {
+    return "Android";
+  }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return "iOS";
+  }
+
+  return "desconocido";
+}
+
 function App() {
   useEffect(() => {
     if (currentWindowsWidth() <= 480 && urlGet("/")) {
@@ -39,6 +58,9 @@ function App() {
       <Router>
         <main>
           {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
+          <div>
+            {getMobileOperatingSystem()} - {window.innerHeight}
+          </div>
           <Routes>
             <Route path="/" element={<JourneyBuilder />} />
             <Route path="/caremanager" element={<CareManager />} />
