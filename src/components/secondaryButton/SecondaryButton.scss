@@ -1,8 +1,8 @@
 @import "../../styles/main.scss";
 
 .secondary-button {
-  @include btns($white, $secondaryDark, $strokeGray, 0.2);
-  border: 1px solid $strokeGray;
+  @include btns(var(--white), var(--secondaryDark), var(--strokeGray), 0.1);
+  border: 1px solid var(--strokeGray);
 
   .secondary-button-icon {
     margin-right: 0.5rem;

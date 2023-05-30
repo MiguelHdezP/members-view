@@ -1,8 +1,6 @@
 import React from "react";
-
 import { IoCalendar } from "react-icons/io5";
 import { AiFillStar } from "react-icons/ai";
-import { Header } from "../components/header/Header";
 
 export const mockedData = {
   data: 1,
@@ -162,69 +160,106 @@ export const userResponses = [
   },
 ];
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let emailTab = "";
+let phoneTab = "";
+let activeChatsTab = "";
+let archivedTab = "";
+let inProgressTab = "";
+let completedTab = "";
+let inReviewTab = "";
+let auth1 = "";
+let auth2 = "";
+let auth3 = "";
+
+if (currentLang === "en") {
+  emailTab = "Email";
+  phoneTab = "Teléfono";
+  activeChatsTab = "Active Chats";
+  archivedTab = "Archived";
+  inProgressTab = "In Progress";
+  completedTab = "Completed";
+  inReviewTab = "In Review";
+  auth1 =
+    "Please confirm your name and date of birth. This should match the details we have for you on file";
+  auth2 = "Send a code to the email or phone number we have for you on file.";
+  auth3 = "Enter in the authentication code we sent to +1*******5432";
+} else if (currentLang === "es") {
+  phoneTab = "Teléfono";
+  activeChatsTab = "Chats Activos";
+  archivedTab = "Archivados";
+  inProgressTab = "En Progreso";
+  completedTab = "Completado";
+  inReviewTab = "En Revisión";
+  auth1 =
+    "Por favor confirma tu nombre y año de nacimiento, deben ser iguales a los datos que tenemos guardados";
+  auth2 = "Envía un código a tu email o teléfono registrado.";
+  auth3 = "Ingresa el código enviado al +1*******5432";
+}
+
 export const authInstructions = [
   {
     id: 1,
     step: "one",
-    text: "Please confirm your name and date of birth. This should match the details we have for you on file",
+    text: auth1,
   },
   {
     id: 2,
     step: "two",
-    text: "Send a code to the email or phone number we have for you on file.",
+    text: auth2,
   },
   {
     id: 3,
     step: "three",
-    text: "Enter in the authentication code we sent to +1*******5432",
+    text: auth3,
   },
 ];
 
 export const authTabs = [
   {
     id: 1,
-    label: "Email",
+    label: emailTab,
   },
   {
     id: 2,
-    label: "Phone",
+    label: phoneTab,
   },
 ];
 
 export const chatTabs = [
   {
     id: 1,
-    label: "Active Chats",
+    label: activeChatsTab,
   },
   {
     id: 2,
-    label: "Archived",
+    label: archivedTab,
   },
 ];
 
 export const goalsTabs = [
   {
     id: 1,
-    label: "In progress",
+    label: inProgressTab,
   },
   {
     id: 2,
-    label: "Completed",
+    label: completedTab,
   },
 ];
 
 export const careVisitTabs = [
   {
     id: 1,
-    label: "In progress",
+    label: inProgressTab,
   },
   {
     id: 2,
-    label: "In Review",
+    label: inReviewTab,
   },
   {
     id: 3,
-    label: "Completed",
+    label: completedTab,
   },
 ];
 
@@ -243,7 +278,7 @@ export const listActivity = [
     iconText: "",
     icon: <IoCalendar />,
     title: "Periodic Check-In Reminder",
-    textComplement: "On Mar 22 at 2:30pm you have upcom...",
+    textComplement: "En Mar 22 a las 2:30pm tienes una...",
     helperText: "Appointments",
     newMsg: true,
   },
@@ -251,8 +286,8 @@ export const listActivity = [
     id: 3,
     iconText: "",
     icon: <AiFillStar />,
-    title: "Hooray! You're earned a new badge!",
-    textComplement: "You've successfully completed your first...",
+    title: "¡Súper! Tienes una nueva insignia",
+    textComplement: "Has completado un nuevo reto re...",
     helperText: "Trophies",
     newMsg: true,
   },
@@ -261,7 +296,7 @@ export const listActivity = [
     iconText: "MJ",
     icon: null,
     title: "Dr. Wall, Jeff sent you a message",
-    textComplement: "Welcome to a Care Program...",
+    textComplement: "Bienvenido al programa...",
     helperText: "Chat",
     newMsg: false,
   },

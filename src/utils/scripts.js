@@ -25,5 +25,27 @@ export const currentWindowsWidth = () => {
 
 export const firstScreenServeInfo = () => {
   const confirmPath = urlCatch("programOverview");
-  // alert(confirmPath);
+};
+
+export const addFavorites = (num, setUglyRender, uglyRender) => {
+  console.log("addFavorites");
+  let getNewFavs = JSON.parse(sessionStorage.getItem("currentFavs")) ?? [];
+  if (getNewFavs !== null) {
+    sessionStorage.removeItem("currentFavs");
+    if (!getNewFavs.some((e) => e === num)) {
+      sessionStorage.setItem(
+        "currentFavs",
+        JSON.stringify([...getNewFavs, num])
+      );
+    } else {
+      let removeRepeteadFavs = getNewFavs.filter((e) => e !== num);
+      sessionStorage.setItem(
+        "currentFavs",
+        JSON.stringify([...removeRepeteadFavs])
+      );
+    }
+  } else {
+    sessionStorage.setItem("currentFavs", JSON.stringify([num]));
+  }
+  setUglyRender(!uglyRender);
 };

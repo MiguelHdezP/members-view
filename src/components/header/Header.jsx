@@ -11,11 +11,7 @@ import { Divider } from "../../components/divider/Divider";
 import { redirect } from "../../utils/scripts";
 import { FakeFavorites } from "../header/FakeFavorites/FakeFavorites";
 
-export const Header = ({
-  favsState = [],
-  addContentToFavs,
-  customClass = "",
-}) => {
+export const Header = ({ customClass = "", visibleHeader = true }) => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
 
@@ -28,58 +24,68 @@ export const Header = ({
     redirect("/dashboard?q=single");
   };
 
+  const iconColortheme = () => {
+    const currentTheme = sessionStorage.getItem("theme") ?? "";
+    if (currentTheme === "corp") {
+      return "#42bcbe";
+    } else {
+      return "#5c4bd3";
+    }
+  };
+
   return (
     <>
       <NotificationsPane customClass={toggleNotifActive ? "open-activity" : ""}>
         <SectionHeader title="Activity" fn={closePanel} />
         <ListWithIcons />
       </NotificationsPane>
-      <FakeFavorites
-        favsState={favsState}
-        addContentToFavs={addContentToFavs}
-        toggleFavs={toggleFavs}
-      />
-      <header className={`header ${customClass}`}>
-        <div className="header-contents">
-          <span
-            className="header-icons-logo"
-            onClick={() => clearSessionStorage()}
-          >
-            LOGO
-          </span>
-          <IconContext.Provider
-            value={{
-              style: { fontSize: "1.3rem" },
-              className: "active-icon",
-            }}
-          >
-            <button
-              className={`mobile-icon-effect  ${
-                toggleFavs ? "activate-icons" : ""
-              }`}
-              onClick={() => setToggleFavs(!toggleFavs)}
+      <FakeFavorites toggleFavs={toggleFavs} />
+      {visibleHeader ? (
+        <header className={`header ${customClass}`}>
+          <div className="header-contents">
+            <span
+              className="header-icons-logo"
+              onClick={() => clearSessionStorage()}
+              style={{ color: iconColortheme() }}
             >
-              {<BsFillStarFill />}
-            </button>
-            <button
-              className={`mobile-icon-effect`}
-              onClick={() => redirect("/userSettings")}
+              LOGO
+            </span>
+            <IconContext.Provider
+              value={{
+                style: { fontSize: "1.3rem" },
+                className: "active-icon",
+              }}
             >
-              {<FaUser />}
-            </button>
-            <button
-              className={`mobile-icon-effect ${
-                toggleNotifActive ? "activate-icons" : ""
-              }`}
-              onClick={() => setToggleNotifActive(!toggleNotifActive)}
-            >
-              <span className="mobile-icon-new"></span>
-              {<IoNotificationsSharp />}
-            </button>
-          </IconContext.Provider>
-        </div>
-        <Divider />
-      </header>
+              <button
+                className={`mobile-icon-effect  ${
+                  toggleFavs ? "activate-icons" : ""
+                }`}
+                onClick={() => setToggleFavs(!toggleFavs)}
+              >
+                {<BsFillStarFill />}
+              </button>
+              <button
+                className={`mobile-icon-effect`}
+                onClick={() => redirect("/userSettings")}
+              >
+                {<FaUser />}
+              </button>
+              <button
+                className={`mobile-icon-effect ${
+                  toggleNotifActive ? "activate-icons" : ""
+                }`}
+                onClick={() => setToggleNotifActive(!toggleNotifActive)}
+              >
+                <span className="mobile-icon-new"></span>
+                {<IoNotificationsSharp />}
+              </button>
+            </IconContext.Provider>
+          </div>
+          <Divider />
+        </header>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -5,6 +5,28 @@ import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { BsFillTrophyFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import { AwardsGreenImg, AwardsPurpleImg } from "../../data/images";
+
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let awards = "";
+let recentAwards = "";
+let awardName = "";
+let readtotal = "";
+let inProgress = "";
+
+if (currentLang === "en") {
+  awards = "Awards";
+  recentAwards = "Premios Recientes";
+  awardName = "Award Name";
+  readtotal = "5/10 read";
+  inProgress = "In Progress";
+} else if (currentLang === "es") {
+  awards = "Premios";
+  recentAwards = "Premios Recientes";
+  awardName = "Nomre del Premio";
+  readtotal = "lectura 5/10";
+  inProgress = "En Progreso";
+}
 
 export const AwardsPage = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
@@ -30,13 +52,13 @@ export const AwardsPage = () => {
       <div className="mobile-scroll-awards">
         <section className="awards-page">
           <div className="awards-page-contents">
-            <h1 className="text-title">Awards</h1>
+            <h1 className="text-title">{awards}</h1>
             <p className="text-smallText awards-text-small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
               Ipsum dolor sit amet.
             </p>
             <div className="awards-badges-section">
-              <h2 className="text-midText awards-text-mid">Recent Awards</h2>
+              <h2 className="text-midText awards-text-mid">{recentAwards}</h2>
               <div className="awards-badges">
                 <IconContext.Provider
                   value={{
@@ -44,21 +66,33 @@ export const AwardsPage = () => {
                   }}
                 >
                   <div className="awards-single-badge">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsGreenImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                   </div>
                   <div className="awards-single-badge">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsGreenImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                   </div>
                   <div className="awards-single-badge">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsGreenImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                   </div>
                 </IconContext.Provider>
@@ -66,7 +100,7 @@ export const AwardsPage = () => {
             </div>
             <div className="awards-badges-section">
               <h2 className="text-midText awards-text-mid awards-text-mid">
-                In Progress
+                {inProgress}
               </h2>
               <div className="awards-badges">
                 <IconContext.Provider
@@ -75,57 +109,55 @@ export const AwardsPage = () => {
                   }}
                 >
                   <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsPurpleImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                     <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
+                      {readtotal}
                     </p>
                   </div>
                   <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsPurpleImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                     <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
+                      {readtotal}
                     </p>
                   </div>
                   <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsPurpleImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                     <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
+                      {readtotal}
                     </p>
                   </div>
                   <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
+                    <img
+                      src={AwardsPurpleImg}
+                      alt=""
+                      style={{ height: "4rem", width: "4rem" }}
+                    />
                     <p className="text-smallText awards-text-small">
-                      Award Name
+                      {awardName}
                     </p>
                     <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
-                    </p>
-                  </div>
-                  <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
-                    <p className="text-smallText awards-text-small">
-                      Award Name
-                    </p>
-                    <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
-                    </p>
-                  </div>
-                  <div className="awards-single-badgeProgress">
-                    <BsFillTrophyFill />
-                    <p className="text-smallText awards-text-small">
-                      Award Name
-                    </p>
-                    <p className="text-smallText awards-text-small awards-small-text">
-                      5/10 read
+                      {readtotal}
                     </p>
                   </div>
                 </IconContext.Provider>

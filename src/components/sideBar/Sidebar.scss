@@ -21,16 +21,16 @@
 }
 
 .sidebar-icons {
-  color: $middleGray;
+  color: var(--middleGray);
   margin: 0.5rem;
   &:hover {
-    color: $dark;
+    color: var(--dark);
   }
 }
 
 /*.item-active-state {
-  background-color: $white;
+  background-color: var(--white);
   &:hover {
-    background-color: $white;
+    background-color: var(--white);
   }
 }*/

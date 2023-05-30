@@ -11,17 +11,17 @@
     .tabs-btn {
       background: none;
       border: none;
-      color: $secondaryDark;
+      color: var(--secondaryDark);
       cursor: pointer;
       font-size: 1rem;
       padding: 0.5rem 1rem;
 
       &:hover {
-        color: $mainPurple;
+        color: var(--mainPurple);
       }
     }
     .tabs-secondary {
-      color: $black;
+      color: var(--black);
     }
     .tabsIndividualDivider {
       display: none;
@@ -35,7 +35,7 @@
 }
 
 .tabs-btn-active {
-  border-bottom: 2px solid $mainPurple !important;
+  border-bottom: 2px solid var(--mainPurple) !important;
 }
 
 .hide-btns {

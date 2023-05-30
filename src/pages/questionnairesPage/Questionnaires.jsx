@@ -12,12 +12,12 @@ import { QuestionsBadge } from "../../components/startScreen/StartScreen";
 import { LoaderSection } from "../../components/loaderSection/LoaderSection";
 import Confetti from "react-confetti";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+
 export const Questionnaires = () => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
   const [stage, setStage] = useState(0);
-  const [answersArr, setAnswersArr] = useState([]);
-  const [flagArr, setFlagArr] = useState(0);
   const [removeConfetti, setRemoveConfetti] = useState(true);
 
   const {
@@ -32,19 +32,50 @@ export const Questionnaires = () => {
   let qaStartTitle = "";
   let qaStartDesc = "";
   let qaStoreAnswersType = "";
+  let nextTitle = "";
+  let returnDash = "";
+  let qaTypeTitle = "";
 
   if (urlCatch("assessments")) {
-    qaType = "assessments";
-    qaStoreAnswersType = "asmt";
-    qaStartTitle = "Assessment Start Screen";
-    qaStartDesc = "Description of what this is and why its needed..";
-    questionsAndAnswers = questionsAnswersScreen[0];
+    if (currentLang === "en") {
+      qaType = "assessments";
+      qaTypeTitle = "Assessments";
+      qaStoreAnswersType = "asmt";
+      qaStartTitle = "Assessment Start Screen";
+      qaStartDesc = "Description of what this is and why its needed.";
+      questionsAndAnswers = questionsAnswersScreen[0];
+      nextTitle = "Next";
+      returnDash = "Return to Care Journey Dashboard";
+    } else if (currentLang === "es") {
+      qaType = "assessments";
+      qaTypeTitle = "Evaluaciones";
+      qaStoreAnswersType = "asmt";
+      qaStartTitle = "Inicio de Evaluación";
+      qaStartDesc = "Descripción del por qué ésto es necesario.";
+      questionsAndAnswers = questionsAnswersScreen[0];
+      nextTitle = "Siguiente";
+      returnDash = "Regresar al Dashboard";
+    }
   } else if (urlCatch("CheckInsPage")) {
-    qaType = "Periodic Check In";
-    qaStoreAnswersType = "chkin";
-    qaStartTitle = "Periodic Check In";
-    qaStartDesc = "We want to hear about how your COPD management is going.";
-    questionsAndAnswers = questionsAnswersScreen[1];
+    if (currentLang === "en") {
+      qaType = "Periodic Check In";
+      qaTypeTitle = "Periodic Check In";
+      qaStoreAnswersType = "chkin";
+      qaStartTitle = "Periodic Check In";
+      qaStartDesc = "We want to hear about how your COPD management is going.";
+      questionsAndAnswers = questionsAnswersScreen[1];
+      nextTitle = "Next";
+      returnDash = "Return to Care Journey Dashboard";
+    } else if (currentLang === "es") {
+      qaType = "Periodic Check In";
+      qaTypeTitle = "Revisiones Periódicas";
+      qaStoreAnswersType = "chkin";
+      qaStartTitle = "Revisión Periódica";
+      qaStartDesc = "Queremos saber cómo va su manejo de la EPOC.";
+      questionsAndAnswers = questionsAnswersScreen[1];
+      nextTitle = "Siguiente";
+      returnDash = "Regresar al Dashboard";
+    }
   }
 
   const toggleHeaderPanels = (action) => {
@@ -70,7 +101,7 @@ export const Questionnaires = () => {
     if (stage === 0) {
       actionsBtns = (
         <ButtonsStartScreen
-          text="Next"
+          text={nextTitle}
           fn={() => {
             setStage(stage + 1);
           }}
@@ -80,7 +111,7 @@ export const Questionnaires = () => {
     } else if (stage === numberOfPages + 1) {
       actionsBtns = (
         <ButtonsStartScreen
-          text="Return to Care Journey Dashboard"
+          text={returnDash}
           fn={() => redirect("/dashboard?q=single")}
           customClassPrimaryButton="qa-primary-button"
         />
@@ -106,7 +137,7 @@ export const Questionnaires = () => {
         <QuestionsAnswers
           answerSelection={answerSelection}
           selectAnswer={selectAnswer}
-          descTitle={qaType}
+          descTitle={qaTypeTitle}
           questAnswers={questionsAndAnswers[stage]}
           stage={stage}
         />

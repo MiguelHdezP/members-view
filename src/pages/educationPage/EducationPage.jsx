@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./EducationPage.scss";
+import { urlGetQueryString } from "../../utils/scripts";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import Modal from "@mui/material/Modal";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
@@ -8,51 +9,7 @@ import { Footer } from "../../components/footer/Footer";
 import { EducationUnique } from "./EducationUnique";
 
 export const EducationPage = () => {
-  const [startState, setStartState] = useState(false);
-  const [startState2, setStartState2] = useState(false);
-  const [startState3, setStartState3] = useState(false);
-  const [startState4, setStartState4] = useState(false);
-  const [startState5, setStartState5] = useState(false);
-  const [startState6, setStartState6] = useState(false);
-  const [addToFavs, setAddToFavs] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-
-  useEffect(() => {
-    //sessionStorage.removeItem("currentFavs");
-    sessionStorage.setItem("currentFavs", JSON.stringify(addToFavs));
-  }, [addToFavs]);
-
-  const addContentToFavs = (num) => {
-    if (!addToFavs.some((e) => e === num)) {
-      setAddToFavs((prev) => [...prev, num]);
-    } else {
-      let removeRepeteadFavs = addToFavs.filter((e) => e !== num);
-      setAddToFavs([...removeRepeteadFavs]);
-    }
-
-    switch (num) {
-      case 1:
-        setStartState(!startState);
-        break;
-      case 2:
-        setStartState2(!startState2);
-        break;
-      case 3:
-        setStartState3(!startState3);
-        break;
-      case 4:
-        setStartState4(!startState4);
-        break;
-      case 5:
-        setStartState5(!startState5);
-        break;
-      case 6:
-        setStartState6(!startState6);
-        break;
-      default:
-        break;
-    }
-  };
 
   const handleOpen = () => {
     setOpenModal(!openModal);
@@ -60,41 +17,47 @@ export const EducationPage = () => {
 
   const handleClose = () => setOpenModal(false);
 
-  return (
-    <MobileContainer className="appImg">
-      <Header favsState={addToFavs} addContentToFavs={addContentToFavs} />
-      <Modal
-        open={openModal}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <BoxCard customClass="education-modal">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/T1G9Rl65M-Q"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </BoxCard>
-      </Modal>
-      <div className="mobile-scroll-education">
-        <EducationUnique
-          addContentToFavs={addContentToFavs}
-          handleOpen={handleOpen}
-          startStates={{
-            startState,
-            startState2,
-            startState3,
-            startState4,
-            startState5,
-            startState6,
-          }}
-        />
-      </div>
-      <Footer customClass="footer-moreOptions-bottomFix" />
-    </MobileContainer>
-  );
+  const EducationContents = () => {
+    let CommonContents = (
+      <>
+        <Modal
+          open={openModal}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <BoxCard customClass="education-modal">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/T1G9Rl65M-Q"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </BoxCard>
+        </Modal>
+        <div className="mobile-scroll-education">
+          <EducationUnique handleOpen={handleOpen} />
+        </div>
+        <Footer customClass="footer-moreOptions-bottomFix" />
+      </>
+    );
+    if (urlGetQueryString() === "fullpage") {
+      return (
+        <MobileContainer>
+          <Header visibleHeader={true} />
+          {CommonContents}
+        </MobileContainer>
+      );
+    }
+    return (
+      <>
+        <Header visibleHeader={false} />
+        {CommonContents}
+      </>
+    );
+  };
+
+  return <EducationContents />;
 };

@@ -34,13 +34,13 @@
 
         .firstTime-article-list {
           .firstTime-list {
-            color: $mainPurple;
+            color: var(--mainPurple);
             list-style: disc;
             margin-left: 1rem;
             padding: 0.5rem 0;
 
             .firstTime-list-anchor {
-              color: $mainPurple;
+              color: var(--mainPurple);
               text-decoration: none;
 
               &:hover {
@@ -53,7 +53,7 @@
     }
 
     .firstTime-boxCard {
-      background-color: $mainPurple;
+      background-color: var(--mainPurple);
       bottom: 11rem;
       border-radius: unset;
       position: fixed;
@@ -61,13 +61,13 @@
       @include fixedWidth;
 
       .fistTime-primaryBtn {
-        background-color: $white;
-        border-color: $strokeGray;
-        color: $dark;
+        background-color: var(--white);
+        border-color: var(--strokeGray);
+        color: var(--dark);
         margin: 0;
 
         &:hover {
-          background-color: $lightGray;
+          background-color: var(--lightGray);
         }
       }
     }

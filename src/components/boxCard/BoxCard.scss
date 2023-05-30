@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .box-card {
-  background-color: $footerGray;
+  background-color: var(--footerGray);
   border-radius: 5px;
   padding: 1rem;
   position: relative;

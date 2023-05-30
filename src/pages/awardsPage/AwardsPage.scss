@@ -15,7 +15,7 @@
         }
 
         .awards-text-small {
-          color: $gray600;
+          color: var(--gray600);
         }
 
         .awards-badges {
@@ -26,17 +26,17 @@
 
           .awards-single-badgeProgress {
             .awards-trophy-inprogress {
-              @include badges($gray160, $gray160);
+              @include badges(var(--gray160), var(--gray160));
             }
 
             .awards-small-text {
-              color: $mainPurple;
+              color: var(--mainPurple);
             }
           }
 
           .awards-single-badge {
             .awards-trophy {
-              @include badges($mainPurple, $mainPurple);
+              @include badges(var(--mainPurple), var(--mainPurple));
             }
           }
         }

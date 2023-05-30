@@ -1,9 +1,9 @@
 @import "../../styles/main.scss";
 
 .inputField {
-  border: 1px solid $strokeGray;
+  border: 1px solid var(--strokeGray);
   border-radius: 5px;
-  color: $gray600;
+  color: var(--gray600);
   display: block;
   font-size: 0.9rem;
   margin: 1rem auto;

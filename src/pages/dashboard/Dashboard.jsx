@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Dashboard.scss";
 import "react-circular-progressbar/dist/styles.css";
 import { MobileContainer } from "../../components/mobileContainer/MobileContainer";
@@ -8,22 +8,34 @@ import { Divider } from "../../components/divider/Divider";
 import { JourneyTracker } from "../../components/journey-tracker/JourneyTracker";
 import { MaterialAlert } from "../../components/material-alert/MaterialAlert";
 import { DashboardContents } from "../../data/dashboardData";
+//import { DataContext } from "../../data/context/dataContext";
 
 //sessionStorage.setItem("tasksProgress", JSON.stringify([false, true, false]));
 
-export const Dashboard = () => {
+export const Dashboard = ({ lang }) => {
+  //const { addToFavs, addContentToFavs } = useContext(DataContext);
   const [renderStageJourneyTracker, setRenderStageJourneyTracker] = useState(1);
   const [renderConditionDash, setRenderConditionDash] = useState(0);
 
+  const currentLang = sessionStorage.getItem("lang");
+
+  if (currentLang !== null) {
+    if (currentLang === "en") {
+      lang = "en";
+    } else if (currentLang === "es") {
+      lang = "es";
+    }
+  }
+
   const handlePollo = (id) => {
-    console.log("hanlde Pollo: ", id);
     setRenderStageJourneyTracker(id);
   };
 
   let DashboardContentsArr = DashboardContents(
     renderStageJourneyTracker,
     renderConditionDash,
-    handlePollo
+    handlePollo,
+    lang
   );
 
   const handleChangeOfStage = (id) => {
@@ -79,6 +91,15 @@ export const Dashboard = () => {
     alertDesc = "To contact your care manager go";
     alertLink = "/chats";
   }
+  let careProgram = "";
+  let welcomes = "";
+  if (lang === "en") {
+    careProgram = "Care Program";
+    welcomes = "Welcome back Jane!";
+  } else if ((lang = "es")) {
+    careProgram = "Programa de Cuidado";
+    welcomes = "¡Bienvenida Jane!";
+  }
 
   return (
     <MobileContainer className="appImg">
@@ -95,8 +116,8 @@ export const Dashboard = () => {
       <div className="mobile-scroll-dashboard">
         <section className="dashboard-page">
           <div className="dashboard-titles">
-            <p className="text-title startS-title-text">Care Program</p>
-            <p className="text-smallText">Welcome back Jane!</p>
+            <p className="text-title startS-title-text">{careProgram}</p>
+            <p className="text-smallText">{welcomes}</p>
           </div>
           <div className="dashboard-contents">
             <div className="dashboard-contents-joruneyTracker">
@@ -105,14 +126,16 @@ export const Dashboard = () => {
                 currentStage={renderStageJourneyTracker}
                 fn={handleChangeOfStage}
                 fn2={setRenderConditionDash}
+                lang="en"
               />
               <Divider customClass="divider-bottom" />
             </div>
             {DashboardContentsArr.renderConts}
           </div>
+          <div className="bottom-spacer-half"></div>
         </section>
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </MobileContainer>
   );
 };

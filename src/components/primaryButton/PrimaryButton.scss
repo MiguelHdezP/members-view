@@ -1,5 +1,5 @@
 @import "../../styles/main.scss";
 
 .primary-button {
-  @include btns($mainPurple, $white, $mainPurple, 0.9);
+  @include btns(var(--mainPurple), var(--white), var(--mainPurple), 0.9);
 }

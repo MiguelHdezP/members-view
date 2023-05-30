@@ -2,20 +2,20 @@
 
 .tabs-goals {
   .tabs-goals-card {
-    background-color: $white;
-    border: 1px solid $strokeGray;
+    background-color: var(--white);
+    border: 1px solid var(--strokeGray);
     border-radius: 10px;
     margin: 2rem 0;
     padding: 1rem;
     text-align: left;
 
     .completed-text-gray {
-      color: $smallLabel;
+      color: var(--smallLabel);
     }
 
     textarea {
-      background-color: $white;
-      border: 1px solid $strokeGray;
+      background-color: var(--white);
+      border: 1px solid var(--strokeGray);
       border-radius: 10px;
       padding: 1rem;
       margin-bottom: 1rem;
@@ -32,7 +32,7 @@
       justify-content: last baseline;
 
       .tabs-input-checkbox {
-        background-color: $mainPurple;
+        background-color: var(--mainPurple);
         margin: 0.39rem 1rem 0 0;
       }
 
@@ -51,12 +51,12 @@
     }
 
     .tabs-goals-pill-careplan {
-      background-color: rgba($color: $mainPurple, $alpha: 0.3);
-      color: $mainPurple;
+      background-color: rgba($color: var(--mainPurple), $alpha: 0.3);
+      color: var(--mainPurple);
     }
     .tabs-goals-pill-personal {
-      background-color: rgba($color: $badgeChat4, $alpha: 0.3);
-      color: $badgeChat4;
+      background-color: rgba($color: var(--badgeChat4), $alpha: 0.3);
+      color: var(--badgeChat4);
     }
   }
 }

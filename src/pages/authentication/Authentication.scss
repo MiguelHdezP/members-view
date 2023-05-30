@@ -20,16 +20,16 @@
       }
     }
     .auth-lock {
-      color: $mainPurple;
+      color: var(--mainPurple);
       font-size: 6rem;
-      border: 1px solid $mainPurple;
+      border: 1px solid var(--mainPurple);
       border-radius: 50%;
       margin-top: 1.5rem;
       padding: 0.8rem;
     }
 
     .auth-h1 {
-      color: $dark;
+      color: var(--dark);
       font-size: 24px;
       margin: 0.6rem 0;
     }

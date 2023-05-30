@@ -1,9 +1,10 @@
 @import "../../styles/main.scss";
 
 .footer {
-  @include headerFooter($footerGray, 0.5rem);
+  @include headerFooter(var(--footerGray), 0.5rem);
+  background-color: var(--white);
   bottom: auto;
-  border: 1px solid $strokeGray;
+  border: 1px solid var(--strokeGray);
   position: absolute;
   width: 100%;
 
@@ -40,10 +41,10 @@
 .footer-more-options {
   height: 93.4%;
   top: -5.6rem;
-  background-color: rgba($color: $overlay, $alpha: 0.3);
+  background-color: rgba($color: #202359, $alpha: 0.3);
 
   .footer-options {
-    background-color: $white;
+    background-color: var(--white);
     bottom: -5.3px;
     display: flex;
     height: auto;
@@ -69,8 +70,8 @@
         margin: 0.5rem 0.1rem 0.4rem;
 
         &:hover {
-          border: 1px solid $lightGray;
-          background-color: rgba($color: $lightGray, $alpha: 1);
+          border: 1px solid var(--lightGray);
+          background-color: rgba($color: var(--lightGray), $alpha: 1);
         }
 
         .footer-option-img {
@@ -80,7 +81,7 @@
       }
 
       .footer-option-label {
-        color: $gray600;
+        color: var(--gray600);
         font-size: 0.813rem;
         text-align: center;
       }
@@ -89,4 +90,14 @@
 }
 .footer-moreOptions-bottomFix {
   bottom: -1.6rem !important;
+}
+
+.new-icons-more-menu {
+  color: var(--mainPurple);
+  font-size: 4rem;
+  position: relative;
+}
+
+.new-icons-more-menu-size4 {
+  font-size: 3.3rem;
 }

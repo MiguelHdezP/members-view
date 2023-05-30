@@ -1,4 +1,4 @@
-@import "./variables.scss";
+/*@import "./variables.scss";
 
 @mixin fixedWidth($width: 100%, $maxWidth: 22.7vw, $minWidth: 37vw) {
   width: $width;
@@ -71,7 +71,7 @@
 @mixin rowCards {
   align-items: center;
   background: white;
-  border-bottom: 1px solid $strokeGray;
+  border-bottom: 1px solid var(--strokeGray);
   display: flex;
   padding: 1rem;
 }
@@ -83,7 +83,7 @@
   height: 6px;
 }
 
-$colors: $badgeChat1, $badgeChat2, $badgeChat3, $badgeChat4, $badgeChat5;
+$colors: var(--badgeChat1), var(--badgeChat2), var(--badgeChat3), var(--badgeChat4), var(--badgeChat5);
 $repeat: 1;
 
 @mixin randomColor {
@@ -91,7 +91,7 @@ $repeat: 1;
     align-items: center;
     background-color: lighten(nth($colors, random(length($colors))), 20%);
     border-radius: 50%;
-    color: $white;
+    color: var(--white);
     height: 45px;
     display: flex;
     justify-content: center;
@@ -100,33 +100,33 @@ $repeat: 1;
 }
 
 @mixin headingText {
-  color: $dark;
+  color: var(--dark);
   font-size: 1.5rem;
 }
 
 @mixin smallText {
-  color: $dark;
+  color: var(--dark);
   font-size: 0.813rem;
 }
 
 @mixin defaultText {
-  color: $dark;
+  color: var(--dark);
   font-size: 1rem;
 }
 
 @mixin strongText {
-  color: $secondaryDark;
+  color: var(--secondaryDark);
   font-size: 1rem;
 }
 
 @mixin purpleHover {
-  border-color: $mainPurple;
-  background-color: rgba($color: $mainPurple, $alpha: 0.1);
-  color: $mainPurple;
+  border-color: var(--mainPurple);
+  background-color: rgba($color: var(--mainPurple), $alpha: 0.1);
+  color: var(--mainPurple);
 }
 
 @mixin badges($borderColor, $color) {
-  background-color: $white;
+  background-color: var(--white);
   border: 1px solid $borderColor;
   border-radius: 50%;
   color: $color;
@@ -141,6 +141,7 @@ $repeat: 1;
   margin: 0.8rem 0;
   padding: 0.3rem 1rem;
   & > p {
-    color: $white;
+    color: var(--white);
   }
 }
+*/

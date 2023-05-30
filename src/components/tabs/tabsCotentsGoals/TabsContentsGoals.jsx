@@ -3,6 +3,29 @@ import "./TabsContentsGoals.scss";
 import { goalsTabs } from "../../../data/mockedData";
 import { BoxCard } from "../../boxCard/BoxCard";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let scheduleVirtual = "";
+let carePlan = "";
+let notes = "";
+let healthy = "";
+let eatLess = "";
+
+if (currentLang === "en") {
+  scheduleVirtual = "Schedule virtual appointments with my care manager";
+  carePlan = "Care Plan";
+  notes = "Note";
+  healthy = "Make healthy food choices and learn more about the diabetic diet";
+  eatLess = " Eat less fast food";
+} else if (currentLang === "es") {
+  scheduleVirtual =
+    "Programar citas virtuales con mi administrador de atención";
+  carePlan = "Plan de Cuidados";
+  notes = "Nota";
+  healthy =
+    "Elija alimentos saludables y aprenda más sobre la dieta para diabéticos";
+  eatLess = "Ingerir menos comida rápida";
+}
+
 const InProgressSection = ({
   manageGoals = false,
   fn,
@@ -37,7 +60,7 @@ const InProgressSection = ({
               ""
             )}
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Schedule virtual appointments with my care manager
+              {scheduleVirtual}
             </p>
           </div>
           {manageGoals ? (
@@ -52,9 +75,7 @@ const InProgressSection = ({
           ) : (
             ""
           )}
-          <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-            Care Plan
-          </div>
+          <div className="text-smallText tabs-goals-pill-careplan reset-margin"></div>
         </BoxCard>
       ) : (
         ""
@@ -106,14 +127,15 @@ const CompletedSection = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Schedule virtual appointments with my care manager
+              {scheduleVirtual}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes}
+            {text}
           </p>
           <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-            Care Plan
+            {carePlan}
           </div>
         </BoxCard>
       ) : (
@@ -124,14 +146,14 @@ const CompletedSection = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Make healthy food choices and learn more about the diabetic diet
+              {healthy}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes} {text}
           </p>
           <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-            Care Plan
+            {carePlan}
           </div>
         </BoxCard>
       ) : (
@@ -142,11 +164,11 @@ const CompletedSection = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Eat letss fast food
+              {eatLess}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes} {text}
           </p>
           <div className="text-smallText tabs-goals-pill-personal reset-margin">
             Personal
