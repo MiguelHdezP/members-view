@@ -747,44 +747,7 @@ const serveDashboardContents = (
   const storageContents = null; // { progress: 4, eduTotalContents: 7 }; //JSON.parse(sessionStorage.getItem("storedEducation"));
   let stageCurrentContent;
 
-  if (urlGetQueryString() === "single") {
-    switch (stage) {
-      case 1:
-        stageCurrentContent = onbaordConditionContentSingle(
-          { progress: 0, eduTotalContents: 0 },
-          stageCurrent
-        );
-        break;
-      case 2:
-        stageCurrentContent = asmtConditionContentSingle(
-          stageCurrent,
-          setRenderStageJourneyTracker
-        );
-        break;
-      case 3:
-        stageCurrentContent = chckInConditionContentSingle(
-          { progress: 0, eduTotalContents: 0 },
-          stage,
-          setRenderStageJourneyTracker
-        );
-        break;
-      case 4:
-        stageCurrentContent = eduConditionContentSingle(stageCurrent);
-        break;
-      case 5:
-        stageCurrentContent = asmtConditionContentSingle(1, null, 5);
-        break;
-      case 6:
-        stageCurrentContent = chckInConditionContentSingle(
-          { progress: 0, eduTotalContents: 0 },
-          null,
-          6
-        );
-        break;
-      case 7:
-        stageCurrentContent = asmtConditionContentSingle(2, null, 7);
-        break;
-    }
+  /*if (urlGetQueryString() === "single") {
   } else if (urlGetQueryString() === "multi") {
     switch (stage) {
       case 1:
@@ -806,6 +769,44 @@ const serveDashboardContents = (
         stageCurrentContent = eduConditionContentMulti(stageCurrent);
         break;
     }
+  }*/
+
+  switch (stage) {
+    case 1:
+      stageCurrentContent = onbaordConditionContentSingle(
+        { progress: 0, eduTotalContents: 0 },
+        stageCurrent
+      );
+      break;
+    case 2:
+      stageCurrentContent = asmtConditionContentSingle(
+        stageCurrent,
+        setRenderStageJourneyTracker
+      );
+      break;
+    case 3:
+      stageCurrentContent = chckInConditionContentSingle(
+        { progress: 0, eduTotalContents: 0 },
+        stage,
+        setRenderStageJourneyTracker
+      );
+      break;
+    case 4:
+      stageCurrentContent = eduConditionContentSingle(stageCurrent);
+      break;
+    case 5:
+      stageCurrentContent = asmtConditionContentSingle(1, null, 5);
+      break;
+    case 6:
+      stageCurrentContent = chckInConditionContentSingle(
+        { progress: 0, eduTotalContents: 0 },
+        null,
+        6
+      );
+      break;
+    case 7:
+      stageCurrentContent = asmtConditionContentSingle(2, null, 7);
+      break;
   }
 
   if (storageContents !== null) {
@@ -835,15 +836,26 @@ const fullDashboardDataSingle = (
     }
     const getActiveStage = JSON.parse(sessionStorage.getItem("stagesAcive"));
     if (getActiveStage !== null) {
-      let savedStage = getActiveStage.map((e) => e.stage);
-      if (savedStage.some((e) => e === 6) && stage === 2) {
+      let savedStage = [];
+      let activeStage = 1;
+      getActiveStage.map((e) => {
+        savedStage.push(e.stage);
+        if (e.active) {
+          activeStage = e.stage;
+        }
+      });
+      if (stage === 5 || stage === 7) {
+      } else if (savedStage.some((e) => e === 6) && stage === 2) {
         stage = 2;
       } else if (savedStage.some((e) => e === 3) && stage === 2) {
         stage = 6;
+        sessionStorage.removeItem("stagesAcive");
         sessionStorage.setItem(
           "stagesAcive",
           JSON.stringify([...getActiveStage, { stage: 6, active: true }])
         );
+      } else if (stage !== 5 || stage !== 7) {
+        stage = activeStage;
       }
     }
 
@@ -981,7 +993,6 @@ const fullDashboardDataSingle = (
         ];
       }
     };
-
     switch (stage) {
       case 1:
         return [
@@ -1277,37 +1288,84 @@ const fullDashboardDataSingle = (
     dynamicStatus = "hidden";
   }
 
-  const handleOnbordVary = () => {
-    const storedOnboardIcons = JSON.parse(
-      sessionStorage.getItem("stagesAcive")
-    );
-    let reduceArrVals = [];
-    if (storedOnboardIcons !== null) {
-      reduceArrVals.map((e) => e.stage);
-    }
-
-    if (stage === 1) {
-      return "active";
-    } else if (reduceArrVals.some((e) => e === 2)) {
-      return "active";
+  const renderActiveIcon = () => {
+    const getTrackers = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    let provArr = [];
+    let activeState = "";
+    if (getTrackers !== null) {
+      provArr = getTrackers.map((e) => e.stage);
+      if (provArr.some((e) => e === stage)) {
+        activeState = "active";
+      }
     } else {
-      return "locked";
+      if (stage === 2 || stage === 5 || stage === 6) {
+        activeState = "active";
+      } else if (stage === 3 || stage === 7) {
+        activeState = "active";
+      } else {
+        activeState = "locked";
+      }
     }
+    return activeState;
   };
 
-  const handleAsmtVary = () => {
-    if (stage === 2 || stage === 5 || stage === 6) {
-      return "active";
+  const renderRightTracker = () => {
+    const getTrackers = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    if (getTrackers !== null) {
+      return [
+        {
+          id: 2,
+          title: "Assessment",
+          icon: <MdAssessment />,
+          status: renderActiveIcon(),
+          layout: trackerObj(),
+        },
+        {
+          id: 3,
+          title: "Check ins",
+          icon: <HiCheckCircle />,
+          status: renderActiveIcon(),
+          layout: trackerObj(),
+        },
+        {
+          id: 4,
+          title: "Education",
+          icon: <FaAppleAlt />,
+          status: "activePassive",
+          layout: trackerObj(),
+        },
+      ];
     } else {
-      return "locked";
-    }
-  };
-
-  const handleChkInVary = () => {
-    if (stage === 3 || stage === 7) {
-      return "active";
-    } else {
-      return "locked";
+      return [
+        {
+          id: 1,
+          title: "Onboarding",
+          icon: <MdAssessment />,
+          status: stage == 1 ? "active" : "hidden",
+          layout: trackerObj(stage == 1 ? "" : "hidden"),
+        },
+        {
+          id: 2,
+          title: "Assessment",
+          icon: <MdAssessment />,
+          status: renderActiveIcon(),
+          layout: trackerObj(),
+        },
+        {
+          id: 3,
+          title: "Check ins",
+          icon: <HiCheckCircle />,
+          status: renderActiveIcon(),
+          layout: trackerObj(),
+        },
+        {
+          id: 4,
+          title: "Education",
+          icon: <FaAppleAlt />,
+          status: dynamicStatus,
+          layout: trackerObj(),
+        },
+      ];
     }
   };
 
@@ -1315,36 +1373,7 @@ const fullDashboardDataSingle = (
     id: 1,
     scenario: "single",
     dropdown: [],
-    tracker: [
-      {
-        id: 1,
-        title: "Onboarding",
-        icon: <MdAssessment />,
-        status: stage == 1 ? "active" : "hidden",
-        layout: trackerObj(stage == 1 ? "" : "hidden"),
-      },
-      {
-        id: 2,
-        title: "Assessment",
-        icon: <MdAssessment />,
-        status: handleAsmtVary(),
-        layout: trackerObj(),
-      },
-      {
-        id: 3,
-        title: "Check ins",
-        icon: <HiCheckCircle />,
-        status: handleChkInVary(),
-        layout: trackerObj(),
-      },
-      {
-        id: 4,
-        title: "Education",
-        icon: <FaAppleAlt />,
-        status: dynamicStatus,
-        layout: trackerObj(),
-      },
-    ],
+    tracker: renderRightTracker(),
   };
   return dashboardDataSingle;
 };
@@ -1528,19 +1557,21 @@ export const DashboardContents = (
   setRenderStageJourneyTracker
 ) => {
   let fullDataPrep;
-  if (urlGetQueryString() === "single") {
-    fullDataPrep = fullDashboardDataSingle(
-      renderStageJourneyTracker,
-      renderConditionDash,
-      setRenderStageJourneyTracker
-    );
+  /*if (urlGetQueryString() === "single") {
   } else if (urlGetQueryString() === "multi") {
     fullDataPrep = fullDashboardDataMulti(
       renderStageJourneyTracker,
       renderConditionDash,
       setRenderStageJourneyTracker
     );
-  }
+  }*/
+
+  fullDataPrep = fullDashboardDataSingle(
+    renderStageJourneyTracker,
+    renderConditionDash,
+    setRenderStageJourneyTracker
+  );
+
   let arrayIndex =
     renderConditionDash > 0 ? renderConditionDash - 1 : renderConditionDash;
 

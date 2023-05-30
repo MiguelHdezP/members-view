@@ -15,10 +15,15 @@ export const Dashboard = () => {
   const [renderStageJourneyTracker, setRenderStageJourneyTracker] = useState(1);
   const [renderConditionDash, setRenderConditionDash] = useState(0);
 
+  const handlePollo = (id) => {
+    console.log("hanlde Pollo: ", id);
+    setRenderStageJourneyTracker(id);
+  };
+
   let DashboardContentsArr = DashboardContents(
     renderStageJourneyTracker,
     renderConditionDash,
-    setRenderStageJourneyTracker
+    handlePollo
   );
 
   const handleChangeOfStage = (id) => {
@@ -28,22 +33,31 @@ export const Dashboard = () => {
       if (id === 2) {
         objta = [
           { stage: id, active: true },
-          { stage: 4, active: true },
+          { stage: 4, active: false },
         ];
       } else {
         objta = [{ stage: id, active: true }];
       }
       sessionStorage.setItem("stagesAcive", JSON.stringify(objta));
     } else {
-      let stageArr = [];
-      for (const prop in getActiveStage) {
-        stageArr.push(getActiveStage[prop].stage);
-      }
-      if (!stageArr.some((e) => e === id)) {
+      let stageArr = getActiveStage.map((e) => {
+        if (e.stage === id) {
+          e.active = true;
+        } else {
+          e.active = false;
+        }
+        return e;
+      });
+      let stageNumbers = stageArr.map((e) => e.stage);
+      if (!stageNumbers.some((e) => e === id)) {
+        sessionStorage.removeItem("stagesAcive");
         sessionStorage.setItem(
           "stagesAcive",
-          JSON.stringify([...getActiveStage, { stage: id, active: true }])
+          JSON.stringify([...stageArr, { stage: id, active: true }])
         );
+      } else {
+        sessionStorage.removeItem("stagesAcive");
+        sessionStorage.setItem("stagesAcive", JSON.stringify([...stageArr]));
       }
     }
     setRenderStageJourneyTracker(id);

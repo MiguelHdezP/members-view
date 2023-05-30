@@ -1,12 +1,12 @@
 @import "../../styles/main.scss";
 
 .auth-methods {
-  height: 11.2rem;
+  height: 7.5rem;
 }
 
 .auth-passcode {
   display: flex;
-  height: 9.99rem;
+  height: 7.3rem;
   .passcode-inputs {
     height: 2.5rem;
     width: 2.5rem;
@@ -19,5 +19,11 @@
 
 .passcode-resend {
   position: relative;
-  top: -4.5rem;
+  top: -2.5rem;
+}
+
+.auth-passcode {
+  .auth-methods-btns {
+    margin-top: 0 !important;
+  }
 }

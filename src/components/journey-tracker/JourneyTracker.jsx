@@ -27,14 +27,18 @@ export const JourneyTracker = ({
     }
   };
 
-  const checkIfActiveState = (status = "", id = 0) => {
-    if (status === "active") {
-      return true;
-    } else if (eduActive && status === "activePassive") {
-      return true;
-    } else {
-      return false;
+  const checkIfActiveState = (id = 0) => {
+    if (id === 1) return true;
+    const getTrackers = JSON.parse(sessionStorage.getItem("stagesAcive"));
+    let activeState = false;
+    if (getTrackers !== null) {
+      getTrackers.map((e) => {
+        if (e.stage === id && e.active) {
+          activeState = true;
+        }
+      });
     }
+    return activeState;
   };
 
   const checkIfRenderDropdown = () => {
@@ -84,7 +88,7 @@ export const JourneyTracker = ({
               <BoxCard
                 setNewNotiAsmt={setNewNotiAsmt}
                 customClass={
-                  checkIfActiveState(status)
+                  checkIfActiveState(id)
                     ? "dashboard-tracker-cards-active dashboard-tracker-cards"
                     : "dashboard-tracker-cards"
                 }
@@ -95,7 +99,7 @@ export const JourneyTracker = ({
               >
                 <span
                   style={{
-                    color: checkIfActiveState(status) ? "#5c4bd3" : "gray",
+                    color: checkIfActiveState(id) ? "#5c4bd3" : "gray",
                   }}
                   className="journey-tracker-stage"
                 >
@@ -109,7 +113,7 @@ export const JourneyTracker = ({
                 </span>
                 <p
                   className={`text-smallText dashboard-tracker-texts ${
-                    checkIfActiveState(status)
+                    checkIfActiveState(id)
                       ? "dashboard-tracker-texts-active"
                       : ""
                   }`}

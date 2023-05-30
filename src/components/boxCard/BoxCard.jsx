@@ -29,7 +29,7 @@ export const BoxCard = ({
       className={`box-card ${customClass}`}
       id={`js-tracker-boxcard-${id}`}
       onClick={() => handleFn(id)}
-      style={prov ? { marginTop: "-1rem" } : {}}
+      style={prov ? { marginTop: "-3rem" } : {}}
     >
       {children}
     </div>
