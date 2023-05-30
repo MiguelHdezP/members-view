@@ -8,6 +8,34 @@ import { TabsContentsCareVisits } from "../../../components/tabs/tabsContentsCar
 import { SecondaryButton } from "../../../components/secondaryButton/SecondaryButton";
 import { PrimaryButton } from "../../../components/primaryButton/PrimaryButton";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let addGoal = "";
+let addGoalDesc = "";
+let careVisits = "";
+let careVisitsDesc = "";
+let saveGoal = "";
+let cancelGoal = "";
+let manageGoalsTitle = "";
+
+if (currentLang === "en") {
+  addGoal = "Add New Goal";
+  addGoalDesc = "Add a personal health goal you would like to track.";
+  careVisits = "Care Visits";
+  careVisitsDesc =
+    "See care you may have missed and manage what care you’ve recieved";
+  saveGoal = "Save";
+  cancelGoal = "Cancel";
+  manageGoalsTitle = "Manage Care Visits";
+} else if (currentLang === "es") {
+  addGoal = "Agregar Meta";
+  addGoalDesc = "Agrega una meta personal de salud.";
+  careVisits = "Visitas de Revisión";
+  careVisitsDesc = "Confirma que revisiones te perdiste o recibiste";
+  saveGoal = "Guardar";
+  cancelGoal = "Cancelar";
+  manageGoalsTitle = "Administrar";
+}
+
 export const CareVisits = () => {
   const [manageGoals, setManageGoals] = useState(false);
   const [hideGoal, setHideGoal] = useState(true);
@@ -71,10 +99,8 @@ export const CareVisits = () => {
           <div className="healthIn-container">
             {addNewGoal ? (
               <>
-                <p className="text-title startS-title-text">Add New Goal</p>
-                <p className="text-smallText">
-                  Add a personal health goal you would like to track.
-                </p>
+                <p className="text-title startS-title-text">{addGoal}l</p>
+                <p className="text-smallText">{addGoalDesc}</p>
                 <div className="healthIn-addGoal-input">
                   <input
                     type="text"
@@ -89,11 +115,10 @@ export const CareVisits = () => {
                 <Breadcrumb text="Health Insights" href="/healthInsights" />
                 <div className="healthIn-titles">
                   <p className="text-title  healthIn-title-bottom">
-                    Care Visits
+                    {careVisits}
                   </p>
                   <p className="text-midText reset margin text-left">
-                    See care you may have missed and manage what care you’ve
-                    recieved
+                    {careVisitsDesc}
                   </p>
                 </div>
                 <div className="healthIn-tabs">{componentProv}</div>
@@ -106,19 +131,19 @@ export const CareVisits = () => {
         {manageGoals ? (
           <>
             <SecondaryButton
-              text="Cancel"
+              text={cancelGoal}
               customClass="healthIn-goals-btn"
               fn={() => setManageGoals(false)}
             />
             <PrimaryButton
-              text="Save"
+              text={saveGoal}
               customClass="healthIn-goals-btn"
               fn={() => saveGoals()}
             />
           </>
         ) : (
           <PrimaryButton
-            text="Manage Care Visits"
+            text={manageGoalsTitle}
             customClass={`healthIn-carevisits-btn`}
             fn={() => setManageGoals(true)}
             disabled={toggleManageBtn}

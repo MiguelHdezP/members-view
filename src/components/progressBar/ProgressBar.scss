@@ -6,7 +6,7 @@
   margin: 2rem 0;
 
   .progressBar-page {
-    background-color: $mainPurple;
+    background-color: var(--mainPurple);
     //cursor: pointer;
     height: 0.35rem;
     opacity: 0.3;

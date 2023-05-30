@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "./Footer.scss";
 import { IconContext } from "react-icons";
 import { MdHomeFilled } from "react-icons/md";
-import { BsChatTextFill } from "react-icons/bs";
+import { BsChatTextFill, BsFillTrophyFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
 import { FaEllipsisH } from "react-icons/fa";
+import { GiHealthPotion, GiShinyApple } from "react-icons/gi";
+import { AiFillInfoCircle } from "react-icons/ai";
 import { NotificationsPane } from "../../components/notificationsPane/NotificationsPane";
 import { BoxCard } from "../boxCard/BoxCard";
-import { health, program, education, awards } from "../../data/images";
 import { redirect } from "../../utils/scripts";
 
-export const Footer = ({ customClass = "" }) => {
+export const Footer = ({ customClass = "", lang = "" }) => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleActiveClass, setToggleActiveClass] = useState(false);
 
@@ -18,6 +19,33 @@ export const Footer = ({ customClass = "" }) => {
     setToggleActiveClass(!toggleActiveClass);
     setToggleNotifActive(!toggleNotifActive);
   };
+
+  const currentLang = sessionStorage.getItem("lang") ?? "en";
+  let healthIn = "";
+  let careJour = "";
+  let appoints = "";
+  let awardsTitle = "";
+  let programOver = "";
+  let eduCont = "";
+  let moreMas = "";
+
+  if (currentLang === "en") {
+    healthIn = "Health Insights";
+    careJour = "Care Journey";
+    appoints = "Appointments";
+    awardsTitle = "Awards";
+    programOver = "Program Overview";
+    eduCont = "Educational content";
+    moreMas = "More";
+  } else if (currentLang === "es") {
+    healthIn = "Salud";
+    careJour = "Viaje de Cuidados";
+    appoints = "Citas";
+    awardsTitle = "Premios";
+    programOver = "Programa";
+    eduCont = "Educación";
+    moreMas = "Más";
+  }
 
   return (
     <>
@@ -34,13 +62,15 @@ export const Footer = ({ customClass = "" }) => {
             onClick={() => redirect("/healthInsights")}
           >
             <BoxCard customClass="footer-card-option">
-              <img
-                src={health}
-                alt="Health Insights"
-                className="footer-option-img"
-              />
+              <IconContext.Provider
+                value={{
+                  className: "new-icons-more-menu",
+                }}
+              >
+                <GiHealthPotion />
+              </IconContext.Provider>
             </BoxCard>
-            <p className="footer-option-label">Health Insights</p>
+            <p className="footer-option-label">{healthIn}</p>
           </div>
 
           <div
@@ -48,36 +78,46 @@ export const Footer = ({ customClass = "" }) => {
             onClick={() => redirect("/awards")}
           >
             <BoxCard customClass="footer-card-option">
-              <img src={awards} alt="Awards" className="footer-option-img" />
+              <IconContext.Provider
+                value={{
+                  className: "new-icons-more-menu new-icons-more-menu-size4",
+                }}
+              >
+                <BsFillTrophyFill />
+              </IconContext.Provider>
             </BoxCard>
-            <p className="footer-option-label">Awards</p>
+            <p className="footer-option-label">{awardsTitle}</p>
           </div>
           <div
             className="footer-option-button"
             onClick={() => redirect("/dashboard?q=single")}
           >
             <BoxCard customClass="footer-card-option">
-              <img
-                src={program}
-                alt="Program Overview"
-                className="footer-option-img"
-              />
+              <IconContext.Provider
+                value={{
+                  className: "new-icons-more-menu",
+                }}
+              >
+                <AiFillInfoCircle />
+              </IconContext.Provider>
             </BoxCard>
-            <p className="footer-option-label">Program Overview</p>
+            <p className="footer-option-label">{programOver}</p>
           </div>
 
           <div
             className="footer-option-button"
-            onClick={() => redirect("/education")}
+            onClick={() => redirect("/education?q=fullpage")}
           >
             <BoxCard customClass="footer-card-option">
-              <img
-                src={education}
-                alt="Education Content"
-                className="footer-option-img"
-              />
+              <IconContext.Provider
+                value={{
+                  className: "new-icons-more-menu",
+                }}
+              >
+                <GiShinyApple />
+              </IconContext.Provider>
             </BoxCard>
-            <p className="footer-option-label">Educational content</p>
+            <p className="footer-option-label">{eduCont}</p>
           </div>
         </section>
       </NotificationsPane>
@@ -93,7 +133,7 @@ export const Footer = ({ customClass = "" }) => {
               onClick={() => redirect("/dashboard?q=single")}
             >
               {<MdHomeFilled />}
-              <p className="footer-icon-text">Care Journey</p>
+              <p className="footer-icon-text">{careJour}</p>
             </button>
             <button
               className="mobile-icon-effect"
@@ -106,7 +146,7 @@ export const Footer = ({ customClass = "" }) => {
               className="mobile-icon-effect"
               onClick={() => redirect("/appointments")}
             >
-              {<IoCalendar />} <p className="footer-icon-text">Appointments</p>
+              {<IoCalendar />} <p className="footer-icon-text">{appoints}</p>
             </button>
             <button
               className={`mobile-icon-effect ${
@@ -114,7 +154,7 @@ export const Footer = ({ customClass = "" }) => {
               }`}
               onClick={() => moreOptions()}
             >
-              {<FaEllipsisH />} <p className="footer-icon-text">More</p>
+              {<FaEllipsisH />} <p className="footer-icon-text">{moreMas}</p>
             </button>
           </div>
         </IconContext.Provider>

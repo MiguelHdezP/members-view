@@ -5,6 +5,8 @@ import DummyImg from "../assets/images/dummy-img.png";
 import Health from "../assets/images/health.svg";
 import Program from "../assets/images/program.svg";
 import Awards from "../assets/images/awards.svg";
+import AwardsGreen from "../assets/images/award-green.svg";
+import AwardsPurple from "../assets/images/award-purple.svg";
 import Education from "../assets/images/education.svg";
 import EduArticle from "../assets/images/eduArticle.png";
 
@@ -32,3 +34,5 @@ export const videoImg = VideoImg;
 export const dummyVideo = DummyVideo;
 export const dummyImgArticle = DummyImgArticle;
 export const eduArticle = EduArticle;
+export const AwardsGreenImg = AwardsGreen;
+export const AwardsPurpleImg = AwardsPurple;

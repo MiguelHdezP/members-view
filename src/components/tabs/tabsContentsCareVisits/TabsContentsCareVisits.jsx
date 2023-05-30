@@ -3,6 +3,35 @@ import "./TabsContentsCareVisits.scss";
 import { careVisitTabs } from "../../../data/mockedData";
 import { BoxCard } from "../../boxCard/BoxCard";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let noWell = "";
+let carePlan = "";
+let noEye = "";
+let notes = "";
+let foodChoice = "";
+let eatLess = "";
+let noDiab = "";
+
+if (currentLang === "en") {
+  noWell = "No wellness visits in the last 12 months";
+  carePlan = "Care Plan";
+  noEye = "No eye exam in the past 12 months";
+  notes = "Note:";
+  foodChoice =
+    "Make healthy food choices and learn more about the diabetic diet";
+  eatLess = "Eat letss fast food";
+  noDiab = "No diabetes test in the past 6 months";
+} else if (currentLang === "es") {
+  noWell = "Sin visitas de bienestar en los últimos 12 meses";
+  carePlan = "Plan de cuidados";
+  noEye = "Ningún examen de la vista en los últimos 12 meses";
+  notes = "Nota:";
+  foodChoice =
+    "Elija alimentos saludables y aprenda más sobre la dieta para diabéticos";
+  eatLess = "Ingiera menos comida rápida";
+  noDiab = "Sin prueba de diabetes en los últimos 6 meses";
+}
+
 const InProgressSection = ({
   manageGoals = false,
   fn,
@@ -10,9 +39,7 @@ const InProgressSection = ({
   saveNewGoal,
 }) => {
   const [textareaVals, setTextAreaVals] = useState({});
-  console.log("manage goals: ", manageGoals);
   if (manageGoals) {
-    console.log("goals saved");
     fn(textareaVals);
   }
 
@@ -36,7 +63,7 @@ const InProgressSection = ({
                 ""
               )}
               <p className="text-midText startS-title-text tabs-goals-textLeft">
-                No wellness visits in the last 12 months
+                {noWell}
               </p>
             </div>
             {manageGoals ? (
@@ -51,8 +78,11 @@ const InProgressSection = ({
             ) : (
               ""
             )}
-            <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-              Care Plan
+            <div
+              className="text-smallText tabs-goals-pill-careplan reset-margin"
+              style={{ width: "40%" }}
+            >
+              {carePlan}
             </div>
           </BoxCard>
         </>
@@ -67,7 +97,7 @@ const InProgressSection = ({
             ""
           )}
           <p className="text-midText startS-title-text tabs-goals-textLeft">
-            No eye exam in the past 12 months
+            {noEye}
           </p>
         </div>
         {manageGoals ? (
@@ -82,8 +112,11 @@ const InProgressSection = ({
         ) : (
           ""
         )}
-        <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-          Care Plan
+        <div
+          className="text-smallText tabs-goals-pill-careplan reset-margin"
+          style={{ width: "40%" }}
+        >
+          {carePlan}
         </div>
       </BoxCard>
     </div>
@@ -101,14 +134,17 @@ const InReview = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              No wellness visits in the last 12 months
+              {noWell}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes} {text}
           </p>
-          <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-            Care Plan
+          <div
+            className="text-smallText tabs-goals-pill-careplan reset-margin"
+            style={{ width: "40%" }}
+          >
+            {carePlan}
           </div>
         </BoxCard>
       ) : (
@@ -119,14 +155,14 @@ const InReview = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Make healthy food choices and learn more about the diabetic diet
+              {foodChoice}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes} {text}
           </p>
           <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-            Care Plan
+            {carePlan}
           </div>
         </BoxCard>
       ) : (
@@ -137,11 +173,11 @@ const InReview = ({ textValues = { id: "", text: "" } }) => {
         <BoxCard customClass="tabs-goals-card">
           <div className="tabs-goals-withInputs">
             <p className="text-midText startS-title-text tabs-goals-textLeft">
-              Eat letss fast food
+              {eatLess}
             </p>
           </div>
           <p className="text-smallText reset-margins completed-text-gray">
-            Note: {text}
+            {notes} {text}
           </p>
           <div className="text-smallText tabs-goals-pill-personal reset-margin">
             Personal
@@ -160,11 +196,14 @@ const CompletedSection = () => {
       <BoxCard customClass="tabs-goals-card">
         <div className="tabs-goals-withInputs">
           <p className="text-midText startS-title-text tabs-goals-textLeft">
-            No diabetes test in the past 6 months
+            {noDiab}
           </p>
         </div>
-        <div className="text-smallText tabs-goals-pill-careplan reset-margin">
-          Care Plan
+        <div
+          className="text-smallText tabs-goals-pill-careplan reset-margin"
+          style={{ width: "40%" }}
+        >
+          {carePlan}
         </div>
       </BoxCard>
     </div>

@@ -11,12 +11,12 @@ export const BoxCard = ({
   prov = false,
 }) => {
   const handleFn = (id) => {
+    fn(id);
     if (id === 3) {
       setNewNotiAsmt(true);
     } else if (id === 2) {
       setNewNotiAsmt(false);
     }
-    fn(id);
     if (id === 4) {
       setEduActive(true);
     } else {

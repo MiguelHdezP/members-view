@@ -1,12 +1,12 @@
 @import "../../styles/main.scss";
 
 .link-button {
-  color: $mainPurple;
+  color: var(--mainPurple);
   cursor: pointer;
   font-size: 0.9rem;
   text-decoration: none;
 
   &:hover {
-    color: $black;
+    color: var(--black);
   }
 }

@@ -18,8 +18,8 @@
         margin-bottom: 1.5rem;
       }
       .education-boxcard {
-        background-color: $white;
-        border: 1px solid $strokeGray;
+        background-color: var(--white);
+        border: 1px solid var(--strokeGray);
         border-radius: 0.625rem;
         margin-bottom: 2rem;
       }
@@ -27,7 +27,7 @@
 
     .education-todo {
       .education-rounded-card {
-        box-shadow: 0 3px 2px -2px $disabled;
+        box-shadow: 0 3px 2px -2px var(--disabled);
         cursor: pointer;
         margin-bottom: 1rem;
         padding: 0;
@@ -45,14 +45,14 @@
         }
 
         &:hover {
-          background-color: rgba($color: $disabled, $alpha: 0.1);
+          background-color: rgba($color: var(--disabled), $alpha: 0.1);
         }
 
         .education-todo-texts {
           margin: 1rem;
 
           .education-purple-text {
-            color: $mainPurple;
+            color: var(--mainPurple);
           }
         }
       }
@@ -90,7 +90,7 @@
           justify-content: space-between;
 
           &:hover {
-            background-color: rgba($color: $strokeGray, $alpha: 0.5);
+            background-color: rgba($color: var(--strokeGray), $alpha: 0.5);
             border-radius: 10px;
           }
 
@@ -129,8 +129,8 @@
         margin-bottom: 1.5rem;
       }
       .education-boxcard {
-        background-color: $white;
-        border: 1px solid $strokeGray;
+        background-color: var(--white);
+        border: 1px solid var(--strokeGray);
         border-radius: 0.625rem;
         margin-bottom: 2rem;
       }
@@ -138,7 +138,7 @@
 
     .education-todo {
       .education-rounded-card {
-        box-shadow: 0 3px 2px -2px $disabled;
+        box-shadow: 0 3px 2px -2px var(--disabled);
         cursor: pointer;
         margin-bottom: 1rem;
         padding: 0;
@@ -156,14 +156,14 @@
         }
 
         &:hover {
-          background-color: rgba($color: $disabled, $alpha: 0.1);
+          background-color: rgba($color: var(--disabled), $alpha: 0.1);
         }
 
         .education-todo-texts {
           margin: 1rem;
 
           .education-purple-text {
-            color: $mainPurple;
+            color: var(--mainPurple);
           }
         }
       }
@@ -201,7 +201,7 @@
           justify-content: space-between;
 
           &:hover {
-            background-color: rgba($color: $strokeGray, $alpha: 0.5);
+            background-color: rgba($color: var(--strokeGray), $alpha: 0.5);
             border-radius: 10px;
           }
 

@@ -9,7 +9,7 @@
   .progressPercentage-container {
     display: flex;
     .progressPercentage-label {
-      color: $smallLabel;
+      color: var(--smallLabel);
       margin: 0;
       margin-right: 0.6rem;
     }

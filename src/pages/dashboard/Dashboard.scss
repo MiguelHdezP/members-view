@@ -18,15 +18,15 @@
 }
 
 .dashboard-titles {
-  background-color: $overlay;
+  background-color: var(--overlay);
   padding-top: 1rem;
   p {
-    color: $white;
+    color: var(--white);
   }
 }
 
 .dashboard-contents {
-  background-color: #f4f4f6;
+  background-color: var(--dashboard--contents);
 
   .dashboard-dropdown-programs {
     padding-top: 0.8rem;
@@ -42,8 +42,8 @@
 }
 
 .dashboard-tracker-cards {
-  background-color: $white;
-  border: 1px solid $strokeGray;
+  background-color: var(--white);
+  border: 1px solid var(--strokeGray);
 
   &:hover {
     background-color: rgba($color: gray, $alpha: 0.1);
@@ -51,15 +51,15 @@
 }
 
 .dashboard-tracker-cards-active {
-  border: 1px solid $mainPurple;
-  background-color: rgba($color: $mainPurple, $alpha: 0.1);
-  color: $mainPurple;
+  border: 1px solid var(--mainPurple);
+  background-color: rgba($color: var(--mainPurple), $alpha: 0.1);
+  color: var(--mainPurple);
 }
 
 .dashboard-tracker-cards-deactivate {
-  border: 1px solid $strokeGray;
-  background-color: rgba($color: $disabled, $alpha: 0.2);
-  color: $disabled;
+  border: 1px solid var(--strokeGray);
+  background-color: rgba($color: var(--disabled), $alpha: 0.2);
+  color: var(--disabled);
 }
 
 .dashboard-tracker-texts,
@@ -69,7 +69,7 @@
 }
 
 .dashboard-tracker-texts-active {
-  color: $mainPurple !important;
+  color: var(--mainPurple) !important;
 }
 
 .journey-tracker {
@@ -96,8 +96,8 @@
 }
 
 .almost-cards {
-  background-color: $white;
-  border: 1px solid $strokeGray;
+  background-color: var(--white);
+  border: 1px solid var(--strokeGray);
   cursor: pointer;
   display: block;
   margin: 1rem 0;
@@ -114,12 +114,12 @@
     .dashboard-pill-new {
       background-color: #00a223;
       border-radius: 10px;
-      color: $white;
+      color: var(--white);
       padding: 0.5rem 1rem;
     }
 
     .almost-titles {
-      margin-left: 1.5rem;
+      margin-left: 1rem;
       & > * {
         text-align: left;
       }
@@ -159,20 +159,20 @@
 }
 
 .education-rounded-card {
-  box-shadow: 0 3px 2px -2px $disabled;
+  box-shadow: 0 3px 2px -2px var(--disabled);
   cursor: pointer;
   margin-bottom: 1rem;
   padding: 0;
 
   &:hover {
-    background-color: rgba($color: $disabled, $alpha: 0.1);
+    background-color: rgba($color: var(--disabled), $alpha: 0.1);
   }
 
   .education-todo-texts {
     margin: 1rem;
 
     .education-purple-text {
-      color: $mainPurple;
+      color: var(--mainPurple);
     }
   }
 }

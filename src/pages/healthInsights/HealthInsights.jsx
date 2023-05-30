@@ -11,19 +11,6 @@ import { IconContext } from "react-icons";
 import { redirect } from "../../utils/scripts";
 
 export const HealthInsights = () => {
-  const [toggleNotifActive, setToggleNotifActive] = useState(false);
-  const [toggleFavs, setToggleFavs] = useState(false);
-
-  const toggleHeaderPanels = (action) => {
-    if (action === "notifi") {
-      if (toggleFavs) setToggleFavs(!toggleFavs);
-      setToggleNotifActive(!toggleNotifActive);
-    } else if (action === "favs") {
-      if (toggleNotifActive) setToggleNotifActive(!toggleNotifActive);
-      setToggleFavs(!toggleFavs);
-    }
-  };
-
   const redirectAndClearGoals = () => {
     localStorage.removeItem("completedTabs");
     redirect("/healthInsights/goals");
@@ -33,24 +20,40 @@ export const HealthInsights = () => {
     redirect("/healthInsights/care-visits");
   };
 
+  const currentLang = sessionStorage.getItem("lang") ?? "en";
+  let healthIn = "";
+  let healthInDesc = "";
+  let goalsTitle = "";
+  let goalsTrack = "";
+  let careVisits = "";
+  let careMissed = "";
+
+  if (currentLang === "en") {
+    healthIn = "Health Insights";
+    healthInDesc =
+      "Administre mejor su salud manteniéndose al día con sus objetivos y citas.";
+    goalsTitle = "Goals";
+    goalsTrack = "Track care plan goals and create your own goals";
+    careVisits = "Care Visits";
+    careMissed = "View care you've missed";
+  } else if (currentLang === "es") {
+    healthIn = "Salud";
+    healthInDesc = "Viaje de Cuidados";
+    goalsTitle = "Metas";
+    goalsTrack = "Seguimiento y creación de objetivos";
+    careVisits = "Visitas de Atención";
+    careMissed = "Revisar citas perdidas";
+  }
+
   return (
     <MobileContainer className="appImg">
-      <Header
-        toggleNotifActive={toggleNotifActive}
-        toggleFavs={toggleFavs}
-        toggleHeaderPanels={toggleHeaderPanels}
-      />
+      <Header />
       <div className="mobile-scroll-health">
         <section className="health-page">
           <div className="healthIn-container">
             <div className="healthIn-titles">
-              <p className="text-title healthIn-title-bottom">
-                Health Insights
-              </p>
-              <p className="text-smallText">
-                Manage your health better by tracking your goals and keeping up
-                with your care appointments.
-              </p>
+              <p className="text-title healthIn-title-bottom">{healthIn}</p>
+              <p className="text-smallText">{healthInDesc}</p>
             </div>
             <div className="healthIn-enrolled">
               <BoxCard
@@ -70,10 +73,10 @@ export const HealthInsights = () => {
                 </IconContext.Provider>
                 <div className="healthIn-boxcard-texts">
                   <p className="text-midText healthIn-text-marginBottom">
-                    Goals
+                    {goalsTitle}
                   </p>
                   <p className="text-smallText startS-title-text">
-                    Track care plan goals and create your own goals
+                    {goalsTrack}
                   </p>
                 </div>
                 <span className="healthIn-boxcard-chevron">
@@ -97,10 +100,10 @@ export const HealthInsights = () => {
                 </IconContext.Provider>
                 <div className="healthIn-boxcard-texts">
                   <p className="text-midText healthIn-text-marginBottom">
-                    Care Visits
+                    {careVisits}
                   </p>
                   <p className="text-smallText startS-title-text">
-                    View care you've missed
+                    {careMissed}
                   </p>
                 </div>
                 <span className="healthIn-boxcard-chevron">

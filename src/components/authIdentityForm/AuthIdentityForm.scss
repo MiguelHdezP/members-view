@@ -12,7 +12,7 @@
     width: 2.5rem;
     text-align: center;
     &:focus {
-      border-color: $mainPurple;
+      border-color: var(--mainPurple);
     }
   }
 }
