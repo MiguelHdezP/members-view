@@ -8,7 +8,7 @@
 
     .chats-container {
       .chats-tabs {
-        background-color: $footerGray;
+        background-color: var(--footerGray);
         padding: 0 2rem;
         margin-top: 0;
         padding: 0.5rem 0 0 2rem;
@@ -19,9 +19,9 @@
 
           .chat-tab-btn1::after {
             content: "1";
-            background-color: $mainPurple;
+            background-color: var(--mainPurple);
             border-radius: 5px;
-            color: $white;
+            color: var(--white);
             font-size: 0.8rem;
             padding: 0.1rem 0.2rem;
             text-align: center;
@@ -57,7 +57,7 @@
       padding: 0.5rem 1.8rem;
 
       &:hover {
-        background-color: rgba($color: $disabled, $alpha: 0.1);
+        background-color: rgba($color: var(--disabled), $alpha: 0.1);
         border-radius: 5px;
       }
 
@@ -94,14 +94,14 @@
     float: left;
 
     .chat-ongoing-globe1 {
-      @include individualChatGlobe($mainPurple);
+      @include individualChatGlobe(var(--mainPurple));
     }
   }
   .chats-contents-right {
     float: right;
 
     .chat-ongoing-globe2 {
-      @include individualChatGlobe($darkPurple);
+      @include individualChatGlobe(var(--dark) Purple);
     }
   }
 
@@ -125,23 +125,23 @@
 }
 
 .chat-send-icon {
-  color: $mainPurple;
+  color: var(--mainPurple);
 }
 
 .chat-archive-icon {
-  color: $mainPurple;
+  color: var(--mainPurple);
   cursor: pointer;
   font-size: 1.5rem;
 
   &:hover {
-    color: $gray600;
+    color: var(--gray600);
   }
 }
 
 .chats-inputText {
-  background-color: $white;
+  background-color: var(--white);
   bottom: 0;
-  border-top: 1px solid $strokeGray;
+  border-top: 1px solid var(--strokeGray);
   left: 0;
   position: fixed;
   padding: 1rem 0;
@@ -149,7 +149,7 @@
 
   .chats-input-input {
     border-radius: 10px;
-    border: 1px solid $strokeGray;
+    border: 1px solid var(--strokeGray);
     height: 2rem;
     padding-left: 1rem;
     margin: 0 auto;

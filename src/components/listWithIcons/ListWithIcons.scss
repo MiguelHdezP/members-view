@@ -6,7 +6,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $lightGray;
+      background-color: var(--lightGray);
     }
 
     .list-icon {
@@ -23,11 +23,11 @@
       }
 
       .list-textComplement {
-        color: $secondaryDark;
+        color: var(--secondaryDark);
       }
 
       .list-helperText {
-        color: $disabled;
+        color: var(--disabled);
       }
 
       & > * {
@@ -36,7 +36,7 @@
     }
 
     .list-newMsg {
-      @include circleNotify($mainPurple);
+      @include circleNotify(var(--mainPurple));
     }
   }
 }
@@ -46,13 +46,13 @@
 }
 
 .list-chat-badge {
-  background-color: $badgeChat1 !important;
+  background-color: var(--badgeChat1) !important;
 }
 
 .list-troph-badge {
-  background-color: $badgeTroph !important;
+  background-color: var(--badgeTroph) !important;
 }
 
 .list-calen-badge {
-  background-color: $mainPurple !important;
+  background-color: var(--mainPurple) !important;
 }

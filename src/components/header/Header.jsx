@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import { IconContext } from "react-icons";
 import { BsFillStarFill } from "react-icons/bs";
@@ -10,21 +10,10 @@ import { ListWithIcons } from "../../components/listWithIcons/ListWithIcons";
 import { Divider } from "../../components/divider/Divider";
 import { redirect } from "../../utils/scripts";
 import { FakeFavorites } from "../header/FakeFavorites/FakeFavorites";
-import { DataContext } from "../../data/context/dataContext";
 
-export const Header = ({
-  favsState = [],
-  customClass = "",
-  visibleHeader = true,
-}) => {
-  const { addToFavs, addContentToFavs } = useContext(DataContext);
-
+export const Header = ({ customClass = "", visibleHeader = true }) => {
   const [toggleNotifActive, setToggleNotifActive] = useState(false);
   const [toggleFavs, setToggleFavs] = useState(false);
-
-  useEffect(() => {
-    console.log("header effect");
-  }, [addToFavs]);
 
   const closePanel = () => {
     setToggleNotifActive(!toggleNotifActive);
@@ -34,24 +23,30 @@ export const Header = ({
     sessionStorage.clear();
     redirect("/dashboard?q=single");
   };
-  console.log("header normal addToFavs: ", addToFavs);
+
+  const iconColortheme = () => {
+    const currentTheme = sessionStorage.getItem("theme") ?? "";
+    if (currentTheme === "corp") {
+      return "#42bcbe";
+    } else {
+      return "#5c4bd3";
+    }
+  };
+
   return (
     <>
       <NotificationsPane customClass={toggleNotifActive ? "open-activity" : ""}>
         <SectionHeader title="Activity" fn={closePanel} />
         <ListWithIcons />
       </NotificationsPane>
-      <FakeFavorites
-        favsState={addToFavs}
-        addContentToFavs={addContentToFavs}
-        toggleFavs={toggleFavs}
-      />
+      <FakeFavorites toggleFavs={toggleFavs} />
       {visibleHeader ? (
         <header className={`header ${customClass}`}>
           <div className="header-contents">
             <span
               className="header-icons-logo"
               onClick={() => clearSessionStorage()}
+              style={{ color: iconColortheme() }}
             >
               LOGO
             </span>

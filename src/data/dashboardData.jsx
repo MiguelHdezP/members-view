@@ -8,12 +8,148 @@ import { FaAppleAlt } from "react-icons/fa";
 import { BsCalendar2WeekFill } from "react-icons/bs";
 import { MdOutlineMotionPhotosPaused } from "react-icons/md";
 import { IconContext } from "react-icons";
-import { EducationPage2 } from "../../src/pages/educationPage/EducationPage2";
-import { urlGetQueryString } from "../utils/scripts";
+import { EducationPage } from "../../src/pages/educationPage/EducationPage";
 import { Rewards } from "../components/rewards/Rewards";
 import { EducationCard } from "../components/education-card/EducationCard";
 import { copdImg, dietImg } from "../data/images";
 import { BoxCard } from "../components/boxCard/BoxCard";
+
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let welPro = "",
+  welDesc = "",
+  chek = "",
+  educ = "",
+  onb = "",
+  asmt = "",
+  progOverv = "",
+  newCont = "",
+  newContDesc = "",
+  eduContent = "",
+  upcomTasks = "",
+  upcomTasksDec = "",
+  upcomAppoints = "",
+  upcomAppoint = "",
+  upcomAppointsDesc = "",
+  copdAsmt = "",
+  hyperAsmt = "",
+  hyperCheck = "",
+  commingSoon = "",
+  newAsmt = "",
+  newAsmtDesc = "",
+  copdCheck = "",
+  healthCheck = "",
+  upcoAppointSoon = "",
+  careManaCheck = "",
+  upcoEdu = "",
+  upcoEduDec = "",
+  whatIsCOPD = "",
+  whatIsCOPDTime = "",
+  newCheckIn = "",
+  newCheckInDesc = "",
+  almostThere = "",
+  almostThereDesc = "",
+  remindOverdue = "",
+  remindOverdueDesc = "",
+  diabCheck = "",
+  pastAsmt = "",
+  pastAsmtDesc = "",
+  keepUp = "";
+
+if (currentLang === "en") {
+  //Journey Tracker
+  onb = "Onboarding";
+  asmt = "Assessment";
+  chek = "Check Ins";
+  educ = "Education";
+  //---
+  welPro = "Welcome to the Program!";
+  welDesc = "Learn more about your care journey";
+  chek = "Check Ins";
+  educ = "Education";
+  //--
+  progOverv = "Program Overview";
+  newCont = "New Content";
+  newContDesc = "There is new educational content for you to review";
+  eduContent = "Educational Content";
+  upcomTasks = "Upcoming Tasks";
+  upcomTasksDec = "See what activities you have next:";
+  upcomAppoints = "Upcoming Appointments";
+  upcomAppoint = "Upcoming Appointment";
+  upcomAppointsDesc = "Your Initial assessment will be sent soon";
+  copdAsmt = "COPD Assessment";
+  hyperAsmt = "Hypertension Assessment";
+  hyperCheck = "Hypertension Check In";
+  commingSoon = "Coming Soon";
+  newAsmt = "New Assessment";
+  newAsmt = "You've been assigned a new assessment";
+  copdCheck = "COPD Check In";
+  healthCheck = "Health Check In";
+  upcoAppointSoon = "You have an upcoming appointment";
+  careManaCheck = "Care Manager Check In";
+  upcoEdu = "Upcoming Education";
+  upcoEduDec = "There is new content coming soon.";
+  whatIsCOPD = "What is COPD?";
+  whatIsCOPDTime = "3 min watch";
+  newCheckIn = "New Check In";
+  newCheckInDesc = "Let us know how you are feeling";
+  almostThere = "Almost There";
+  almostThereDesc =
+    "Please finish these tasks to keep up the momentum in your health journey.";
+  remindOverdue = "Reminder: Your Check Ins are overdue";
+  remindOverdueDesc =
+    "Complete it to maintain consistency and stay on the right path to wellness.";
+  diabCheck = "Diabetes Check In";
+  pastAsmt = "Past Assessments";
+  pastAsmtDesc = "View Responses";
+  keepUp = "Keep up the good work";
+} else if (currentLang === "es") {
+  //Journey Tracker
+  onb = "Inicio";
+  asmt = "Evaluación";
+  chek = "Revisión";
+  educ = "Educación";
+  //---
+  welPro = "Bienvenido al Programa";
+  welDesc = "Aprende más sobre tu programa de cuidados";
+  chek = "Revisión";
+  educ = "Educación";
+  //--
+  progOverv = "Vista del Programa";
+  newCont = "Nuevo Contenido";
+  newContDesc = "Hay nuevo contenido educativo que revisar";
+  eduContent = "Contenido Educativo";
+  upcomTasks = "Próximas Actividades";
+  upcomTasksDec = "Revisa tus próximas actividades:";
+  upcomAppoints = "Próximas Citas";
+  upcomAppoint = "Próximas Cita";
+  upcomAppointsDesc = "Su evaluación inicial será enviada pronto";
+  copdAsmt = "Evaluación EPOC";
+  hyperAsmt = "Evaluación de hipertensión";
+  hyperCheck = "Revisión de Hipertensión";
+  commingSoon = "Muy Pronto";
+  newAsmt = "Nueva Evaluación";
+  newAsmtDesc = "Se le ha asignado una nueva evaluación";
+  copdCheck = "Revisión de EPOC";
+  healthCheck = "Revisión de Salud";
+  upcoAppointSoon = "Tienes una próxima cita";
+  careManaCheck = "Revisión Médica";
+  upcoEdu = "Próximo Contenido Educativo";
+  upcoEduDec = "Próximamente habrá nuevo contenido.";
+  whatIsCOPD = "¿Qué es EPOC";
+  whatIsCOPDTime = "Duración - 3 min";
+  newCheckIn = "Nueva Revisión";
+  newCheckInDesc = "Háganos saber cómo se siente";
+  almostThere = "Casi Terminas";
+  almostThereDesc =
+    "Termine estas tareas para mantener el impulso en su camino hacia la salud.";
+  remindOverdue = "Recordatorio: Sus revisiones están atrasadas";
+  remindOverdueDesc =
+    "Complete las actividades para mantenerse en el camino correcto hacia el bienestar.";
+  diabCheck = "Revisión de Diabetes";
+  pastAsmt = "Evaluaciones Pasadas";
+  pastAsmtDesc = "Revisar Respuestas";
+  keepUp = "¡Buen trabajo!, mantén el ritmo";
+}
 
 const returnRightLabels = () => {
   // check if there is some progress in edu content, assessments and/or checkins, only one progress is needed
@@ -23,14 +159,14 @@ const returnRightLabels = () => {
 
   if (tasksProgress !== null && tasksProgress.some((e) => e === true)) {
     return {
-      titles: "Almost There",
+      titles: { almostThere },
       desc: "You’re making good progress on learning about your health condition.",
       type: "eduP",
     };
   } else {
     return {
-      titles: "New Content",
-      desc: "There is new educational content for you to review.",
+      titles: newCont,
+      desc: newContDesc,
       type: "newP",
     };
   }
@@ -82,7 +218,7 @@ const onbaordConditionContentSingle = (
     [
       {
         sectionType: "welcome",
-        content: [<ContentCard title="Program Overview" type="none" />],
+        content: [<ContentCard title={progOverv} type="none" />],
       },
       {
         sectionType: configObjt.progress > 0 ? "eduP" : "newP",
@@ -90,7 +226,7 @@ const onbaordConditionContentSingle = (
           <ContentCard
             progress={progress}
             eduTotalContents={eduTotalContents}
-            title="Educational Content "
+            title={eduContent}
             type="progress"
             redirectPath="/education"
           />,
@@ -99,16 +235,8 @@ const onbaordConditionContentSingle = (
       {
         sectionType: "tasks",
         content: [
-          <ContentCard
-            title="COPD Assessment "
-            desc="Comming Soon"
-            type="none"
-          />,
-          <ContentCard
-            title="Hypertension Assessment"
-            desc="Comming Soon"
-            type="none"
-          />,
+          <ContentCard title={copdAsmt} desc={commingSoon} type="none" />,
+          <ContentCard title={hyperAsmt} desc={commingSoon} type="none" />,
         ],
       },
     ],
@@ -132,7 +260,7 @@ const asmtConditionContentSingle = (
         content: [
           <ContentCard
             progress={0}
-            title="COPD Assessment"
+            title={copdAsmt}
             type="progress"
             fn={setRenderStageJourneyTracker}
             desc="Jote"
@@ -144,7 +272,7 @@ const asmtConditionContentSingle = (
         content: [
           <ContentCard
             progress={0}
-            title="Hypertension Assessment"
+            title={hyperAsmt}
             type="progress"
             redirectPath="/assessments"
           />,
@@ -156,7 +284,7 @@ const asmtConditionContentSingle = (
           <ContentCard
             progress={3}
             eduTotalContents={6}
-            title="Educational Content"
+            title={eduContent}
             type="progress"
             redirectPath="/education"
           />,
@@ -167,9 +295,9 @@ const asmtConditionContentSingle = (
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -177,8 +305,8 @@ const asmtConditionContentSingle = (
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In"
-            desc="Upcoming Appointment"
+            title={careManaCheck}
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="/appointments"
             IconImg={BsCalendar2WeekFill}
@@ -188,21 +316,13 @@ const asmtConditionContentSingle = (
       {
         sectionType: "tasks",
         content: [
-          <ContentCard
-            title="COPD Check In"
-            desc="Comming Sooon"
-            type="none"
-          />,
+          <ContentCard title={copdCheck} desc={commingSoon} type="none" />,
         ],
       },
       {
         sectionType: "tasks",
         content: [
-          <ContentCard
-            title="Hypertension Check In"
-            desc="Comming Sooon"
-            type="none"
-          />,
+          <ContentCard title={hyperCheck} desc={commingSoon} type="none" />,
         ],
       },
     ],
@@ -212,7 +332,7 @@ const asmtConditionContentSingle = (
         content: [
           <ContentCard
             progress={100}
-            title="COPD Assessment"
+            title={copdAsmt}
             type="progress"
             redirectPath="/assessments"
           />,
@@ -223,7 +343,7 @@ const asmtConditionContentSingle = (
         content: [
           <ContentCard
             progress={70}
-            title="Hypertension Assessment"
+            title={hyperAsmt}
             type="progress"
             redirectPath="/assessments"
           />,
@@ -235,7 +355,7 @@ const asmtConditionContentSingle = (
           <ContentCard
             progress={3}
             eduTotalContents={6}
-            title="Educational Content"
+            title={eduContent}
             type="progress"
             redirectPath="education"
           />,
@@ -246,9 +366,9 @@ const asmtConditionContentSingle = (
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -256,8 +376,8 @@ const asmtConditionContentSingle = (
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In"
-            desc="Upcoming Appointment"
+            title={careManaCheck}
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="checkin"
             IconImg={BsCalendar2WeekFill}
@@ -268,8 +388,8 @@ const asmtConditionContentSingle = (
         sectionType: "tasks",
         content: [
           <ContentCard
-            title="Hypertension Check In"
-            desc="Comming Sooon"
+            title={hyperCheck}
+            desc={commingSoon}
             type="none"
             redirectPath="checkin"
           />,
@@ -295,7 +415,7 @@ const asmtConditionContentSingle = (
           <ContentCard
             progress={5}
             eduTotalContents={6}
-            title="Educational Content"
+            title={eduContent}
             type="progress"
             redirectPath="/education"
           />,
@@ -306,9 +426,9 @@ const asmtConditionContentSingle = (
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -316,8 +436,8 @@ const asmtConditionContentSingle = (
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In"
-            desc="Upcoming Appointment"
+            title={careManaCheck}
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="/appointments"
             IconImg={BsCalendar2WeekFill}
@@ -328,8 +448,8 @@ const asmtConditionContentSingle = (
         sectionType: "tasks",
         content: [
           <ContentCard
-            title="Health Check In"
-            desc="Comming Sooon"
+            title={healthCheck}
+            desc={commingSoon}
             type="none"
             redirectPath="checkin"
           />,
@@ -365,7 +485,7 @@ const chckInConditionContentSingle = (
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In"
+            title={careManaCheck}
             desc="Upcoming Appointment"
             type="icon"
             redirectPath="checkin"
@@ -390,9 +510,9 @@ const chckInConditionContentSingle = (
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -426,7 +546,7 @@ const eduConditionContentSingle = (stageCurrent) => {
         content: [
           <ContentCard
             title="Care Manager  Eduaction"
-            desc="Upcoming Appointment"
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="checkin"
             IconImg={BsCalendar2WeekFill}
@@ -438,7 +558,7 @@ const eduConditionContentSingle = (stageCurrent) => {
         content: (
           <ContentCard
             title="Health Eduaction"
-            desc="Comming Soon"
+            desc={commingSoon}
             type="none"
             redirectPath="checkin"
           />
@@ -503,7 +623,7 @@ const onbaordConditionContentMulti = (
         content: [
           <ContentCard
             title="COPD Assessment  Multi"
-            desc="Comming Soon"
+            desc={commingSoon}
             type="none"
             redirectPath="appointments"
           />,
@@ -536,8 +656,8 @@ const asmtConditionContentMulti = (stageCurrent) => {
         sectionType: "appoint",
         content: [
           <ContentCard
-            title="Care Manager Check In"
-            desc="Upcoming Appointment"
+            title={careManaCheck}
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="checkin"
             IconImg={BsCalendar2WeekFill}
@@ -548,8 +668,8 @@ const asmtConditionContentMulti = (stageCurrent) => {
         sectionType: "tasks",
         content: [
           <ContentCard
-            title="COPD Check In"
-            desc="Comming Sooon"
+            title={copdCheck}
+            desc={commingSoon}
             type="none"
             redirectPath="checkin"
           />,
@@ -560,9 +680,9 @@ const asmtConditionContentMulti = (stageCurrent) => {
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -586,7 +706,7 @@ const asmtConditionContentMulti = (stageCurrent) => {
             thumbnail={dietImg}
             eduCardtitle="COPD Diet?"
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -660,9 +780,9 @@ const chckInConditionContentMulti = (
         content: [
           <EducationCard
             thumbnail={copdImg}
-            eduCardtitle="What is COPD?"
+            eduCardtitle={whatIsCOPD}
             eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-            eduCardTime="3 min watch"
+            eduCardTime={whatIsCOPDTime}
           />,
         ],
       },
@@ -696,7 +816,7 @@ const eduConditionContentMulti = (stageCurrent) => {
         content: [
           <ContentCard
             title="Care Manager  Eduaction Multi"
-            desc="Upcoming Appointment"
+            desc={upcomAppointsDesc}
             type="icon"
             redirectPath="checkin"
             IconImg={BsCalendar2WeekFill}
@@ -708,7 +828,7 @@ const eduConditionContentMulti = (stageCurrent) => {
         content: (
           <ContentCard
             title="Health Eduaction Multi"
-            desc="Comming Soon"
+            desc={commingSoon}
             type="none"
             redirectPath="checkin"
           />
@@ -830,6 +950,7 @@ const fullDashboardDataSingle = (
   setRenderStageJourneyTracker
 ) => {
   let dashboardDataSingle = {};
+
   const trackerObj = (status = "") => {
     if (stage === 1 && stageCurrent === 0 && status === "hidden") {
       setRenderStageJourneyTracker(2);
@@ -937,68 +1058,69 @@ const fullDashboardDataSingle = (
       } else {
         return [
           <DashboardContentBlocks
-            dashContentTitle="New Check In"
-            dashContentDesc="Let us know how you are feeling"
+            dashContentTitle={newCheckIn}
+            dashContentDesc={newCheckInDesc}
           >
             <ContentCard
               progress={0}
-              title="Diabetes Check In"
+              title={diabCheck}
               type="progress"
               stage={stage}
               fn={setRenderStageJourneyTracker}
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Almost There"
-            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+            dashContentTitle={almostThere}
+            dashContentDesc={almostThereDesc}
           >
             <ContentCard
               progress={70}
-              title="Hypertension Assessment"
+              title={hyperAsmt}
               type="progress"
               redirectPath="/assessments"
             />
             <ContentCard
               progress={3}
               eduTotalContents={6}
-              title="Educational Content"
+              title={eduContent}
               type="progress"
               redirectPath="education"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
-            dashContentDesc="You have an upcoming appointment"
+            dashContentTitle={upcomAppoints}
+            dashContentDesc={upcoAppointSoon}
           >
             <ContentCard
-              title="Care Manager Check In"
-              desc="Upcoming Appointment"
+              title={careManaCheck}
+              desc={upcomAppointsDesc}
               type="icon"
               redirectPath="checkin"
               IconImg={BsCalendar2WeekFill}
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
-            dashContentDesc="There is new content coming soon."
+            dashContentTitle={upcoEdu}
+            dashContentDesc={upcoEduDec}
           >
             <EducationCard
               thumbnail={copdImg}
-              eduCardtitle="What is COPD?"
+              eduCardtitle={whatIsCOPD}
               eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-              eduCardTime="3 min watch"
+              eduCardTime={whatIsCOPDTime}
             />
           </DashboardContentBlocks>,
           <Rewards />,
         ];
       }
     };
+
     switch (stage) {
       case 1:
         return [
           <DashboardContentBlocks
-            dashContentTitle="Welcome to the Program!"
-            dashContentDesc="Learn more about your care journey"
+            dashContentTitle={welPro}
+            dashContentDesc={welDesc}
           >
             {serveDashboardContents("welcome", stage, stageCurrent)}
           </DashboardContentBlocks>,
@@ -1013,8 +1135,8 @@ const fullDashboardDataSingle = (
             )}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
-            dashContentDesc="Your Initial assessment will be sent soon"
+            dashContentTitle={upcomTasks}
+            dashContentDesc={upcomAppointsDesc}
           >
             {serveDashboardContents("tasks", stage, stageCurrent)}
           </DashboardContentBlocks>,
@@ -1022,31 +1144,31 @@ const fullDashboardDataSingle = (
       case 2:
         return [
           <DashboardContentBlocks
-            dashContentTitle="New Assessment"
-            dashContentDesc="You've been assigned a new assessment"
+            dashContentTitle={newAsmt}
+            dashContentDesc={newAsmtDesc}
           >
             <ContentCard
               progress={0}
-              title="COPD Assessment"
+              title={copdAsmt}
               type={activityStatus2()}
               stage={stage}
               fn={setRenderStageJourneyTracker}
             />
             <ContentCard
               progress={0}
-              title="Hypertension Assessment"
+              title={hyperAsmt}
               type={activityStatus3()}
               redirectPath="/assessments"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
+            dashContentTitle={upcomAppoints}
             dashContentDesc={
               serveDashboardContents("appoint", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "You have an upcoming appointment"
+                : upcoAppointSoon
             }
           >
             {serveDashboardContents("appoint", stage, stageCurrent).every(
@@ -1056,13 +1178,13 @@ const fullDashboardDataSingle = (
               : serveDashboardContents("appoint", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
+            dashContentTitle={upcomTasks}
             dashContentDesc={
               serveDashboardContents("tasks", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "See what activities you have next:"
+                : upcomTasksDec
             }
           >
             {serveDashboardContents("tasks", stage, stageCurrent).every(
@@ -1072,13 +1194,13 @@ const fullDashboardDataSingle = (
               : serveDashboardContents("tasks", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
+            dashContentTitle={upcoEdu}
             dashContentDesc={
               serveDashboardContents("edu", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "There is new content coming soon."
+                : upcoEduDec
             }
           >
             {serveDashboardContents("edu", stage, stageCurrent).every(
@@ -1092,27 +1214,27 @@ const fullDashboardDataSingle = (
       case 3:
         return renderRightCheckin();
       case 4:
-        return [<EducationPage2 />];
+        return [<EducationPage />];
       case 5:
         return [
-          <DashboardContentBlocks dashContentTitle="Keep up the good work">
+          <DashboardContentBlocks dashContentTitle={keepUp}>
             {serveDashboardContents("complete", 5, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Almost there"
-            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+            dashContentTitle={almostThere}
+            dashContentDesc={almostThereDesc}
           >
             {serveDashboardContents("new", 5, stageCurrent)}
             {serveDashboardContents("eduP", 5, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
+            dashContentTitle={upcomAppoints}
             dashContentDesc={
               serveDashboardContents("appoint", 5, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "You have an upcoming appointment"
+                : upcoAppointSoon
             }
           >
             {serveDashboardContents("appoint", 5, stageCurrent).every(
@@ -1122,13 +1244,13 @@ const fullDashboardDataSingle = (
               : serveDashboardContents("appoint", 5, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
+            dashContentTitle={upcomTasks}
             dashContentDesc={
               serveDashboardContents("tasks", 5, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "See what activities you have next:"
+                : upcomTasksDec
             }
           >
             {serveDashboardContents("tasks", 5, stageCurrent).every(
@@ -1138,13 +1260,13 @@ const fullDashboardDataSingle = (
               : serveDashboardContents("tasks", 5, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
+            dashContentTitle={upcoEdu}
             dashContentDesc={
               serveDashboardContents("edu", 5, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "There is new content coming soon."
+                : upcoEduDec
             }
           >
             {serveDashboardContents("edu", 5, stageCurrent).every(
@@ -1158,8 +1280,8 @@ const fullDashboardDataSingle = (
       case 6:
         return [
           <DashboardContentBlocks
-            dashContentTitle="New Assessment"
-            dashContentDesc="You've been assigned a new assessment"
+            dashContentTitle={newAsmt}
+            dashContentDesc={newAsmtDesc}
           >
             <ContentCard
               progress={0}
@@ -1169,55 +1291,51 @@ const fullDashboardDataSingle = (
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Almost there"
-            dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
+            dashContentTitle={almostThere}
+            dashContentDesc={almostThereDesc}
           >
             <ContentCard
               progress={95}
-              title="Hypertension Assessment"
+              title={hyperAsmt}
               type="progress"
               redirectPath="/assessments"
             />
             <ContentCard
               progress={5}
               eduTotalContents={6}
-              title="Educational Content"
+              title={eduContent}
               type="progress"
               redirectPath="/education"
             />
           </DashboardContentBlocks>,
-          <DashboardContentBlocks dashContentTitle="Past Assessments">
-            <ContentCard
-              title="COPD Assessment"
-              desc="View Responses"
-              type="none"
-            />
+          <DashboardContentBlocks dashContentTitle={pastAsmt}>
+            <ContentCard title={copdAsmt} desc={pastAsmtDesc} type="none" />
           </DashboardContentBlocks>,
-          <DashboardContentBlocks dashContentTitle="Upcoming Appointments">
+          <DashboardContentBlocks dashContentTitle={upcomAppoints}>
             <ContentCard
-              title="Care Manager Check In"
-              desc="Upcoming Appointment"
+              title={careManaCheck}
+              desc={upcomAppointsDesc}
               type="icon"
               IconImg={BsCalendar2WeekFill}
             />
           </DashboardContentBlocks>,
-          <DashboardContentBlocks dashContentTitle="Upcoming Tasks">
+          <DashboardContentBlocks dashContentTitle={upcomTasks}>
             <ContentCard
-              title="Health Check In"
-              desc="Comming Sooon"
+              title={healthCheck}
+              desc={commingSoon}
               type="none"
               redirectPath="/memberview/CheckInsPage"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
-            dashContentDesc="There is new content coming soon."
+            dashContentTitle={upcoEdu}
+            dashContentDesc={upcoEduDec}
           >
             <EducationCard
               thumbnail={copdImg}
-              eduCardtitle="What is COPD?"
+              eduCardtitle={whatIsCOPD}
               eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-              eduCardTime="3 min watch"
+              eduCardTime={whatIsCOPDTime}
             />
           </DashboardContentBlocks>,
           <Rewards />,
@@ -1225,55 +1343,55 @@ const fullDashboardDataSingle = (
       case 7:
         return [
           <DashboardContentBlocks
-            dashContentTitle="Reminder: Your Check Ins are overdue"
-            dashContentDesc="Complete it to maintain consistency and stay on the right path to wellness."
+            dashContentTitle={remindOverdue}
+            dashContentDesc={remindOverdueDesc}
           >
             <ContentCard
               progress={0}
-              title="Diabetes Check In"
+              title={diabCheck}
               type="overdue"
               redirectPath="/memberview/CheckInsPage"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Almost There"
+            dashContentTitle={almostThere}
             dashContentDesc="Please finish these tasks to keep up the momentum in your health journey."
           >
             <ContentCard
               progress={70}
-              title="Hypertension Assessment"
+              title={hyperAsmt}
               type="progress"
               redirectPath="/assessments"
             />
             <ContentCard
               progress={3}
               eduTotalContents={6}
-              title="Educational Content"
+              title={eduContent}
               type="progress"
               redirectPath="/education"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
-            dashContentDesc="You have an upcoming appointment"
+            dashContentTitle={upcomAppoints}
+            dashContentDesc={upcoAppointSoon}
           >
             <ContentCard
-              title="Care Manager Check In"
-              desc="Upcoming Appointment"
+              title={careManaCheck}
+              desc={upcomAppointsDesc}
               type="icon"
               redirectPath="/appointments"
               IconImg={BsCalendar2WeekFill}
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
-            dashContentDesc="There is new content coming soon."
+            dashContentTitle={upcoEdu}
+            dashContentDesc={upcoEduDec}
           >
             <EducationCard
               thumbnail={copdImg}
-              eduCardtitle="What is COPD?"
+              eduCardtitle={whatIsCOPD}
               eduCardDesc="Lorem ipsum dolor sit amet, consectetur adipsiscing dolor"
-              eduCardTime="3 min watch"
+              eduCardTime={whatIsCOPDTime}
             />
           </DashboardContentBlocks>,
           <Rewards />,
@@ -1315,21 +1433,21 @@ const fullDashboardDataSingle = (
       return [
         {
           id: 2,
-          title: "Assessment",
+          title: asmt,
           icon: <MdAssessment />,
           status: renderActiveIcon(),
           layout: trackerObj(),
         },
         {
           id: 3,
-          title: "Check ins",
+          title: chek,
           icon: <HiCheckCircle />,
           status: renderActiveIcon(),
           layout: trackerObj(),
         },
         {
           id: 4,
-          title: "Education",
+          title: educ,
           icon: <FaAppleAlt />,
           status: "activePassive",
           layout: trackerObj(),
@@ -1339,28 +1457,28 @@ const fullDashboardDataSingle = (
       return [
         {
           id: 1,
-          title: "Onboarding",
+          title: onb,
           icon: <MdAssessment />,
           status: stage == 1 ? "active" : "hidden",
           layout: trackerObj(stage == 1 ? "" : "hidden"),
         },
         {
           id: 2,
-          title: "Assessment",
+          title: asmt,
           icon: <MdAssessment />,
           status: renderActiveIcon(),
           layout: trackerObj(),
         },
         {
           id: 3,
-          title: "Check ins",
+          title: chek,
           icon: <HiCheckCircle />,
           status: renderActiveIcon(),
           layout: trackerObj(),
         },
         {
           id: 4,
-          title: "Education",
+          title: educ,
           icon: <FaAppleAlt />,
           status: dynamicStatus,
           layout: trackerObj(),
@@ -1408,7 +1526,7 @@ const fullDashboardDataMulti = (
             )}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
+            dashContentTitle={upcomTasks}
             dashContentDesc="Your Initial assessment will be sent soon"
           >
             {serveDashboardContents("tasks", stage, stageCurrent)}
@@ -1423,13 +1541,13 @@ const fullDashboardDataMulti = (
             {serveDashboardContents("new", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
+            dashContentTitle={upcomAppoints}
             dashContentDesc={
               serveDashboardContents("appoint", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "You have an upcoming appointment"
+                : upcoAppointSoon
             }
           >
             {serveDashboardContents("appoint", stage, stageCurrent).every(
@@ -1439,13 +1557,13 @@ const fullDashboardDataMulti = (
               : serveDashboardContents("appoint", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Tasks"
+            dashContentTitle={upcomTasks}
             dashContentDesc={
               serveDashboardContents("tasks", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "See what activities you have next:"
+                : upcomTasksDec
             }
           >
             {serveDashboardContents("tasks", stage, stageCurrent).every(
@@ -1455,13 +1573,13 @@ const fullDashboardDataMulti = (
               : serveDashboardContents("tasks", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
+            dashContentTitle={upcoEdu}
             dashContentDesc={
               serveDashboardContents("edu", stage, stageCurrent).every(
                 (e) => e === undefined
               )
                 ? ""
-                : "There is new content coming soon."
+                : upcoEduDec
             }
           >
             {serveDashboardContents("edu", stage, stageCurrent).every(
@@ -1475,8 +1593,8 @@ const fullDashboardDataMulti = (
       case 3:
         return [
           <DashboardContentBlocks
-            dashContentTitle="New Check In"
-            dashContentDesc="Let us know how you are feeling"
+            dashContentTitle={newCheckIn}
+            dashContentDesc={newCheckInDesc}
           >
             {serveDashboardContents("new", stage, stageCurrent)}
           </DashboardContentBlocks>,
@@ -1491,21 +1609,21 @@ const fullDashboardDataMulti = (
             )}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Appointments"
-            dashContentDesc="You have an upcoming appointment"
+            dashContentTitle={upcomAppoints}
+            dashContentDesc={upcoAppointSoon}
           >
             {serveDashboardContents("appoint", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <DashboardContentBlocks
-            dashContentTitle="Upcoming Education"
-            dashContentDesc="There is new content coming soon."
+            dashContentTitle={upcoEdu}
+            dashContentDesc={upcoEduDec}
           >
             {serveDashboardContents("edu", stage, stageCurrent)}
           </DashboardContentBlocks>,
           <Rewards />,
         ];
       case 4:
-        return [<EducationPage2 />];
+        return [<EducationPage />];
     }
   };
   let dynamicStatus = "";

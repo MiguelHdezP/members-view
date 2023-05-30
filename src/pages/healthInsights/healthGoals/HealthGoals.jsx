@@ -8,6 +8,37 @@ import { TabsContentsGoals } from "../../../components/tabs/tabsCotentsGoals/Tab
 import { SecondaryButton } from "../../../components/secondaryButton/SecondaryButton";
 import { PrimaryButton } from "../../../components/primaryButton/PrimaryButton";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let addGoal = "";
+let addGoalDesc = "";
+let goalsTitle = "";
+let goalsDesc = "";
+let addGoalBtn = "";
+let manageGoalsTitle = "";
+let saveGoal = "";
+let cancelGoal = "";
+
+if (currentLang === "en") {
+  addGoal = "Add New Goal";
+  addGoalDesc = "Add a personal health goal you would like to track.";
+  goalsTitle = "Goals";
+  goalsDesc =
+    "Manage your health by tracking care plan goals and creating  your own goals.";
+  addGoalBtn = "Add New";
+  manageGoalsTitle = "Manage Goals";
+  saveGoal = "Save";
+  cancelGoal = "Cancel";
+} else if (currentLang === "es") {
+  addGoal = "Agregar Meta";
+  addGoalDesc = "Agrega una meta personal de salud.";
+  goalsTitle = "Metas";
+  goalsDesc = "Seguimiento y creación de objetivos";
+  addGoalBtn = "Agregar nuevo";
+  manageGoalsTitle = "Administrar";
+  saveGoal = "Guardar";
+  cancelGoal = "Cancelar";
+}
+
 export const HealthGoals = () => {
   const [manageGoals, setManageGoals] = useState(false);
   const [hideGoal, setHideGoal] = useState(true);
@@ -73,10 +104,8 @@ export const HealthGoals = () => {
           <div className="healthIn-container">
             {addNewGoal ? (
               <>
-                <p className="text-title startS-title-text">Add New Goal</p>
-                <p className="text-smallText">
-                  Add a personal health goal you would like to track.
-                </p>
+                <p className="text-title startS-title-text">{addGoal}</p>
+                <p className="text-smallText">{addGoalDesc}</p>
                 <div className="healthIn-addGoal-input">
                   <input
                     type="text"
@@ -90,10 +119,11 @@ export const HealthGoals = () => {
               <>
                 <Breadcrumb text="Health Insights" href="/healthInsights" />
                 <div className="healthIn-titles">
-                  <p className="text-title  healthIn-title-bottom">Goals</p>
+                  <p className="text-title  healthIn-title-bottom">
+                    {goalsTitle}
+                  </p>
                   <p className="text-midText reset margin text-left">
-                    Manage your health by tracking care plan goals and creating
-                    your own goals.
+                    {goalsDesc}
                   </p>
                 </div>
                 <div className="healthIn-tabs">{componentProv}</div>
@@ -106,12 +136,12 @@ export const HealthGoals = () => {
         {manageGoals ? (
           <>
             <SecondaryButton
-              text="Cancel"
+              text={cancelGoal}
               customClass="healthIn-goals-btn"
               fn={() => setManageGoals(false)}
             />
             <PrimaryButton
-              text="Save"
+              text={saveGoal}
               customClass="healthIn-goals-btn"
               fn={() => saveGoals()}
             />
@@ -119,12 +149,12 @@ export const HealthGoals = () => {
         ) : addNewGoal ? (
           <>
             <SecondaryButton
-              text="Cancel"
+              text={cancelGoal}
               customClass="healthIn-goals-btn"
               fn={() => closeAddGoal(false)}
             />
             <PrimaryButton
-              text="Save"
+              text={saveGoal}
               customClass="healthIn-goals-btn"
               fn={() => saveAddedGoal(false)}
             />
@@ -132,13 +162,13 @@ export const HealthGoals = () => {
         ) : (
           <>
             <SecondaryButton
-              text="Add New"
+              text={addGoalBtn}
               customClass="healthIn-goals-btn"
               icon={true}
               fn={() => toggleAddGoal(true)}
             />
             <PrimaryButton
-              text="Manage Goals"
+              text={manageGoalsTitle}
               customClass={`healthIn-goals-btn`}
               fn={() => setManageGoals(true)}
               disabled={toggleManageBtn}

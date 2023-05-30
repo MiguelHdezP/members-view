@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.scss";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SideBarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
+import { Switch } from "@mui/material";
 
 const Nav = styled.div`
   float: left;
@@ -38,9 +39,28 @@ export const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
   const [toggleClass, setToggleClass] = useState(0);
   const showSidebar = () => setSidebar(!sidebar);
+  const [checkedSwitch, setCheckedSwitch] = useState(false);
+
+  useEffect(() => {
+    let swicherStatus = sessionStorage.getItem("theme") ?? "";
+    if (swicherStatus === "corp") {
+      setCheckedSwitch(true);
+    }
+  }, []);
 
   const setToggleClassFn = (num) => {
     setToggleClass(num);
+  };
+
+  const handleChangeSwitch = (event) => {
+    const switchChecked = event.target.checked;
+    if (switchChecked) {
+      sessionStorage.setItem("theme", "corp");
+    } else {
+      sessionStorage.setItem("theme", "default");
+    }
+    setCheckedSwitch(event.target.checked);
+    window.location.reload();
   };
 
   return (
@@ -67,6 +87,16 @@ export const Sidebar = () => {
                 />
               );
             })}
+            <div
+              style={{
+                fontSize: "0.9rem",
+                marginTop: "1rem",
+                marginLeft: "1.2rem",
+              }}
+            >
+              <label htmlFor="theme">Toggle Theme</label>
+              <Switch checked={checkedSwitch} onChange={handleChangeSwitch} />
+            </div>
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>

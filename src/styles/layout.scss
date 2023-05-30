@@ -1,4 +1,4 @@
-@import "./mixins.scss";
+/*@import "./mixins.scss";
 @import "./variables.scss";
 
 html {
@@ -44,7 +44,7 @@ body {
 }
 
 body {
-  background-color: $strokeGray;
+  background-color: var(--strokeGray);
 }
 
 p {
@@ -56,7 +56,7 @@ a {
 }
 
 .tempo {
-  background-color: $white;
+  background-color: var(--white);
   height: 96vh;
   width: 25%;
   min-width: 26rem;
@@ -66,7 +66,7 @@ a {
 }
 
 .main-container {
-  background-color: $white;
+  background-color: var(--white);
   //background-repeat: no-repeat;
   //background-position: 50%;
   height: 96vh;
@@ -87,7 +87,7 @@ a {
 }
 
 .mobile-container {
-  border: 1px solid $disabled;
+  border: 1px solid var(--disabled);
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -187,3 +187,4 @@ a {
 .text-left {
   text-align: left !important;
 }
+*/

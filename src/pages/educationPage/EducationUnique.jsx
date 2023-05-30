@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// @ts-nocheck
+import React, { useState } from "react";
 import { BoxCard } from "../../components/boxCard/BoxCard";
 import { ProgressPercentage } from "../../components/progressPercentage/ProgressPercentage";
 import { IconContext } from "react-icons";
@@ -12,81 +13,69 @@ import {
   videoImg,
 } from "../../data/images";
 import { RoundedCard } from "../../components/roundedCard/RoundedCard";
-import { redirect } from "../../utils/scripts";
+import { redirect, addFavorites } from "../../utils/scripts";
 
-export const EducationUnique = ({
-  addContentToFavs,
-  handleOpen,
-  startStates,
-}) => {
-  const {
-    startState,
-    startState2,
-    startState3,
-    startState4,
-    startState5,
-    startState6,
-  } = startStates;
-  console.log("**Unique**");
-  const [uglyRender, setUglyRender] = useState(0);
-  console.log("startState: ", startState);
-  console.log("startState2: ", startState2);
-  const currentFavsVisible = JSON.parse(sessionStorage.getItem("currentFavs"));
-  let provFavs = [];
-  if (currentFavsVisible !== null) {
-    provFavs = [...currentFavsVisible];
-  }
-  console.log("**Unique after storage**");
-  console.log("startState: ", startState);
-  console.log("startState2: ", startState2);
-  useEffect(() => {
-    console.log("Re render ugly");
-  }, [uglyRender]);
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let eduActis = "";
+let learnMoreDesc = "";
+let copdTitle = "";
+let whatsCOPD = "";
+let copdWatch = "";
+let hyperTitle = "";
+let hyperSigns = "";
+let hyperWatch = "";
+let article3 = "";
+let article4 = "";
+let video5 = "";
+let article6 = "";
+let progressWeek = "";
 
-  const handleUglyRender = (num) => {
-    addContentToFavs(num);
-    setUglyRender(num);
-  };
+if (currentLang === "en") {
+  eduActis = "Your Educational Activities";
+  learnMoreDesc =
+    "Learn more about your conditions by viewing content selected for you by your care manager.";
+  copdTitle = "COPD";
+  whatsCOPD = "What is COPD?";
+  copdWatch = "3 min watch";
+  hyperTitle = "Hypertension";
+  hyperSigns = "Signs and Symptoms of Hypertension";
+  hyperWatch = "5 min watch";
+  article3 = "Article Title 3";
+  article4 = "Article Title 4";
+  video5 = "Video Title 5";
+  article6 = "Article Title 6";
+  progressWeek = "Your Progress this Week";
+} else if (currentLang === "es") {
+  eduActis = "Tus Actividades Educativas";
+  learnMoreDesc = "Obtenga más información sobre sus condiciones.";
+  copdTitle = "EPOC";
+  whatsCOPD = "¿Qué es EPOC?";
+  copdWatch = "Duración 3 min";
+  hyperTitle = "Hipertensión";
+  hyperSigns = "Signos y síntomas de la hipertensión";
+  hyperWatch = "Duración 5 min";
+  article3 = "Título de Artículo 3";
+  article4 = "Título de Artículo 4";
+  video5 = "Título del Vídeo 5";
+  article6 = "Título de Artículo 6";
+  progressWeek = "Tu progreso esta semana";
+}
 
-  console.log(
-    "unique provFavs: ",
-    provFavs,
-    " Unique some: ",
-    provFavs.some((e) => e == 2),
-    " ,startState2: ",
-    startState2
-  );
-  console.log(
-    provFavs.some((e) => e == 2) || startState2 ? "Fill Star" : "Empty Star"
-  );
-
-  {
-    provFavs.some((e) => e == 2) || startState2 ? (
-      <AiFillStar />
-    ) : (
-      <AiOutlineStar />
-    );
-  }
+export const EducationUnique = ({ handleOpen }) => {
+  const [uglyRender, setUglyRender] = useState(false);
+  const favsArr = JSON.parse(sessionStorage.getItem("currentFavs")) ?? [];
 
   return (
     <section className="education-page">
       <div className="education-general-info">
         <BoxCard customClass="education-boxcard">
-          <ProgressPercentage
-            progressLabel="Your Progress this Week"
-            value={15}
-          />
+          <ProgressPercentage progressLabel={progressWeek} value={15} />
         </BoxCard>
-        <h2 className="text-title education-text-title">
-          Your Educational Activities
-        </h2>
-        <p className="text-smallText education-text-mid">
-          Learn more about your conditions by viewing content selected for you
-          by your care manager.
-        </p>
+        <h2 className="text-title education-text-title">{eduActis}</h2>
+        <p className="text-smallText education-text-mid">{learnMoreDesc}</p>
       </div>
       <div className="education-todo">
-        <h2 className="text-midText education-text-mid">COPD</h2>
+        <h2 className="text-midText education-text-mid">{copdTitle}</h2>
         <RoundedCard customClass="education-rounded-card">
           <IconContext.Provider
             value={{
@@ -100,9 +89,9 @@ export const EducationUnique = ({
               <button
                 title="Add to favorites"
                 className="button-card-favs"
-                onClick={() => handleUglyRender(1)}
+                onClick={() => addFavorites(1, setUglyRender, uglyRender)}
               >
-                {provFavs.some((e) => e == 1) || startState ? (
+                {favsArr.some((e) => e == 1) ? (
                   <AiFillStar />
                 ) : (
                   <AiOutlineStar />
@@ -117,17 +106,17 @@ export const EducationUnique = ({
           />
           <div className="education-todo-texts">
             <p className="text-midText education-semibold-text education-text-mid">
-              What is COPD?
+              {whatsCOPD}
             </p>
             <p className="text-midText education-text-mid">
               Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit amet.
             </p>
             <p className="text-smallText education-purple-text education-text-mid">
-              3 min watch
+              {copdWatch}
             </p>
           </div>
         </RoundedCard>
-        <h2 className="text-midText education-text-mid">Hypertension</h2>
+        <h2 className="text-midText education-text-mid">{hyperTitle}</h2>
         <RoundedCard customClass="education-rounded-card">
           <IconContext.Provider
             value={{
@@ -137,13 +126,9 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => handleUglyRender(2)}
+              onClick={() => addFavorites(2, setUglyRender, uglyRender)}
             >
-              {provFavs.some((e) => e == 2) || startState2 ? (
-                <AiFillStar />
-              ) : (
-                <AiOutlineStar />
-              )}
+              {favsArr.some((e) => e == 2) ? <AiFillStar /> : <AiOutlineStar />}
             </button>
           </IconContext.Provider>
           <img
@@ -153,13 +138,13 @@ export const EducationUnique = ({
           />
           <div className="education-todo-texts">
             <p className="text-midText education-semibold-text education-text-mid">
-              Signs and Symptoms of Hypertension
+              {hyperSigns}
             </p>
             <p className="text-midText education-text-mid">
               Lorem ipsum dolor sit amet, consectetur adipiscing dolor sit amet.
             </p>
             <p className="text-smallText education-purple-text education-text-mid">
-              5 min watch
+              {hyperWatch}
             </p>
           </div>
         </RoundedCard>
@@ -167,7 +152,7 @@ export const EducationUnique = ({
       <div className="education-completed">
         <div className="education-completed-header">
           <h2 className="text-midText education-text-mid education-mid-topMargin">
-            COPD
+            {copdTitle}
           </h2>
         </div>
         <BoxCard customClass="education-completed-cardContainer">
@@ -179,13 +164,9 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => handleUglyRender(3)}
+              onClick={() => addFavorites(3, setUglyRender, uglyRender)}
             >
-              {provFavs.some((e) => e == 3) || startState3 ? (
-                <AiFillStar />
-              ) : (
-                <AiOutlineStar />
-              )}
+              {favsArr.some((e) => e == 3) ? <AiFillStar /> : <AiOutlineStar />}
             </button>
           </IconContext.Provider>
           <div
@@ -199,10 +180,10 @@ export const EducationUnique = ({
             />
             <div className="education-card-texts">
               <p className="text-midText education-semibold-text education-text-mid">
-                Article Title 3
+                {article3}
               </p>
               <p className="text-smallText education-text-mid">
-                One line description
+                Lorem Ipsum Desc
               </p>
             </div>
           </div>
@@ -216,13 +197,9 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => handleUglyRender(4)}
+              onClick={() => addFavorites(4, setUglyRender, uglyRender)}
             >
-              {provFavs.some((e) => e == 4) || startState4 ? (
-                <AiFillStar />
-              ) : (
-                <AiOutlineStar />
-              )}
+              {favsArr.some((e) => e == 4) ? <AiFillStar /> : <AiOutlineStar />}
             </button>
           </IconContext.Provider>
           <div
@@ -236,10 +213,10 @@ export const EducationUnique = ({
             />
             <div className="education-card-texts">
               <p className="text-midText education-semibold-text education-text-mid">
-                Article Title 4
+                {article4}
               </p>
               <p className="text-smallText education-text-mid">
-                One line description
+                Lorem Ipsum Desc
               </p>
             </div>
           </div>
@@ -248,7 +225,7 @@ export const EducationUnique = ({
       <div className="education-completed">
         <div className="education-completed-header">
           <h2 className="text-midText education-text-mid education-mid-topMargin">
-            Hypertension
+            {hyperTitle}
           </h2>
         </div>
         <BoxCard customClass="education-completed-cardContainer">
@@ -260,13 +237,9 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => handleUglyRender(5)}
+              onClick={() => addFavorites(5, setUglyRender, uglyRender)}
             >
-              {provFavs.some((e) => e == 5) || startState5 ? (
-                <AiFillStar />
-              ) : (
-                <AiOutlineStar />
-              )}
+              {favsArr.some((e) => e == 5) ? <AiFillStar /> : <AiOutlineStar />}
             </button>
           </IconContext.Provider>
           <div
@@ -280,10 +253,10 @@ export const EducationUnique = ({
             />
             <div className="education-card-texts">
               <p className="text-midText education-semibold-text education-text-mid">
-                Video Title 5
+                {video5}
               </p>
               <p className="text-smallText education-text-mid">
-                One line description
+                Lorem Ipsum Desc
               </p>
             </div>
           </div>
@@ -297,13 +270,9 @@ export const EducationUnique = ({
             <button
               title="Add to favorites"
               className="button-card-favs"
-              onClick={() => handleUglyRender(6)}
+              onClick={() => addFavorites(6, setUglyRender, uglyRender)}
             >
-              {provFavs.some((e) => e == 6) || startState6 ? (
-                <AiFillStar />
-              ) : (
-                <AiOutlineStar />
-              )}
+              {favsArr.some((e) => e == 6) ? <AiFillStar /> : <AiOutlineStar />}
             </button>
           </IconContext.Provider>
           <div
@@ -317,16 +286,16 @@ export const EducationUnique = ({
             />
             <div className="education-card-texts">
               <p className="text-midText education-semibold-text education-text-mid">
-                Article Title 6
+                {article6}
               </p>
               <p className="text-smallText education-text-mid">
-                One line description
+                Lorem Ipsum Desc
               </p>
             </div>
           </div>
         </BoxCard>
+        <div className="bottom-spacer"></div>
       </div>
-      <div className="bottom-spacer"></div>
     </section>
   );
 };

@@ -7,6 +7,30 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import { StatusFlag } from "../statusFlag/StatusFlag";
 
+const currentLang = sessionStorage.getItem("lang") ?? "en";
+let notStarted = "";
+let completed = "";
+let inProgress = "";
+let isOverdue = "";
+let isPaused = "";
+let isNew = "";
+
+if (currentLang === "en") {
+  notStarted = "Not Started";
+  completed = "Completed";
+  inProgress = "In Progrss";
+  isOverdue = "Overdue";
+  isPaused = "Paused";
+  isNew = "New";
+} else if (currentLang === "es") {
+  notStarted = "Sin iniciar";
+  completed = "Completado";
+  inProgress = "En Progreso";
+  isOverdue = "Atrasado";
+  isPaused = "Pausado";
+  isNew = "Nuevo";
+}
+
 export const ContentCard = ({
   progress = 0,
   title = "",
@@ -36,18 +60,18 @@ export const ContentCard = ({
   const leftImg = () => {
     if (type === "progress") {
       if (progress === 0) {
-        desc = desc.length ? "" : "Not Started";
-        return <StatusFlag flagLabel="New" classStatus="flag-active" />;
+        desc = desc.length ? "" : notStarted;
+        return <StatusFlag flagLabel={isNew} classStatus="flag-active" />;
       } else if (progress === 100) {
         progressColor = "#00a223";
-        desc = desc.length ? "" : "Completed";
+        desc = desc.length ? "" : completed;
       } else if (progress > 10) {
         progressColor = "#ffa500";
-        desc = desc.length ? "" : "In Progress";
+        desc = desc.length ? "" : inProgress;
       } else {
         provProgress = (progress * 100) / eduTotalContents;
         progressColor = "#5c4bd3";
-        desc = desc.length ? "" : "In Progress";
+        desc = desc.length ? "" : inProgress;
       }
       return (
         <CircularProgressbar
@@ -77,11 +101,11 @@ export const ContentCard = ({
         </IconContext.Provider>
       );
     } else if (type === "overdue") {
-      desc = "Not Started";
-      return <StatusFlag flagLabel="Overdue" classStatus="flag-overdue" />;
+      desc = notStarted;
+      return <StatusFlag flagLabel={isOverdue} classStatus="flag-overdue" />;
     } else if (type === "paused") {
       desc = "";
-      return <StatusFlag flagLabel="Paused" classStatus="flag-paused" />;
+      return <StatusFlag flagLabel={isPaused} classStatus="flag-paused" />;
     } else if (type === "none") {
       return "";
     }
@@ -96,7 +120,10 @@ export const ContentCard = ({
         {type === "none" ? (
           ""
         ) : (
-          <div className="almost-cards-loader-icon">
+          <div
+            className="almost-cards-loader-icon"
+            style={type === "overdue" ? { marginRight: "1rem" } : {}}
+          >
             <div className={`cards-loader-icon ${progress > 0 ? "pollo" : ""}`}>
               {leftImg()}
             </div>

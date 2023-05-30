@@ -3,7 +3,7 @@
 .rounded-card {
   @include strongText;
   background-color: white;
-  border: 1px solid $strokeGray;
+  border: 1px solid var(--strokeGray);
   border-radius: 10px;
   padding: 0.5rem;
 }

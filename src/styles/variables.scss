@@ -1,33 +1,34 @@
-$white: #fff;
-$dark: #1c1c22;
-$secondaryDark: #40404f;
-$black: #000;
+/*var(--white): #fff;
+var(--dark): #1c1c22;
+var(--secondaryDark): #40404f;
+var(--black): #000;
 
-$footerGray: #f4f4f6;
-$lightGray: #ececec;
-$lighterGray: #fefefe;
-$strokeGray: #e2e2e7;
-$gray160: #dbdbdc;
-$disabled: #b0b0bf;
-$smallLabel: #707070;
-$middleGray: #5d5d60;
-$gray600: #6e6e87;
+var(--footerGray): var(--dashboard--contents);;
+var(--lightGray): #ececec;
+var(--lighterGray): #fefefe;
+var(--strokeGray): #e2e2e7;
+var(--gray160): #dbdbdc;
+var(--disabled): #b0b0bf;
+var(--smallLabel): #707070;
+var(--middleGray): #5d5d60;
+var(--gray600): #6e6e87;
 
-$lightBlue: #d2efff;
+var(--lightBlue): #d2efff;
 
-$mainPurple: #5c4bd3;
-$darkPurple: #444fa2;
+var(--mainPurple): #5c4bd3;
+var(--dark)Purple: #444fa2;
 
 $notification: #d9107d;
 
-$badgeChat1: #a20055;
-$badgeChat2: #3900a2;
-$badgeChat3: #008ca2;
-$badgeChat4: #00a223;
-$badgeChat5: #a27100;
+var(--badgeChat1): #a20055;
+var(--badgeChat2): #3900a2;
+var(--badgeChat3): #008ca2;
+var(--badgeChat4): #00a223;
+var(--badgeChat5): #a27100;
 
 $activeFlag: #32c85c;
 
-$badgeTroph: #f58220;
+var(--badgeTroph): #f58220;
 
-$overlay: #202359;
+var(--overlay): #202359;
+*/

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import "../src/styles/main.scss";
 import { currentWindowsWidth, redirect, urlGet } from "./utils/scripts";
 import { Sidebar } from "./components/sideBar/Sidebar";
@@ -47,7 +48,34 @@ function getMobileOperatingSystem() {
 }
 
 function App() {
+  let curLag = "en";
+
   useEffect(() => {
+    const currentTheme = sessionStorage.getItem("theme");
+    const currentLang = sessionStorage.getItem("lang");
+
+    if (currentLang !== null) {
+      if (currentLang === "en") {
+        curLag = "en";
+      } else if (currentLang === "es") {
+        curLag = "es";
+      }
+    } else {
+      document.documentElement.setAttribute("lang", "en");
+    }
+
+    if (currentTheme !== null) {
+      if (currentTheme === "def") {
+        document.documentElement.setAttribute("color-scheme", "default");
+      } else if (currentTheme === "corp") {
+        document.documentElement.setAttribute("color-scheme", "corp");
+      } else if (currentTheme === "dark") {
+        document.documentElement.setAttribute("color-scheme", "dark");
+      }
+    } else {
+      document.documentElement.setAttribute("color-scheme", "default");
+    }
+
     if (currentWindowsWidth() <= 480 && urlGet("/")) {
       redirect("/memberview/optinonboarding/authentication");
     }
@@ -90,8 +118,11 @@ function App() {
             <Route path="/awards" element={<AwardsPage />} />
             <Route path="/education" element={<EducationPage />} />
             <Route path="/educationArticle" element={<EducationArticle />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/userSettings" element={<UserSettings />} />
+            <Route path="/dashboard" element={<Dashboard lang={curLag} />} />
+            <Route
+              path="/userSettings"
+              element={<UserSettings lang={curLag} />}
+            />
             <Route
               path="/userSettings/member-settings"
               element={<MemberSettings />}

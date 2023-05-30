@@ -11,9 +11,20 @@ export const JourneyTracker = ({
   stages = {},
   currentStage = 1,
   settingsTracker = false,
+  lang = "",
 }) => {
   const [eduActive, setEduActive] = useState(false);
   const [newNotiAsmt, setNewNotiAsmt] = useState(false);
+
+  const currentLang = sessionStorage.getItem("lang");
+
+  if (currentLang !== null) {
+    if (currentLang === "en") {
+      lang = "en";
+    } else if (currentLang === "es") {
+      lang = "es";
+    }
+  }
 
   const { id = 0, dropdown = [], tracker = [] } = stages;
 
@@ -65,6 +76,22 @@ export const JourneyTracker = ({
     }
   };
 
+  let viewProgram = "";
+  if (lang === "en") {
+    viewProgram = "View Program";
+  } else if ((lang = "es")) {
+    viewProgram = "Ver Programa";
+  }
+
+  const iconColortheme = () => {
+    const currentTheme = sessionStorage.getItem("theme") ?? "";
+    if (currentTheme === "corp") {
+      return "#42bcbe";
+    } else {
+      return "#5c4bd3";
+    }
+  };
+
   return (
     <>
       {checkIfRenderDropdown() ? (
@@ -73,7 +100,7 @@ export const JourneyTracker = ({
             className="text-midText text-title-adjustment"
             style={{ paddingBottom: "1rem" }}
           >
-            View Program
+            {viewProgram}
           </p>
           <MaterialDropDown dropdown={dropdown} fn={fn2} />
         </div>
@@ -99,7 +126,7 @@ export const JourneyTracker = ({
               >
                 <span
                   style={{
-                    color: checkIfActiveState(id) ? "#5c4bd3" : "gray",
+                    color: checkIfActiveState(id) ? iconColortheme() : "gray",
                   }}
                   className="journey-tracker-stage"
                 >
@@ -118,7 +145,8 @@ export const JourneyTracker = ({
                       : ""
                   }`}
                 >
-                  {title === "Assessment" && newNotiAsmt ? (
+                  {(title === "Assessment" || title === "Evaluacion") &&
+                  newNotiAsmt ? (
                     <div
                       style={{
                         position: "relative",
