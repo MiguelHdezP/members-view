@@ -77,36 +77,37 @@
         display: flex;
         justify-content: space-between;
       }
-      .education-completed-cardContainer {
-        border-radius: 0.625rem;
-        padding: 0;
-        margin-bottom: 1rem;
-        position: relative;
+    }
+  }
+}
 
-        .education-completed-card {
-          align-items: center;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-between;
+.education-completed-cardContainer {
+  border-radius: 0.625rem;
+  padding: 0;
+  margin-bottom: 1rem;
+  position: relative;
 
-          &:hover {
-            background-color: rgba($color: var(--strokeGray), $alpha: 0.5);
-            border-radius: 10px;
-          }
+  .education-completed-card {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 
-          .education-img {
-            height: 4.5rem;
-            width: 4.5rem;
-          }
+    &:hover {
+      background-color: rgba($color: var(--strokeGray), $alpha: 0.5);
+      border-radius: 10px;
+    }
 
-          .education-card-texts {
-            flex: 2;
-            margin-left: 1rem;
-            .text-midText {
-              margin-top: 0.5rem;
-            }
-          }
-        }
+    .education-img {
+      height: 4.5rem;
+      width: 4.5rem;
+    }
+
+    .education-card-texts {
+      flex: 2;
+      margin-left: 1rem;
+      .text-midText {
+        margin-top: 0.5rem;
       }
     }
   }
@@ -236,4 +237,8 @@
 }
 .education-todo-buttons {
   position: relative;
+}
+
+.browse-breadcrumb {
+  margin: 2.3rem 0rem 3.3rem 0rem;
 }

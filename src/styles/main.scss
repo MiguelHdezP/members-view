@@ -9,9 +9,9 @@
   --dark--default: #1c1c22;
   --secondaryDark--default: #40404f;
   --black--default: #000;
-  --dashboard--contents--corp: var(--dashboard--contents);
+  --dashboard--contents--corp: red;
 
-  --footerGray--default: var(--dashboard--contents);
+  --footerGray--default: #fafafa;
   --lightGray--default: #ececec;
   --lighterGray--default: #fefefe;
   --strokeGray--default: #e2e2e7;
@@ -571,7 +571,7 @@ body {
 }
 
 body {
-  background-color: var(--strokeGray);
+  background-color: var(--white);
 }
 
 p {
@@ -593,7 +593,7 @@ a {
 }
 
 .main-container {
-  background-color: var(--white);
+  background-color: var(--footerGray--default);
   //background-repeat: no-repeat;
   //background-position: 50%;
   height: 96vh;
@@ -727,7 +727,7 @@ a {
   text-align: center;
 
   &:hover {
-    background-color: rgba($color: var(var(--white)), $alpha: 0.5);
+    background-color: rgba($color: var(--white), $alpha: 0.5);
     color: var(--mainPurple);
     & > .active-icon {
       color: var(--gray600);
@@ -866,4 +866,46 @@ a {
 .flag-overdue {
   background-color: var(--notification);
   color: var(--white);
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 1px solid var(--gray160);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  background-color: var(--mainPurple);
+  outline: 4px solid var(--mainPurple);
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 0.6rem 0.6rem var(--white);
+}
+
+input[type="radio"]:checked::before {
+  background-color: var(--mainPurple);
+  transform: scale(1);
 }

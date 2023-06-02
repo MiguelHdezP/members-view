@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Breadcrumb } from "../../../components/breadcrumb/Breadcrumb";
+import "./LanguageSettings.scss";
 
 export const LanguageSettings = ({ fn, lang = "en" }) => {
   const [uglyReset, setUglyReset] = useState(true);
@@ -18,15 +19,24 @@ export const LanguageSettings = ({ fn, lang = "en" }) => {
     window.location.reload();
   };
 
+  let currentLang = "",
+    englishType = "";
+
+  if (lang === "en") {
+    currentLang = "Language Settings";
+    englishType = "English (system default)";
+  } else if (lang === "es") {
+    currentLang = "Configuración de Idioma";
+    englishType = "Inglés";
+  }
+
   return (
     <div className="settings-container">
-      <Breadcrumb text={lang === "en" ? "Settings" : "Configuración"} fn={fn} />
+      <Breadcrumb text={lang === "en" ? "Settings" : "Configuración"} />
       <div className="settings-titles">
-        <p className="text-title settings-title-bottom">
-          {lang === "en" ? "Language Settings" : "Configuración de Idioma"}
-        </p>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div>
+        <p className="text-title settings-title-bottom">{currentLang}</p>
+        <div className="languages">
+          <div className="langague-container">
             <input
               type="radio"
               id="en"
@@ -35,12 +45,9 @@ export const LanguageSettings = ({ fn, lang = "en" }) => {
               onChange={handleChange}
               checked={lang === "en" ? true : false}
             />
-             
-            <label htmlFor="en">
-              {lang === "en" ? "English (system default)" : "Inglés"}
-            </label>
+             <label htmlFor="en">{englishType}</label>
           </div>
-          <div>
+          <div className="langague-container">
             <input
               type="radio"
               id="es"

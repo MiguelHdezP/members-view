@@ -209,7 +209,7 @@ export const ProgramSettings = ({ fn, lang = "" }) => {
         </BoxCard>
       </Modal>
       <div className="settings-container">
-        <Breadcrumb text="Settings" fn={fn} />
+        <Breadcrumb text="Settings" />
         <div className="settings-titles">
           <p className="text-title settings-title-bottom">Program Settings</p>
           <p className="text-smallText">

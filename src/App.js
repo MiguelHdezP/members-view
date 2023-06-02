@@ -17,6 +17,7 @@ import { FirstTimeScreen } from "./pages/firstTimeScreen/FirstTimeScreen";
 import { AwardsPage } from "./pages/awardsPage/AwardsPage";
 import { EducationPage } from "./pages/educationPage/EducationPage";
 import { EducationArticle } from "./pages/educationPage/educationArticle/EducationArticle";
+import { EduArticle2 } from "./pages/educationPage/eduArticle2/EduArticle2";
 import { Questionnaires } from "./pages/questionnairesPage/Questionnaires";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import { UserSettings } from "./pages/userSettings/UserSettings";
@@ -25,7 +26,6 @@ import { Chats } from "./pages/chats/Chats";
 import { Appointments } from "./pages/appointments/Appointments";
 import { MemberSettings } from "./pages/userSettings/memberSettings/MemberSettings";
 import { HealthGoals } from "./pages/healthInsights/healthGoals/HealthGoals";
-import { DataProvider } from "./data/context/dataContext";
 import { CareVisits } from "./pages/healthInsights/healthCareVisits/CareVisits";
 
 function getMobileOperatingSystem() {
@@ -82,63 +82,56 @@ function App() {
   }, []);
 
   return (
-    <DataProvider>
-      <Router>
-        <main>
-          {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
-          <div>
-            {getMobileOperatingSystem()} - {window.innerHeight}
-          </div>
-          <Routes>
-            <Route path="/" element={<JourneyBuilder />} />
-            <Route path="/caremanager" element={<CareManager />} />
-            <Route
-              path="/memberview/optinonboarding"
-              element={<Optinonboarding />}
-            />
-            <Route path="/memberview/assessments" element={<Assessments />} />
-            <Route path="/memberview/checkins" element={<CheckIns />} />
-            <Route
-              path="/memberview/educationalContent"
-              element={<EducationalContent />}
-            />
-            <Route
-              path="/memberview/optinonboarding/authentication"
-              element={<Authentication />}
-            />
-            <Route
-              path="/memberview/programOverview"
-              element={<FirstTimeScreen />}
-            />
-            <Route
-              path="/memberview/checkinsPage"
-              element={<Questionnaires />}
-            />
-            <Route path="/assessments" element={<Questionnaires />} />
-            <Route path="/awards" element={<AwardsPage />} />
-            <Route path="/education" element={<EducationPage />} />
-            <Route path="/educationArticle" element={<EducationArticle />} />
-            <Route path="/dashboard" element={<Dashboard lang={curLag} />} />
-            <Route
-              path="/userSettings"
-              element={<UserSettings lang={curLag} />}
-            />
-            <Route
-              path="/userSettings/member-settings"
-              element={<MemberSettings />}
-            />
-            <Route path="/healthInsights" element={<HealthInsights />} />
-            <Route path="/healthInsights/goals" element={<HealthGoals />} />
-            <Route
-              path="/healthInsights/care-visits"
-              element={<CareVisits />}
-            />
-            <Route path="/chats" element={<Chats />} />
-            <Route path="/appointments" element={<Appointments />} />
-          </Routes>
-        </main>
-      </Router>
-    </DataProvider>
+    <Router>
+      <main>
+        {currentWindowsWidth() >= 480 ? <Sidebar /> : ""}
+        <div>
+          {getMobileOperatingSystem()} - {window.innerHeight}
+        </div>
+        <Routes>
+          <Route path="/" element={<JourneyBuilder />} />
+          <Route path="/caremanager" element={<CareManager />} />
+          <Route
+            path="/memberview/optinonboarding"
+            element={<Optinonboarding />}
+          />
+          <Route path="/memberview/assessments" element={<Assessments />} />
+          <Route path="/memberview/checkins" element={<CheckIns />} />
+          <Route
+            path="/memberview/educationalContent"
+            element={<EducationalContent />}
+          />
+          <Route
+            path="/memberview/optinonboarding/authentication"
+            element={<Authentication />}
+          />
+          <Route
+            path="/memberview/programOverview"
+            element={<FirstTimeScreen />}
+          />
+          <Route path="/memberview/checkinsPage" element={<Questionnaires />} />
+          <Route path="/assessments" element={<Questionnaires />} />
+          <Route path="/awards" element={<AwardsPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/educationArticle" element={<EducationArticle />} />
+          <Route path="/educationArticleNutrition" element={<EduArticle2 />} />
+          <Route path="/dashboard" element={<Dashboard lang={curLag} />} />
+          <Route
+            path="/userSettings"
+            element={<UserSettings lang={curLag} />}
+          />
+          <Route
+            path="/userSettings/member-settings"
+            element={<MemberSettings />}
+          />
+          <Route path="/healthInsights" element={<HealthInsights />} />
+          <Route path="/healthInsights/goals" element={<HealthGoals />} />
+          <Route path="/healthInsights/care-visits" element={<CareVisits />} />
+          <Route path="/chats" element={<Chats />} />
+          <Route path="/appointments" element={<Appointments />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 

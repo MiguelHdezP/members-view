@@ -7,15 +7,20 @@ import { MobileContainer } from "../../components/mobileContainer/MobileContaine
 import { Header } from "../../components/header/Header";
 import { Footer } from "../../components/footer/Footer";
 import { EducationUnique } from "./EducationUnique";
+import { PrimaryButton } from "../../components/primaryButton/PrimaryButton";
+import { EduBrowseContent } from "./eduBrowseContent/EduBrowseContent";
 
 export const EducationPage = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [toggleBrowse, setToggleBrowse] = useState(false);
 
   const handleOpen = () => {
     setOpenModal(!openModal);
   };
 
   const handleClose = () => setOpenModal(false);
+
+  const browseContent = () => setToggleBrowse(!toggleBrowse);
 
   const EducationContents = () => {
     let CommonContents = (
@@ -40,24 +45,31 @@ export const EducationPage = () => {
         <div className="mobile-scroll-education">
           <EducationUnique handleOpen={handleOpen} />
         </div>
+        <BoxCard customClass="firstTime-boxCard" prov={true}>
+          <PrimaryButton
+            text="Browse All Content"
+            customClass="fistTime-primaryBtn"
+            fn={browseContent}
+          />
+        </BoxCard>
         <Footer customClass="footer-moreOptions-bottomFix" />
       </>
     );
-    if (urlGetQueryString() === "fullpage") {
+
+    if (urlGetQueryString() === null || urlGetQueryString() === "fullpage") {
       return (
         <MobileContainer>
           <Header visibleHeader={true} />
-          {CommonContents}
+          {toggleBrowse ? <EduBrowseContent /> : CommonContents}
         </MobileContainer>
       );
     }
     return (
       <>
         <Header visibleHeader={false} />
-        {CommonContents}
+        {toggleBrowse ? <EduBrowseContent /> : CommonContents}
       </>
     );
   };
-
   return <EducationContents />;
 };

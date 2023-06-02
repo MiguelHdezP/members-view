@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BoxCard } from "../../../components/boxCard/BoxCard";
 import { BsGear } from "react-icons/bs";
-import { Switch } from "@mui/material";
 import { GrLanguage } from "react-icons/gr";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { redirect } from "../../../utils/scripts";
 import { HiOutlineChevronRight } from "react-icons/hi";
 
 export const InitialSettings = ({ fn, lang = "en" }) => {

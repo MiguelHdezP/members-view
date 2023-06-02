@@ -1,0 +1,13 @@
+@import "../../../styles/main.scss";
+
+.education-categories {
+  margin: 1rem 0;
+  .edubrowseresults {
+    cursor: pointer;
+    margin-bottom: 2rem;
+
+    &:hover {
+      background-color: rgba($color: #d5d5d5, $alpha: 0.1);
+    }
+  }
+}

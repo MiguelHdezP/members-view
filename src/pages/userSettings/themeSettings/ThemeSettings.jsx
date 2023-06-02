@@ -32,7 +32,7 @@ export const ThemeSettings = ({ fn }) => {
 
   return (
     <div className="settings-container">
-      <Breadcrumb text={uglyReset ? "Settings" : "Configuración"} fn={fn} />
+      <Breadcrumb text={uglyReset ? "Settings" : "Configuración"} />
       <div className="settings-titles">
         <p className="text-title settings-title-bottom">Theme Settings</p>
         <div style={{ display: "flex", justifyContent: "space-evenly" }}>

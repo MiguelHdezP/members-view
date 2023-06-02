@@ -272,9 +272,9 @@ const asmtConditionContentSingle = (
         content: [
           <ContentCard
             progress={0}
-            title={hyperAsmt}
+            title={"Pollo"}
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=hypertension"
           />,
         ],
       },
@@ -334,7 +334,7 @@ const asmtConditionContentSingle = (
             progress={100}
             title={copdAsmt}
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=copd"
           />,
         ],
       },
@@ -345,7 +345,7 @@ const asmtConditionContentSingle = (
             progress={70}
             title={hyperAsmt}
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=hypertension"
           />,
         ],
       },
@@ -404,7 +404,7 @@ const asmtConditionContentSingle = (
             progress={0}
             title="Diabetes Assessment"
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=diabetes"
           />,
         ],
       },
@@ -475,7 +475,7 @@ const chckInConditionContentSingle = (
             progress={0}
             title="Diabetes Check In Tote"
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=diabetes"
             stageCurrent={stageCurrent}
             fn={setRenderStageJourneyTracker}
           />,
@@ -537,7 +537,7 @@ const eduConditionContentSingle = (stageCurrent) => {
             progress={0}
             title="COPD  Eduaction"
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=copd"
           />,
         ],
       },
@@ -648,7 +648,7 @@ const asmtConditionContentMulti = (stageCurrent) => {
             progress={0}
             title="COPD Assessment Multi"
             type="progress"
-            redirectPath="/assessments"
+            redirectPath="/assessments?q=copd"
           />,
         ],
       },
@@ -1077,7 +1077,7 @@ const fullDashboardDataSingle = (
               progress={70}
               title={hyperAsmt}
               type="progress"
-              redirectPath="/assessments"
+              redirectPath="/assessments?q=hypertension"
             />
             <ContentCard
               progress={3}
@@ -1158,7 +1158,7 @@ const fullDashboardDataSingle = (
               progress={0}
               title={hyperAsmt}
               type={activityStatus3()}
-              redirectPath="/assessments"
+              redirectPath="/assessments?q=hypertension"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
@@ -1287,7 +1287,7 @@ const fullDashboardDataSingle = (
               progress={0}
               title="Diabetes Assessment"
               type="progress"
-              redirectPath="/assessments"
+              redirectPath="/assessments?q=diabetes"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
@@ -1298,7 +1298,7 @@ const fullDashboardDataSingle = (
               progress={95}
               title={hyperAsmt}
               type="progress"
-              redirectPath="/assessments"
+              redirectPath="/assessments?q=hypertension"
             />
             <ContentCard
               progress={5}
@@ -1324,7 +1324,7 @@ const fullDashboardDataSingle = (
               title={healthCheck}
               desc={commingSoon}
               type="none"
-              redirectPath="/memberview/CheckInsPage"
+              redirectPath="/memberview/CheckInsPage?q=diabetes"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
@@ -1350,7 +1350,7 @@ const fullDashboardDataSingle = (
               progress={0}
               title={diabCheck}
               type="overdue"
-              redirectPath="/memberview/CheckInsPage"
+              redirectPath="/memberview/CheckInsPage?q=diabetes"
             />
           </DashboardContentBlocks>,
           <DashboardContentBlocks
@@ -1361,7 +1361,7 @@ const fullDashboardDataSingle = (
               progress={70}
               title={hyperAsmt}
               type="progress"
-              redirectPath="/assessments"
+              redirectPath="/assessments?q=hypertension"
             />
             <ContentCard
               progress={3}

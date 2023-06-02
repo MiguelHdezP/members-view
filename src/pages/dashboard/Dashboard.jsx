@@ -94,11 +94,11 @@ export const Dashboard = ({ lang }) => {
   let careProgram = "";
   let welcomes = "";
   if (lang === "en") {
-    careProgram = "Care Program";
-    welcomes = "Welcome back Jane!";
+    careProgram = "Welcome back Jane!  ";
+    welcomes = "Here is your COPD Care Program:";
   } else if ((lang = "es")) {
-    careProgram = "Programa de Cuidado";
-    welcomes = "¡Bienvenida Jane!";
+    careProgram = "¡Bienvenida Jane!";
+    welcomes = "Éste es tu programa de EPOC";
   }
 
   return (
@@ -115,9 +115,16 @@ export const Dashboard = ({ lang }) => {
       )}
       <div className="mobile-scroll-dashboard">
         <section className="dashboard-page">
-          <div className="dashboard-titles">
-            <p className="text-title startS-title-text">{careProgram}</p>
-            <p className="text-smallText">{welcomes}</p>
+          <div className="dashboard-titles" style={{ textAlign: "center" }}>
+            <p
+              className="text-title startS-title-text"
+              style={{ textAlign: "center", marginTop: "1.2rem" }}
+            >
+              {careProgram}
+            </p>
+            <p className="text-smallText" style={{ textAlign: "center" }}>
+              {welcomes}
+            </p>
           </div>
           <div className="dashboard-contents">
             <div className="dashboard-contents-joruneyTracker">

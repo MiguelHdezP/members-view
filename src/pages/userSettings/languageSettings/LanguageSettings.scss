@@ -1,0 +1,13 @@
+@import "../../../styles/main.scss";
+
+.languages {
+  text-align: left;
+  margin-bottom: 2rem;
+  .langague-container {
+    display: flex;
+    margin: 2rem 0;
+    label {
+      margin-left: 2rem;
+    }
+  }
+}

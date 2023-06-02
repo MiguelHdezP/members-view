@@ -1,0 +1,78 @@
+@import "../../../styles/main.scss";
+
+.mobile-scroll-eduArticle {
+  @include mobile-scroll();
+
+  .eduArticle-page {
+    @include scroll-page();
+
+    .firstTime-page-contents {
+      padding: 1.6rem 1.5rem;
+      text-align: left;
+      .firstTime-topImg {
+        width: 100%;
+      }
+      .firstTime-title {
+        @include headingText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subText {
+        @include defaultText;
+        margin: 0.9rem 0;
+      }
+      .firstTime-subTitle {
+        font-size: 1.125rem;
+      }
+
+      .firstTime-article-boxCard {
+        margin: 0.5rem 0 1rem;
+        padding: 1.5rem;
+
+        .firstTime-article-title {
+          margin-bottom: 0.5rem;
+        }
+
+        .firstTime-article-list {
+          .firstTime-list {
+            color: var(--mainPurple);
+            list-style: disc;
+            margin-left: 1rem;
+            padding: 0.5rem 0;
+
+            .firstTime-list-anchor {
+              color: var(--mainPurple);
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .firstTime-boxCard {
+      background-color: var(--mainPurple);
+      bottom: 11rem;
+      border-radius: unset;
+      position: fixed;
+      padding: 2rem;
+      @include fixedWidth;
+
+      .fistTime-primaryBtn {
+        background-color: var(--white);
+        border-color: var(--strokeGray);
+        color: var(--dark);
+        margin: 0;
+
+        &:hover {
+          background-color: var(--lightGray);
+        }
+      }
+    }
+  }
+  .open-activity {
+    right: 0;
+  }
+}

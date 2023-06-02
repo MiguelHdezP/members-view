@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .header {
-  @include headerFooter(var(--white), 0.5rem 1rem);
+  @include headerFooter(var(--footerGray--default), 0.5rem 1rem);
   top: 5.7rem;
 
   .header-contents {
