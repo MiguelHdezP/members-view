@@ -1,7 +1,7 @@
 @import "../../styles/main.scss";
 
 .mobile-scroll-education {
-  @include mobile-scroll(75.1vh, 100%, 0.5rem);
+  @include mobile-scroll(75.1vh, 100%, 1rem);
   .education-page {
     height: 100%;
     margin: 0 auto;
@@ -241,4 +241,16 @@
 
 .browse-breadcrumb {
   margin: 2.3rem 0rem 3.3rem 0rem;
+}
+
+.edu-browse-card {
+  margin-top: -4rem;
+}
+
+.edu-browse-btn {
+  margin-bottom: 0;
+}
+
+.mobile-scroll-education-adjustment {
+  top: -0.6rem;
 }

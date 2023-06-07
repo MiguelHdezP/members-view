@@ -1,14 +1,14 @@
 // @ts-nocheck
 import React, { useEffect, useState } from "react";
 import "./EduBrowseContent.scss";
-import { Footer } from "../../../components/footer/Footer";
 import { InputSearch } from "../../../components/inputSearch/InputSearch";
 import EduBrowseResults from "./EduBrowseResults";
 import { Breadcrumb } from "../../../components/breadcrumb/Breadcrumb";
 import { EduCategosResults } from "../../educationPage/eduCategosResults/EduCategosResults";
 import { EduCopdContents } from "../eduCopdContents/EduCopdContents";
+import { urlGetQueryString } from "../../../utils/scripts";
 
-export const EduBrowseContent = () => {
+export const EduBrowseContent = ({ browseContent }) => {
   const [search, setSearch] = useState("");
   const [getCategoryInfo, setGetCategoryInfo] = useState(0);
   const [browseResults, setBrowseResults] = useState(false);
@@ -40,9 +40,11 @@ export const EduBrowseContent = () => {
   };
 
   const renderRightContent = () => {
-    console.log("Search: ", search, browseResults);
     if (browseResults) {
-      if (search.toLocaleLowerCase() === "copd") return <EduCopdContents />;
+      console.log("browseResults: ", search, browseResults);
+      if (search.toLocaleLowerCase() === "copd") {
+        return <EduCopdContents />;
+      }
       switch (getCategoryInfo) {
         case 1:
           return "There are no results";
@@ -56,13 +58,22 @@ export const EduBrowseContent = () => {
           break;
       }
     } else {
+      console.log("Noo browseResults: ", search, browseResults);
       return <EduBrowseResults search={search} fn={getCategoriesContent} />;
+    }
+  };
+
+  const ReturnMobileContainer = ({ children }) => {
+    if (urlGetQueryString() !== "single")
+      return <div className="mobile-scroll-education">{children}</div>;
+    else {
+      return <>{children}</>;
     }
   };
 
   return (
     <>
-      <div className="mobile-scroll-education">
+      <ReturnMobileContainer>
         <section className="education-page">
           {browseResults ? (
             <Breadcrumb
@@ -72,7 +83,12 @@ export const EduBrowseContent = () => {
               customClass="browse-breadcrumb "
             />
           ) : (
-            ""
+            <Breadcrumb
+              text="Go Back"
+              activateOnClick={true}
+              onClickFn={browseContent}
+              customClass="browse-breadcrumb "
+            />
           )}
           <div className="education-general-info">
             {browseResults ? (
@@ -85,12 +101,11 @@ export const EduBrowseContent = () => {
                 </p>
               </>
             )}
-            <InputSearch fn={setSearch} placeholder={getCategoryInfo} />
+            <InputSearch fn={setSearch} inputValue={getCategoryInfo} />
           </div>
           <div className="education-categories">{renderRightContent()}</div>
         </section>
-      </div>
-      <Footer customClass="footer-moreOptions-bottomFix" />
+      </ReturnMobileContainer>
     </>
   );
 };

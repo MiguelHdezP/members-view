@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.scss";
 import { IconContext } from "react-icons";
 import { BsFillStarFill } from "react-icons/bs";
@@ -8,7 +8,7 @@ import { NotificationsPane } from "../../components/notificationsPane/Notificati
 import { SectionHeader } from "../../components/sectionHeader/SectionHeader";
 import { ListWithIcons } from "../../components/listWithIcons/ListWithIcons";
 import { Divider } from "../../components/divider/Divider";
-import { redirect } from "../../utils/scripts";
+import { redirect, urlCatch, urlGetQueryString } from "../../utils/scripts";
 import { FakeFavorites } from "../header/FakeFavorites/FakeFavorites";
 
 export const Header = ({ customClass = "", visibleHeader = true }) => {
@@ -30,6 +30,13 @@ export const Header = ({ customClass = "", visibleHeader = true }) => {
       return "#42bcbe";
     } else {
       return "#5c4bd3";
+    }
+  };
+
+  const handleOpenFavs = () => {
+    setToggleFavs(!toggleFavs);
+    if (urlCatch("education") && toggleFavs === true) {
+      redirect("/education?q=fullpage");
     }
   };
 
@@ -60,7 +67,7 @@ export const Header = ({ customClass = "", visibleHeader = true }) => {
                 className={`mobile-icon-effect  ${
                   toggleFavs ? "activate-icons" : ""
                 }`}
-                onClick={() => setToggleFavs(!toggleFavs)}
+                onClick={handleOpenFavs}
               >
                 {<BsFillStarFill />}
               </button>

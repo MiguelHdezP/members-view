@@ -37,12 +37,20 @@ const eduContents = [
 
 export default function EduBrowseResults({ search = "", fn }) {
   let currentArr = eduContents;
-  if (search.length)
+  if (search.length) {
     currentArr = eduContents.filter((e) =>
-      search.toLowerCase() === ""
-        ? e
-        : e.title.toLocaleLowerCase().includes(search)
+      search.toLowerCase() === "" ? e : e.title.toLowerCase().includes(search)
     );
+  }
+  console.log(
+    "Ponki: ",
+    search.length,
+    search !== "",
+    search.toLowerCase() !== "copd"
+  );
+  if (search !== "" && search.toLowerCase() !== "copd") {
+    return "There are no results";
+  }
 
   return currentArr.map((e) => {
     const { img, title, id } = e;

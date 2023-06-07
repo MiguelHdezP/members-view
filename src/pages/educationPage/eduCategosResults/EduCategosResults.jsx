@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./EduCategosResults.scss";
 import { BoxCard } from "../../../components/boxCard/BoxCard";
 import {
@@ -9,10 +9,10 @@ import {
   BrowseImg5,
 } from "../../../data/images";
 import { redirect } from "../../../utils/scripts";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const currentLang = sessionStorage.getItem("lang") ?? "en";
 let eduActis = "";
-let learnMoreDesc = "Lorem ipsum dolor sit amet, consectetur.";
 
 if (currentLang === "en") {
   eduActis = "Browse Content";
@@ -54,6 +54,7 @@ const eduContents = [
 ];
 
 export const EduCategosResults = ({ search = "", fn }) => {
+  const [toggleFav, setToggleFav] = useState(false);
   let currentArr = eduContents;
   if (search.length)
     currentArr = eduContents.filter((e) =>
@@ -62,10 +63,21 @@ export const EduCategosResults = ({ search = "", fn }) => {
         : e.title.toLocaleLowerCase().includes(search)
     );
 
+  const handleFav = () => {
+    setToggleFav(!toggleFav);
+  };
+
   return currentArr.map((e) => {
     const { img, title, desc, id } = e;
     return (
-      <BoxCard customClass="education-completed-cardContainer edubrowseresults">
+      <BoxCard customClass="education-completed-cardContainer edubrowseresults edu-contents-container">
+        <button
+          title="Add to favorites"
+          className="button-card-favs edu-categos-fav"
+          onClick={handleFav}
+        >
+          {toggleFav ? <AiFillStar /> : <AiOutlineStar />}
+        </button>
         <div
           className="education-completed-card"
           onClick={() => redirect("/educationArticleNutrition")}

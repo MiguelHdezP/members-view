@@ -22,6 +22,24 @@ export const EducationPage = () => {
 
   const browseContent = () => setToggleBrowse(!toggleBrowse);
 
+  const ChoseRightClass = ({ children }) => {
+    if (urlGetQueryString() === null || urlGetQueryString() === "fullpage") {
+      return (
+        <div
+          className={`mobile-scroll-education ${
+            urlGetQueryString() === "single"
+              ? "mobile-scroll-education-adjustment"
+              : ""
+          }`}
+        >
+          {children}
+        </div>
+      );
+    } else {
+      return <div>{children}</div>;
+    }
+  };
+
   const EducationContents = () => {
     let CommonContents = (
       <>
@@ -42,17 +60,16 @@ export const EducationPage = () => {
             ></iframe>
           </BoxCard>
         </Modal>
-        <div className="mobile-scroll-education">
+        <ChoseRightClass>
           <EducationUnique handleOpen={handleOpen} />
-        </div>
-        <BoxCard customClass="firstTime-boxCard" prov={true}>
+        </ChoseRightClass>
+        <BoxCard customClass="firstTime-boxCard edu-browse-card" prov={true}>
           <PrimaryButton
             text="Browse All Content"
-            customClass="fistTime-primaryBtn"
+            customClass="fistTime-primaryBtn edu-browse-btn"
             fn={browseContent}
           />
         </BoxCard>
-        <Footer customClass="footer-moreOptions-bottomFix" />
       </>
     );
 
@@ -60,14 +77,23 @@ export const EducationPage = () => {
       return (
         <MobileContainer>
           <Header visibleHeader={true} />
-          {toggleBrowse ? <EduBrowseContent /> : CommonContents}
+          {toggleBrowse ? (
+            <EduBrowseContent browseContent={browseContent} />
+          ) : (
+            CommonContents
+          )}
+          <Footer customClass="footer-moreOptions-bottomFix" />
         </MobileContainer>
       );
     }
     return (
       <>
         <Header visibleHeader={false} />
-        {toggleBrowse ? <EduBrowseContent /> : CommonContents}
+        {toggleBrowse ? (
+          <EduBrowseContent browseContent={browseContent} />
+        ) : (
+          CommonContents
+        )}
       </>
     );
   };

@@ -8,6 +8,7 @@
   margin: 0 auto;
 
   @mixin inputTextStyles {
+    color: var(--black);
     border: 1px solid #ccc;
     display: inline-block;
     -webkit-border-top-left-radius: 4px;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NotificationsPane } from "../../notificationsPane/NotificationsPane";
 import { BoxCard } from "../../boxCard/BoxCard";
 import { IconContext } from "react-icons";
@@ -76,7 +76,7 @@ export const FakeFavorites = ({ toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addFavorites(1, setUglyRender, uglyRender)}
+                  onClick={() => addFavorites(2, setUglyRender, uglyRender)}
                 >
                   <AiFillStar />
                 </button>
@@ -114,7 +114,7 @@ export const FakeFavorites = ({ toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addFavorites(1, setUglyRender, uglyRender)}
+                  onClick={() => addFavorites(3, setUglyRender, uglyRender)}
                 >
                   <AiFillStar />
                 </button>
@@ -151,7 +151,7 @@ export const FakeFavorites = ({ toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addFavorites(1, setUglyRender, uglyRender)}
+                  onClick={() => addFavorites(4, setUglyRender, uglyRender)}
                 >
                   <AiFillStar />
                 </button>
@@ -188,7 +188,7 @@ export const FakeFavorites = ({ toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addFavorites(1, setUglyRender, uglyRender)}
+                  onClick={() => addFavorites(5, setUglyRender, uglyRender)}
                 >
                   <AiFillStar />
                 </button>
@@ -222,7 +222,7 @@ export const FakeFavorites = ({ toggleFavs }) => {
                 <button
                   title="Remove from favorites"
                   className="button-card-favs header-card-favs"
-                  onClick={() => addFavorites(1, setUglyRender, uglyRender)}
+                  onClick={() => addFavorites(6, setUglyRender, uglyRender)}
                 >
                   <AiFillStar />
                 </button>

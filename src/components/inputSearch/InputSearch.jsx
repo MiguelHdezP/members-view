@@ -12,12 +12,13 @@ if (currentLang === "en") {
 } else if (currentLang === "es") {
   eduActis = "Explorar Contenido";
 }
-export const InputSearch = ({ fn, placeholder = 0 }) => {
+export const InputSearch = ({ fn, inputValue = 0 }) => {
   const inputRef = useRef(null);
   const [visibleClose, setVisibleIcon] = useState(false);
-  let titleChange = "Search";
+  const [currentInputVal, setCurrentInputVal] = useState("");
+  let titleChange = currentInputVal;
 
-  useEffect(() => {}, [visibleClose]);
+  useEffect(() => {}, [visibleClose, currentInputVal]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -32,11 +33,14 @@ export const InputSearch = ({ fn, placeholder = 0 }) => {
     fn("");
   };
 
-  const turnOnCleanBtn = () => {
+  const turnOnCleanBtn = (e) => {
+    titleChange = e.currentTarget.value;
+    setCurrentInputVal(titleChange);
+
     setVisibleIcon(true);
   };
 
-  switch (placeholder) {
+  switch (inputValue) {
     case 1:
       titleChange = "Heart and blood vessels";
       break;
@@ -53,18 +57,24 @@ export const InputSearch = ({ fn, placeholder = 0 }) => {
       break;
   }
 
+  const visibleCloseBtn = () => {
+    if (visibleClose || titleChange.length) return true;
+    else return false;
+  };
+
   return (
     <form className="search-input" onSubmit={handleOnSubmit}>
-      <div className="input-search-container ">
+      <div className="input-search-container">
         <input
           type="text"
           id="lname"
           name="lastname"
-          placeholder={titleChange}
+          value={titleChange}
           ref={inputRef}
           onChange={turnOnCleanBtn}
+          placeholder="Search"
         />
-        {visibleClose ? (
+        {visibleCloseBtn() ? (
           <IconContext.Provider
             value={{
               className: "input-icon-close",
